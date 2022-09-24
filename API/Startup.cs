@@ -36,6 +36,7 @@ namespace API
             });
             
             services.AddControllers();
+            services.AddCors(); // Add cors 1.
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
@@ -56,6 +57,8 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            // Add cors 2.  - allow frontend to retrive data from api
+            app.UseCors( x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));      // The position is important - don't change place
 
             app.UseAuthorization();
 
