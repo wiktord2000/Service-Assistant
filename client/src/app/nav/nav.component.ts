@@ -11,6 +11,8 @@ import { map, shareReplay } from 'rxjs/operators';
 export class NavComponent {
 
   activePoll: Boolean = false;
+  one = "position: 'fixed'";
+  two = "position: 'sticky'";
 
   isSmallOrXSmall$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall])
     .pipe(

@@ -6,12 +6,27 @@
   width: 200px;
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
-}
-
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.footer {
+  height: 64px;
+  width: 100%;
+  position: sticky;  /* Sticky appends the footer after nav-container */
+  position: -moz-sticky; 
+  position: -webkit-sticky; 
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* -- Option */
+  /* position: fixed; --it overlaps the nav-container */
+  /* bottom: 0; */
 }
