@@ -19,7 +19,7 @@
   </mat-sidenav>
 
   <!-- Main Content (with toolbar at the top) -->
-  <mat-sidenav-content>
+  <mat-sidenav-content class="bg-gradient">
 
     <!-- Toolbar -->
     <mat-toolbar class="mat-elevation-z1" color="primary">
@@ -27,15 +27,17 @@
       <!-- Logo -->
       <img height="40px" src="../../assets/logo.svg">
       
-      <!-- Bookmarks left-->
-      <span style="margin-left: 20px;">Konto</span>
-      <span style="margin-left: 20px;">Konto</span>
-      <span style="margin-left: 20px;">Konto</span>
-      <span style="margin-left: 20px;">Konto</span>
-      <span style="margin-left: 20px;">Konto</span>
-      <span style="margin-left: 20px;">Konto</span>
-      <span style="margin-left: 20px;">Konto</span>
-      <span style="margin-left: 20px;">Konto</span>
+       <!-- Bookmarks left-->
+      <div *ngIf="!(isSmallOrXSmall$ | async)">
+        <span style="margin-left: 20px;">Konto</span>
+        <span style="margin-left: 20px;">Konto</span>
+        <span style="margin-left: 20px;">Konto</span>
+        <span style="margin-left: 20px;">Konto</span>
+        <span style="margin-left: 20px;">Konto</span>
+        <span style="margin-left: 20px;">Konto</span>
+        <span style="margin-left: 20px;">Konto</span>
+        <span style="margin-left: 20px;">Konto</span>
+      </div>
 
       <!-- Free space -->
       <span class="spacer"></span>
@@ -44,6 +46,7 @@
        <button
           type="button"
           aria-label="Toggle sidenav"
+          matTooltip="Menu"
           mat-icon-button
           (click)="drawer.toggle()"
           *ngIf="isSmallOrXSmall$ | async">

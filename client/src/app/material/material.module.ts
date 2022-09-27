@@ -17,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip'; 
 
 const material = [
   MatButtonModule,
@@ -38,7 +39,8 @@ const material = [
   MatInputModule,
   MatSelectModule,
   MatRadioModule,
-  ReactiveFormsModule
+  ReactiveFormsModule,
+  MatTooltipModule
 ]
 
 @NgModule({

@@ -20,3 +20,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: #f44336;
     color: white;
 }
+
+/* Background gradient */
+.bg-gradient{
+    /* background: linear-gradient( 135deg, #f5f7fa 0%, #c3cfe2 100%); */
+}
