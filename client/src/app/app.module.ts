@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { MaterialModule } from './material/material.module';
+import { MaterialModule } from './_material/material.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,8 @@ import { TableExampleComponent } from './examples/table-example/table-example.co
 import { DashboardComponent } from './examples/dashboard/dashboard.component';
 import { TreeExampleComponent } from './examples/tree-example/tree-example.component';
 import { DragDropExampleComponent } from './examples/drag-drop-example/drag-drop-example.component'
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -23,13 +25,15 @@ import { DragDropExampleComponent } from './examples/drag-drop-example/drag-drop
     DashboardComponent,
     TreeExampleComponent,
     DragDropExampleComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]  // The set of components that are loaded when this module is loaded. AppComponent contains all components which we crea. 

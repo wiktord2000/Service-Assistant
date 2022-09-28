@@ -10,7 +10,7 @@
     <!-- Menu -->
     <mat-toolbar class="primary-color">Menu</mat-toolbar>
     <!-- Bookmarks (when small screen) -->
-    <mat-nav-list>
+    <mat-nav-list *ngIf="accountService.currentUser$ | async">
       <a mat-list-item routerLink=".">Zlecenia</a>
       <mat-divider></mat-divider>
       <a mat-list-item routerLink=".">Usługi</a>
@@ -37,7 +37,7 @@
       <img id="main-logo" src="../../assets/logo.svg">
       
        <!-- Bookmarks left-->
-      <div *ngIf="!(isSmallOrXSmall$ | async)">
+      <div *ngIf="!(isSmallOrXSmall$ | async) && (accountService.currentUser$ | async)">
         <a class="bookmark bookmark-divider" mat-button routerLink=".">Zlecenia</a>
         <a class="bookmark bookmark-divider" mat-button routerLink=".">Usługi</a>
         <a class="bookmark bookmark-divider" mat-button routerLink=".">Klienci</a>
@@ -57,11 +57,16 @@
           mat-icon-button
           (click)="drawer.toggle()"
           *ngIf="isSmallOrXSmall$ | async">
-       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-     </button>
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
       
-      <!-- Bookmarks right-->
-      <span>Konto</span>
+      <!-- Account button -->
+      <button id="account-button" mat-button [matMenuTriggerFor]="account">Konto</button>
+      <!-- Options -->
+      <mat-menu #account="matMenu">
+        <button mat-menu-item>Dane konta</button>
+        <button mat-menu-item (click)="logout()">Wyloguj</button>
+      </mat-menu>
 
     </mat-toolbar>
 
