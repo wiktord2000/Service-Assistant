@@ -11,9 +11,18 @@
     <mat-toolbar class="primary-color">Menu</mat-toolbar>
     <!-- Bookmarks (when small screen) -->
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item routerLink=".">Zlecenia</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink=".">Usługi</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink=".">Klienci</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink=".">Pojazdy</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink=".">Towary</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink=".">Statystyki</a>
+      <mat-divider></mat-divider>
     </mat-nav-list>
 
   </mat-sidenav>
@@ -21,22 +30,20 @@
   <!-- Main Content (with toolbar at the top) -->
   <mat-sidenav-content class="bg-gradient">
 
-    <!-- Toolbar -->
+    <!-- Toolbar (main at top) -->
     <mat-toolbar class="mat-elevation-z1" color="primary">
 
       <!-- Logo -->
-      <img height="40px" src="../../assets/logo.svg">
+      <img id="main-logo" src="../../assets/logo.svg">
       
        <!-- Bookmarks left-->
       <div *ngIf="!(isSmallOrXSmall$ | async)">
-        <span style="margin-left: 20px;">Konto</span>
-        <span style="margin-left: 20px;">Konto</span>
-        <span style="margin-left: 20px;">Konto</span>
-        <span style="margin-left: 20px;">Konto</span>
-        <span style="margin-left: 20px;">Konto</span>
-        <span style="margin-left: 20px;">Konto</span>
-        <span style="margin-left: 20px;">Konto</span>
-        <span style="margin-left: 20px;">Konto</span>
+        <a class="bookmark bookmark-divider" mat-button routerLink=".">Zlecenia</a>
+        <a class="bookmark bookmark-divider" mat-button routerLink=".">Usługi</a>
+        <a class="bookmark bookmark-divider" mat-button routerLink=".">Klienci</a>
+        <a class="bookmark bookmark-divider" mat-button routerLink=".">Pojazdy</a>
+        <a class="bookmark bookmark-divider" mat-button routerLink=".">Towary</a>
+        <a class="bookmark" mat-button routerLink=".">Statystyki</a>
       </div>
 
       <!-- Free space -->
