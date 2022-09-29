@@ -12,9 +12,8 @@ import { User } from '../_models/User';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit{
-  @Input() loggedIn : Boolean;
   @Input() model : any;
-  // currentUser$: Observable<User>;
+  isLoginPanel: boolean = true;
 
   isSmallOrXSmall$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall])
     .pipe(
@@ -29,6 +28,10 @@ export class NavComponent implements OnInit{
     // Attach user subscription
     // this.getCurrentUser(); -- obsolete
     // this.currentUser$ = this.accountService.currentUser$;
+  }
+
+  togglePanel(): void{
+    this.isLoginPanel = !this.isLoginPanel;
   }
 
   login(){
@@ -52,13 +55,13 @@ export class NavComponent implements OnInit{
   // !!! Obsolete
   // Subscription of accountService with manage current user - the nice example to replace with async pipe 
   // because in this case we don't unsubscribe the observable object. Pipe make it automatically. 
-  getCurrentUser(){
-    this.accountService.currentUser$.subscribe({
-      next: (user) => {
-        this.loggedIn = !!user;       // !user = !{} = !true = false, !(!user) = true
-      },
-      error: (error) => console.log(error)
-    })
-  }
+  // getCurrentUser(){
+  //   this.accountService.currentUser$.subscribe({
+  //     next: (user) => {
+  //       this.loggedIn = !!user;       // !user = !{} = !true = false, !(!user) = true
+  //     },
+  //     error: (error) => console.log(error)
+  //   })
+  // }
 
 }

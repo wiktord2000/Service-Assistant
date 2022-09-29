@@ -14,6 +14,8 @@ import { TreeExampleComponent } from './examples/tree-example/tree-example.compo
 import { DragDropExampleComponent } from './examples/drag-drop-example/drag-drop-example.component'
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -25,7 +27,9 @@ import { LoginComponent } from './login/login.component';
     DashboardComponent,
     TreeExampleComponent,
     DragDropExampleComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent,
+    OrdersPanelComponent
   ],
   imports: [
     BrowserModule,

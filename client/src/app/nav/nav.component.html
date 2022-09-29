@@ -11,7 +11,7 @@
     <mat-toolbar class="primary-color">Menu</mat-toolbar>
     <!-- Bookmarks (when small screen) -->
     <mat-nav-list *ngIf="accountService.currentUser$ | async">
-      <a mat-list-item routerLink=".">Zlecenia</a>
+      <a mat-list-item routerLink="/orders">Zlecenia</a>
       <mat-divider></mat-divider>
       <a mat-list-item routerLink=".">Usługi</a>
       <mat-divider></mat-divider>
@@ -33,12 +33,20 @@
     <!-- Toolbar (main at top) -->
     <mat-toolbar class="mat-elevation-z1" color="primary">
 
-      <!-- Logo -->
-      <img id="main-logo" src="../../assets/logo.svg">
+      <!-- Logo (when logged) -->
+      <img  id="main-logo" 
+            routerLink="/orders" 
+            *ngIf="(accountService.currentUser$ | async)"  
+            src="../../assets/logo.svg">
+      <!-- Logo (when not logged) -->
+      <img  id="main-logo" 
+            class="disable-hover"
+            *ngIf="!(accountService.currentUser$ | async)"  
+            src="../../assets/logo.svg">
       
        <!-- Bookmarks left-->
       <div *ngIf="!(isSmallOrXSmall$ | async) && (accountService.currentUser$ | async)">
-        <a class="bookmark bookmark-divider" mat-button routerLink=".">Zlecenia</a>
+        <a class="bookmark bookmark-divider" mat-button routerLink="/orders">Zlecenia</a>
         <a class="bookmark bookmark-divider" mat-button routerLink=".">Usługi</a>
         <a class="bookmark bookmark-divider" mat-button routerLink=".">Klienci</a>
         <a class="bookmark bookmark-divider" mat-button routerLink=".">Pojazdy</a>
@@ -49,23 +57,30 @@
       <!-- Free space -->
       <span class="spacer"></span>
 
-       <!-- Open sidenav button -->
-       <button
-          type="button"
-          aria-label="Toggle sidenav"
-          matTooltip="Menu"
-          mat-icon-button
-          (click)="drawer.toggle()"
-          *ngIf="isSmallOrXSmall$ | async">
-            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-      
+      <!-- Bookmarks right-->
+      <div *ngIf="!(accountService.currentUser$ | async)">
+        <a *ngIf="!isLoginPanel" (click)="togglePanel()" class="right-bookmark" mat-button routerLink="/">Zaloguj</a>
+        <a *ngIf="isLoginPanel" (click)="togglePanel()"  class="right-bookmark"  mat-button routerLink="/register">Zarejestruj</a>
+      </div>
+
+      <!-- Open sidenav button -->
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        matTooltip="Menu"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="(isSmallOrXSmall$ | async) && (accountService.currentUser$ | async)">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+
       <!-- Account button -->
-      <button id="account-button" mat-button [matMenuTriggerFor]="account">Konto</button>
+      <button *ngIf="accountService.currentUser$ | async" id="account-button" mat-button [matMenuTriggerFor]="account">Konto</button>
       <!-- Options -->
       <mat-menu #account="matMenu">
         <button mat-menu-item>Dane konta</button>
-        <button mat-menu-item (click)="logout()">Wyloguj</button>
+        <button mat-menu-item>Dane firmy</button>
+        <button mat-menu-item (click)="logout()" routerLink="/">Wyloguj</button>
       </mat-menu>
 
     </mat-toolbar>

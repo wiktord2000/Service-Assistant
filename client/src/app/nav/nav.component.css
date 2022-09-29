@@ -13,6 +13,14 @@
   margin-right: 1em;
 }
 
+#main-logo:hover{
+  cursor: pointer;
+  transform: scale(1.04,1.04);
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
@@ -46,6 +54,10 @@ a:hover{
   flex: 1 1 auto;
 }
 
+.right-bookmark{
+  font-size: 1.25rem;
+}
+
 #account-button{
   font-size: 1.25rem;
   padding-left: 0em;
@@ -77,4 +89,6 @@ a:hover{
   /* position: fixed; --it overlaps the nav-container */
   /* bottom: 0; */
 }
+
+/* ------------------ Other ------------------*/
 

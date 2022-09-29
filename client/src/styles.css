@@ -25,3 +25,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .bg-gradient{
     /* background: linear-gradient( 135deg, #f5f7fa 0%, #c3cfe2 100%); */
 }
+
+/* Disable hover events */
+.disable-hover{
+    pointer-events: none;
+}

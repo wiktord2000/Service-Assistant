@@ -52,8 +52,8 @@ export class LoginComponent implements OnInit {
           // If success
           next: (resp: any) => {
             console.log(resp);
-            // Navigate to dashboard
-            // this.router.navigate(['dashboard']);
+            // Navigate to orders
+            this.router.navigate(['orders']);
           },
           // If error
           error: () =>{
