@@ -56,6 +56,12 @@ a:hover{
   background: rgba(0,0,0,.2);
 }
 
+/* ------------------ Main content ------------------*/
+#main-content-wrapper{
+  /* Avoid unnecessery scrolling */
+  height: calc(100% - 64px) !important;
+}
+
 /* ------------------ Footer ------------------*/
 .footer {
   height: 64px;

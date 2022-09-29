@@ -22,6 +22,7 @@ export class AccountService {
         if(user){
           this.setCurrentUser(user);
         }
+        return user;
       })
     );
   }

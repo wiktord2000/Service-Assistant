@@ -1,11 +1,7 @@
 <app-nav [model] = "model" [loggedIn]="loggedIn">
-    <form #loginForm="ngForm" (ngSubmit)="login()" name="ngForm" style="display: flex; flex-direction: column; margin: 200px">
-        <label for="username">Username</label>
-        <input [(ngModel)]="model.username" type="text" name="username">
-        <label for="password">Password</label>
-        <input [(ngModel)]="model.password" type="text" name="password">
-        <button type="submit">Login</button>
-    </form>
+    
+
+    <app-login></app-login>
     
 </app-nav>
 
