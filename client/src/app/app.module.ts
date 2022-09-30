@@ -16,6 +16,11 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
+import { ServicesPanelComponent } from './panels/services-panel/services-panel.component';
+import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.component';
+import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
+import { PartsPanelComponent } from './panels/parts-panel/parts-panel.component';
+import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -29,7 +34,12 @@ import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.compone
     DragDropExampleComponent,
     LoginComponent,
     RegisterComponent,
-    OrdersPanelComponent
+    OrdersPanelComponent,
+    ServicesPanelComponent,
+    ClientsPanelComponent,
+    VehiclesPanelComponent,
+    PartsPanelComponent,
+    StatisticsPanelComponent
   ],
   imports: [
     BrowserModule,

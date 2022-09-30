@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { importExpr } from '@angular/compiler/src/output/output_ast';
 import { User } from '../_models/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -22,7 +23,8 @@ export class NavComponent implements OnInit{
     );
 
   constructor(private breakpointObserver: BreakpointObserver,
-              public accountService : AccountService) {}    // Make public if you want use service from html level
+              private router : Router,
+              public accountService : AccountService) {}    // Make public if you want use service from html level !!!!!!!!!!
 
   ngOnInit(): void {
     // Attach user subscription
@@ -45,6 +47,7 @@ export class NavComponent implements OnInit{
 
   logout(){
     this.accountService.logout();
+    this.router.navigate(['login']);
   }
 
 
