@@ -1,6 +1,5 @@
 import { getLocaleFirstDayOfWeek } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { SNACKBAR_TYPE } from 'src/app/_enums/snackbar-type';
 import { SnackbarService } from 'src/app/_services/snackbar.service';
 
 @Component({
@@ -16,10 +15,10 @@ export class OrdersPanelComponent implements OnInit {
   }
 
   showSuccess(){
-    let ref = this.snackbarService.showMessage(SNACKBAR_TYPE.ERROR,  "To jest normalny", "OKO", false);
+    let ref = this.snackbarService.showMessage('error',  "To jest normalny", "OKO", false);
   }
 
   showWarn(){
-    let ref = this.snackbarService.showMessage(SNACKBAR_TYPE.WARN,  "To jest normalny", "OKO", false);
+    let ref = this.snackbarService.showMessage('warn',  "To jest normalny", "OKO", false);
   }
 }

@@ -3,7 +3,6 @@ import { AccountService } from './../_services/account.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { SNACKBAR_TYPE } from '../_enums/snackbar-type';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,7 @@ export class AuthGuard implements CanActivate {         // Guards automaticelly 
         if(user){
           return true;
         }
-        this.snackbarService.showMessage(SNACKBAR_TYPE.WARN, "Nie masz uprawnień, aby odwiedzić tą stronę!")
+        this.snackbarService.showMessage('warn', "Nie masz uprawnień, aby odwiedzić tą stronę!")
       })
     )
   }

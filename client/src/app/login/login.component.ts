@@ -2,9 +2,7 @@ import { SnackbarService } from 'src/app/_services/snackbar.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../_models/User';
 import { AccountService } from '../_services/account.service';
-import { SNACKBAR_TYPE } from '../_enums/snackbar-type';
 
 @Component({
   selector: 'app-login',
@@ -64,7 +62,7 @@ export class LoginComponent implements OnInit {
             // if(document.getElementById('error-message') !== null){
             //   document.getElementById('error-message')!.innerHTML = "Hasło lub email jest niepoprawne!";
             // }
-            this.snackbarService.showMessage(SNACKBAR_TYPE.ERROR, error.error);
+            this.snackbarService.showMessage('error', error.error);
             // Enable button to login again
             this.buttonDisable = false;
             this.buttonContent = "Zaloguj"

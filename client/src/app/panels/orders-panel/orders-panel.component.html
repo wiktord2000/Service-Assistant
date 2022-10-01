@@ -1,8 +1,16 @@
 <p>orders-panel works!</p>
-<button (click)="showSuccess()">
-    Open snackbar
+<button (click)="snackbarService.showMessage('success', 'Success message')">
+    Success
 </button>
 
-<button (click)="showWarn()">
-    Open snackbar warn
+<button (click)="snackbarService.showMessage('info', 'Info message')">
+    Info
+</button>
+
+<button (click)="snackbarService.showMessage('error', 'Error message')">
+    Error
+</button>
+
+<button (click)="snackbarService.showMessage('warn', 'Warn message')">
+    Warn
 </button>
