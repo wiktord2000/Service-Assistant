@@ -30,3 +30,28 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .disable-hover{
     pointer-events: none;
 }
+
+/* ------------------------------- Snackbars panel styling -------------------------------*/
+.success-snackbar-panel{
+    border-left: solid 5px rgb(98, 213, 98); 
+    background-color: rgb(111, 114, 135); 
+    color: white;
+}
+
+.info-snackbar-panel{
+    border-left: solid 5px lightskyblue; 
+    background-color: rgb(111, 114, 135); 
+    color: white;
+}
+
+.warn-snackbar-panel{
+    border-left: solid 5px orange; 
+    background-color: rgb(111, 114, 135); 
+    color: white;
+}
+
+.error-snackbar-panel{
+    border-left: solid 5px orangered;  
+    background-color: rgb(111, 114, 135); 
+    color: white;
+}

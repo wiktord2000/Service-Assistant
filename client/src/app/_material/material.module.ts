@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip'; 
+import { MatSnackBarModule } from '@angular/material/snack-bar'; 
 
 const material = [
   MatButtonModule,
@@ -40,7 +41,8 @@ const material = [
   MatSelectModule,
   MatRadioModule,
   ReactiveFormsModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatSnackBarModule
 ]
 
 @NgModule({

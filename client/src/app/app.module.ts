@@ -21,6 +21,8 @@ import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.comp
 import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
 import { PartsPanelComponent } from './panels/parts-panel/parts-panel.component';
 import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -39,7 +41,8 @@ import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-p
     ClientsPanelComponent,
     VehiclesPanelComponent,
     PartsPanelComponent,
-    StatisticsPanelComponent
+    StatisticsPanelComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-p
     MaterialModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]  // The set of components that are loaded when this module is loaded. AppComponent contains all components which we crea. 
 })
 export class AppModule { }
