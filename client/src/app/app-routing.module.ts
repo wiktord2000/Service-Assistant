@@ -1,3 +1,4 @@
+import { AuthGuard } from './_guards/auth.guard';
 import { HttpClient } from '@angular/common/http';
 import { AccountService } from './_services/account.service';
 import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
@@ -14,12 +15,19 @@ import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-p
 const routes: Routes = [
   {path: "", component: LoginComponent},
   {path: "register", component: RegisterComponent},
-  {path: "orders", component: OrdersPanelComponent},
-  {path: "services", component: ServicesPanelComponent},
-  {path: "clients", component: ClientsPanelComponent},
-  {path: "vehicles", component: VehiclesPanelComponent},
-  {path: "parts", component: PartsPanelComponent},
-  {path: "statistics", component: StatisticsPanelComponent},
+  {
+    path: "",
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthGuard],
+    children: [
+      {path: "orders", component: OrdersPanelComponent},
+      {path: "services", component: ServicesPanelComponent},
+      {path: "clients", component: ClientsPanelComponent},
+      {path: "vehicles", component: VehiclesPanelComponent},
+      {path: "parts", component: PartsPanelComponent},
+      {path: "statistics", component: StatisticsPanelComponent}
+    ]
+  },
   {path: "**", component: LoginComponent, pathMatch: 'full'}   //when path doesn't match 
 ];
 

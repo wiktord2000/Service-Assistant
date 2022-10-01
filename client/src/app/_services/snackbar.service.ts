@@ -10,7 +10,7 @@ export class SnackbarService {
 
   constructor(private matSnackBar: MatSnackBar) { }
 
-  panelClassMap = new Map([
+  private panelClassMap = new Map([
     [SNACKBAR_TYPE.SUCCESS , 'success-snackbar-panel'],
     [SNACKBAR_TYPE.INFO , 'info-snackbar-panel'],
     [SNACKBAR_TYPE.WARN , 'warn-snackbar-panel'],

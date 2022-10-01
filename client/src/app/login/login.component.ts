@@ -1,8 +1,10 @@
+import { SnackbarService } from 'src/app/_services/snackbar.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../_models/User';
 import { AccountService } from '../_services/account.service';
+import { SNACKBAR_TYPE } from '../_enums/snackbar-type';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,9 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, 
               private accountService: AccountService,
-              private router: Router) {
+              private router: Router,
+              private snackbarService: SnackbarService
+              ) {
     
     // E.g. when use backword in dashboard and redirect to login panel - we want logout account
     // this.accountService.logout();
@@ -56,10 +60,11 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['orders']);
           },
           // If error
-          error: () =>{
-            if(document.getElementById('error-message') !== null){
-              document.getElementById('error-message')!.innerHTML = "Hasło lub email jest niepoprawne!";
-            }
+          error: (error) =>{
+            // if(document.getElementById('error-message') !== null){
+            //   document.getElementById('error-message')!.innerHTML = "Hasło lub email jest niepoprawne!";
+            // }
+            this.snackbarService.showMessage(SNACKBAR_TYPE.ERROR, error.error);
             // Enable button to login again
             this.buttonDisable = false;
             this.buttonContent = "Zaloguj"

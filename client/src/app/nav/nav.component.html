@@ -10,19 +10,21 @@
     <!-- Menu -->
     <mat-toolbar class="primary-color">Menu</mat-toolbar>
     <!-- Bookmarks (when small screen) -->
-    <mat-nav-list *ngIf="accountService.currentUser$ | async">
-      <a mat-list-item routerLink="/orders" routerLinkActive="active-link">Zlecenia</a>
-      <mat-divider></mat-divider>
-      <a mat-list-item routerLink="/services" routerLinkActive="active-link">Usługi</a>
-      <mat-divider></mat-divider>
-      <a mat-list-item routerLink="/clients" routerLinkActive="active-link">Klienci</a>
-      <mat-divider></mat-divider>
-      <a mat-list-item routerLink="/vehicles" routerLinkActive="active-link">Pojazdy</a>
-      <mat-divider></mat-divider>
-      <a mat-list-item routerLink="/parts" routerLinkActive="active-link">Towary</a>
-      <mat-divider></mat-divider>
-      <a mat-list-item routerLink="/statistics" routerLinkActive="active-link">Statystyki</a>
-      <mat-divider></mat-divider>
+    <mat-nav-list>
+      <ng-container *ngIf="accountService.currentUser$ | async">
+        <a mat-list-item routerLink="/orders" routerLinkActive="active-link">Zlecenia</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/services" routerLinkActive="active-link">Usługi</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/clients" routerLinkActive="active-link">Klienci</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/vehicles" routerLinkActive="active-link">Pojazdy</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/parts" routerLinkActive="active-link">Towary</a>
+        <mat-divider></mat-divider>
+        <a mat-list-item routerLink="/statistics" routerLinkActive="active-link">Statystyki</a>
+        <mat-divider></mat-divider>
+      </ng-container>
     </mat-nav-list>
 
   </mat-sidenav>
