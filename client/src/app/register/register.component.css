@@ -1,4 +1,4 @@
-.login-panel{
+.register-panel-container{
     height: 100%; 
     display:flex; 
     align-items: center; 
@@ -6,7 +6,7 @@
     background-color: #f9f9fb;
 }
 
-.login-form{
+.register-form{
     border-radius: 5px; 
     display: flex; 
     flex-direction: column; 
@@ -16,22 +16,31 @@
     padding: 50px 70px;
 }
 
-.login-header{
+.register-header{
     text-align: center; 
     margin-bottom: 30px;
 }
 
-#error-message{
-    color: red; 
-    font-size: 14px; 
-    margin-left: 5px;
-}
-
-.submit-button{
+.register-button{
     margin: 20px 50px;
 }
 
 /* Change height of error message below input */
 ::ng-deep .mat-form-field-subscript-wrapper{
     margin-top: .3em !important; 
+}
+
+/* ------------------- Validation errors list -------------------*/
+.validation-errors-list{
+    color: red;
+    margin: 0px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(0,0,0,.06); 
+    border-radius: 4px;
+}
+
+.validation-errors-list li{
+    margin: 0px;
+    font-size: 0.875em;
 }

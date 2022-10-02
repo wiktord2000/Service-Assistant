@@ -21,19 +21,21 @@ export class ErrorInterceptor implements HttpInterceptor {
           switch (error.status) {
             case 400:                                 // we have to handle to types of 400 response (array of errors and single error (string))
               if (error.error.errors) { 
-                const modalStateErrors = [];
+                let modalStateErrors = [];
                 for (const key in error.error.errors) {
                   if (error.error.errors[key]) {
                     modalStateErrors.push(error.error.errors[key])
                   }
                 }
-                throw modalStateErrors.flat();    // instead of snackbar we will print them at page (many validation errors)
+                modalStateErrors = modalStateErrors.flat();
+                if(modalStateErrors.length) throw modalStateErrors;       // instead of snackbar we will print them at page (many validation errors)
+
               } else {
-                this.snackbarService.showMessage('error', `${error.status} ${error.statusText}`);
+                this.snackbarService.showMessage('error', error.error, undefined, false);
               }
               break;
             case 401:
-              this.snackbarService.showMessage('error', `${error.status} ${error.statusText}`);
+              this.snackbarService.showMessage('error', error.error, undefined, false);
               break;
             case 404:
               this.router.navigateByUrl('/not-found');
@@ -43,7 +45,7 @@ export class ErrorInterceptor implements HttpInterceptor {
               this.router.navigateByUrl('/server-error', navigationExtras);
               break;
             default:
-              this.snackbarService.showMessage('error', `Something unexpected went wrong`);
+              this.snackbarService.showMessage('error', `Nieznany błąd. Spróbuj ponownie...`, undefined, false);
               console.log(error);
               break;
           }

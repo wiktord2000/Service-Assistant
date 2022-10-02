@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { User } from '../_models/User';
 import { AccountService } from '../_services/account.service';
 
 @Component({
@@ -10,95 +11,56 @@ import { AccountService } from '../_services/account.service';
 })
 export class RegisterComponent implements OnInit {
 
-  errorMessage: string = '';
-  buttonDisable: boolean = false;
-  buttonContent: string = "Rejestracja";
+  isRegistering: boolean = false;
+  validationErrors: string[] = [];
 
-  constructor(private formBuilder: FormBuilder, 
+  registerForm : FormGroup = this.formBuilder.group(
+    {
+      username: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      confirmPassword: ['', [Validators.required, this.matchValues('password')]]
+    }
+  );
+
+  constructor(private formBuilder: FormBuilder,
               private accountService: AccountService,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    // Set input validators
-    this.registerForm.controls['companyName'].addValidators([Validators.required]);
-    this.registerForm.controls['email'].addValidators([Validators.email, Validators.required]);
-    this.registerForm.controls['password'].addValidators([Validators.required, Validators.minLength(9)]);
-    this.registerForm.controls['password2'].addValidators([Validators.required, Validators.minLength(9)]);
+    // Again check validity of snd input if fst's been changed
+    this.registerForm.controls.password.valueChanges.subscribe(() => this.registerForm.controls.confirmPassword.updateValueAndValidity());
   }
 
-
-
-  registerForm : FormGroup = this.formBuilder.group(
-    {
-      companyName: [''],
-      email: [''],
-      password: [''],
-      password2: ['']
-    }
-  );
-
-  onRegisterButtonClick(){
-  
-    // Check that passwords are same
-    if(this.registerForm.controls['password'].value !== this.registerForm.controls['password2'].value ){
-
-      // Set errors
-      // this.registerForm.controls['password'].setErrors({'notSame' : true});
-      this.registerForm.controls['password2'].setErrors({'notSame' : true});
-    }
-
-    // If form is valid
-    if(this.registerForm.valid){
-
-    // Disable button until response retrive
-    this.buttonDisable = true;
-    // Change content
-    this.buttonContent = "Rejestracja..."
+  onRegister(){
+    // Disable button and change text until response retrive
+    this.isRegistering = true;
     
     // Send request
-    // this.accountService.postRegister( this.registerForm.controls['companyName'].value, 
-    //                                   this.registerForm.controls['email'].value, 
-    //                                   this.registerForm.controls['password'].value, 
-    //                                   this.registerForm.controls['password2'].value)
-    //   .subscribe({
+    this.accountService.register({username: this.registerForm.controls['username'].value, password: this.registerForm.controls['password'].value})
+      .subscribe({
+        next: (user: User) => {
+          console.log(user);
+          // Navigate to orders
+          this.router.navigate(['orders']);
+        },
+        error: (errors) =>{
+          // This is the case when interceptor doesn't handle all errors 
+          // e.g. creating snackbar (it return the array of errors(strings) to handle)
+          if(Array.isArray(errors)) this.validationErrors = errors;
+          console.log(errors);
+        }
+      })
+    // Enable button to register again
+    this.isRegistering = false;
+  }
 
-    //     // If success
-    //     next: (account) => {
-    //       // Set author id
-    //       this.accountService.setAuthorId(account.id);
-    //       // Navigate to dashboard
-    //       this.router.navigate(['dashboard']);
-    //     },
-    //     // If error
-    //     error: ({error}) =>{
-
-    //       if(error.company_name !== undefined){
-    //         // Company name exist
-    //         this.errorMessage = "Podany nazwa firmy już istnieje!";
-    //       } 
-    //       else if(error.email !== undefined){
-    //         // Email exist
-    //         this.errorMessage = "Podany email już istnieje!";
-    //       }
-    //       else if(error.password !== undefined){
-    //         // Two options: 1.Password does't have min 9 signs, 2.Passwords are different
-    //         // We will fix this at frontend side to reduce requests 
-    //         // but for sure we will show this message when something will go wrong with password
-    //         this.errorMessage = "Hasło nie spełnia kryteriów!";
-    //       }
-    //       else{
-    //         this.errorMessage = "Nieznany błąd. Skontaktuj się z nami.";
-    //       }
-
-    //       // Print to console all errors with register form
-    //       console.error(error);
-    //       // Enable button to login again
-    //       this.buttonDisable = false;
-    //       this.buttonContent = "Zarejestruj";
-
-    //     }
-    //   })
+  // Custom validator
+  matchValues(matchTo: string): ValidatorFn{
+    return (control : AbstractControl) => {
+      return control?.value === control?.parent?.controls[matchTo].value 
+        ? null 
+        : {isMatching: true}
     }
   }
 }

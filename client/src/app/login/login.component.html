@@ -5,47 +5,57 @@
         <!-- Login header -->
         <h1 class="login-header">Logowanie</h1>
 
-        <!-- Email -->
+        <!-------------------------------------- Username -------------------------------------->
         <mat-form-field appearance="fill">
 
             <!-- Label -->
-            <mat-label>Email</mat-label>
+            <mat-label>Nazwa użytkownika</mat-label>
             <!-- Input -->
-            <input type="email" formControlName="email" matInput>
+            <input type="text" formControlName="username" matInput>
 
             <!-- Errors displaying-->
-            <mat-error *ngIf="loginForm.controls['email'].hasError('email') && !loginForm.controls['email'].hasError('required')">
-                Wprowadzony adres email jest niepoprawny!
+            <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+                Proszę wrowadź nazwę użytkownika
             </mat-error>
-            <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
-                Email jest wymagany!
-            </mat-error>
-
+            
         </mat-form-field>
 
-        <!-- Password -->
+        <!------------------------------------- Password -------------------------------------->
         <mat-form-field appearance="fill">
 
             <!-- Label -->
             <mat-label>Hasło</mat-label>
             <!-- Input -->
-            <input [type]="showPassword ? 'text' : 'password'" formControlName="password" matInput>
+            <input [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password" matInput>
             <!-- Toggle password visibility (suffix)-->
             <mat-icon matSuffix (click)="togglePasswordVisibility()">
-                {{showPassword?'visibility_off':'visibility'}}
+                {{isPasswordVisible?'visibility_off':'visibility'}}
             </mat-icon>
 
             <!-- Errors displaying-->
             <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-                Hasło jest wymagane!
+                Proszę wprowadź hasło
             </mat-error>
 
         </mat-form-field>
 
-        <!-- Message when incorrect data -->
-        <span id="error-message"></span>
+        <!------------------------------------ Errors from server ------------------------------------>
 
-        <!-- Submit button -->
-        <button class="submit-button" [disabled]="buttonDisable" mat-raised-button color="primary" (click)="onLoginButtonClick()">{{buttonContent}}</button>
+        <ng-container *ngIf="validationErrors.length">
+            <ul class="validation-errors-list">
+                <li *ngFor="let error of validationErrors">{{error}}</li>
+            </ul>
+        </ng-container>
+
+        <!-------------------------------------- Submit button ---------------------------------------->
+        <button mat-raised-button 
+            color="primary"
+            class="login-button" 
+            [disabled]="isLogging || !loginForm.valid" 
+            (click)="onLogin()">
+            
+            {{isLogging ? "Logowanie..." : "Zaloguj"}}
+        </button>
+
     </form>
 </div>

@@ -13,7 +13,7 @@ import { TableExampleComponent } from './examples/table-example/table-example.co
 import { DashboardComponent } from './examples/dashboard/dashboard.component';
 import { TreeExampleComponent } from './examples/tree-example/tree-example.component';
 import { DragDropExampleComponent } from './examples/drag-drop-example/drag-drop-example.component'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
@@ -58,7 +58,8 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     HttpClientModule,
     MaterialModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}

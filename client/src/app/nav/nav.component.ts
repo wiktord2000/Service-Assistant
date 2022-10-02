@@ -3,8 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { importExpr } from '@angular/compiler/src/output/output_ast';
-import { User } from '../_models/User';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,13 +22,10 @@ export class NavComponent implements OnInit{
 
   constructor(private breakpointObserver: BreakpointObserver,
               private router : Router,
-              public accountService : AccountService) {}    // Make public if you want use service from html level !!!!!!!!!!
+              public accountService : AccountService) {   // Make public if you want use service from html level !!!!!!!!!!
+  }    
 
-  ngOnInit(): void {
-    // Attach user subscription
-    // this.getCurrentUser(); -- obsolete
-    // this.currentUser$ = this.accountService.currentUser$;
-  }
+  ngOnInit(): void {}
 
   togglePanel(): void{
     this.isLoginPanel = !this.isLoginPanel;
@@ -47,7 +42,7 @@ export class NavComponent implements OnInit{
 
   logout(){
     this.accountService.logout();
-    this.router.navigate(['login']);
+    this.router.navigate(['']);
   }
 
 

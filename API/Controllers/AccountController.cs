@@ -27,7 +27,7 @@ namespace API.Controllers
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
             // We expect only unique usernames
-            if (await UserExists(registerDto.Username)) return BadRequest("Username is taken");
+            if (await UserExists(registerDto.Username)) return BadRequest("Nazwa użytkownika jest już zajęta");
 
             using var hmac = new HMACSHA512();
 
@@ -56,7 +56,7 @@ namespace API.Controllers
             var user = await _context.Users
                 .SingleOrDefaultAsync(x => x.UserName == loginDto.Username);
 
-            if (user == null) return Unauthorized("Invalid username");
+            if (user == null) return Unauthorized("Podany użytkownik nie istnieje");
 
             using var hmac = new HMACSHA512(user.PasswordSalt);
 
@@ -67,7 +67,7 @@ namespace API.Controllers
             // Check the hashed password in db with obtained hash. If equal -> correct password
             for (int i = 0; i < computedHash.Length; i++)
             {
-                if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
+                if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Wprowadzono niepoprawne hasło");
             }
 
             return new UserDto
