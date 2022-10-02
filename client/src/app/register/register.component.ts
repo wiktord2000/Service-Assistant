@@ -1,3 +1,4 @@
+import { SnackbarService } from './../_services/snackbar.service';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -24,6 +25,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private accountService: AccountService,
+              private snackbarService: SnackbarService,
               private router: Router) {
   }
 
@@ -43,6 +45,7 @@ export class RegisterComponent implements OnInit {
           console.log(user);
           // Navigate to orders
           this.router.navigate(['orders']);
+          this.snackbarService.showMessage('success', "Zarejestrowano pomyślnie!");
         },
         error: (errors) =>{
           // This is the case when interceptor doesn't handle all errors 

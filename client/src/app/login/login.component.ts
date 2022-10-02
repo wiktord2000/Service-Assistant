@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   );
 
   constructor(private formBuilder: FormBuilder, 
+              private snackbarService: SnackbarService,
               private accountService: AccountService,
               private router: Router) {}
 
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
         next: (user: User) => {
           // Navigate to orders
           this.router.navigate(['orders']);
+          this.snackbarService.showMessage('success', "Zalogowano pomyślnie!");
           console.log(user);
         },
         error: (errors) =>{
