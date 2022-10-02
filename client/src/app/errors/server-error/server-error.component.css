@@ -1,0 +1,14 @@
+
+.red-text{
+    color: rgb(194, 2, 2);
+}
+
+.server-error-container{
+    margin: 10vh 15vw;
+    word-break: break-all;
+}
+
+.code-area{
+    height: 200px;
+    overflow-y: scroll;
+}

@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
             // if(document.getElementById('error-message') !== null){
             //   document.getElementById('error-message')!.innerHTML = "Hasło lub email jest niepoprawne!";
             // }
-            this.snackbarService.showMessage('error', error.error);
+            // this.snackbarService.showMessage('error', error.error);   // !interceptor also use snackbars
             // Enable button to login again
             this.buttonDisable = false;
             this.buttonContent = "Zaloguj"

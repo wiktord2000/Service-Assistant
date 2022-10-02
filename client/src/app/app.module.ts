@@ -6,7 +6,7 @@ import { MaterialModule } from './_modules/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
 import { AddressFormExampleComponent } from './examples/address-form-example/address-form-example.component';
 import { TableExampleComponent } from './examples/table-example/table-example.component';
@@ -22,8 +22,11 @@ import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.comp
 import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
 import { PartsPanelComponent } from './panels/parts-panel/parts-panel.component';
 import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
-import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -43,7 +46,10 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     VehiclesPanelComponent,
     PartsPanelComponent,
     StatisticsPanelComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    TestErrorsComponent,
+    NotFoundComponent,
+    ServerErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +61,7 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     SharedModule
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]  // The set of components that are loaded when this module is loaded. AppComponent contains all components which we crea. 
 })
