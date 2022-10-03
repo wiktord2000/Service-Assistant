@@ -6,41 +6,19 @@
         <h1 class="login-header">Logowanie</h1>
 
         <!-------------------------------------- Username -------------------------------------->
-        <mat-form-field appearance="fill">
-
-            <!-- Label -->
-            <mat-label>Nazwa użytkownika</mat-label>
-            <!-- Input -->
-            <input type="text" formControlName="username" matInput>
-
-            <!-- Errors displaying-->
-            <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
-                Proszę wrowadź nazwę użytkownika
-            </mat-error>
-            
-        </mat-form-field>
+        <app-text-input 
+            [label]="'Nazwa użytkownika'" 
+            [formControl]="loginForm.controls['username']">
+        </app-text-input>
 
         <!------------------------------------- Password -------------------------------------->
-        <mat-form-field appearance="fill">
-
-            <!-- Label -->
-            <mat-label>Hasło</mat-label>
-            <!-- Input -->
-            <input [type]="isPasswordVisible ? 'text' : 'password'" formControlName="password" matInput>
-            <!-- Toggle password visibility (suffix)-->
-            <mat-icon matSuffix (click)="togglePasswordVisibility()">
-                {{isPasswordVisible?'visibility_off':'visibility'}}
-            </mat-icon>
-
-            <!-- Errors displaying-->
-            <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-                Proszę wprowadź hasło
-            </mat-error>
-
-        </mat-form-field>
+        <app-password-input 
+            [label]="'Hasło'" 
+            [formControl]="loginForm.controls['password']">
+        </app-password-input>
 
         <!------------------------------------ Errors from server ------------------------------------>
-
+        
         <ng-container *ngIf="validationErrors.length">
             <ul class="validation-errors-list">
                 <li *ngFor="let error of validationErrors">{{error}}</li>

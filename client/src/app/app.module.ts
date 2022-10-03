@@ -27,6 +27,9 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { TextInputComponent } from './_forms/text-input/text-input.component';
+import { PasswordInputComponent } from './_forms/password-input/password-input.component';
+import { DateInputComponent } from './_forms/date-input/date-input.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -49,7 +52,10 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
     SnackbarComponent,
     TestErrorsComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    TextInputComponent,
+    PasswordInputComponent,
+    DateInputComponent
   ],
   imports: [
     BrowserModule,

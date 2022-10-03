@@ -1,0 +1,27 @@
+<mat-form-field appearance="fill">
+
+    <!-- Label -->
+    <mat-label>{{label}}</mat-label>
+    <!-- Input -->
+    <input type={{type}} [formControl]="ngControl.control" matInput>
+
+    <!------------------------------------------------ Possible errors ---------------------------------------------->
+
+    <!-- Required -->
+    <mat-error *ngIf="ngControl.control.errors?.required">
+        Pole nie może być puste
+    </mat-error>
+
+    <!-- IsMatching (custom) -->
+    <!-- <mat-error *ngIf="ngControl.control.errors?.isMatching && !(ngControl.control.errors?.required)"> -->
+    <mat-error *ngIf="ngControl.control.errors?.isMatching">
+        Pole różni się od poprzedniego
+    </mat-error>
+
+    <!-- Minlength -->
+    <mat-error *ngIf="ngControl.control.errors?.minlength">
+        <!-- Pole musi zawierać minimum {{registerForm.controls['password'].getError('minlength').requiredLength }} znaków! -->
+        Pole musi zawierać minimum {{ngControl.control.errors!['minlength'].requiredLength }} znaków!
+    </mat-error>
+    
+</mat-form-field>
