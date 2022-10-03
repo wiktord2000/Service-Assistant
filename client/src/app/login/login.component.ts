@@ -48,11 +48,11 @@ export class LoginComponent implements OnInit {
           // e.g. creating snackbar (it return the array of errors(strings) to handle)
           if(Array.isArray(errors)) this.validationErrors = errors;
           console.log(errors);
+          // Enable button to login again
+          this.isLogging = false;
         }
       }
     )
-    // Enable button to login again
-    this.isLogging = false;
   }
 
   togglePasswordVisibility(): void {

@@ -9,7 +9,8 @@ import { map, Observable } from 'rxjs';
 })
 export class AuthGuard implements CanActivate {         // Guards automaticelly subscribe e.g. accountService.currentUser$ so we don't have to do this ?
   constructor(private accountService: AccountService,   // Probably subscribe every created subject in the app ? 
-              private snackbarService: SnackbarService
+              private snackbarService: SnackbarService,
+              private router: Router
               ){}
 
 
@@ -20,6 +21,7 @@ export class AuthGuard implements CanActivate {         // Guards automaticelly 
         if(user){
           return true;
         }
+        this.router.navigate(['not-found']);
         this.snackbarService.showMessage('warn', "Nie masz uprawnień, aby odwiedzić tą stronę!")
       })
     )

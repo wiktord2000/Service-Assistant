@@ -62,7 +62,7 @@
       <!-- Bookmarks right-->
       <div *ngIf="!(accountService.currentUser$ | async)">
         <a *ngIf="router.url === '/register'" (click)="togglePanel()" class="right-bookmark" mat-button routerLink="/">Zaloguj</a>
-        <a *ngIf="router.url === '/'" (click)="togglePanel()"  class="right-bookmark"  mat-button routerLink="/register">Zarejestruj</a>
+        <a *ngIf="!(router.url === '/register')" (click)="togglePanel()"  class="right-bookmark"  mat-button routerLink="/register">Zarejestruj</a>
       </div>
 
       <!-- Open sidenav button -->

@@ -52,10 +52,10 @@ export class RegisterComponent implements OnInit {
           // e.g. creating snackbar (it return the array of errors(strings) to handle)
           if(Array.isArray(errors)) this.validationErrors = errors;
           console.log(errors);
+          // Enable button to register again
+          this.isRegistering = false;
         }
       })
-    // Enable button to register again
-    this.isRegistering = false;
   }
 
   // Custom validator
