@@ -1,8 +1,14 @@
 .orders-panel-container{
+    background-color: antiquewhite;
+    height: calc(100% - 64px);
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    min-height: 100%;
-    height: auto;
+}
+
+.content-wrapper{
+    width: 96%;
+    height: 94%;
+    background-color: aqua;
 }
