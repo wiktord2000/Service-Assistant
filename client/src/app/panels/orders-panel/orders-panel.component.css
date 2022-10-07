@@ -1,5 +1,5 @@
 .orders-panel-container{
-    background-color: antiquewhite;
+    background-color: white;
     height: calc(100% - 64px);
     width: 100%;
     display: flex;

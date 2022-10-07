@@ -1,6 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { getLocaleFirstDayOfWeek } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { SnackbarService } from 'src/app/_services/snackbar.service';
+import orders from '../../_seed-data/oders.json'
+import { Order } from 'src/app/_models/Order';
 
 @Component({
   selector: 'app-orders-panel',
@@ -9,7 +12,10 @@ import { SnackbarService } from 'src/app/_services/snackbar.service';
 })
 export class OrdersPanelComponent implements OnInit {
 
-  constructor(public snackbarService : SnackbarService) { }
+  constructor(public snackbarService : SnackbarService, private http: HttpClient) {
+  }
+
+  orders: Order[] = orders;
 
   ngOnInit(): void {
   }

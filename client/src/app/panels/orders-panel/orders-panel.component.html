@@ -1,5 +1,7 @@
 <div class="orders-panel-container">
     <div class="content-wrapper">
-        
+        <ul>
+            <li *ngFor="let order of orders">{{order.client.createdAt}}</li>
+        </ul>
     </div>
 </div>
