@@ -13,6 +13,7 @@ namespace API.Controllers
     // ! Obsolete when derive from BaseApiController class 
     //   [ApiController]
     //   [Route("api/[controller]")]       // [controller] === "users"     !!! It refers for all class so every request will start with "api/[controller]"
+    [Authorize]
     public class UsersController : BaseApiController
     {
         private readonly DataContext _context;
@@ -22,7 +23,6 @@ namespace API.Controllers
         }
         
         [HttpGet]
-        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
             return await _context.Users.ToListAsync();
@@ -30,7 +30,6 @@ namespace API.Controllers
 
         // api/users/1
         [HttpGet("{id}")]
-        [Authorize]
         public async Task<ActionResult<AppUser>> GetUser(int id)
         {
             return await _context.Users.FindAsync(id);
