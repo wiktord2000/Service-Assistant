@@ -1,4 +1,5 @@
 
+using System.Text.Json.Serialization;
 using API.Data;
 using API.Interfaces;
 using API.Services;
@@ -26,6 +27,9 @@ namespace API.Extensions
                 options.UseSqlite(config.GetConnectionString("DefaultConnection"));
                 options.EnableSensitiveDataLogging();
             });
+
+            // My - nested objects Include() error avoid
+            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
             return services;
             //// return!
