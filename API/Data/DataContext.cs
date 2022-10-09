@@ -15,5 +15,10 @@ namespace API.Data
 
         // Define table of AppUsers
         public DbSet<AppUser> Users { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<Status> Statuses { get; set; }
+
     }
 }
