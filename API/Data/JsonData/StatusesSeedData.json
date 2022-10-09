@@ -1,0 +1,173 @@
+[
+  {
+    "id": 6957,
+    "position": 0,
+    "name": "Wycena",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6958,
+    "position": 0,
+    "name": "Wycena",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6959,
+    "position": 0,
+    "name": "Wycena",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6960,
+    "position": 0,
+    "name": "Wycena",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6966,
+    "position": 2,
+    "name": "Naprawa",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6967,
+    "position": 2,
+    "name": "Naprawa",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6968,
+    "position": 2,
+    "name": "Naprawa",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6969,
+    "position": 2,
+    "name": "Naprawa",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6970,
+    "position": 2,
+    "name": "Naprawa",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6962,
+    "position": 1,
+    "name": "Akceptacja",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6961,
+    "position": 0,
+    "name": "Wycena",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6963,
+    "position": 1,
+    "name": "Akceptacja",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6964,
+    "position": 1,
+    "name": "Akceptacja",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6965,
+    "position": 1,
+    "name": "Akceptacja",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6974,
+    "position": 4,
+    "name": "Zakończone",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6975,
+    "position": 4,
+    "name": "Zakończone",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6971,
+    "position": 3,
+    "name": "Gotowe do odbioru",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6972,
+    "position": 3,
+    "name": "Gotowe do odbioru",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  },
+  {
+    "id": 6973,
+    "position": 3,
+    "name": "Gotowe do odbioru",
+    "finished": false,
+    "isPaid": false,
+    "hasInvoice": false,
+    "emailSend": false
+  }
+]
