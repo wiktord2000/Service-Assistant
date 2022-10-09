@@ -23,13 +23,15 @@ namespace API.Entities
         public int? EnginePower { get; set; }
         public string EnginePowerUnit { get; set; }
         public string Color { get; set; }
-        public DateTime? ProductionDate { get; set; }
+        public int? ProductionDate { get; set; }
         public DateTime? FirstRegistration { get; set; }
         public DateTime? TechnicalInspectionEnd { get; set; }
         public string Description { get; set; }
         [Required]
         public Client CurrentOwner { get; set; }
+        public int CurrentOwnerId { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public ICollection<Order> Orders { get; set; }
     }
 }

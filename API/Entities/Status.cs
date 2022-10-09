@@ -14,13 +14,9 @@ namespace API.Entities
         public int Position { get; set; }
         [Required]
         public string Name { get; set; }
-        public bool? Finished { get; set; }
-        public bool? IsPaid { get; set; }
-        public bool? HasInvoice { get; set; }
-        public bool? EmailSend { get; set; }
-
-        // Fully defined (cascade - delete order along with its status)
-        public Order Order { get; set; }
-        public int OrderId { get; set; }
+        public bool? Finished { get; set; } = false;
+        public bool? IsPaid { get; set; } = false;
+        public bool? HasInvoice { get; set; } = false;
+        public bool? EmailSend { get; set; } = false;
     }
 }

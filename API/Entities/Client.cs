@@ -27,5 +27,7 @@ namespace API.Entities
         public int? DiscountParts { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public ICollection<Order> Orders { get; set; }
+        public ICollection<Vehicle> Vehicles { get; set; }
     }
 }

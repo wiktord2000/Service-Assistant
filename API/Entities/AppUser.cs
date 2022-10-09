@@ -17,7 +17,7 @@ namespace API.Entities
         public byte[] PasswordSalt { get; set; }
         public string CompanyName { get; set; }
         public int? Nip { get; set; }
-        public string Voivodeship { get; set; }     //województwo
+        public string Voivodeship { get; set; }     // województwo
         public string Township { get; set; }        // powiat
         public string Borough { get; set; }         // gmina
         public int? PostalCode { get; set; }
