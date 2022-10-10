@@ -1,6 +1,7 @@
 
 using System.Text.Json.Serialization;
 using API.Data;
+using API.Data.Repositiories;
 using API.Interfaces;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,8 @@ namespace API.Extensions
                                      // Scoped - running until request is finished - in controller where service was injected
                                      // Transient (przejsciowy) - running until service method is finished
 
-            services.AddScoped<ITokenService, TokenService>();   // We create Interfaces only for the sake of testing
+            services.AddScoped<ITokenService, TokenService>();      // We create Interfaces only for the sake of testing
+            services.AddScoped<IUserRepository, UserRepository>();  // Add repository
 
             // Attach our database
             services.AddDbContext<DataContext>(options =>
@@ -29,7 +31,7 @@ namespace API.Extensions
             });
 
             // My - nested objects Include() error avoid
-            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
             return services;
             //// return!
