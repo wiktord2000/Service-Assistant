@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, ReplaySubject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { User } from '../_models/User';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { User } from '../_models/User';
 })
 export class AccountService {
 
-  private baseUrl: String = "https://localhost:5001/api/";
+  private baseUrl: String = environment.apiUrl;
 
   private currentUserSource = new ReplaySubject<User>(1);   // It's the buffer - the number means how many previous versions of given object have to store
                                                             // and return them when subscribe.
