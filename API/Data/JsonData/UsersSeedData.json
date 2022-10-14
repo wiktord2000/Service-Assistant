@@ -16,5 +16,23 @@
         "accountNumber": null,
         "bankName": "ING",
         "orders": []
+    },
+    {
+        "userName": "szymon",
+        "companyName": "CraftTeam",
+        "nip": null,
+        "voivodeship": "wielkopolskie",
+        "township": "kaliski",
+        "borough": "Koźminek",
+        "postalCode": 62840,
+        "town": "Koźminek",
+        "country": "PL",
+        "street": "Pietrzyków",
+        "houseNumber": "29A",
+        "contactNumber": 543221412,
+        "email": "wiktord2000@wp.pl",
+        "accountNumber": null,
+        "bankName": "ING",
+        "orders": []
     }
 ]
