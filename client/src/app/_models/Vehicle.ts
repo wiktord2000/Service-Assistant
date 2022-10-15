@@ -1,4 +1,5 @@
 import { Client } from "./Client";
+import { Order } from "./Order";
 
 export interface Vehicle {
     id: number;
@@ -19,4 +20,5 @@ export interface Vehicle {
     currentOwner: Client;
     createdAt: Date;
     updatedAt: Date;
+    orders: Array<Order>;
 }

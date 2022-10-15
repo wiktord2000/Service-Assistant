@@ -1,3 +1,6 @@
+import { Order } from "./Order";
+import { Vehicle } from "./Vehicle";
+
 export interface Client {
     id: number;
     type: string;
@@ -15,4 +18,6 @@ export interface Client {
     discountParts: number;
     createdAt: Date;
     updatedAt: Date;
+    orders: Array<Order>;
+    vehicles: Array<Vehicle>;
 }
