@@ -9,7 +9,7 @@ import { Status } from 'src/app/_models/Status';
 export class StatusSelectorComponent implements OnInit {
 
   @Input() statusData: Status;
-  selectedStatus: string = '0';   // By default 0
+  selectedStatus: string = '0';
 
   possibleStatuses = [
     {position: 0, name: 'Wycena', color: 'lightcoral'},
@@ -26,6 +26,7 @@ export class StatusSelectorComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.selectedStatus = this.statusData.position.toString();
   }
 
 }
