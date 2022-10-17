@@ -31,6 +31,9 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { PasswordInputComponent } from './_forms/password-input/password-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
+import { OrdersTableComponent } from './panels/orders-panel/orders-table/orders-table.component';
+import { StatusSelectorComponent } from './panels/orders-panel/orders-table/status-selector/status-selector.component';
+
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -56,7 +59,9 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
     ServerErrorComponent,
     TextInputComponent,
     PasswordInputComponent,
-    DateInputComponent
+    DateInputComponent,
+    OrdersTableComponent,
+    StatusSelectorComponent
   ],
   imports: [
     BrowserModule,
