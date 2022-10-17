@@ -19,6 +19,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip'; 
 import { MatSnackBarModule } from '@angular/material/snack-bar'; 
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 const material = [
   MatButtonModule,
@@ -42,7 +43,8 @@ const material = [
   MatRadioModule,
   ReactiveFormsModule,
   MatTooltipModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatButtonToggleModule
 ]
 
 @NgModule({
