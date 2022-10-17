@@ -9,6 +9,17 @@
 
 .content-wrapper{
     width: 96%;
-    height: 94%;
-    background-color: aqua;
+    height: 90%;
 }
+
+.filters-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 1em;
+}
+
+::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content{
+    line-height: 2.5em !important;
+}
+

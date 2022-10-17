@@ -1,7 +1,31 @@
 <div class="orders-panel-container">
     <div class="content-wrapper">
-        <ul>
-            <li *ngFor="let order of orders">{{order.client.createdAt}}</li>
-        </ul>
+
+        <div class="filters-wrapper">
+            <!-- Add order button -->
+            <button mat-raised-button 
+                    color="primary"
+                    aria-label="Add order button"> 
+
+                Dodaj zlecenie
+            <mat-icon>add</mat-icon>
+          </button>
+          <!-- Toggle group -->
+          <mat-button-toggle-group 
+              multiple
+              (change)="onToggleGroupChange()" 
+              [formControl]="statusControl" 
+              name="statuses" 
+              aria-label="Statuses">
+            <mat-button-toggle value='0'>Wycena</mat-button-toggle>
+            <mat-button-toggle value='1'>Akceptacja</mat-button-toggle>
+            <mat-button-toggle value='2'>Naprawa</mat-button-toggle>
+            <mat-button-toggle value='3'>Gotowe</mat-button-toggle>
+            <mat-button-toggle value='4' >Zakończone</mat-button-toggle>
+          </mat-button-toggle-group>
+
+        </div>
+        <app-orders-table></app-orders-table>
     </div>
+   
 </div>
