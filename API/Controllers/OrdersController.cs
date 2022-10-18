@@ -1,9 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using API.Data;
 using API.Entities;
+using API.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,22 +13,20 @@ namespace API.Controllers
     public class OrdersController : BaseApiController
     {
         public readonly DataContext _context;
-
         public OrdersController(DataContext context)
         {
             _context = context;
         }
 
-        [HttpGet("{userId}")]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrders(int userId)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Order>>> GetOrders([FromQuery] int[] statusPositions)
         {   
-            var orders = await _context.Orders
-                            .Where(order => order.AppUserId == userId)
-                            .Include(or => or.Client)
-                            .ToListAsync();
+            var username = User.GetUsername();    // -> Extensions
 
-            // var orders = await _context.Clients.Include(client => client.Orders).ToListAsync();
-            return orders;
+            return  await _context.Orders
+                            .Include(order => order.Status)
+                            .Where(order => order.AppUser.UserName == username && (statusPositions.Length == 0 || statusPositions.Contains(order.Status.Position)))
+                            .ToListAsync();
         }
     }
 }
