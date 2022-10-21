@@ -12,7 +12,7 @@ namespace API.Controllers
     [Authorize]
     public class OrdersController : BaseApiController
     {
-        public readonly DataContext _context;
+        private readonly DataContext _context;
         public OrdersController(DataContext context)
         {
             _context = context;
@@ -27,6 +27,28 @@ namespace API.Controllers
                             .Include(order => order.Status)
                             .Where(order => order.AppUser.UserName == username && (statusPositions.Length == 0 || statusPositions.Contains(order.Status.Position)))
                             .ToListAsync();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Order>>UpdateOrder(int id, Order newOrder){
+            // Probably we should check that specific user contains this order
+
+            if(!(await this.OrderExists(id))) return BadRequest("Zlecenie o danym id nie istnieje!");
+
+            _context.Orders.Update(newOrder);
+
+            if(await _context.SaveChangesAsync() > 0) return newOrder;
+            return BadRequest("Zlecenie nie może zostać zaktualizowane");
+
+        }
+
+
+        // Check whether specific order exists in db
+        private async Task<bool> OrderExists(int orderId)
+        {
+            // Get current username
+            var username = User.GetUsername();
+            return await _context.Orders.AnyAsync((order) => order.Id == orderId && order.AppUser.UserName == username);
         }
     }
 }
