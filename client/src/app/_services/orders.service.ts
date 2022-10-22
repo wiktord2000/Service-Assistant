@@ -22,4 +22,8 @@ export class OrdersService {
     let params = statusPostions.reduce((params, statusPosition) => params.append('statusPositions', statusPosition), new HttpParams());
     return this.http.get<Order[]>(this.baseUrl + "orders", {params});
   }
+
+  updateOrder(order: Order){
+    return this.http.put<Order>(`${environment.apiUrl}orders/${order.id}`, order);
+  }
 }
