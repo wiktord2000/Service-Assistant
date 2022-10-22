@@ -18,5 +18,7 @@ namespace API.Entities
         public bool? IsPaid { get; set; } = false;
         public bool? HasInvoice { get; set; } = false;
         public bool? EmailSend { get; set; } = false;
+
+        public Order Order { get; set; }
     }
 }
