@@ -2,9 +2,9 @@
 <mat-form-field appearance="outline" [style.fontSize.px]="12" >
     
     <!-- Prefix of input -->
-    <mat-icon [style.color]="getStatusColor(selectedStatus)" [style.marginLeft.px]="5" matPrefix>circle</mat-icon>
+    <mat-icon [style.color]="getStatusColor(selectedPosition)" [style.marginLeft.px]="5" matPrefix>circle</mat-icon>
     <!-- Select input -->
-    <mat-select [(value)]="selectedStatus">
+    <mat-select [(value)]="selectedPosition" (selectionChange)="onSelectionChange()">
         <!-- Options ganerate -->
         <mat-option *ngFor="let status of possibleStatuses" value="{{status.position}}">
             <!-- Circle with corresponding color -->
