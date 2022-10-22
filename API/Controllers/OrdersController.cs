@@ -30,16 +30,36 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Order>>UpdateOrder(int id, Order newOrder){
+        public async Task<ActionResult<Order>>UpdateOrder(int id, Order order){
             // Probably we should check that specific user contains this order
+            // if(!(await this.OrderExists(id))) return BadRequest("Zlecenie o danym id nie istnieje!");
 
-            if(!(await this.OrderExists(id))) return BadRequest("Zlecenie o danym id nie istnieje!");
+            if(id != order.Id) return BadRequest("Niepoprawne id");
 
-            _context.Orders.Update(newOrder);
+            Order orderToUpdate = await _context.Orders.FirstOrDefaultAsync(order => order.Id == id);
 
-            if(await _context.SaveChangesAsync() > 0) return newOrder;
-            return BadRequest("Zlecenie nie może zostać zaktualizowane");
+            if(orderToUpdate == null) return NotFound($"Zlecenie o Id {id} nie istnieje!");
 
+            orderToUpdate.OrderNumber = order.OrderNumber;
+            orderToUpdate.AdmissionDate = order.AdmissionDate;
+            orderToUpdate.DeadlineDate = order.DeadlineDate;
+            orderToUpdate.ClientDescription = order.ClientDescription;
+            orderToUpdate.RepairDescription = order.RepairDescription;
+            orderToUpdate.InvoiceId = order.InvoiceId;
+            orderToUpdate.Mileage = order.Mileage;
+            orderToUpdate.TotalJobsNet = order.TotalJobsNet;
+            orderToUpdate.TotalJobsGross = order.TotalJobsGross;
+            orderToUpdate.TotalPartsNet = order.TotalPartsNet;
+            orderToUpdate.TotalNet = order.TotalNet;
+            orderToUpdate.TotalGross = order.TotalGross;
+            orderToUpdate.FinishDate = order.FinishDate;
+            orderToUpdate.ClientId = order.ClientId;
+            orderToUpdate.VehicleId = order.VehicleId;
+
+            _context.Orders.Update(orderToUpdate);
+                
+            if(await _context.SaveChangesAsync() > 0) return orderToUpdate;
+            return StatusCode(StatusCodes.Status500InternalServerError, "Problem z aktualizacją zlecenia!");
         }
 
 
