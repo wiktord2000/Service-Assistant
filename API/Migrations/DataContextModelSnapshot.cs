@@ -216,7 +216,8 @@ namespace API.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.HasIndex("StatusId");
+                    b.HasIndex("StatusId")
+                        .IsUnique();
 
                     b.HasIndex("VehicleId");
 
@@ -333,8 +334,8 @@ namespace API.Migrations
                         .HasForeignKey("ClientId");
 
                     b.HasOne("API.Entities.Status", "Status")
-                        .WithMany()
-                        .HasForeignKey("StatusId")
+                        .WithOne("Order")
+                        .HasForeignKey("API.Entities.Order", "StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -372,6 +373,11 @@ namespace API.Migrations
                     b.Navigation("Orders");
 
                     b.Navigation("Vehicles");
+                });
+
+            modelBuilder.Entity("API.Entities.Status", b =>
+                {
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("API.Entities.Vehicle", b =>
