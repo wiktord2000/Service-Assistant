@@ -13,7 +13,8 @@ import { OrdersService } from "src/app/_services/orders.service";
  * (including sorting, pagination, and filtering).
  */
  export class OrdersTableDataSource extends DataSource<Order> {
-    data: Order[] = [];   // current data from API
+    data: Order[] = [];   // current data of table
+    statusPositions: number[] = [];
     paginator: MatPaginator | undefined;
     sort: MatSort | undefined;
   
@@ -84,6 +85,7 @@ import { OrdersService } from "src/app/_services/orders.service";
     }
   
     loadOrders(statusPositions?: number[]){
+
       this.ordersService.getOrders(statusPositions).subscribe({
         next: (orders) => {
           this.ordersSubject.next(orders);
@@ -92,7 +94,12 @@ import { OrdersService } from "src/app/_services/orders.service";
     }
 
     setOrders(orders: Order[]){
+      this.data = orders;
       this.ordersSubject.next(orders);
+    }
+
+    getOrders(){
+      return this.data;
     }
 
     compareDates(fstDate: Date, sndDate: Date, isAsc: boolean){
