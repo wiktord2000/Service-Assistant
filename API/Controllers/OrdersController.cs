@@ -1,6 +1,9 @@
 using API.Data;
+using API.DTOs;
 using API.Entities;
 using API.Extensions;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,19 +16,21 @@ namespace API.Controllers
     public class OrdersController : BaseApiController
     {
         private readonly DataContext _context;
-        public OrdersController(DataContext context)
+        public IMapper _mapper { get; }
+        public OrdersController(DataContext context, IMapper mapper)
         {
+            _mapper = mapper;
             _context = context;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Order>>> GetOrders([FromQuery] int[] statusPositions)
+        public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrders([FromQuery] int[] statusPositions)
         {   
             var username = User.GetUsername();    // -> Extensions
 
-            return  await _context.Orders
-                            .Include(order => order.Status)
+            return await _context.Orders
                             .Where(order => order.AppUser.UserName == username && (statusPositions.Length == 0 || statusPositions.Contains(order.Status.Position)))
+                            .ProjectTo<OrderDto>(_mapper.ConfigurationProvider)
                             .ToListAsync();
         }
 
