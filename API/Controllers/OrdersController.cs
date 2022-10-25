@@ -35,7 +35,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Order>>UpdateOrder(int id, Order order){
+        public async Task<ActionResult<Order>>UpdateOrder(int id, OrderDto order){
             // Probably we should check that specific user contains this order
             // if(!(await this.OrderExists(id))) return BadRequest("Zlecenie o danym id nie istnieje!");
 
