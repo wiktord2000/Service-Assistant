@@ -1,7 +1,11 @@
+:host{
+    flex: 1;
+    display: flex;
+}
+
 .orders-panel-container{
+    flex: 1;
     background-color: white;
-    height: calc(100% - 64px);
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
