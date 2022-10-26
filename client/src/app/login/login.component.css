@@ -1,7 +1,11 @@
-.login-panel{
-    height: calc(100% - 64px);
-    width: 100%;
-    display: flex; 
+:host{
+    flex: 1;
+    display: flex;
+}
+
+.form-wrapper{
+    flex: 1;
+    display: flex;
     align-items: center; 
     justify-content: center; 
 }
