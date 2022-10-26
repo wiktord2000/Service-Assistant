@@ -2,10 +2,9 @@ import { DataSource } from "@angular/cdk/collections";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { BehaviorSubject, map, merge, Observable } from "rxjs";
+import { Client } from "src/app/_models/Client";
 import { Order } from "src/app/_models/Order";
 import { OrdersService } from "src/app/_services/orders.service";
-
-
 
 /**
  * Data source for the TableExample view. This class should
@@ -72,13 +71,16 @@ import { OrdersService } from "src/app/_services/orders.service";
       return data.sort((a, b) => {
         const isAsc = this.sort?.direction === 'asc';
         switch (this.sort?.active) {
-
-          case 'orderNumber': return defaultCompare(a.orderNumber, b.orderNumber, isAsc);
           // case 'id': return compare(+a.id, +b.id, isAsc);
+          case 'orderNumber': return this.defaultCompare(a.orderNumber, b.orderNumber, isAsc);
+          case 'client': return this.compareClients(a.client, b.client, isAsc);
+          case 'vehicle': return  this.defaultCompare(`${a.vehicle.brand} ${a.vehicle.model}`, `${b.vehicle.brand} ${b.vehicle.model}`, isAsc);
           case 'createDate': return this.compareDates(new Date(a.createdAt), new Date(b.createdAt), isAsc);
-          case 'status': return defaultCompare(a.status.position, b.status.position, isAsc);
-          case 'totalGross': return defaultCompare(a.totalGross.toFixed(2), b.totalGross.toFixed(2), isAsc)
+          case 'finishDate': return this.compareDates(new Date(a.finishDate), new Date(b.finishDate), isAsc);
+          case 'status': return this.defaultCompare(a.status.position, b.status.position, !isAsc);
+          case 'totalGross': return this.defaultCompare(+a.totalGross.toFixed(2), +b.totalGross.toFixed(2), !isAsc)
           case 'admissionDate': return this.compareDates(new Date(a.admissionDate), new Date(b.admissionDate), isAsc);
+          case 'deadlineDate': return this.compareDates(new Date(a.deadlineDate), new Date(b.deadlineDate), isAsc);
           default: return 0;
         }
       });
@@ -102,12 +104,21 @@ import { OrdersService } from "src/app/_services/orders.service";
       return this.data;
     }
 
-    compareDates(fstDate: Date, sndDate: Date, isAsc: boolean){
-      return (fstDate.getTime() - sndDate.getTime()) * (isAsc ? -1 : 1);
+    private compareDates(fstDate: Date, sndDate: Date, isAsc: boolean){
+      return (fstDate.getTime() - sndDate.getTime()) * (isAsc ? 1 : -1);
+    }
+
+    private compareClients(fstClient: Client, sndClient: Client, isAsc: boolean){
+
+      const fstClientString = fstClient.type === 'company' ? fstClient.companyName : fstClient.firstname + " " + fstClient.lastname;
+      const sndClientString = sndClient.type === 'company' ? sndClient.companyName : sndClient.firstname + " " + sndClient.lastname;
+
+      return this.defaultCompare(fstClientString, sndClientString, isAsc);
+    }
+
+    /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
+    private defaultCompare(a: string | number, b: string | number, isAsc: boolean): number {
+      return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
     }
   }
   
-  /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-  function defaultCompare(a: string | number, b: string | number, isAsc: boolean): number {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-  }
