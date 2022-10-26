@@ -88,10 +88,12 @@
     </mat-toolbar>
 
     <!-------------------------------------------- Changing content -------------------------------------------->
-    <router-outlet></router-outlet>
+    <div class="main-content-wrapper">
+      <router-outlet></router-outlet>
+    </div>
     <!-------------------------------------------- Changing content -------------------------------------------->
 
-    <!-- Footer -->
+    <!-- Footer (just append the main content)-->
     <div class="footer primary-color mat-elevation-z4"><span>ServcieAssistance.pl &copy;Wiktor Danielewski</span></div> 
 
   </mat-sidenav-content>

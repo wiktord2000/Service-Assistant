@@ -74,25 +74,20 @@ a:hover{
 }
 
 /* ------------------ Main content ------------------*/
-#main-content-wrapper{
+.main-content-wrapper{
   /* Avoid unnecessery scrolling */
-  min-height: calc(100% - 64px) !important;
+  min-height: calc(100% - 64px);
+  display: flex;
+  flex-direction: column;
 }
 
 /* ------------------ Footer ------------------*/
 .footer {
   height: 64px;
-  width: 100%;
-  position: sticky;  /* Sticky appends the footer after nav-container */
-  position: -moz-sticky; 
-  position: -webkit-sticky; 
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* -- Option */
-  /* position: fixed; --it overlaps the nav-container */
-  /* bottom: 0; */
 }
 
 /* ------------------ Other ------------------*/
