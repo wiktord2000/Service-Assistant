@@ -1,3 +1,4 @@
+import { ClientProfileComponent } from './profiles/client-profile/client-profile.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
@@ -12,6 +13,8 @@ import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.comp
 import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
 import { PartsPanelComponent } from './panels/parts-panel/parts-panel.component';
 import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
+import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
+import { OrderProfileComponent } from './profiles/order-profile/order-profile.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -26,7 +29,10 @@ const routes: Routes = [
       {path: "clients", component: ClientsPanelComponent},
       {path: "vehicles", component: VehiclesPanelComponent},
       {path: "parts", component: PartsPanelComponent},
-      {path: "statistics", component: StatisticsPanelComponent}
+      {path: "statistics", component: StatisticsPanelComponent},
+      {path: "clients/:id", component: ClientProfileComponent},
+      {path: "vehicles/:id", component: VehicleProfileComponent},
+      {path: "orders/:id", component: OrderProfileComponent}
     ]
   },
   {path: 'errors', component: TestErrorsComponent},

@@ -50,9 +50,9 @@
       <div *ngIf="!(isSmallOrXSmall$ | async) && (accountService.currentUser$ | async)">
         <a class="bookmark bookmark-divider" routerLinkActive="active-link" mat-button routerLink="/orders">Zlecenia</a>
         <a class="bookmark bookmark-divider" routerLinkActive="active-link" mat-button routerLink="/services">Usługi</a>
+        <a class="bookmark bookmark-divider" routerLinkActive="active-link" mat-button routerLink="/parts">Towary</a>
         <a class="bookmark bookmark-divider" routerLinkActive="active-link" mat-button routerLink="/clients">Klienci</a>
         <a class="bookmark bookmark-divider" routerLinkActive="active-link" mat-button routerLink="/vehicles">Pojazdy</a>
-        <a class="bookmark bookmark-divider" routerLinkActive="active-link" mat-button routerLink="/parts">Towary</a>
         <a class="bookmark" routerLinkActive="active-link" mat-button routerLink="/statistics">Statystyki</a>
       </div>
 

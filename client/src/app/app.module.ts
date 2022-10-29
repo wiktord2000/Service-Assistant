@@ -33,6 +33,9 @@ import { PasswordInputComponent } from './_forms/password-input/password-input.c
 import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { OrdersTableComponent } from './panels/orders-panel/orders-table/orders-table.component';
 import { StatusSelectorComponent } from './panels/orders-panel/orders-table/status-selector/status-selector.component';
+import { ClientProfileComponent } from './profiles/client-profile/client-profile.component';
+import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
+import { OrderProfileComponent } from './profiles/order-profile/order-profile.component';
 
 
 // Let application know what you use in project e.g. components or another modules
@@ -61,7 +64,10 @@ import { StatusSelectorComponent } from './panels/orders-panel/orders-table/stat
     PasswordInputComponent,
     DateInputComponent,
     OrdersTableComponent,
-    StatusSelectorComponent
+    StatusSelectorComponent,
+    ClientProfileComponent,
+    VehicleProfileComponent,
+    OrderProfileComponent
   ],
   imports: [
     BrowserModule,

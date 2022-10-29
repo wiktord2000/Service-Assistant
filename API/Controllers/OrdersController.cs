@@ -34,6 +34,20 @@ namespace API.Controllers
                             .ToListAsync();
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<OrderDto>> GetOrder(int id)
+        {   
+            // var username = User.GetUsername();    // -> Extensions
+
+            var order = await _context.Orders
+                            .ProjectTo<OrderDto>(_mapper.ConfigurationProvider)
+                            .SingleOrDefaultAsync(order => order.Id == id);
+
+            if(order == null) return NotFound("Nie znaleziono zlecenia o podanym id!");
+
+            return order;
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult<Order>>UpdateOrder(int id, OrderDto order){
             // Probably we should check that specific user contains this order

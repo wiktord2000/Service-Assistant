@@ -23,6 +23,10 @@ export class OrdersService {
     return this.http.get<Order[]>(this.baseUrl + "orders", {params});
   }
 
+  getOrder(id: number) {
+    return this.http.get<Order>(this.baseUrl + 'orders/' + id);
+  }
+
   updateOrder(order: Order){
     return this.http.put<Order>(`${environment.apiUrl}orders/${order.id}`, order);
   }

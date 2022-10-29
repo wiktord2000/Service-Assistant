@@ -14,17 +14,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [Authorize]     // We provide auto token attach IdentityServiceExtensions
+    [Authorize]     // We provide auto token attach in Angular interceptor
     public class ClientsController : BaseApiController
     {
         private readonly DataContext _context;
-        public IMapper _mapper { get; }
+        private readonly IMapper _mapper;
         public ClientsController(DataContext context, IMapper mapper)
         {
             _mapper = mapper;
             _context = context;
         }
 
+        // Get specific client
         [HttpGet("{id}")]
         public async Task<ActionResult<ClientDetailsDto>> GetClient(int id)
         {   

@@ -12,7 +12,7 @@
               [matTooltipPosition]="'right'" 
               [matTooltipClass]="'tooltip-class'"
               aria-label="Order details" 
-              href="#" 
+              routerLink="/orders/{{row.id}}"  
               color="primary">
               {{row.orderNumber}}
           </a>
@@ -58,7 +58,7 @@
               [matTooltipClass]="'tooltip-class'" 
               mat-button 
               aria-label="Client profile"
-              href="#" 
+              routerLink="/clients/{{row.client.id}}"
               color="primary">
             <mat-icon>{{row.client.type === 'person' ? 'person' : 'groups'}}</mat-icon>
             {{row.client.type === 'person' ? row.client.firstname + ' ' + row.client.lastname : row.client.companyName}}
@@ -81,7 +81,7 @@
               [matTooltipClass]="'tooltip-class'"
               aria-label="Vehicle profile"
               mat-button 
-              href="#" 
+              routerLink="/vehicles/{{row.vehicle.id}}" 
               color="primary">
             {{row.vehicle.brand}} {{row.vehicle.model}}
           </a>
