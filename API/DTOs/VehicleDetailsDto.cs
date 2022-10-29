@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.DTOs
 {
-    public class VehicleDto
+    public class VehicleDetailsDto
     {
         public int Id { get; set; }
         public string Brand { get; set; }
@@ -25,5 +25,6 @@ namespace API.DTOs
         public int CurrentOwnerId { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        public ClientDto CurrentOwner { get; set; }
     }
 }
