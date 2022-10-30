@@ -1,1 +1,170 @@
-<p *ngIf="client">{{client | json}}</p>
+<div *ngIf="client" class="content-wrapper">
+    <!-- <p *ngIf="client">{{client | json}}</p> -->
+    <div class="content header-border-radius mat-elevation-z10">
+        <div class="header header-border-radius">
+            
+            <!-- Client name/ Company name -->
+            <div style="font-size: 28px; font-weight: '500';">
+                {{isCompany ? client.companyName : client.firstname + ' ' + client.lastname}}
+            </div>
+            
+            <!-- Client name (if company) -->
+            <div *ngIf="isCompany"
+                style="font-size: 16px; font-weight: 500; margin-top: 0.25em">
+                    {{client.firstname + ' ' + client.lastname}}
+            </div>
+
+            <!-- Client address -->
+            <div style="font-size: 14px;  margin-top: 0.5em;">
+                <div>{{client.street}}</div>
+                <div>{{client.postalCode}} {{client.city}}</div>
+            </div>
+
+            <!-- Client type -->
+            <div class="right-corner-label">
+                <mat-icon style="vertical-align: text-bottom;">
+                    {{isCompany ? 'groups' : 'person'}}
+                </mat-icon> {{isCompany ? 'Firma' : 'Klient indywidualny'}}
+            </div>
+
+            <!-- Right bottom data -->
+            <div class="right-bottom-data">
+
+                <!-- Phone number -->
+                <div style="padding-right: 1em;">
+                    {{client.phone}}
+                </div>
+
+                <!-- NIP if comapny -->
+                <div *ngIf="isCompany" style="padding-right: 1em;">
+                    <div>NIP: {{client.nip}}</div>
+                </div>
+
+                <!-- E-mail -->
+                <div>
+                    <button mat-button>
+                        <mat-icon style="margin-right: 2px;">forward_to_inbox</mat-icon>
+                        {{client.email}}
+                    </button>
+                </div>
+
+            </div>
+            
+        </div>
+
+        <div class="tabs">
+            <mat-tab-group animationDuration="0ms" mat-align-tabs="start">
+                <mat-tab label="Dane klienta">
+                    <ng-template [ngTemplateOutlet]="clientData"></ng-template>
+                </mat-tab>
+                <mat-tab label="Pojazdy">
+                    <ng-template [ngTemplateOutlet]="clientVehicles"></ng-template>
+                </mat-tab>
+                <mat-tab label="Zamówienia">
+                    <ng-template [ngTemplateOutlet]="clientOrders"></ng-template>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #clientData>
+    <div class="tab-wrapper">
+
+        <form [formGroup]="editForm" class="edit-form">
+            <!-- Company name (if company) -->
+            <app-text-input 
+                *ngIf="isCompany"
+                [label]="'Nazwa firmy'" 
+                [formControl]="editForm.controls['companyName']">
+            </app-text-input>
+
+            <!-- NIP (if company) -->
+            <app-text-input 
+                *ngIf="isCompany"
+                [label]="'NIP'" 
+                [formControl]="editForm.controls['nip']">
+            </app-text-input>
+
+            <!-- First name -->
+            <app-text-input 
+                [label]="'Imię'" 
+                [formControl]="editForm.controls['firstname']">
+            </app-text-input>
+
+            <!-- Last name -->
+            <app-text-input 
+                [label]="'Nazwisko'" 
+                [formControl]="editForm.controls['lastname']">
+            </app-text-input>
+
+            <!-- Street -->
+            <app-text-input 
+                [label]="'Ulica'" 
+                [formControl]="editForm.controls['street']">
+            </app-text-input>
+
+            <!-- City -->
+            <app-text-input 
+                [label]="'Miasto'" 
+                [formControl]="editForm.controls['city']">
+            </app-text-input>
+
+            <!-- Postal code -->
+            <app-text-input 
+                [label]="'Kod pocztowy'" 
+                [formControl]="editForm.controls['postalCode']">
+            </app-text-input>
+
+            <!-- Country code -->
+            <app-text-input 
+                [label]="'Kraj'" 
+                [formControl]="editForm.controls['countryCode']">
+            </app-text-input>
+
+            <!-- Phone number -->
+            <app-text-input 
+                [label]="'Numer telefonu'" 
+                [formControl]="editForm.controls['phone']">
+            </app-text-input>
+
+            <!-- E-mail -->
+            <app-text-input 
+                [label]="'Adres e-mail'" 
+                [formControl]="editForm.controls['email']">
+            </app-text-input>
+
+            <div class="save-button-area">
+                <button mat-raised-button 
+                    class="save-button"
+                    color="primary" 
+                    [disabled]="isUpdated || !editForm.valid"  
+                    (click)="onSave()">
+            
+                        {{isSaving ? "Zapisywanie..." : "Zapisz"}} 
+                </button>
+            </div>
+        </form>
+
+    </div>
+</ng-template>
+
+<ng-template #clientVehicles>
+    <div class="tab-wrapper">
+        {{client.firstname}}
+    </div>
+</ng-template>
+
+<ng-template #clientOrders>
+    <div class="tab-wrapper">
+        {{client.firstname}}
+    </div>
+</ng-template>
+
+
+
+
+
+
+

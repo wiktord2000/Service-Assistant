@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip'; 
 import { MatSnackBarModule } from '@angular/material/snack-bar'; 
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
 
 const material = [
   MatButtonModule,
@@ -44,7 +45,8 @@ const material = [
   ReactiveFormsModule,
   MatTooltipModule,
   MatSnackBarModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatTabsModule
 ]
 
 @NgModule({

@@ -24,7 +24,7 @@
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 3;
 }
 /* Make better hover styling of bookmarks */
 a:hover{
