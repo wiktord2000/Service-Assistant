@@ -16,7 +16,7 @@ namespace API.Controllers
     public class OrdersController : BaseApiController
     {
         private readonly DataContext _context;
-        public IMapper _mapper { get; }
+        private readonly IMapper _mapper;
         public OrdersController(DataContext context, IMapper mapper)
         {
             _mapper = mapper;
