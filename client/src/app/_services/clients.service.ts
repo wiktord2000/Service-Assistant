@@ -16,4 +16,8 @@ export class ClientsService {
     return this.http.get<Client>(this.baseUrl + 'clients/' + id);
   }
 
+  updateClient(id: number, client: Client){
+    return this.http.put<Client>(this.baseUrl + 'clients/' + id, client);
+  }
+
 }

@@ -72,7 +72,7 @@
 <ng-template #clientData>
     <div class="tab-wrapper">
 
-        <form [formGroup]="editForm" class="edit-form">
+        <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="editForm.valid && onSaveChanges()" class="edit-form">
             <!-- Company name (if company) -->
             <app-text-input 
                 *ngIf="isCompany"
@@ -89,6 +89,7 @@
 
             <!-- First name -->
             <app-text-input 
+                [isRequired]="false"
                 [label]="'Imię'" 
                 [formControl]="editForm.controls['firstname']">
             </app-text-input>
@@ -137,11 +138,10 @@
 
             <div class="save-button-area">
                 <button mat-raised-button 
+                    type="submit"
                     class="save-button"
                     color="primary" 
-                    [disabled]="isUpdated || !editForm.valid"  
-                    (click)="onSave()">
-            
+                    [disabled]="!editForm.dirty || !editForm.valid || this.isSaving">
                         {{isSaving ? "Zapisywanie..." : "Zapisz"}} 
                 </button>
             </div>
