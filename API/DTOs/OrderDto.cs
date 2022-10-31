@@ -30,7 +30,7 @@ namespace API.DTOs
         public int? ClientId { get; set; }      // Change to int cause cascade deletion but I think is better to stay int? 
                                                 // because we will be able to check all orders even if corresopnding car or client was deleted
         public int? VehicleId { get; set; }
-        public Status Status { get; set; }
+        public StatusDto Status { get; set; }
         public ClientDto Client { get; set; }
         public VehicleDto Vehicle { get; set; }
     }
