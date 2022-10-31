@@ -25,7 +25,6 @@ namespace API.Controllers
             _context = context;
         }
 
-        // Get specific client
         [HttpGet("{id}")]
         public async Task<ActionResult<ClientDetailsDto>> GetClient(int id)
         {   
@@ -39,5 +38,22 @@ namespace API.Controllers
 
             return client;
         }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateClient(int id, ClientUpdateDto client)
+        {   
+            // var username = User.GetUsername();    // -> Extensions
+
+            Client clientToUpdate = await _context.Clients.FirstOrDefaultAsync(client => client.Id == id);
+
+            if(clientToUpdate == null) return NotFound($"Klient o Id {id} nie istnieje!");
+
+            _mapper.Map(client, clientToUpdate);
+            _context.Clients.Update(clientToUpdate);
+
+            if(await _context.SaveChangesAsync() > 0) return NoContent();
+            return StatusCode(StatusCodes.Status500InternalServerError, "Problem z aktualizacją klienta!");
+        }
+
     }
 }
