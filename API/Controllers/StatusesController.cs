@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.CustomClasses;
 using API.Data;
+using API.DTOs;
 using API.Entities;
 using API.Extensions;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +18,12 @@ namespace API.Controllers
     public class StatusesController : BaseApiController
     {
         private readonly DataContext _context;
-        public StatusesController(DataContext context)
+        private readonly IMapper _mapper;
+
+        public StatusesController(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         private List<StatusLabel> possibleStatuses = new List<StatusLabel>{
@@ -35,7 +40,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Object>>UpdateStatus(int id, Status status){
+        public async Task<ActionResult<Object>>UpdateStatus(int id, StatusDto status){
 
             if(id != status.Id) return BadRequest("Niepoprawne id");
 
@@ -44,12 +49,13 @@ namespace API.Controllers
             if(statusToUpdate == null) return NotFound($"Status o Id {id} nie istnieje!");
 
             // Update (automapper need)
-            statusToUpdate.Position = status.Position;
-            statusToUpdate.Name = status.Name;
-            statusToUpdate.IsPaid = status.IsPaid;
-            statusToUpdate.HasInvoice = status.HasInvoice;
-            statusToUpdate.IsPaid = status.IsPaid;
-            statusToUpdate.EmailSend = status.EmailSend;
+            // statusToUpdate.Position = status.Position;
+            // statusToUpdate.Name = status.Name;
+            // statusToUpdate.IsPaid = status.IsPaid;
+            // statusToUpdate.HasInvoice = status.HasInvoice;
+            // statusToUpdate.IsPaid = status.IsPaid;
+            // statusToUpdate.EmailSend = status.EmailSend;
+            _mapper.Map(status, statusToUpdate);
 
             // Only track changes
             _context.Statuses.Update(statusToUpdate);  
