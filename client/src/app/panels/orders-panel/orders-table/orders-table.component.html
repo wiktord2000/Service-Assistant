@@ -1,6 +1,6 @@
-<div class="mat-elevation-z8">
+<div class="mat-elevation-z{{matElevationValue}}">
 
-  <div class="table-container">
+  <div [ngClass]="fixedSize && 'table-container'" style="overflow: auto;">
 
     <table mat-table class="full-width-table" matSort aria-label="Elements">
       <!-- Order Number Column (string) -->

@@ -1,7 +1,7 @@
 import { SnackbarService } from 'src/app/_services/snackbar.service';
 import { SnackbarComponent } from './../../../snackbar/snackbar.component';
 import { NativeDateAdapter } from '@angular/material/core';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -20,9 +20,14 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;    // ! - assured that paginator exists
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Order>;
+  @Input() initialData?: Order[];
+  @Input() hideClientColumn?: boolean = false;
+  @Input() matElevationValue?: number = 8;
+  @Input() fixedSize?: boolean = true;
 
   dataSource: OrdersTableDataSource;
   displayedColumns= ["orderNumber", "createDate", "finishDate", "status", "client", "vehicle", "admissionDate", "deadlineDate", "totalGross", "actions"];
+                      
 
   
   constructor(public ordersService: OrdersService,
@@ -30,6 +35,9 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
   
   ngOnInit(): void {
     this.dataSource = new OrdersTableDataSource(this.ordersService);
+    // Hide client column
+    this.displayedColumns = this.displayedColumns.filter((column) => !(column === 'client' && this.hideClientColumn));
+    this.initialData && this.dataSource.setOrders(this.initialData);
   }
 
   ngAfterViewInit(): void {
