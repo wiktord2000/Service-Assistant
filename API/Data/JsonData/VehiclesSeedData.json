@@ -1,6 +1,7 @@
 [
   {
     "id": 151948,
+    "appUserId": 1,
     "brand": "Toyota",
     "model": "Auris",
     "registrationNumber": "WA 22B47",
@@ -21,6 +22,7 @@
   },
   {
     "id": 151973,
+    "appUserId": 2,
     "brand": "VW",
     "model": "PASSAT",
     "registrationNumber": "WL 05B47",
@@ -41,6 +43,7 @@
   },
   {
     "id": 151972,
+    "appUserId": 1,
     "brand": "IVECO",
     "model": "DAILY",
     "registrationNumber": "WI 12DEE",
@@ -61,6 +64,7 @@
   },
   {
     "id": 151971,
+    "appUserId": 1,
     "brand": "VW",
     "model": "CADDY",
     "registrationNumber": "WL 8E05D",
@@ -81,6 +85,7 @@
   },
   {
     "id": 151970,
+    "appUserId": 1,
     "brand": "Ford",
     "model": "Tourneo",
     "registrationNumber": "WWL F23F7",
@@ -101,6 +106,7 @@
   },
   {
     "id": 151969,
+    "appUserId": 2,
     "brand": "Hyundai",
     "model": "Tucson",
     "registrationNumber": "LZ 182A3",
@@ -121,6 +127,7 @@
   },
   {
     "id": 151968,
+    "appUserId": 2,
     "brand": "Lexus",
     "model": "IS",
     "registrationNumber": "WPR 5D91E",
@@ -141,6 +148,7 @@
   },
   {
     "id": 151967,
+    "appUserId": 2,
     "brand": "Toyota",
     "model": "Auris",
     "registrationNumber": "LZ 9C116",
@@ -161,6 +169,7 @@
   },
   {
     "id": 151966,
+    "appUserId": 1,
     "brand": "Chrysler",
     "model": "GRAND",
     "registrationNumber": "WI 277D4",
@@ -181,6 +190,7 @@
   },
   {
     "id": 151965,
+    "appUserId": 2,
     "brand": "VW",
     "model": "GOLF",
     "registrationNumber": "LZ 85C49",
@@ -201,6 +211,7 @@
   },
   {
     "id": 151964,
+    "appUserId": 1,
     "brand": "Nissan",
     "model": "Qashqai",
     "registrationNumber": "WPR 474CC",
@@ -221,6 +232,7 @@
   },
   {
     "id": 151963,
+    "appUserId": 1,
     "brand": "Toyota",
     "model": "Avensis",
     "registrationNumber": "WWL E770A",
@@ -241,6 +253,7 @@
   },
   {
     "id": 151962,
+    "appUserId": 1,
     "brand": "BMW",
     "model": "X6",
     "registrationNumber": "WL EEC76",
@@ -261,6 +274,7 @@
   },
   {
     "id": 151961,
+    "appUserId": 1,
     "brand": "Toyota",
     "model": "Yaris",
     "registrationNumber": "WI 91FCA",
@@ -281,6 +295,7 @@
   },
   {
     "id": 151960,
+    "appUserId": 2,
     "brand": "Audi",
     "model": "A3",
     "registrationNumber": "WPR B1288",
@@ -301,6 +316,7 @@
   },
   {
     "id": 151959,
+    "appUserId": 1,
     "brand": "Mercedes-Benz",
     "model": "SPRINTER",
     "registrationNumber": "WWL 07D27",
@@ -321,6 +337,7 @@
   },
   {
     "id": 151958,
+    "appUserId": 2,
     "brand": "Renault",
     "model": "Laguna",
     "registrationNumber": "WU 59E12",
@@ -341,6 +358,7 @@
   },
   {
     "id": 151957,
+    "appUserId": 2,
     "brand": "Toyota",
     "model": "Corolla",
     "registrationNumber": "WWL 505F1",
@@ -361,6 +379,7 @@
   },
   {
     "id": 151956,
+    "appUserId": 1,
     "brand": "Renault",
     "model": "Koleos",
     "registrationNumber": "WPR 23B15",
@@ -381,6 +400,7 @@
   },
   {
     "id": 151955,
+    "appUserId": 1,
     "brand": "VW",
     "model": "TRANSPORTER",
     "registrationNumber": "WU F0EFA",
@@ -401,6 +421,7 @@
   },
   {
     "id": 151954,
+    "appUserId": 2,
     "brand": "Renault",
     "model": "Megane",
     "registrationNumber": "LZ 12E7F",
@@ -421,6 +442,7 @@
   },
   {
     "id": 151953,
+    "appUserId": 1,
     "brand": "Ford",
     "model": "TRANSIT",
     "registrationNumber": "WU C3C5D",
@@ -441,6 +463,7 @@
   },
   {
     "id": 151952,
+    "appUserId": 1,
     "brand": "Audi",
     "model": "A4",
     "registrationNumber": "WWL 4B2AA",
@@ -461,6 +484,7 @@
   },
   {
     "id": 151951,
+    "appUserId": 2,
     "brand": "Opel",
     "model": "Astra",
     "registrationNumber": "WU 8C5D6",
@@ -481,6 +505,7 @@
   },
   {
     "id": 151950,
+    "appUserId": 2,
     "brand": "Toyota",
     "model": "Corolla",
     "registrationNumber": "WI 48887",
@@ -501,6 +526,7 @@
   },
   {
     "id": 151949,
+    "appUserId": 2,
     "brand": "Mercedes-Benz",
     "model": "SPRINTER",
     "registrationNumber": "WWL 6B76E",

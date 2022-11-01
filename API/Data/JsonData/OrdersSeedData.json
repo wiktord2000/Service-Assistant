@@ -1,6 +1,7 @@
 [
   {
     "id": 80484,
+    "appUserId": 2,
     "orderNumber": "ZL 48/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -22,6 +23,7 @@
   },
   {
     "id": 80483,
+    "appUserId": 2,
     "orderNumber": "ZL 47/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -43,6 +45,7 @@
   },
   {
     "id": 80482,
+    "appUserId": 1,
     "orderNumber": "ZL 46/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -64,6 +67,7 @@
   },
   {
     "id": 80481,
+    "appUserId": 2,
     "orderNumber": "ZL 45/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -85,6 +89,7 @@
   },
   {
     "id": 80480,
+    "appUserId": 2,
     "orderNumber": "ZL 44/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -106,6 +111,7 @@
   },
   {
     "id": 80479,
+    "appUserId": 2,
     "orderNumber": "ZL 43/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -127,6 +133,7 @@
   },
   {
     "id": 80478,
+    "appUserId": 1,
     "orderNumber": "ZL 42/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -148,6 +155,7 @@
   },
   {
     "id": 80450,
+    "appUserId": 1,
     "orderNumber": "ZL 41/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -169,6 +177,7 @@
   },
   {
     "id": 80448,
+    "appUserId": 1,
     "orderNumber": "ZL 39/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -190,6 +199,7 @@
   },
   {
     "id": 80447,
+    "appUserId": 2,
     "orderNumber": "ZL 38/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -211,6 +221,7 @@
   },
   {
     "id": 80446,
+    "appUserId": 1,
     "orderNumber": "ZL 37/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -232,6 +243,7 @@
   },
   {
     "id": 80445,
+    "appUserId": 2,
     "orderNumber": "ZL 36/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -253,6 +265,7 @@
   },
   {
     "id": 80444,
+    "appUserId": 2,
     "orderNumber": "ZL 35/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -274,6 +287,7 @@
   },
   {
     "id": 80442,
+    "appUserId": 1,
     "orderNumber": "ZL 33/09/2022",
     "createdAt": "2022-09-25",
     "finishDate": null,
@@ -295,6 +309,7 @@
   },
   {
     "id": 72780,
+    "appUserId": 1,
     "orderNumber": "ZL 20/09/2022",
     "createdAt": "2022-09-16",
     "finishDate": null,
@@ -316,6 +331,7 @@
   },
   {
     "id": 72786,
+    "appUserId": 1,
     "orderNumber": "ZL 26/09/2022",
     "createdAt": "2022-09-12",
     "finishDate": null,
@@ -337,6 +353,7 @@
   },
   {
     "id": 72781,
+    "appUserId": 2,
     "orderNumber": "ZL 21/09/2022",
     "createdAt": "2022-09-12",
     "finishDate": null,
@@ -358,6 +375,7 @@
   },
   {
     "id": 72779,
+    "appUserId": 2,
     "orderNumber": "ZL 19/09/2022",
     "createdAt": "2022-09-12",
     "finishDate": null,
@@ -379,6 +397,7 @@
   },
   {
     "id": 72776,
+    "appUserId": 1,
     "orderNumber": "ZL 16/09/2022",
     "createdAt": "2022-09-12",
     "finishDate": null,

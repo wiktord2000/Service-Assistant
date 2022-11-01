@@ -1,6 +1,7 @@
 [
   {
     "id": 155971,
+    "appUserId": 1,
     "type": "company",
     "companyName": "Jasińska",
     "nip": "5843216320",
@@ -19,6 +20,7 @@
   },
   {
     "id": 155986,
+    "appUserId": 2,
     "type": "person",
     "companyName": null,
     "nip": null,
@@ -37,6 +39,7 @@
   },
   {
     "id": 155984,
+    "appUserId": 1,
     "type": "company",
     "companyName": "Grupa Ostrowska",
     "nip": "9790115037",
@@ -55,6 +58,7 @@
   },
   {
     "id": 155977,
+    "appUserId": 1,
     "type": "company",
     "companyName": "Nowicki",
     "nip": "8537227948",
@@ -73,6 +77,7 @@
   },
   {
     "id": 155982,
+    "appUserId": 1,
     "type": "company",
     "companyName": "Dąbrowski",
     "nip": "3133356045",
@@ -91,6 +96,7 @@
   },
   {
     "id": 155974,
+    "appUserId": 1,
     "type": "person",
     "companyName": null,
     "nip": null,
@@ -109,6 +115,7 @@
   },
   {
     "id": 155973,
+    "appUserId": 1,
     "type": "company",
     "companyName": "Walczak-Lis",
     "nip": "8443106339",
@@ -127,6 +134,7 @@
   },
   {
     "id": 155970,
+    "appUserId": 1,
     "type": "person",
     "companyName": null,
     "nip": null,
@@ -145,6 +153,7 @@
   },
   {
     "id": 155990,
+    "appUserId": 1,
     "type": "company",
     "companyName": "Ziółkowska",
     "nip": "2323442706",
@@ -163,6 +172,7 @@
   },
   {
     "id": 155969,
+    "appUserId": 2,
     "type": "person",
     "companyName": null,
     "nip": null,
@@ -181,6 +191,7 @@
   },
   {
     "id": 155978,
+    "appUserId": 2,
     "type": "company",
     "companyName": "Sokołowski sp. p.",
     "nip": "9638629040",
@@ -199,6 +210,7 @@
   },
   {
     "id": 155987,
+    "appUserId": 2,
     "type": "company",
     "companyName": "Szczepańska sp. z o.o.",
     "nip": "7856878857",
@@ -217,6 +229,7 @@
   },
   {
     "id": 155976,
+    "appUserId": 2,
     "type": "company",
     "companyName": "Przybylska i syn",
     "nip": "4999228414",
@@ -235,6 +248,7 @@
   },
   {
     "id": 155983,
+    "appUserId": 2,
     "type": "company",
     "companyName": "Ostrowski s. c.",
     "nip": "2198162745",
@@ -253,6 +267,7 @@
   },
   {
     "id": 155975,
+    "appUserId": 2,
     "type": "company",
     "companyName": "Kucharska",
     "nip": "6762589365",
@@ -271,6 +286,7 @@
   },
   {
     "id": 155979,
+    "appUserId": 1,
     "type": "person",
     "companyName": null,
     "nip": null,
@@ -289,6 +305,7 @@
   },
   {
     "id": 155966,
+    "appUserId": 1,
     "type": "company",
     "companyName": "Cieślak i syn",
     "nip": "4873941232",
@@ -307,6 +324,7 @@
   },
   {
     "id": 155991,
+    "appUserId": 2,
     "type": "company",
     "companyName": "Zając S.A.",
     "nip": "2156154391",
@@ -325,6 +343,7 @@
   },
   {
     "id": 155967,
+    "appUserId": 2,
     "type": "person",
     "companyName": null,
     "nip": null,
@@ -343,6 +362,7 @@
   },
   {
     "id": 155985,
+    "appUserId": 2,
     "type": "company",
     "companyName": "Kamiński-Ziółkowska",
     "nip": "9914561346",
@@ -361,6 +381,7 @@
   },
   {
     "id": 155980,
+    "appUserId": 1,
     "type": "person",
     "companyName": null,
     "nip": null,
@@ -379,6 +400,7 @@
   },
   {
     "id": 155968,
+    "appUserId": 2,
     "type": "company",
     "companyName": "Mróz sp. p.",
     "nip": "3782232021",
@@ -397,6 +419,7 @@
   },
   {
     "id": 155989,
+    "appUserId": 1,
     "type": "company",
     "companyName": "Krawczyk P.P.O.F",
     "nip": "4975226349",
@@ -415,6 +438,7 @@
   },
   {
     "id": 155988,
+    "appUserId": 1,
     "type": "company",
     "companyName": "Fundacja Zalewski",
     "nip": "7640774352",
@@ -433,6 +457,7 @@
   },
   {
     "id": 155981,
+    "appUserId": 1,
     "type": "company",
     "companyName": "Mazur",
     "nip": "4724290048",
@@ -451,6 +476,7 @@
   },
   {
     "id": 155972,
+    "appUserId": 2,
     "type": "person",
     "companyName": null,
     "nip": "4724291148",

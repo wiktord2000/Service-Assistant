@@ -94,8 +94,6 @@ namespace API.Data
             var orders = JsonSerializer.Deserialize<List<Order>>(ordersData, jsonOptions);
             
             foreach(var order in orders){
-                // order.AppUserId = 1;
-                order.AppUserId = order.Id%2 + 1;
                 context.Orders.Add(order);
             }
 
