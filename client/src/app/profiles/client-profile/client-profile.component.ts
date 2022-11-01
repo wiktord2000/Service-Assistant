@@ -1,10 +1,12 @@
 import { SnackbarService } from './../../_services/snackbar.service';
 import { ClientsService } from '../../_services/clients.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Client } from '../../_models/Client';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
+import { OrdersTableComponent } from 'src/app/panels/orders-panel/orders-table/orders-table.component';
+import { Order } from 'src/app/_models/Order';
 
 @Component({
   selector: 'app-client-profile',
@@ -13,10 +15,11 @@ import { finalize } from 'rxjs';
 })
 export class ClientProfileComponent implements OnInit {
 
+  @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;
   client: Client; 
   isCompany: boolean;
-  isUpdated: boolean = false;
   isSaving: boolean = false;
+  displayFinished: boolean = false;
   editForm : FormGroup;
 
   constructor(private clientsService: ClientsService,
@@ -27,7 +30,6 @@ export class ClientProfileComponent implements OnInit {
   ngOnInit(): void {
     this.loadClient();
   }
-
 
   onSaveChanges(){
     this.isSaving = true;
@@ -47,6 +49,17 @@ export class ClientProfileComponent implements OnInit {
           this.snackbarService.showMessage('error', error);
         }
     });
+  }
+
+  onToggleChange(){
+    this.displayFinished = !this.displayFinished;
+    this.displayFinished 
+      ? this.ordersTable.dataSource.setOrders(this.client.orders)
+      : this.ordersTable.dataSource.setOrders(this.filterFinshedOrders(this.client.orders));
+  }
+
+  filterFinshedOrders(orders: Order[]){
+    return orders.filter((order) => order.status.position !== 4);
   }
 
   loadClient(){

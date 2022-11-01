@@ -61,6 +61,13 @@
     z-index: 2;
 }
 
+.filters-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: centers;
+    padding-bottom: 1em;
+}
+
 
 
 /* Client data */
