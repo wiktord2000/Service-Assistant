@@ -27,11 +27,14 @@ namespace API.Entities
         public DateTime? FirstRegistration { get; set; }
         public DateTime? TechnicalInspectionEnd { get; set; }
         public string Description { get; set; }
-        [Required]
-        public Client CurrentOwner { get; set; }
-        public int CurrentOwnerId { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+        // Foreign keys
+        public int AppUserId { get; set; }
+        public int CurrentOwnerId { get; set; }
+        public AppUser AppUser { get; set; }
+        public Client CurrentOwner { get; set; }
         public ICollection<Order> Orders { get; set; }
     }
 }

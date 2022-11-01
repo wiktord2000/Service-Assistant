@@ -32,5 +32,7 @@ namespace API.Entities
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime LastActive { get; set; } = DateTime.Now;
         public ICollection<Order> Orders { get; set; }
+        public ICollection<Vehicle> Vehicles { get; set; }
+        public ICollection<Client> Clients { get; set; }
     }
 }

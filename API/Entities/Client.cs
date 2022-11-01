@@ -27,6 +27,10 @@ namespace API.Entities
         public int? DiscountParts { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
+
+        // Foreign keys
+        public AppUser AppUser { get; set; }
+        public int AppUserId { get; set; }
         public ICollection<Order> Orders { get; set; }
         public ICollection<Vehicle> Vehicles { get; set; }
     }
