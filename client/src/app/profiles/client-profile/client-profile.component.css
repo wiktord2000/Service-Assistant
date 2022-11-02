@@ -12,12 +12,7 @@
     flex: 1;
     margin: 5vh 10vw;
     display: flex;
-}
-
-.header-border-radius{
-    border-top-left-radius: var(--main-border-radius);
-    border-top-right-radius: var(--main-border-radius);
-}   
+} 
 
 .content{
     display: flex;
@@ -35,9 +30,9 @@
     color: white;
 }
 
-.tabs{
-    flex: 1 1 auto;
-    border-bottom: 1em solid var(--light);
+.header-border-radius{
+    border-top-left-radius: var(--main-border-radius);
+    border-top-right-radius: var(--main-border-radius);
 }
 
 .right-corner-label{
@@ -61,6 +56,17 @@
     z-index: 2;
 }
 
+.tabs{
+    flex: 1 1 auto;
+    border-bottom: 1em solid var(--light);
+}
+
+
+/* Client Tabs Common*/
+.tab-wrapper{
+    padding: 3em;
+}
+
 .filters-wrapper{
     display: flex;
     justify-content: space-between;
@@ -68,13 +74,7 @@
     padding-bottom: 1em;
 }
 
-
-
 /* Client data */
-.tab-wrapper{
-    padding: 3em;
-}
-
 .edit-form{
     display: flex;
     flex-wrap: wrap;

@@ -69,7 +69,9 @@
 </div>
 
 
+<!------------------------------------------------------------------- Data Update Tab--------------------------------------------------------------------->
 <ng-template #clientData>
+
     <div class="tab-wrapper">
 
         <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="editForm.valid && onSaveChanges()" class="edit-form">
@@ -148,14 +150,38 @@
         </form>
 
     </div>
+
 </ng-template>
 
+
+<!------------------------------------------------------------------- Client's Vehicles Tab --------------------------------------------------------------------->
 <ng-template #clientVehicles>
+
     <div class="tab-wrapper">
-        {{client.firstname}}
+
+        <div class="filters-wrapper">
+            <!-- Add vehicle button -->
+            <button mat-raised-button 
+                color="primary"
+                aria-label="Add vehicle button"> 
+                    Dodaj pojazd
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+        <!-- Table -->
+        <app-vehicles-table
+            [fixedSize]="false"
+            [matElevationValue]=1
+            [initialData]="client.vehicles" 
+            [hideCurrentOwnerColumn]="true">
+        </app-vehicles-table>
     </div>
+
 </ng-template>
 
+
+<!------------------------------------------------------------------- Client's Orders Tab --------------------------------------------------------------------->
 <ng-template #clientOrders>
     
     <div class="tab-wrapper">
@@ -179,12 +205,13 @@
 
         <!-- Table -->
         <app-orders-table 
-            [fixedSize]="true"
+            [fixedSize]="false"
             [matElevationValue]=1
             [initialData]="filterFinshedOrders(client.orders)" 
             [hideClientColumn]="true">
         </app-orders-table>
     </div>
+
 </ng-template>
 
 
