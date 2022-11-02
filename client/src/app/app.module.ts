@@ -36,6 +36,7 @@ import { StatusSelectorComponent } from './panels/orders-panel/orders-table/stat
 import { ClientProfileComponent } from './profiles/client-profile/client-profile.component';
 import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
 import { OrderProfileComponent } from './profiles/order-profile/order-profile.component';
+import { VehiclesTableComponent } from './panels/vehicles-panel/vehicles-table/vehicles-table/vehicles-table.component';
 
 
 // Let application know what you use in project e.g. components or another modules
@@ -67,7 +68,8 @@ import { OrderProfileComponent } from './profiles/order-profile/order-profile.co
     StatusSelectorComponent,
     ClientProfileComponent,
     VehicleProfileComponent,
-    OrderProfileComponent
+    OrderProfileComponent,
+    VehiclesTableComponent
   ],
   imports: [
     BrowserModule,

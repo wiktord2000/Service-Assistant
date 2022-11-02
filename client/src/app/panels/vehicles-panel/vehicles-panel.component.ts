@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { SnackbarService } from 'src/app/_services/snackbar.service';
+import { VehiclesService } from 'src/app/_services/vehicles.service';
+import { VehiclesTableComponent } from './vehicles-table/vehicles-table/vehicles-table.component';
 
 @Component({
   selector: 'app-vehicles-panel',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VehiclesPanelComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  @ViewChild(VehiclesTableComponent) vehiclesTable!: VehiclesTableComponent;
+  
+  constructor(public snackbarService : SnackbarService, 
+              public vehiclesService: VehiclesService) {
+  }
+  ngAfterViewInit(): void {
+    this.vehiclesTable.dataSource.loadVehicles();
   }
 
+  ngOnInit(): void {}
 }

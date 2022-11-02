@@ -1,0 +1,155 @@
+<div class="mat-elevation-z{{matElevationValue}}">
+
+    <div [ngClass]="fixedSize && 'table-container'" style="overflow: auto;">
+  
+      <table mat-table class="full-width-table" matSort aria-label="Elements">
+        
+        <!-- Vehicle Name Column (brand + model) -->
+        <ng-container matColumnDef="vehicleName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Marka/Model</th>
+          <td mat-cell *matCellDef="let row">
+            <a  mat-button 
+                matTooltip="Profil pojazdu" 
+                [matTooltipPosition]="'right'" 
+                [matTooltipClass]="'tooltip-class'"
+                aria-label="Vehicle profile" 
+                routerLink="/vehicles/{{row.id}}"  
+                color="primary">
+                {{row.brand}} {{row.model}}
+            </a>
+          </td>
+        </ng-container>
+    
+        <!-- Registration Number Column -->
+        <ng-container matColumnDef="registrationNumber">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Numer rejestracyjny</th>
+          <td mat-cell *matCellDef="let row">{{row.registrationNumber}}</td>
+        </ng-container>
+  
+        <!-- Vin Column -->
+        <ng-container matColumnDef="vin">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>VIN</th>
+          <td mat-cell *matCellDef="let row">
+            {{row.vin}}
+          </td>
+        </ng-container>
+    
+        <!-- Current Owner Column -->
+        <ng-container matColumnDef="currentOwner">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Właściciel</th>
+          <td mat-cell *matCellDef="let row">
+            <!-- Current Owner link -->
+            <a *ngIf="row.currentOwner"
+                matTooltip="Profil klienta" 
+                [matTooltipPosition]="'right'" 
+                [matTooltipClass]="'tooltip-class'" 
+                mat-button 
+                aria-label="Client profile"
+                routerLink="/clients/{{row.currentOwner.id}}"
+                color="primary">
+              <mat-icon>{{row.currentOwner.type === 'person' ? 'person' : 'groups'}}</mat-icon>
+              {{row.currentOwner.type === 'person' ? row.currentOwner.firstname + ' ' + row.currentOwner.lastname : row.currentOwner.companyName}}
+            </a>
+            <!-- Otherwise add button -->
+            <button mat-stroked-button color="primary" *ngIf="!row.currentOwner">Dodaj</button>
+          </td>
+        </ng-container>
+  
+        <!-- Production Date Column -->
+        <ng-container matColumnDef="productionDate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Rok produkcji</th>
+          <td mat-cell *matCellDef="let row">
+
+            <!-- Date or pickdate button -->
+            <span *ngIf="row.productionDate; else pickDateButton">
+              {{row.productionDate}}
+            </span>
+
+          </td>
+        </ng-container>
+  
+        <!-- Capacity Column -->
+        <ng-container matColumnDef="capacity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Pojemność [cm3]</th>
+          <td mat-cell *matCellDef="let row">
+            {{row.capacity}}
+          </td>
+        </ng-container>
+  
+        <!-- Engine Fuel Column -->
+        <ng-container matColumnDef="engineFuel">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Rodzaj silnika</th>
+          <td mat-cell *matCellDef="let row">
+            {{row.engineFuel}}
+          </td>
+        </ng-container>
+  
+        <!-- Engine Power Column -->
+        <ng-container matColumnDef="enginePower">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Moc silnika [kW]</th>
+          <td mat-cell *matCellDef="let row">
+            {{row.enginePower}}
+          </td>
+        </ng-container>
+  
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Operacje</th>
+          <td mat-cell *matCellDef="let row">
+
+            <!-- Delete -->
+            <button mat-icon-button 
+                    color="warn" 
+                    aria-label="Delete button"
+                    matTooltip="Usuń pojazd" 
+                    [matTooltipPosition]="'right'"
+                    [matTooltipClass]="'tooltip-class'" >
+  
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+  
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+        <!-- Row shown when there is no data -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" [ngStyle]="{border: '0px'}" colspan="10" >
+            <div class="no-vehicles-message">
+              <mat-icon>leaderboard</mat-icon>
+              <div>
+                Brak pojazdów
+              </div>
+            </div>
+          </td>
+        </tr>
+  
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <mat-paginator #paginator
+        [length]="dataSource?.data?.length"
+        [pageIndex]="0"
+        [pageSize]="8"
+        [pageSizeOptions]="[8, 12, 16]"
+        aria-label="Wybierz stronę">
+    </mat-paginator>
+  </div>
+  
+  
+  <!-- Pick date button -->
+  <ng-template #pickDateButton>
+    <button matTooltip="Wybierz datę"  
+            [matTooltipPosition]="'right'" 
+            [matTooltipClass]="'tooltip-class'" 
+            mat-icon-button 
+            color="primary" 
+            class="pick-date-button"
+            aria-label="Pick the date icon">
+              <mat-icon>event</mat-icon>
+    </button>
+  </ng-template>
+  

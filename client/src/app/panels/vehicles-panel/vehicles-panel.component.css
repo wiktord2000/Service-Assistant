@@ -2,3 +2,23 @@
     flex: 1;
     display: flex;
 }
+
+.vehicles-panel-container{
+    flex: 1;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-wrapper{
+    width: 96%;
+    height: 90%;
+}
+
+.filters-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 1em;
+}

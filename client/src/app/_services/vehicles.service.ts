@@ -17,4 +17,8 @@ export class VehiclesService {
     return this.http.get<Vehicle>(this.baseUrl + 'vehicles/' + id);
   }
 
+  getVehicles() {
+    return this.http.get<Vehicle[]>(this.baseUrl + 'vehicles');
+  }
+
 }
