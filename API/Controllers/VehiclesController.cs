@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
+using API.Extensions;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Authorization;
@@ -22,6 +23,17 @@ namespace API.Controllers
         {
             _mapper = mapper;
             _context = context;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<VehicleDetailsDto>>> GetVehicles()
+        {   
+            var username = User.GetUsername();    // -> Extensions
+
+            return await _context.Vehicles
+                            .Where(vehicle => vehicle.AppUser.UserName == username)
+                            .ProjectTo<VehicleDetailsDto>(_mapper.ConfigurationProvider)
+                            .ToListAsync();
         }
 
         // Get specific vehicle
