@@ -38,20 +38,13 @@
         <ng-container matColumnDef="currentOwner">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Właściciel</th>
           <td mat-cell *matCellDef="let row">
+
             <!-- Current Owner link -->
-            <a *ngIf="row.currentOwner"
-                matTooltip="Profil klienta" 
-                [matTooltipPosition]="'right'" 
-                [matTooltipClass]="'tooltip-class'" 
-                mat-button 
-                aria-label="Client profile"
-                routerLink="/clients/{{row.currentOwner.id}}"
-                color="primary">
-              <mat-icon>{{row.currentOwner.type === 'person' ? 'person' : 'groups'}}</mat-icon>
-              {{row.currentOwner.type === 'person' ? row.currentOwner.firstname + ' ' + row.currentOwner.lastname : row.currentOwner.companyName}}
-            </a>
+            <app-client-profile-link [client]="row.currentOwner"></app-client-profile-link>
+
             <!-- Otherwise add button -->
             <button mat-stroked-button color="primary" *ngIf="!row.currentOwner">Dodaj</button>
+
           </td>
         </ng-container>
   
