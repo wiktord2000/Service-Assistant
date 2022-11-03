@@ -1,1 +1,168 @@
-<p *ngIf="vehicle">{{vehicle | json}}</p>
+<div *ngIf="vehicle" class="content-wrapper">
+    <!-- <p *ngIf="client">{{client | json}}</p> -->
+    <div class="content header-border-radius mat-elevation-z10">
+        <div class="header header-border-radius">
+            
+            <!-- Vehicle brand -->
+            <div style="font-size: 28px; font-weight: '500';">
+                {{vehicle.brand}} {{vehicle.model}}
+            </div>
+            
+            <!-- Vehicle Production Date -->
+            <div 
+                style="font-size: 16px; font-weight: 500; margin-top: 0.25em">
+                {{vehicle.productionDate}}
+            </div>
+
+            <!-- Registration Number Type -->
+            <div class="right-corner-label">
+                <mat-icon style="vertical-align: text-bottom;">car_repair</mat-icon>
+                {{vehicle.registrationNumber}}
+            </div>
+
+            <!-- Right bottom data -->
+            <div class="right-bottom-data">
+
+                <!-- Current Owner link -->
+                <app-client-profile-link 
+                    *ngIf="vehicle.currentOwner"
+                    [containLabel] = "true" 
+                    [customColor]="'white'" 
+                    [client]="vehicle.currentOwner">
+                </app-client-profile-link>
+
+            </div>
+            
+        </div>
+
+        <!-- Material tabs -->
+        <div class="tabs">
+            <mat-tab-group animationDuration="0ms" mat-align-tabs="start">
+
+                <!-- Vehicle data -->
+                <mat-tab label="Dane pojazdu">
+                    <ng-template [ngTemplateOutlet]="vehicleData"></ng-template>
+                </mat-tab>
+
+                <!-- Vehicle's orders -->
+                <mat-tab label="Zlecenia">
+                    <ng-template [ngTemplateOutlet]="vehicleOrders"></ng-template>
+                </mat-tab>
+
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
+
+
+<!------------------------------------------------------------------- Data Update Tab--------------------------------------------------------------------->
+<ng-template #vehicleData>
+
+    <div class="tab-wrapper">
+
+        <form *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="editForm.valid && onSaveChanges()" class="edit-form">
+
+            <!-- Brand -->
+            <app-text-input 
+                [label]="'Marka'" 
+                [formControl]="editForm.controls['brand']">
+            </app-text-input>
+
+            <!-- Model -->
+            <app-text-input 
+                [label]="'Model'" 
+                [formControl]="editForm.controls['model']">
+            </app-text-input>
+
+            <!-- Color -->
+            <app-text-input 
+                [label]="'Kolor'" 
+                [formControl]="editForm.controls['color']">
+            </app-text-input>
+
+            <!-- Registration Number -->
+            <app-text-input 
+                [label]="'Numer rejestracyjny'" 
+                [formControl]="editForm.controls['registrationNumber']">
+            </app-text-input>
+
+            <!-- Production Date -->
+            <app-text-input 
+                [label]="'Rok produkcji'" 
+                [formControl]="editForm.controls['productionDate']">
+            </app-text-input>
+
+            <!-- Current owner -->
+            <app-text-input 
+                [label]="'Właściciel'" 
+                [formControl]="editForm.controls['currentOwner']">
+            </app-text-input>
+
+            <!-- Engine fuel -->
+            <app-text-input 
+                [label]="'Rodzaj silnika'" 
+                [formControl]="editForm.controls['engineFuel']">
+            </app-text-input>
+
+            <!-- Vin -->
+            <app-text-input 
+                [label]="'VIN'" 
+                [formControl]="editForm.controls['vin']">
+            </app-text-input>
+
+            <!-- Engine Code -->
+            <app-text-input 
+                [label]="'Kod silnika'" 
+                [formControl]="editForm.controls['engineCode']">
+            </app-text-input>
+
+            <!-- Capacity -->
+            <app-text-input 
+                [label]="'Pojemność[cm3]'" 
+                [formControl]="editForm.controls['capacity']">
+            </app-text-input>
+
+            <!-- Engine Power -->
+            <app-text-input 
+                [label]="'Moc silnika[kW]'" 
+                [formControl]="editForm.controls['enginePower']">
+            </app-text-input>
+
+            <!-- Technical Inspection End -->
+            <app-text-input 
+                [label]="'Ważność przeglądu'" 
+                [formControl]="editForm.controls['technicalInspectionEnd']">
+            </app-text-input>
+
+            <!-- First Registration -->
+            <app-text-input 
+                [label]="'Data pierwszej rejestracji'" 
+                [formControl]="editForm.controls['firstRegistration']">
+            </app-text-input>
+
+            <!-- Absorb space (if not even) -->
+            <div></div>
+
+            <div class="save-button-area">
+                <button mat-raised-button 
+                    type="submit"
+                    class="save-button"
+                    color="primary" 
+                    [disabled]="!editForm.dirty || !editForm.valid || this.isSaving">
+                        {{isSaving ? "Zapisywanie..." : "Zapisz"}} 
+                </button>
+            </div>
+        </form>
+
+    </div>
+
+</ng-template>
+
+<!------------------------------------------------------------------- Vehicle's Orders Tab --------------------------------------------------------------------->
+<ng-template #vehicleOrders>
+    
+    <div class="tab-wrapper">
+
+    </div>
+
+</ng-template>
