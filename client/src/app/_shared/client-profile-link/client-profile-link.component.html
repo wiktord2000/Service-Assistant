@@ -1,0 +1,14 @@
+<!-- Client link -->
+<a *ngIf="client"
+    matTooltip="Profil klienta" 
+    [matTooltipPosition]="tooltipPosition" 
+    [matTooltipClass]="'tooltip-class'" 
+    mat-button 
+    aria-label="Client profile"
+    routerLink="/clients/{{client.id}}"
+    [style.color]="customColor"
+    [color]="color">
+    <mat-icon>{{isCompany ? 'groups' : 'person'}}</mat-icon>
+        {{isCompany ? client.companyName: client.firstname + ' ' + client.lastname}}
+        <div *ngIf="containLabel" class="label">Właściciel</div>
+</a>
