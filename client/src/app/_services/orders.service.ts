@@ -30,4 +30,15 @@ export class OrdersService {
   updateOrder(order: Order){
     return this.http.put<Order>(`${environment.apiUrl}orders/${order.id}`, order);
   }
+
+  updateOrderPatch(id: number, dataToUpdate: object){
+    if(!dataToUpdate) return;
+    
+    let body = Object.keys(dataToUpdate)
+                .map((key) => {
+                  return {op: "replace", path: key, value: dataToUpdate[key]}
+                })
+
+    return this.http.patch(`${environment.apiUrl}orders/${id}`, body);
+  }
 }
