@@ -5,6 +5,7 @@ using API.Extensions;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -78,6 +79,22 @@ namespace API.Controllers
             _context.Orders.Update(orderToUpdate);
                 
             if(await _context.SaveChangesAsync() > 0) return orderToUpdate;
+            return StatusCode(StatusCodes.Status500InternalServerError, "Problem z aktualizacją zlecenia!");
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<ActionResult>UpdateOrderPatch(int id, [FromBody] JsonPatchDocument<Order> patchOrder){
+
+            if(patchOrder == null) return BadRequest(ModelState);
+
+            var orderToUpdate = await _context.Orders.FirstOrDefaultAsync((order) => order.Id == id);
+            if(orderToUpdate == null) return NotFound($"Zlecenie o Id {id} nie istnieje!");
+
+            patchOrder.ApplyTo(orderToUpdate, ModelState);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            if(await _context.SaveChangesAsync() > 0) return NoContent();
+
             return StatusCode(StatusCodes.Status500InternalServerError, "Problem z aktualizacją zlecenia!");
         }
 

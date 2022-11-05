@@ -25,7 +25,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationServices(_config);  // -> ApplicationServiceExtensions (TokenService, DataContext)
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();      // .AddNewtonsoftJson(); added to PATCH perpose
             services.AddCors(); // Add cors 1.
             services.AddSwaggerGen(c =>
             {
