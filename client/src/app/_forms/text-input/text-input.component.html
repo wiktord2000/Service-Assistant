@@ -23,5 +23,10 @@
         <!-- Pole musi zawierać minimum {{registerForm.controls['password'].getError('minlength').requiredLength }} znaków! -->
         Pole musi zawierać minimum {{ngControl.control.errors!['minlength'].requiredLength }} znaków!
     </mat-error>
+
+    <!-- Pattern error -->
+    <mat-error *ngIf="ngControl.control.errors?.pattern">
+        Pole zawiera niedozwolone znaki!
+    </mat-error>
     
 </mat-form-field>
