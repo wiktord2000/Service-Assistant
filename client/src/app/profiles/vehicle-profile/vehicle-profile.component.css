@@ -2,9 +2,9 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    --default: #00796b;
-    --dark: #004c40;
-    --light: #48a999;
+    --tabs-main: #48a999;
+    --tabs-primary: #00796b;
+    --tabs-secondary: #ffffff66;
     --main-border-radius: 1rem;
 }
 
@@ -25,7 +25,7 @@
     min-height: 4em;
     padding: 3em;
     padding-bottom: 1em;
-    background-color: var(--light);
+    background-color: var(--tabs-main);
     position: relative;
     color: white;
 }
@@ -45,7 +45,7 @@
     border-top-right-radius: var(--main-border-radius);
     color: white;
     font-weight: 500;
-    background-color: var(--default);
+    background-color: var(--tabs-primary);
 }
 
 .right-bottom-data{
@@ -58,7 +58,7 @@
 
 .tabs{
     flex: 1 1 auto;
-    border-bottom: 1em solid var(--light);
+    border-bottom: 1em solid var(--tabs-main);
 }
 
 
@@ -98,20 +98,21 @@
 
 
 /* Styling angular material tabs */
-::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label{
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    background-color: #ffffff66;
-    margin-left: 5px;
+    
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        background-color: var(--tabs-secondary);
+        margin-left: 5px;
 }
 
 ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
     color:white;
-    background-color: var(--default);
+    background-color: var(--tabs-primary);
 }
     
 ::ng-deep .mat-tab-list .mat-tab-labels {
-    background-color: var(--light);
+    background-color: var(--tabs-main);
     /* padding-left: 0.25em; */
 }
 
