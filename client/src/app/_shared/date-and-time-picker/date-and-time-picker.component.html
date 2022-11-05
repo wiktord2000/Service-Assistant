@@ -1,0 +1,62 @@
+
+<mat-form-field appearance="outline" [style.fontSize.px]="fontSize">
+
+    <!-- Displaying input -->
+    <input 
+        matInput 
+        type="text" 
+        readonly="true" 
+        value="{{settedDate | date : isTimeSetted ? dateAndTimeFormat : onlyDateFormat}}"
+    >
+
+    <!-- Hidden input for datapicker -->
+    <input 
+        [style.display]="'none'"
+        [formControl]="dateFormControl"
+        [matDatepicker]="datePicker"
+    >
+
+    <!-- Datepicker custom toggle -->
+    <button matSuffix 
+            mat-icon-button 
+            (click)="datePicker.open()"
+    >
+        <mat-icon color="primary">today</mat-icon>
+    </button>
+
+    <!-- Timepicker custome toggle -->
+    <button matSuffix 
+            mat-icon-button 
+            (click)="timePicker.open()"
+    >
+        <mat-icon color="primary">schedule</mat-icon>
+    </button>
+
+</mat-form-field>
+
+<!------------------------------------- Dialog ------------------------------------->
+
+<!-- Datepicker -->
+<mat-datepicker #datePicker></mat-datepicker>
+
+<!-- Timepicker -->
+<ngx-material-timepicker 
+    (timeSet)="onTimeSet($event)"
+    [enableKeyboardInput]="true"
+    [confirmBtnTmpl]="confirmBtnTmpl" 
+    [cancelBtnTmpl]="cancelBtnTmpl" 
+    [theme]="customTheme"
+    [defaultTime]="settedTimeToString()"
+    [format]="24" #timePicker>
+
+    <!-- Custome concel button -->
+    <ng-template #cancelBtnTmpl>
+        <button mat-button>Powrót</button>
+    </ng-template>
+    
+    <!-- Custome confirm button -->
+    <ng-template #confirmBtnTmpl>
+        <button mat-button color="primary">Zatwierdź</button>
+    </ng-template>
+
+</ngx-material-timepicker>

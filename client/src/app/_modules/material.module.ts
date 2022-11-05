@@ -22,6 +22,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+
 
 const material = [
   MatButtonModule,
@@ -48,11 +52,16 @@ const material = [
   MatSnackBarModule,
   MatButtonToggleModule,
   MatTabsModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 ]
 
 @NgModule({
   imports: [material],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pl-PL'}
+  ],
   exports: [material]
 })
 export class MaterialModule { }

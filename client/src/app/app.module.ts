@@ -37,6 +37,9 @@ import { ClientProfileComponent } from './profiles/client-profile/client-profile
 import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
 import { OrderProfileComponent } from './profiles/order-profile/order-profile.component';
 import { VehiclesTableComponent } from './panels/vehicles-panel/vehicles-table/vehicles-table/vehicles-table.component';
+import { ClientProfileLinkComponent } from './_shared/client-profile-link/client-profile-link.component';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { DateAndTimePickerComponent } from './_shared/date-and-time-picker/date-and-time-picker.component';
 
 
 // Let application know what you use in project e.g. components or another modules
@@ -69,7 +72,9 @@ import { VehiclesTableComponent } from './panels/vehicles-panel/vehicles-table/v
     ClientProfileComponent,
     VehicleProfileComponent,
     OrderProfileComponent,
-    VehiclesTableComponent
+    VehiclesTableComponent,
+    ClientProfileLinkComponent,
+    DateAndTimePickerComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +84,8 @@ import { VehiclesTableComponent } from './panels/vehicles-panel/vehicles-table/v
     MaterialModule,
     FormsModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaterialTimepickerModule.setLocale('pl-PL')
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
