@@ -3,10 +3,6 @@
     height: 100%;
 }
 
-::ng-deep .tooltip-class{
-    margin: 0px !important;
-}
-
 .table-container {
     position: relative;
     min-height: 62vh;
@@ -25,12 +21,64 @@
     color: rgba(0, 0, 0, 0.54);
 }
 
+
+/* ---------- Align columns */
+
+/* Status column styling */
 ::ng-deep .mat-column-status .mat-form-field-wrapper{
     padding: 0px !important;
 }
 
 ::ng-deep .mat-column-status .mat-form-field-appearance-outline .mat-form-field-infix{
-    max-width: 9em !important;
-    padding: 0.75em 0 0.75em 0 !important;
+    max-width: 8.5em !important;
+    padding: 0.75em 0 !important;
 }
+
+/* Admission date column styling */
+::ng-deep .mat-column-admissionDate .mat-form-field-wrapper{
+    padding: 0px !important;
+}
+
+::ng-deep .mat-column-admissionDate .mat-form-field-appearance-outline .mat-form-field-infix{
+    max-width: 8.5em !important;
+    padding: 0.75em 0 !important;
+}
+
+/* Deadline date styling */
+::ng-deep .mat-column-deadlineDate .mat-form-field-wrapper{
+    padding: 0px !important;
+}
+
+::ng-deep .mat-column-deadlineDate .mat-form-field-appearance-outline .mat-form-field-infix{
+    max-width: 8.5em !important;
+    padding: 0.75em 0 !important;
+}
+
+/* Make first column's cells little bit left (decrease default padding)*/
+.mat-column-orderNumber.mat-cell{
+    padding-left: 1em;
+}
+
+.mat-column-totalGross{
+    text-align: center;
+}
+
+.mat-column-totalGross.mat-cell{
+    font-size: 13px;
+}
+
+.mat-column-createDate.mat-cell{
+    font-size: 13px;
+}
+
+.mat-column-finishDate.mat-cell{
+    font-size: 13px;
+}
+
+/* Separate columns */
+td.mat-cell:is(.mat-column-createDate, .mat-column-finishDate, .mat-column-admissionDate, .mat-column-deadlineDate, .mat-column-status, .mat-column-vehicle){
+    padding-right: 0.5em;
+}
+
+
 
