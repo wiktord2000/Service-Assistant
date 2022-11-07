@@ -2,10 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { Order } from 'src/app/_models/Order';
-import { Status } from 'src/app/_models/Status';
 import { Vehicle } from 'src/app/_models/Vehicle';
-import { OrdersService } from 'src/app/_services/orders.service';
 import { SnackbarService } from 'src/app/_services/snackbar.service';
 import { VehiclesService } from 'src/app/_services/vehicles.service';
 import { VehiclesTableDataSource } from './vehicles-table-datasource';
@@ -34,10 +31,11 @@ export class VehiclesTableComponent implements OnInit {
               private snackbarService: SnackbarService) {}
   
   ngOnInit(): void {
-    this.dataSource = new VehiclesTableDataSource(this.vehiclesService);
-    // Hide client column
+
+    // Create DataSource (with initialData if needed)
+    this.dataSource = new VehiclesTableDataSource(this.vehiclesService, this.initialData);
+    // Hide client column (if needed)
     this.displayedColumns = this.displayedColumns.filter((column) => !(column === 'currentOwner' && this.hideCurrentOwnerColumn));
-    this.initialData && this.dataSource.setVehicles(this.initialData);
   }
 
   ngAfterViewInit(): void {
