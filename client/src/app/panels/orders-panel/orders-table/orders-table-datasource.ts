@@ -19,8 +19,12 @@ import { OrdersService } from "src/app/_services/orders.service";
   
     private ordersSubject = new BehaviorSubject<Order[]>([]);
   
-    constructor(private ordersService: OrdersService) {
+    constructor(private ordersService: OrdersService, initialData?: Order[]) {
       super();
+      
+      // Fill using initial data if needed
+      this.data = initialData ?? [];
+      this.ordersSubject.next(this.data);   // Maybe not needed
     }
   
     /**

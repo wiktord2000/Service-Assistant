@@ -20,10 +20,9 @@ import { Vehicle } from '../../../../_models/Vehicle';
   
     constructor(private vehiclesService: VehiclesService, initialData?: Vehicle[]) {
       super();
-      if(initialData){
-        this.data = initialData;
-        this.vehiclesSubject.next(initialData);
-      } 
+      // Fill using initial data if needed
+      this.data = initialData ?? [];
+      this.vehiclesSubject.next(initialData); // Maybe not needed
     }
   
     /**
