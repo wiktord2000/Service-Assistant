@@ -12,14 +12,18 @@ import { Vehicle } from '../../../../_models/Vehicle';
  * (including sorting, pagination, and filtering).
  */
  export class VehiclesTableDataSource extends DataSource<Vehicle> {
-    data: Vehicle[] = [];   // current data of table
+    data: Vehicle[];   // current data of table
     paginator: MatPaginator | undefined;
     sort: MatSort | undefined;
       
     private vehiclesSubject = new BehaviorSubject<Vehicle[]>([]);
   
-    constructor(private vehiclesService: VehiclesService) {
+    constructor(private vehiclesService: VehiclesService, initialData?: Vehicle[]) {
       super();
+      if(initialData){
+        this.data = initialData;
+        this.vehiclesSubject.next(initialData);
+      } 
     }
   
     /**
