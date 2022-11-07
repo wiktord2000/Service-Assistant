@@ -94,6 +94,9 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("City")
                         .HasColumnType("TEXT");
 
@@ -142,6 +145,8 @@ namespace API.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Clients");
                 });
@@ -260,6 +265,9 @@ namespace API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Brand")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -316,9 +324,22 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AppUserId");
+
                     b.HasIndex("CurrentOwnerId");
 
                     b.ToTable("Vehicles");
+                });
+
+            modelBuilder.Entity("API.Entities.Client", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "AppUser")
+                        .WithMany("Clients")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("API.Entities.Order", b =>
@@ -354,18 +375,30 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.Vehicle", b =>
                 {
+                    b.HasOne("API.Entities.AppUser", "AppUser")
+                        .WithMany("Vehicles")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("API.Entities.Client", "CurrentOwner")
                         .WithMany("Vehicles")
                         .HasForeignKey("CurrentOwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("AppUser");
+
                     b.Navigation("CurrentOwner");
                 });
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
+                    b.Navigation("Clients");
+
                     b.Navigation("Orders");
+
+                    b.Navigation("Vehicles");
                 });
 
             modelBuilder.Entity("API.Entities.Client", b =>
