@@ -22,16 +22,44 @@
       <!-- Created Date Column -->
       <ng-container matColumnDef="createDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Data utworzenia</th>
-        <td mat-cell *matCellDef="let row">{{row.createdAt | date : 'dd.MM.yyyy, H:mm'}}</td>
+        <td mat-cell [style.font-size.px]="13" *matCellDef="let row">
+          
+          <!-- Only date as string -->
+          <span *ngIf="row.createdAt">
+            {{row.createdAt | date : 'dd.MM.yyyy' }}
+          </span>
+
+          <!-- Time icon with tooltip-->
+          <mat-icon
+            inline
+            *ngIf="row.createdAt"
+            matTooltip="{{row.createdAt | date : 'HH:mm' }}"
+            [matTooltipPosition]="'right'"
+            [matTooltipClass]="'tooltip-class'"
+          >schedule</mat-icon>
+        
+        </td>
       </ng-container>
 
-      <!-- Finish Date Column -->
+      <!-- Status Change Date Column -->
       <ng-container matColumnDef="finishDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Data zmiany statusu</th>
-        <td mat-cell *matCellDef="let row">
+        <td mat-cell [style.font-size.px]="13" *matCellDef="let row">
+           
+          <!-- Only date as string -->
           <span *ngIf="row.finishDate">
-            {{ row.finishDate | date : 'dd.MM.yyyy, H:mm' }}
+            {{row.finishDate | date : 'dd.MM.yyyy' }}
           </span>
+
+          <!-- Time icon with tooltip-->
+          <mat-icon
+            inline
+            *ngIf="row.finishDate"
+            matTooltip="{{row.finishDate | date : 'HH:mm' }}"
+            [matTooltipPosition]="'right'"
+            [matTooltipClass]="'tooltip-class'"
+          >schedule</mat-icon>
+
         </td>
       </ng-container>
   
@@ -68,7 +96,7 @@
           <!-- Link to vehicle -->
           <a *ngIf="row.vehicle"
               matTooltip="Profil pojazdu" 
-              [matTooltipPosition]="'right'" 
+              [matTooltipPosition]="'right'"
               [matTooltipClass]="'tooltip-class'"
               aria-label="Vehicle profile"
               mat-button 
@@ -86,9 +114,13 @@
       <ng-container matColumnDef="admissionDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Dostarczenie auta</th>
         <td mat-cell *matCellDef="let row">
-          <span *ngIf="row.admissionDate; else pickDateButton">
-            {{row.admissionDate | date : 'dd.MM.yyyy, H:mm'}} 
-          </span>
+
+          <!-- Date and Time picker -->
+          <app-date-and-time-picker
+            (dateChange)="onAdmissionDateChange($event, row.id)"
+            [initialDate]="row.admissionDate" >
+          </app-date-and-time-picker>
+
         </td>
       </ng-container>
 
@@ -96,16 +128,20 @@
       <ng-container matColumnDef="deadlineDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Termin naprawy</th>
         <td mat-cell *matCellDef="let row">
-          <span *ngIf="row.deadlineDate; else pickDateButton">
-            {{ row.deadlineDate | date : 'dd.MM.yyyy' }}
-          </span>
+        
+           <!-- Date and Time picker -->
+          <app-date-and-time-picker 
+            (dateChange)="onDeadlineDateChange($event, row.id)"
+            [initialDate]="row.deadlineDate" >
+          </app-date-and-time-picker>
+
         </td>
       </ng-container>
 
       <!-- Total Gross Column -->
       <ng-container matColumnDef="totalGross">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Kwota do zapłaty</th>
-        <td mat-cell *matCellDef="let row">{{ row.totalGross | number : '1.2-2'}} zł</td>
+        <td mat-cell [style.font-size.px]="13" *matCellDef="let row">{{ row.totalGross | number : '1.2-2'}} zł</td>
       </ng-container>
 
       <!-- Actions Column -->
