@@ -55,3 +55,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: rgb(111, 114, 135); 
     color: white;
 }
+
+/* matTooltip global styling */
+.mat-tooltip{
+    margin: 0.5em !important;
+}
