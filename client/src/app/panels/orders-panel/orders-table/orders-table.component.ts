@@ -1,3 +1,4 @@
+import { DateAndTimePickerEvent } from './../../../_shared/date-and-time-picker/date-and-time-picker.component';
 import { SnackbarService } from 'src/app/_services/snackbar.service';
 import { Component, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -42,6 +43,44 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+  onAdmissionDateChange(event: DateAndTimePickerEvent, orderId: number){
+    let orderToUpdate = this.dataSource.getOrders().find(order => order.id === orderId)
+    if(!orderToUpdate){
+      this.snackbarService.showMessage('error', "Niepoprawne id zlecenia");
+    }
+
+    this.ordersService.updateOrderPatch(orderId, {admissionDate: event.date}).subscribe({
+      next: () => {
+        this.snackbarService.showMessage('success', "Pomyślnie zaktualizowano datę");
+      },
+      error: (error) => {
+        console.log(error);
+        this.snackbarService.showMessage('error', "Nie udało się zaktualizować daty");
+        // Restore previous date
+        event.restorePreviousDate();
+      }
+    })
+  }
+
+  onDeadlineDateChange(event: DateAndTimePickerEvent, orderId: number){
+    let orderToUpdate = this.dataSource.getOrders().find(order => order.id === orderId)
+    if(!orderToUpdate){
+      this.snackbarService.showMessage('error', "Niepoprawne id zlecenia");
+    }
+
+    this.ordersService.updateOrderPatch(orderId, {deadlineDate: event.date}).subscribe({
+      next: () => {
+        this.snackbarService.showMessage('success', "Pomyślnie zaktualizowano datę");
+      },
+      error: (error) => {
+        console.log(error);
+        this.snackbarService.showMessage('error', "Nie udało się zaktualizować daty");
+        // Restore previous date
+        event.restorePreviousDate();
+      }
+    })
   }
 
   onStatusUpdate(updatedStatus: Status){
