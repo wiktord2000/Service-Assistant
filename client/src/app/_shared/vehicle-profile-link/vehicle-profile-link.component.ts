@@ -1,0 +1,21 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
+import { TooltipPosition } from '@angular/material/tooltip';
+import { Vehicle } from 'src/app/_models/Vehicle';
+
+@Component({
+  selector: 'app-vehicle-profile-link',
+  templateUrl: './vehicle-profile-link.component.html',
+  styleUrls: ['./vehicle-profile-link.component.css']
+})
+export class VehicleProfileLinkComponent implements OnInit {
+
+  @Input() vehicle: Vehicle;
+  @Input() tooltipPosition: TooltipPosition = "right";
+  @Input() color: ThemePalette = "primary";
+  @Input() customColor?: string;
+  @Input() containLabel: boolean = false;
+
+  ngOnInit(): void {
+  }
+}
