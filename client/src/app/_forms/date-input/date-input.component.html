@@ -21,7 +21,12 @@
     </mat-datepicker-toggle>
 
     <!-- Clear button if needed -->
-    <button *ngIf="includeClearBtn" matSuffix mat-icon-button aria-label="Clear" (click)="clearDate($event)">
+    <button *ngIf="includeClearBtn" 
+            type="button"  
+            matSuffix 
+            mat-icon-button 
+            aria-label="Clear" 
+            (click)="clearDate()">
         <mat-icon color="warn">close</mat-icon>
     </button>
 

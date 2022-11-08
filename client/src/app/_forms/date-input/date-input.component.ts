@@ -19,8 +19,7 @@ export class DateInputComponent implements OnInit {
 
   ngOnInit(): void {}
   
-  clearDate(event){
-    event.preventDefault();     // Prevent form submit
+  clearDate(){
     this.ngControl.control.setValue(null);
   }
 
