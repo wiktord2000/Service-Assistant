@@ -3,10 +3,6 @@
     height: 100%;
 }
 
-::ng-deep .tooltip-class{
-    margin: 0px !important;
-}
-
 .table-container {
     position: relative;
     min-height: 62vh;
@@ -23,4 +19,9 @@
     min-height: 25em;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.54);
+}
+
+/* Separate the columns content*/
+td.mat-cell{
+    padding-right: 0.5em !important;
 }
