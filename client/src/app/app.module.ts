@@ -40,6 +40,7 @@ import { VehiclesTableComponent } from './panels/vehicles-panel/vehicles-table/v
 import { ClientProfileLinkComponent } from './_shared/client-profile-link/client-profile-link.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { DateAndTimePickerComponent } from './_shared/date-and-time-picker/date-and-time-picker.component';
+import { VehicleProfileLinkComponent } from './_shared/vehicle-profile-link/vehicle-profile-link.component';
 
 
 // Let application know what you use in project e.g. components or another modules
@@ -74,7 +75,8 @@ import { DateAndTimePickerComponent } from './_shared/date-and-time-picker/date-
     OrderProfileComponent,
     VehiclesTableComponent,
     ClientProfileLinkComponent,
-    DateAndTimePickerComponent
+    DateAndTimePickerComponent,
+    VehicleProfileLinkComponent
   ],
   imports: [
     BrowserModule,

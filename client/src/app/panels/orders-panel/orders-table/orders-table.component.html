@@ -2,7 +2,7 @@
 
   <div [ngClass]="fixedSize && 'table-container'" style="overflow: auto;">
 
-    <table mat-table class="full-width-table" matSort aria-label="Elements">
+    <table *ngIf="dataSource" mat-table class="full-width-table" matSort aria-label="Elements">
       <!-- Order Number Column (string) -->
       <ng-container matColumnDef="orderNumber">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Numer zlecenia</th>
