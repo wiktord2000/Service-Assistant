@@ -4,13 +4,13 @@
         <div class="header header-border-radius">
             
             <!-- Vehicle brand -->
-            <div style="font-size: 28px; font-weight: '500';">
+            <div class="vehicle-brand-and-model">
                 {{vehicle.brand}} {{vehicle.model}}
             </div>
             
             <!-- Vehicle Production Date -->
             <div 
-                style="font-size: 16px; font-weight: 500; margin-top: 0.25em">
+                class="vehicle-production-date">
                 {{vehicle.productionDate}}
             </div>
 
@@ -129,16 +129,20 @@
             </app-text-input>
 
             <!-- Technical Inspection End -->
-            <app-text-input 
-                [label]="'Ważność przeglądu'" 
+            <app-date-input
+                [label]="'Ważność przeglądu'"
+                [minDate]="getCurrentDate()"
+                [includeClearBtn]="true"
                 [formControl]="editForm.controls['technicalInspectionEnd']">
-            </app-text-input>
+            </app-date-input>
 
             <!-- First Registration -->
-            <app-text-input 
-                [label]="'Data pierwszej rejestracji'" 
+            <app-date-input
+                [label]="'Data pierwszej rejestracji'"
+                [maxDate]="getCurrentDate()"
+                [includeClearBtn]="true"
                 [formControl]="editForm.controls['firstRegistration']">
-            </app-text-input>
+            </app-date-input>
 
             <!-- Absorb space (if not even) -->
             <div></div>
@@ -153,6 +157,8 @@
                 </button>
             </div>
         </form>
+
+        <div>{{editForm.value | json}}</div>
 
     </div>
 

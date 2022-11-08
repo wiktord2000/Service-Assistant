@@ -21,9 +21,9 @@ export class VehicleProfileComponent implements OnInit {
     private snackbarService: SnackbarService,
     private activatedRoute: ActivatedRoute ) { }
 
-ngOnInit(): void {
-  this.loadVehicle();
-}
+  ngOnInit(): void {
+    this.loadVehicle();
+  }
 
   loadVehicle(){
 
@@ -37,26 +37,32 @@ ngOnInit(): void {
                                   ? vehicle.currentOwner.companyName 
                                   : vehicle.currentOwner.firstname + " " + vehicle.currentOwner.lastname;
 
+      const numberRegex = /^\d+$/;
+
       // Build form
       this.editForm = this.formBuilder.group(
         {
-          brand: [ vehicle.brand, [Validators.required]],
-          model: [ vehicle.model, [Validators.required]],
-          color: [ vehicle.color],
+          brand: [vehicle.brand, [Validators.required]],
+          model: [vehicle.model, [Validators.required]],
+          color: [vehicle.color],
           registrationNumber: [vehicle.registrationNumber],
-          productionDate: [vehicle.productionDate],
+          productionDate: [vehicle.productionDate, [Validators.pattern(numberRegex)]],
           currentOwner: [currentOwnerName],
           engineFuel: [vehicle.engineFuel],
           vin: [vehicle.vin],
           engineCode: [vehicle.engineCode],
-          capacity: [vehicle.capacity],
-          enginePower: [vehicle.enginePower],
+          capacity: [vehicle.capacity, [Validators.pattern(numberRegex)]],
+          enginePower: [vehicle.enginePower, [Validators.pattern(numberRegex)]],
           technicalInspectionEnd: [vehicle.technicalInspectionEnd],
-          firstRegistration: [new Date(vehicle.firstRegistration).toLocaleDateString()],
+          firstRegistration: [vehicle.firstRegistration],
           description: [vehicle.description],
         }
       );
     });
+  }
+
+  getCurrentDate(){
+    return new Date();
   }
 
 }

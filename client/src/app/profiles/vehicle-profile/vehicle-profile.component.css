@@ -35,6 +35,17 @@
     border-top-right-radius: var(--main-border-radius);
 }
 
+.vehicle-brand-and-model{
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.vehicle-production-date{
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 0.25em;
+}
+
 .right-corner-label{
     position: absolute;
     top: 0;
