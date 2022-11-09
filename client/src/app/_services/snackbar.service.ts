@@ -1,4 +1,4 @@
-import { SnackbarComponent } from './../snackbar/snackbar.component';
+import { SnackbarComponent } from '../_shared/snackbar/snackbar.component';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarRef } from '@angular/material/snack-bar';
 import { Injectable } from '@angular/core';
 import { SNACKBAR_TYPE } from '../_types/snackbar-type';

@@ -1,10 +1,10 @@
-import { VehiclesService } from '../../../../_services/vehicles.service';
-import { Client } from '../../../../_models/Client';
+import { VehiclesService } from '../../../_services/vehicles.service';
+import { Client } from '../../../_models/Client';
 import { DataSource } from "@angular/cdk/collections";
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
 import { BehaviorSubject, map, merge, Observable } from "rxjs";
-import { Vehicle } from '../../../../_models/Vehicle';
+import { Vehicle } from '../../../_models/Vehicle';
 
 /**
  * Data source for the TableExample view. This class should

@@ -23,7 +23,7 @@ import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.comp
 import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
 import { PartsPanelComponent } from './panels/parts-panel/parts-panel.component';
 import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
-import { SnackbarComponent } from './snackbar/snackbar.component';
+import { SnackbarComponent } from './_shared/snackbar/snackbar.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
@@ -31,17 +31,17 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { PasswordInputComponent } from './_forms/password-input/password-input.component';
 import { DateInputComponent } from './_forms/date-input/date-input.component';
-import { OrdersTableComponent } from './panels/orders-panel/orders-table/orders-table.component';
-import { StatusSelectorComponent } from './panels/orders-panel/orders-table/status-selector/status-selector.component';
 import { ClientProfileComponent } from './profiles/client-profile/client-profile.component';
 import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
 import { OrderProfileComponent } from './profiles/order-profile/order-profile.component';
-import { VehiclesTableComponent } from './panels/vehicles-panel/vehicles-table/vehicles-table/vehicles-table.component';
 import { ClientProfileLinkComponent } from './_shared/client-profile-link/client-profile-link.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { DateAndTimePickerComponent } from './_shared/date-and-time-picker/date-and-time-picker.component';
 import { VehicleProfileLinkComponent } from './_shared/vehicle-profile-link/vehicle-profile-link.component';
 import { DateAndTimeInputComponent } from './_forms/date-and-time-input/date-and-time-input.component';
+import { StatusSelectorComponent } from './_shared/tables/orders-table/status-selector/status-selector.component';
+import { OrdersTableComponent } from './_shared/tables/orders-table/orders-table.component';
+import { VehiclesTableComponent } from './_shared/tables/vehicles-table/vehicles-table.component';
 
 
 // Let application know what you use in project e.g. components or another modules

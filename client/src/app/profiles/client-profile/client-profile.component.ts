@@ -1,3 +1,4 @@
+import { OrdersTableComponent } from './../../_shared/tables/orders-table/orders-table.component';
 import { SnackbarService } from './../../_services/snackbar.service';
 import { ClientsService } from '../../_services/clients.service';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
@@ -5,7 +6,6 @@ import { Client } from '../../_models/Client';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
-import { OrdersTableComponent } from 'src/app/panels/orders-panel/orders-table/orders-table.component';
 import { Order } from 'src/app/_models/Order';
 
 @Component({

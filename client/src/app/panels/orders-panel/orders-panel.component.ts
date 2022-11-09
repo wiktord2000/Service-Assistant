@@ -1,10 +1,11 @@
 import { AfterViewInit } from '@angular/core';
 // import orders from '../../_seed-data/oders.json' and in the class we have to add prop ->  orders: Order[] = orders;      // Seed data from json file
-import { OrdersTableComponent } from './orders-table/orders-table.component';
 import { OrdersService } from './../../_services/orders.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SnackbarService } from 'src/app/_services/snackbar.service';
 import { FormControl } from '@angular/forms';
+import { OrdersTableComponent } from 'src/app/_shared/tables/orders-table/orders-table.component';
+
 
 
 @Component({
