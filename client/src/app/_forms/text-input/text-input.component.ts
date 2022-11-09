@@ -10,6 +10,7 @@ export class TextInputComponent implements ControlValueAccessor{
 
   @Input() label: string;
   @Input() type = 'text';
+  @Input() isTextArea: boolean;
   
   constructor(@Self() public ngControl: NgControl) { 
     this.ngControl.valueAccessor = this; 

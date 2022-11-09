@@ -2,8 +2,10 @@
 
     <!-- Label -->
     <mat-label>{{label}}</mat-label>
-    <!-- Input -->
-    <input type={{type}} [formControl]="ngControl.control" matInput>
+    
+    <!-- Input (simple input / textArea) -->
+    <input *ngIf="!isTextArea" type={{type}} [formControl]="ngControl.control" spellcheck="false" matInput>
+    <textarea *ngIf="isTextArea" type={{type}} [formControl]="ngControl.control" spellcheck="false" matInput></textarea>
 
     <!------------------------------------------------ Possible errors ---------------------------------------------->
 
