@@ -6,6 +6,8 @@ import { Vehicle } from '../../_models/Vehicle';
 import { VehiclesService } from '../../_services/vehicles.service';
 import { Order } from 'src/app/_models/Order';
 import { OrdersTableComponent } from 'src/app/_shared/tables/orders-table/orders-table.component';
+import { finalize } from 'rxjs';
+import { Client } from 'src/app/_models/Client';
 
 @Component({
   selector: 'app-vehicle-profile',
@@ -15,7 +17,8 @@ import { OrdersTableComponent } from 'src/app/_shared/tables/orders-table/orders
 export class VehicleProfileComponent implements OnInit {
 
   @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;
-  vehicle: Vehicle; 
+  vehicle: Vehicle;
+  currentOwner: Client; 
   editForm : FormGroup;
   displayFinished: boolean = false;
   isSaving: boolean = false;
@@ -29,12 +32,34 @@ export class VehicleProfileComponent implements OnInit {
     this.loadVehicle();
   }
 
+  onSaveChanges(){
+    this.isSaving = true;
+    const updatData = {...this.editForm.value, currentOwnerId: this.currentOwner.id};
+    this.vehiclesService.updateVehicle(this.vehicle.id, updatData)
+      .pipe(
+        finalize(() => {
+          this.isSaving = false;
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.vehicle = {...this.vehicle, ...updatData};    // Update specific props -> really handy
+          this.snackbarService.showMessage('success', "Pomyślnie zaktualizowano dane pojazdu");
+          this.editForm.reset(this.vehicle);
+        },
+        error: (error) => {
+          this.snackbarService.showMessage('error', error);
+        }
+    });
+  }
+
   loadVehicle(){
 
     const vehicleId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.vehiclesService.getVehicle(vehicleId).subscribe(vehicle => {
-      // Store client data
+      // Store client and current owner data
       this.vehicle = vehicle;
+      this.currentOwner = vehicle.currentOwner;
 
       // Obtain owner name
       const currentOwnerName = vehicle.currentOwner.type === 'company' 
@@ -58,7 +83,7 @@ export class VehicleProfileComponent implements OnInit {
           capacity: [vehicle.capacity, [Validators.pattern(numberRegex)]],
           enginePower: [vehicle.enginePower, [Validators.pattern(numberRegex)]],
           technicalInspectionEnd: [vehicle.technicalInspectionEnd],
-          firstRegistration: [vehicle.firstRegistration],
+          firstRegistration: [new Date(vehicle.firstRegistration)],
           description: [vehicle.description],
         }
       );

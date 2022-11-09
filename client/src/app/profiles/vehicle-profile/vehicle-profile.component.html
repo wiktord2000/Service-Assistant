@@ -28,7 +28,7 @@
                     *ngIf="vehicle.currentOwner"
                     [containLabel] = "true" 
                     [customColor]="'white'" 
-                    [client]="vehicle.currentOwner">
+                    [client]="currentOwner">
                 </app-client-profile-link>
 
             </div>
@@ -136,6 +136,13 @@
                 [formControl]="editForm.controls['technicalInspectionEnd']">
             </app-date-input>
 
+            <!-- Description -->
+            <app-text-input 
+                [isTextArea]="true"
+                [label]="'Opis'" 
+                [formControl]="editForm.controls['description']">
+            </app-text-input>
+
             <!-- First Registration -->
             <app-date-input
                 [label]="'Data pierwszej rejestracji'"
@@ -143,9 +150,6 @@
                 [includeClearBtn]="true"
                 [formControl]="editForm.controls['firstRegistration']">
             </app-date-input>
-
-            <!-- Absorb space (if not even) -->
-            <div></div>
 
             <div class="save-button-area">
                 <button mat-raised-button 

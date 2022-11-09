@@ -21,4 +21,8 @@ export class VehiclesService {
     return this.http.get<Vehicle[]>(this.baseUrl + 'vehicles');
   }
 
+  updateVehicle(id: number, vehicle: Vehicle){
+    return this.http.put<Vehicle>(this.baseUrl + 'vehicles/' + id, vehicle);
+  }
+
 }
