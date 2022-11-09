@@ -169,6 +169,31 @@
     
     <div class="tab-wrapper">
 
+        <div class="filters-wrapper">
+            <!-- Add order button -->
+            <button mat-raised-button 
+                color="primary"
+                aria-label="Add order button"> 
+                    Dodaj zlecenie
+                <mat-icon>add</mat-icon>
+            </button>
+            <!-- Hide finished toggle -->
+            <mat-slide-toggle 
+                (toggleChange)="onToggleChange()"
+                color="primary" 
+                checked="displayFinished">
+                    Ukryj zakończone
+            </mat-slide-toggle>
+        </div>
+
+        <!-- Table -->
+        <app-orders-table 
+            [hideVehicleColumn]="true"
+            [fixedSize]="false"
+            [matElevationValue]=1
+            [initialData]="filterFinshedOrders(vehicle.orders)" 
+            [hideClientColumn]="true">
+        </app-orders-table>
     </div>
 
 </ng-template>

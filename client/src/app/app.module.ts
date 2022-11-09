@@ -89,7 +89,7 @@ import { VehiclesTableComponent } from './_shared/tables/vehicles-table/vehicles
     FormsModule,
     SharedModule,
     ReactiveFormsModule,
-    NgxMaterialTimepickerModule.setLocale('pl-PL')
+    NgxMaterialTimepickerModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

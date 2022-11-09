@@ -1,9 +1,11 @@
 import { SnackbarService } from 'src/app/_services/snackbar.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Vehicle } from '../../_models/Vehicle';
 import { VehiclesService } from '../../_services/vehicles.service';
+import { Order } from 'src/app/_models/Order';
+import { OrdersTableComponent } from 'src/app/_shared/tables/orders-table/orders-table.component';
 
 @Component({
   selector: 'app-vehicle-profile',
@@ -12,8 +14,10 @@ import { VehiclesService } from '../../_services/vehicles.service';
 })
 export class VehicleProfileComponent implements OnInit {
 
+  @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;
   vehicle: Vehicle; 
   editForm : FormGroup;
+  displayFinished: boolean = false;
   isSaving: boolean = false;
 
   constructor(private vehiclesService: VehiclesService,
@@ -63,6 +67,17 @@ export class VehicleProfileComponent implements OnInit {
 
   getCurrentDate(){
     return new Date();
+  }
+
+  onToggleChange(){
+    this.displayFinished = !this.displayFinished;
+    this.displayFinished 
+      ? this.ordersTable.dataSource.setOrders(this.vehicle.orders)
+      : this.ordersTable.dataSource.setOrders(this.filterFinshedOrders(this.vehicle.orders));
+  }
+
+  filterFinshedOrders(orders: Order[]){
+    return orders.filter((order) => order.status.position !== 4);
   }
 
 }
