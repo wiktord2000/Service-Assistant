@@ -25,6 +25,18 @@ namespace API.Controllers
             _context = context;
         }
 
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ClientDto>>> GetClients()
+        {   
+            var username = User.GetUsername();    // -> Extensions
+
+            return await _context.Clients
+                            .Where(client => client.AppUser.UserName == username)
+                            .ProjectTo<ClientDto>(_mapper.ConfigurationProvider)
+                            .ToListAsync();
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ClientDetailsDto>> GetClient(int id)
         {   
