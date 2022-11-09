@@ -24,7 +24,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
 
 
 const material = [
@@ -54,13 +55,15 @@ const material = [
   MatTabsModule,
   MatSlideToggleModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatMomentDateModule
 ]
 
 @NgModule({
   imports: [material],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'pl-PL'}
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true }},
+    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' },
   ],
   exports: [material]
 })
