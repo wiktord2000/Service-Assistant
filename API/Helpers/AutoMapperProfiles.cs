@@ -19,6 +19,7 @@ namespace API.Helpers
             CreateMap<Status, StatusDto>();
             CreateMap<Status, StatusDto>().ReverseMap();
             CreateMap<ClientUpdateDto, Client>();
+            CreateMap<VehicleUpdateDto, Vehicle>();
             // CreateMap<Order, OrderDto>();
         }
     }
