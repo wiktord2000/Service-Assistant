@@ -26,5 +26,6 @@ namespace API.DTOs
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public ClientDto CurrentOwner { get; set; }
+        public ICollection<OrderDto> Orders { get; set; }
     }
 }
