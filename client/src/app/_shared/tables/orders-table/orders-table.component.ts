@@ -21,6 +21,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatTable) table!: MatTable<Order>;
   @Input() initialData?: Order[];
   @Input() hideClientColumn?: boolean = false;
+  @Input() hideVehicleColumn?: boolean = false;
   @Input() matElevationValue?: number = 8;
   @Input() fixedSize?: boolean = true;
 
@@ -34,8 +35,11 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
   
   ngOnInit(): void {
     this.dataSource = new OrdersTableDataSource(this.ordersService);
-    // Hide client column
-    this.displayedColumns = this.displayedColumns.filter((column) => !(column === 'client' && this.hideClientColumn));
+
+    // Hide client or/and vehicle column if needed
+    this.displayedColumns = this.displayedColumns
+      .filter((column) => !((column === 'client' && this.hideClientColumn) || (column === 'vehicle' && this.hideVehicleColumn)));
+
     this.initialData && this.dataSource.setOrders(this.initialData);
   }
 
@@ -46,6 +50,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
   }
 
   onAdmissionDateChange(event: DateAndTimePickerEvent, orderId: number){
+
     let orderToUpdate = this.dataSource.getOrders().find(order => order.id === orderId)
     if(!orderToUpdate){
       this.snackbarService.showMessage('error', "Niepoprawne id zlecenia");
