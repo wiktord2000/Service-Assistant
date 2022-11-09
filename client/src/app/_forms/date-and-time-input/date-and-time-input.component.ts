@@ -51,6 +51,7 @@ export class DateAndTimeInputComponent implements OnInit {
     
     // Update control
     this.ngControl.control.setValue(newDate);
+    this.ngControl.control.parent.markAsDirty();
     this.isTimeSetted = true;
   }
 
