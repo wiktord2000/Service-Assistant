@@ -1,5 +1,23 @@
-<div class="client-panel-container">
-    <p>clients-panel works!</p>
+<div class="clients-panel-container">
+    <div class="content-wrapper">
+
+        <!-- Filters section -->
+        <div class="filters-wrapper">
+          
+            <!-- Add client button -->
+            <button mat-raised-button 
+                    color="primary"
+                    aria-label="Add client button"> 
+  
+                Dodaj klienta
+              <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+        <!-- Clients table -->
+        <app-clients-table></app-clients-table>
+
+    </div>
 </div>
 
 
