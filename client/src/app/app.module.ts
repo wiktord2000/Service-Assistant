@@ -42,6 +42,8 @@ import { DateAndTimeInputComponent } from './_forms/date-and-time-input/date-and
 import { StatusSelectorComponent } from './_shared/tables/orders-table/status-selector/status-selector.component';
 import { OrdersTableComponent } from './_shared/tables/orders-table/orders-table.component';
 import { VehiclesTableComponent } from './_shared/tables/vehicles-table/vehicles-table.component';
+import { ClientsTableComponent } from './_shared/tables/clients-table/clients-table.component';
+import { SendEmailLinkComponent } from './_shared/send-email-link/send-email-link.component';
 
 
 // Let application know what you use in project e.g. components or another modules
@@ -78,7 +80,9 @@ import { VehiclesTableComponent } from './_shared/tables/vehicles-table/vehicles
     ClientProfileLinkComponent,
     DateAndTimePickerComponent,
     VehicleProfileLinkComponent,
-    DateAndTimeInputComponent
+    DateAndTimeInputComponent,
+    ClientsTableComponent,
+    SendEmailLinkComponent
   ],
   imports: [
     BrowserModule,

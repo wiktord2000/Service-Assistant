@@ -40,12 +40,9 @@
                     <div>NIP: {{client.nip}}</div>
                 </div>
 
-                <!-- E-mail -->
+                <!-- E-mail link-->
                 <div>
-                    <button mat-button>
-                        <mat-icon style="margin-right: 2px;">forward_to_inbox</mat-icon>
-                        {{client.email}}
-                    </button>
+                    <app-send-email-link [customColor]="'white'" [email]="client.email"></app-send-email-link>
                 </div>
 
             </div>

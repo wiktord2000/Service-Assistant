@@ -12,6 +12,10 @@ export class ClientsService {
 
   constructor(private http: HttpClient) { }
 
+  getClients(){
+    return this.http.get<Client[]>(this.baseUrl + 'clients/');
+  }
+
   getClient(id: number) {
     return this.http.get<Client>(this.baseUrl + 'clients/' + id);
   }
