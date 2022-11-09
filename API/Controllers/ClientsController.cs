@@ -48,6 +48,9 @@ namespace API.Controllers
 
             if(clientToUpdate == null) return NotFound($"Klient o Id {id} nie istnieje!");
 
+            // Change UpdateAt date
+            client.UpdatedAt = DateTime.Now;
+
             _mapper.Map(client, clientToUpdate);
             _context.Clients.Update(clientToUpdate);
 

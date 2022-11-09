@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
+using API.Entities;
 using API.Extensions;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -49,6 +50,25 @@ namespace API.Controllers
             if(vehicle == null) return NotFound("Nie znaleziono pojazdu o podanym id!");
 
             return vehicle;
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateVehicle(int id, VehicleUpdateDto vehicle)
+        {   
+            // var username = User.GetUsername();    // -> Extensions
+
+            Vehicle vehicleToUpdate = await _context.Vehicles.FirstOrDefaultAsync(vehicle => vehicle.Id == id);
+
+            if(vehicleToUpdate == null) return NotFound($"Pojazd o Id {id} nie istnieje!");
+
+            // Change UpdateAt date
+            vehicle.UpdatedAt = DateTime.Now;
+
+            _mapper.Map(vehicle, vehicleToUpdate);
+            _context.Vehicles.Update(vehicleToUpdate);
+
+            if(await _context.SaveChangesAsync() > 0) return NoContent();
+            return StatusCode(StatusCodes.Status500InternalServerError, "Problem z aktualizacją pojazdu!");
         }
 
     }
