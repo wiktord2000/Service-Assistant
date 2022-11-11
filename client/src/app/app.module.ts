@@ -44,6 +44,7 @@ import { OrdersTableComponent } from './_shared/tables/orders-table/orders-table
 import { VehiclesTableComponent } from './_shared/tables/vehicles-table/vehicles-table.component';
 import { ClientsTableComponent } from './_shared/tables/clients-table/clients-table.component';
 import { SendEmailLinkComponent } from './_shared/send-email-link/send-email-link.component';
+import { ClientSelectInputComponent } from './_forms/client-select-input/client-select-input.component';
 
 
 // Let application know what you use in project e.g. components or another modules
@@ -82,7 +83,8 @@ import { SendEmailLinkComponent } from './_shared/send-email-link/send-email-lin
     VehicleProfileLinkComponent,
     DateAndTimeInputComponent,
     ClientsTableComponent,
-    SendEmailLinkComponent
+    SendEmailLinkComponent,
+    ClientSelectInputComponent
   ],
   imports: [
     BrowserModule,
