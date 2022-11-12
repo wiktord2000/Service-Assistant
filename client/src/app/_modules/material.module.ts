@@ -26,6 +26,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 const material = [
@@ -56,7 +57,8 @@ const material = [
   MatSlideToggleModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatMomentDateModule
+  MatMomentDateModule,
+  MatAutocompleteModule
 ]
 
 @NgModule({

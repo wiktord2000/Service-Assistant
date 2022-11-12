@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Client } from '../_models/Client';
@@ -14,6 +14,16 @@ export class ClientsService {
 
   getClients(){
     return this.http.get<Client[]>(this.baseUrl + 'clients/');
+  }
+
+  getClientsSearch(clientsNumber: number, match: string){
+
+    let params = new HttpParams().appendAll({
+      clientsNumber: clientsNumber,
+      match: match
+    })
+
+    return this.http.get<Client[]>(this.baseUrl + 'clients/search', {params});
   }
 
   getClient(id: number) {
