@@ -93,10 +93,11 @@
             </app-text-input>
 
             <!-- Current owner -->
-            <app-text-input 
+            <app-client-select-input
+                [selectedClient]="currentOwner"
                 [label]="'Właściciel'" 
                 [formControl]="editForm.controls['currentOwner']">
-            </app-text-input>
+            </app-client-select-input>
 
             <!-- Engine fuel -->
             <app-text-input 
