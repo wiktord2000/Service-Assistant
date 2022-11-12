@@ -22,7 +22,7 @@ export class ClientsTableComponent implements OnInit {
   @Input() fixedSize?: boolean = true;
 
   dataSource: ClientsTableDataSource;
-  displayedColumns= ["client", "address", "phone", "email"];
+  displayedColumns= ["client", "address", "phone", "email", "actions"];
                       
 
   
