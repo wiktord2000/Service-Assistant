@@ -1,0 +1,36 @@
+<mat-form-field *ngIf="clients" appearance="fill">
+
+    <!-- Label -->
+    <mat-label>{{label}}</mat-label>
+
+    <!-- Input -->
+    <input type="text"
+           aria-label="Number"
+           matInput
+           [formControl]="ngControl.control"
+           [matAutocomplete]="auto">
+
+    <!-- Add button if not found -->
+    <button *ngIf="ngControl.control.invalid"
+            (click)="onAddClient($event)"
+            matSuffix 
+            matTooltip="Dodaj klienta" 
+            [matTooltipPosition]="'right'" 
+            mat-icon-button
+    >
+        <mat-icon color="primary">add</mat-icon>
+    </button>
+
+    <!-- Error -->
+    <mat-error *ngIf="ngControl.control.invalid">Wprowadzony {{label.toLowerCase()}} nie istnieje. Dodaj go, aby zapisać zmiany.</mat-error>
+
+    <!-- Autocomplate -->
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option 
+            *ngFor="let client of filteredClients | async"
+            [value]="clientToString(client)">
+        {{clientToString(client)}}
+      </mat-option>
+    </mat-autocomplete>
+
+</mat-form-field>
