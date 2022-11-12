@@ -17,10 +17,6 @@ export class ClientProfileLinkComponent implements OnInit {
   @Input() color: ThemePalette = "primary";
   @Input() customColor?: string;
   @Input() containLabel: boolean = false;
-  isCompany: boolean;
 
-  ngOnInit(): void {
-    this.isCompany = this.client.type === 'company';
-  }
-
+  ngOnInit(): void {}
 }
