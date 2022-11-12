@@ -32,7 +32,7 @@ namespace API.Entities
 
         // Foreign keys
         public int AppUserId { get; set; }
-        public int CurrentOwnerId { get; set; }
+        public int? CurrentOwnerId { get; set; }
         public AppUser AppUser { get; set; }
         public Client CurrentOwner { get; set; }
         public ICollection<Order> Orders { get; set; }

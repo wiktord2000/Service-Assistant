@@ -23,7 +23,7 @@ namespace API.DTOs
         public DateTime? FirstRegistration { get; set; }
         public DateTime? TechnicalInspectionEnd { get; set; }
         public string Description { get; set; }
-        public int CurrentOwnerId { get; set; }
+        public int? CurrentOwnerId { get; set; }
         public DateTime UpdatedAt { get; set; }
     }
 }

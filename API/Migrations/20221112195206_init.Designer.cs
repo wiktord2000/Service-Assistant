@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221109184633_init")]
+    [Migration("20221112195206_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -283,7 +283,7 @@ namespace API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CurrentOwnerId")
+                    b.Property<int?>("CurrentOwnerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -385,9 +385,7 @@ namespace API.Migrations
 
                     b.HasOne("API.Entities.Client", "CurrentOwner")
                         .WithMany("Vehicles")
-                        .HasForeignKey("CurrentOwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CurrentOwnerId");
 
                     b.Navigation("AppUser");
 

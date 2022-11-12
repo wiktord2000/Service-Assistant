@@ -281,7 +281,7 @@ namespace API.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("CurrentOwnerId")
+                    b.Property<int?>("CurrentOwnerId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
@@ -383,9 +383,7 @@ namespace API.Migrations
 
                     b.HasOne("API.Entities.Client", "CurrentOwner")
                         .WithMany("Vehicles")
-                        .HasForeignKey("CurrentOwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CurrentOwnerId");
 
                     b.Navigation("AppUser");
 

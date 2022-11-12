@@ -115,7 +115,7 @@ namespace API.Migrations
                     CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
                     AppUserId = table.Column<int>(type: "INTEGER", nullable: false),
-                    CurrentOwnerId = table.Column<int>(type: "INTEGER", nullable: false)
+                    CurrentOwnerId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -124,8 +124,7 @@ namespace API.Migrations
                         name: "FK_Vehicles_Clients_CurrentOwnerId",
                         column: x => x.CurrentOwnerId,
                         principalTable: "Clients",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Vehicles_Users_AppUserId",
                         column: x => x.AppUserId,
