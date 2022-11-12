@@ -37,6 +37,23 @@ namespace API.Controllers
                             .ToListAsync();
         }
 
+        [HttpGet]
+        [Route("search")]
+        public async Task<ActionResult<IEnumerable<ClientDto>>> GetClientsSerach([FromQuery] int clientsNumber, [FromQuery] string match)
+        {   
+            var username = User.GetUsername();    // -> Extensions
+
+            return await _context.Clients
+                    .Where(client => (client.AppUser.UserName == username 
+                        && ((client.Type == "company" ? client.CompanyName : client.Firstname + " " + client.Lastname).ToLower().Contains(match) 
+                        || match == null))) 
+                            
+                    .Take(clientsNumber)
+                    .ProjectTo<ClientDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
+        }
+
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ClientDetailsDto>> GetClient(int id)
         {   
