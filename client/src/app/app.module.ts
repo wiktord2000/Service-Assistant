@@ -34,17 +34,18 @@ import { DateInputComponent } from './_forms/date-input/date-input.component';
 import { ClientProfileComponent } from './profiles/client-profile/client-profile.component';
 import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
 import { OrderProfileComponent } from './profiles/order-profile/order-profile.component';
-import { ClientProfileLinkComponent } from './_shared/client-profile-link/client-profile-link.component';
+import { ClientProfileLinkComponent } from './_shared/_links/client-profile-link/client-profile-link.component';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { DateAndTimePickerComponent } from './_shared/date-and-time-picker/date-and-time-picker.component';
-import { VehicleProfileLinkComponent } from './_shared/vehicle-profile-link/vehicle-profile-link.component';
+import { VehicleProfileLinkComponent } from './_shared/_links/vehicle-profile-link/vehicle-profile-link.component';
 import { DateAndTimeInputComponent } from './_forms/date-and-time-input/date-and-time-input.component';
-import { StatusSelectorComponent } from './_shared/tables/orders-table/status-selector/status-selector.component';
-import { OrdersTableComponent } from './_shared/tables/orders-table/orders-table.component';
-import { VehiclesTableComponent } from './_shared/tables/vehicles-table/vehicles-table.component';
-import { ClientsTableComponent } from './_shared/tables/clients-table/clients-table.component';
-import { SendEmailLinkComponent } from './_shared/send-email-link/send-email-link.component';
+import { StatusSelectorComponent } from './_shared/_tables/orders-table/status-selector/status-selector.component';
+import { OrdersTableComponent } from './_shared/_tables/orders-table/orders-table.component';
+import { VehiclesTableComponent } from './_shared/_tables/vehicles-table/vehicles-table.component';
+import { ClientsTableComponent } from './_shared/_tables/clients-table/clients-table.component';
+import { SendEmailLinkComponent } from './_shared/_links/send-email-link/send-email-link.component';
 import { ClientSelectInputComponent } from './_forms/client-select-input/client-select-input.component';
+import { ConfirmDialogComponent } from './_shared/_dialogs/confirm-dialog/confirm-dialog.component';
 
 
 // Let application know what you use in project e.g. components or another modules
@@ -84,7 +85,8 @@ import { ClientSelectInputComponent } from './_forms/client-select-input/client-
     DateAndTimeInputComponent,
     ClientsTableComponent,
     SendEmailLinkComponent,
-    ClientSelectInputComponent
+    ClientSelectInputComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SnackbarService } from 'src/app/_services/snackbar.service';
 import { VehiclesService } from 'src/app/_services/vehicles.service';
-import { VehiclesTableComponent } from 'src/app/_shared/tables/vehicles-table/vehicles-table.component';
+import { VehiclesTableComponent } from 'src/app/_shared/_tables/vehicles-table/vehicles-table.component';
 
 @Component({
   selector: 'app-vehicles-panel',

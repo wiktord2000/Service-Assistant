@@ -4,7 +4,7 @@ import { OrdersService } from './../../_services/orders.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SnackbarService } from 'src/app/_services/snackbar.service';
 import { FormControl } from '@angular/forms';
-import { OrdersTableComponent } from 'src/app/_shared/tables/orders-table/orders-table.component';
+import { OrdersTableComponent } from 'src/app/_shared/_tables/orders-table/orders-table.component';
 
 
 

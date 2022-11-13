@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Vehicle } from '../../_models/Vehicle';
 import { VehiclesService } from '../../_services/vehicles.service';
 import { Order } from 'src/app/_models/Order';
-import { OrdersTableComponent } from 'src/app/_shared/tables/orders-table/orders-table.component';
+import { OrdersTableComponent } from 'src/app/_shared/_tables/orders-table/orders-table.component';
 import { finalize } from 'rxjs';
 import { Client } from 'src/app/_models/Client';
 
