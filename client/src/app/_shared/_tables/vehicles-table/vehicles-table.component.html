@@ -34,13 +34,13 @@
         <!-- Current Owner Column -->
         <ng-container matColumnDef="currentOwner">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Właściciel</th>
-          <td mat-cell *matCellDef="let row">
+          <td mat-cell [style.text-align]="!row.currentOwner ? 'center' : ''"  *matCellDef="let row">
 
             <!-- Current Owner link -->
             <app-client-profile-link [client]="row.currentOwner"></app-client-profile-link>
 
             <!-- Otherwise add button -->
-            <button mat-stroked-button color="primary" *ngIf="!row.currentOwner">Dodaj</button>
+            <button class="addButton" mat-stroked-button color="primary" *ngIf="!row.currentOwner">Dodaj</button>
 
           </td>
         </ng-container>
