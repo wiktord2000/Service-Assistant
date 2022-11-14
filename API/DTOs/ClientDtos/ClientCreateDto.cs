@@ -4,10 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace API.DTOs
+namespace API.DTOs.ClientDtos
 {
-    public class ClientUpdateDto
+    public class ClientCreateDto
     {
+        public string Type { get; set; }
         public string CompanyName { get; set; }
         public string Nip { get; set; }
         [Required(ErrorMessage = "Imię jest wymagana")]
@@ -20,6 +21,6 @@ namespace API.DTOs
         public string CountryCode { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
     }
 }
