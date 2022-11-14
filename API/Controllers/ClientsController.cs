@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
+using API.DTOs.ClientDtos;
 using API.Entities;
 using API.Extensions;
 using AutoMapper;
@@ -68,6 +69,19 @@ namespace API.Controllers
             return client;
         }
 
+        [HttpPost]
+        public async Task<ActionResult<ClientDto>> CreateClient(ClientCreateDto client)
+        {   
+            Client newClient = new Client();
+
+            _mapper.Map(client, newClient);
+            newClient.AppUserId = User.GetUserId();
+            _context.Clients.Add(newClient);
+
+            if(await _context.SaveChangesAsync() > 0) return _mapper.Map(newClient, new ClientDto());
+            return StatusCode(StatusCodes.Status500InternalServerError, "Problem z dodaniem klienta!");
+        }
+
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateClient(int id, ClientUpdateDto client)
         {   
@@ -77,8 +91,8 @@ namespace API.Controllers
 
             if(clientToUpdate == null) return NotFound($"Klient o Id {id} nie istnieje!");
 
-            // Change UpdateAt date
-            client.UpdatedAt = DateTime.Now;
+            // // Change UpdateAt date
+            // client.UpdatedAt = DateTime.Now; -> probably unnecessery when update dto (public DateTime UpdatedAt { get; set; } = DateTime.Now)
 
             _mapper.Map(client, clientToUpdate);
             _context.Clients.Update(clientToUpdate);
