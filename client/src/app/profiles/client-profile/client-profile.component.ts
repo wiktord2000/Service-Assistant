@@ -1,7 +1,7 @@
 import { OrdersTableComponent } from '../../_shared/_tables/orders-table/orders-table.component';
 import { SnackbarService } from './../../_services/snackbar.service';
 import { ClientsService } from '../../_services/clients.service';
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Client } from '../../_models/Client';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

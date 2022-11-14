@@ -46,7 +46,7 @@ import { ClientsTableComponent } from './_shared/_tables/clients-table/clients-t
 import { SendEmailLinkComponent } from './_shared/_links/send-email-link/send-email-link.component';
 import { ClientSelectInputComponent } from './_forms/client-select-input/client-select-input.component';
 import { ConfirmDialogComponent } from './_shared/_dialogs/confirm-dialog/confirm-dialog.component';
-
+import { CreateClientDialogComponent } from './_shared/_dialogs/create-client-dialog/create-client-dialog.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -86,7 +86,8 @@ import { ConfirmDialogComponent } from './_shared/_dialogs/confirm-dialog/confir
     ClientsTableComponent,
     SendEmailLinkComponent,
     ClientSelectInputComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    CreateClientDialogComponent
   ],
   imports: [
     BrowserModule,
