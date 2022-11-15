@@ -1,10 +1,12 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { Client } from 'src/app/_models/Client';
 import { ClientsService } from 'src/app/_services/clients.service';
 import { SnackbarService } from 'src/app/_services/snackbar.service';
+import { ConfirmDialogComponent } from '../../_dialogs/confirm-dialog/confirm-dialog.component';
 import { ClientsTableDataSource } from './clients-table-datasource';
 
 @Component({
@@ -27,6 +29,7 @@ export class ClientsTableComponent implements OnInit {
 
   
   constructor(public clientsService: ClientsService,
+              public dialog: MatDialog,
               private snackbarService: SnackbarService) {}
   
   ngOnInit(): void {
@@ -38,6 +41,35 @@ export class ClientsTableComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
+  }
+
+  onDeleteClick(client: Client){
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+              headerText: "Usuwanie klienta",
+              bodyText: `<h3>Czy na pewno chcesz usunąć klienta <strong>${this.clientToString(client)}</strong> ?<h3>`
+            },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if(!result) return;
+
+      this.clientsService.deleteClient(client.id).subscribe({
+        next: () => {
+          this.snackbarService.showMessage('success', "Pomyślnie usunięto klienta");
+          this.dataSource.deleteClient(client.id);
+        },
+        error: () => {
+          this.snackbarService.showMessage('error', "Problem z usunięciem klienta");
+        }
+      })
+    })
+    
+  }
+
+  clientToString(client: Client): string {
+    return client.type === 'company' ? client.companyName : client.firstname + " " + client.lastname;
   }
 
 }

@@ -39,4 +39,8 @@ export class ClientsService {
     return this.http.put<Client>(this.baseUrl + 'clients/' + id, client);
   }
 
+  deleteClient(id: number){
+    return this.http.delete(this.baseUrl + 'clients/' + id);
+  }
+
 }

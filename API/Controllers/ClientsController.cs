@@ -101,5 +101,20 @@ namespace API.Controllers
             return StatusCode(StatusCodes.Status500InternalServerError, "Problem z aktualizacją klienta!");
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteClient(int id)
+        {   
+            var userId = User.GetUserId();    // -> Extensions (obtain id of sender)
+
+            var clientToDelete = await _context.Clients.FirstOrDefaultAsync(client => (client.Id == id) && client.AppUserId == userId);
+
+            if(clientToDelete == null) return NotFound($"Klient o Id {id} nie istnieje!");
+
+            _context.Clients.Remove(clientToDelete);
+
+            if(await _context.SaveChangesAsync() > 0) return NoContent();
+            return StatusCode(StatusCodes.Status500InternalServerError, "Problem z usunięciem klienta!");
+        }
+
     }
 }

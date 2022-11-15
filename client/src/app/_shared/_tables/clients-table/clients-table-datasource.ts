@@ -95,10 +95,24 @@ import { BehaviorSubject, map, merge, Observable } from "rxjs";
       this.clientsSubject.next(clients);
     }
 
-    getClients(){
+    // CRUD
+    getClients(): Client[]{
       return this.data;
     }
 
+    getClient(id: number): Client{
+      return this.data.find(client => client.id === id);
+    }
+
+    addClient(client: Client): void{
+      this.clientsSubject.next([client,...this.data]);
+    }
+
+    deleteClient(id: number): void{
+      this.clientsSubject.next(this.data.filter(client => client.id !== id));
+    }
+
+    // Compare methods
     private compareDates(fstDate: Date, sndDate: Date, isAsc: boolean){
       return (fstDate.getTime() - sndDate.getTime()) * (isAsc ? 1 : -1);
     }

@@ -33,7 +33,7 @@ export class ClientsPanelComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((client: Client) => {
-      if(client !== undefined) this.clientsTable.dataSource.setClients([client, ...this.clientsTable.dataSource.getClients()]);
+      if(client !== undefined) this.clientsTable.dataSource.addClient(client);
     });
   }
 
