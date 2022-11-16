@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
+using API.DTOs.VehicleDtos;
 using API.Entities;
 using API.Extensions;
 using AutoMapper;
@@ -69,6 +70,19 @@ namespace API.Controllers
 
             if(await _context.SaveChangesAsync() > 0) return NoContent();
             return StatusCode(StatusCodes.Status500InternalServerError, "Problem z aktualizacją pojazdu!");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<VehicleDetailsDto>> CreateClient(VehicleCreateDto vehicle)
+        {   
+            Vehicle newVehicle = new Vehicle();
+
+            _mapper.Map(vehicle, newVehicle);
+            newVehicle.AppUserId = User.GetUserId();
+            _context.Vehicles.Add(newVehicle);
+
+            if(await _context.SaveChangesAsync() > 0) return _mapper.Map(newVehicle, new VehicleDetailsDto());
+            return StatusCode(StatusCodes.Status500InternalServerError, "Problem z dodaniem pojazdu!");
         }
 
     }

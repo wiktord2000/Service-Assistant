@@ -21,6 +21,5 @@ namespace API.DTOs.ClientDtos
         public string CountryCode { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
     }
 }

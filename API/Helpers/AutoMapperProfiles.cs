@@ -1,5 +1,6 @@
 using API.DTOs;
 using API.DTOs.ClientDtos;
+using API.DTOs.VehicleDtos;
 using API.Entities;
 using AutoMapper;
 
@@ -14,6 +15,7 @@ namespace API.Helpers
             CreateMap<Client, ClientDetailsDto>();
             CreateMap<Client, ClientDetailsDto>().ReverseMap();
             CreateMap<Vehicle, VehicleDto>();
+            CreateMap<Vehicle, VehicleDto>().ReverseMap();
             CreateMap<Vehicle, VehicleDetailsDto>();
             CreateMap<Order, OrderDto>();
             CreateMap<Order, OrderDto>().ReverseMap();
@@ -22,6 +24,7 @@ namespace API.Helpers
             CreateMap<ClientUpdateDto, Client>();
             CreateMap<ClientCreateDto, Client>();
             CreateMap<VehicleUpdateDto, Vehicle>();
+            CreateMap<VehicleCreateDto, Vehicle>();
             // CreateMap<Order, OrderDto>();
         }
     }

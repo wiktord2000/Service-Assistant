@@ -102,8 +102,21 @@ import { Vehicle } from '../../../_models/Vehicle';
       this.vehiclesSubject.next(vehicles);
     }
 
-    getVehicles(){
+    // CRUD
+    getVehicles(): Vehicle[]{
       return this.data;
+    }
+
+    getVehicle(id: number): Vehicle{
+      return this.data.find(vehicle => vehicle.id === id);
+    }
+
+    addVehicle(vehicle: Vehicle): void{
+      this.vehiclesSubject.next([vehicle,...this.data]);
+    }
+
+    deleteVehicle(id: number): void{
+      this.vehiclesSubject.next(this.data.filter(vehicle => vehicle.id !== id));
     }
 
     private compareDates(fstDate: Date, sndDate: Date, isAsc: boolean){
