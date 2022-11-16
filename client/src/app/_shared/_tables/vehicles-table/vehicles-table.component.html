@@ -39,9 +39,6 @@
             <!-- Current Owner link -->
             <app-client-profile-link [client]="row.currentOwner"></app-client-profile-link>
 
-            <!-- Otherwise add button -->
-            <button class="addButton" mat-stroked-button color="primary" *ngIf="!row.currentOwner">Dodaj</button>
-
           </td>
         </ng-container>
   
@@ -85,6 +82,7 @@
             <!-- Delete -->
             <button mat-icon-button 
                     color="warn" 
+                    (click)="onDeleteClick(row)"
                     aria-label="Delete button"
                     matTooltip="Usuń pojazd" 
                     [matTooltipPosition]="'right'"

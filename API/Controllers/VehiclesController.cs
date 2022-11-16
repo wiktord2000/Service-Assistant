@@ -85,5 +85,20 @@ namespace API.Controllers
             return StatusCode(StatusCodes.Status500InternalServerError, "Problem z dodaniem pojazdu!");
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteVehicle(int id)
+        {   
+            var userId = User.GetUserId();    // -> Extensions (obtain id of sender)
+
+            var vehicleToDelete = await _context.Vehicles.FirstOrDefaultAsync(vehicle => (vehicle.Id == id) && vehicle.AppUserId == userId);
+
+            if(vehicleToDelete == null) return NotFound($"Pojazd o Id {id} nie istnieje!");
+
+            _context.Vehicles.Remove(vehicleToDelete);
+
+            if(await _context.SaveChangesAsync() > 0) return NoContent();
+            return StatusCode(StatusCodes.Status500InternalServerError, "Problem z usunięciem pojazdu!");
+        }
+
     }
 }

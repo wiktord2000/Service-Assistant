@@ -52,7 +52,7 @@ export class CreateVehicleDialogComponent implements OnInit {
     let selectedClient = this.clientSelect.selectedClient;
 
     this.isSaving = true;
-    this.vehiclesService.addVehicle({...this.vehicleForm.value, currentOwnerId: selectedClient.id})
+    this.vehiclesService.addVehicle({...this.vehicleForm.value, currentOwnerId: selectedClient?.id})
       .pipe(
         finalize(() => {
           this.isSaving = false;
