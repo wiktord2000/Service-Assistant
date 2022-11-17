@@ -48,6 +48,7 @@ import { ClientSelectInputComponent } from './_forms/client-select-input/client-
 import { ConfirmDialogComponent } from './_shared/_dialogs/confirm-dialog/confirm-dialog.component';
 import { CreateClientDialogComponent } from './_shared/_dialogs/create-client-dialog/create-client-dialog.component';
 import { CreateVehicleDialogComponent } from './_shared/_dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
+import { MailSendingDialogComponent } from './_shared/_dialogs/mail-sending-dialog/mail-sending-dialog.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -89,7 +90,8 @@ import { CreateVehicleDialogComponent } from './_shared/_dialogs/create-vehicle-
     ClientSelectInputComponent,
     ConfirmDialogComponent,
     CreateClientDialogComponent,
-    CreateVehicleDialogComponent
+    CreateVehicleDialogComponent,
+    MailSendingDialogComponent
   ],
   imports: [
     BrowserModule,

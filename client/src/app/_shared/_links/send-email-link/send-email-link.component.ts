@@ -1,3 +1,6 @@
+import { MailSendingDialogComponent } from './../../_dialogs/mail-sending-dialog/mail-sending-dialog.component';
+import { SnackbarService } from './../../../_services/snackbar.service';
+import { MatDialog } from '@angular/material/dialog';
 import { Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 
@@ -12,9 +15,20 @@ export class SendEmailLinkComponent implements OnInit {
   @Input() color: ThemePalette = "primary";
   @Input() customColor?: string;
   
-  constructor() { }
+  constructor(
+    public dialog: MatDialog) {}
 
   ngOnInit(): void {
+  }
+
+  onEmailClick(){
+
+    const dialogRef = this.dialog.open(MailSendingDialogComponent, {
+      width: '1000px',
+      data: {
+              emails: [this.email]
+            },
+    });
   }
 
 }
