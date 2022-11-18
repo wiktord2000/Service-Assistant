@@ -28,8 +28,7 @@ export class ClientsPanelComponent implements OnInit {
 
   onAddClient(){
     const dialogRef = this.dialog.open(CreateClientDialogComponent, {
-      width: "900px",
-      data: {name: null},
+      width: "900px"
     });
 
     dialogRef.afterClosed().subscribe((client: Client) => {

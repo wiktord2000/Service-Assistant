@@ -21,19 +21,19 @@ export class CreateClientDialogComponent implements OnInit {
               private snackbarService: SnackbarService,
               private clientsService: ClientsService,
               public dialogRef: MatDialogRef<CreateClientDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: {name: string}) {}
+              @Inject(MAT_DIALOG_DATA) public data?: {name?: string}) {}
               
 
   ngOnInit(): void {
     this.buildForm();
-    this.createClientForm.controls['firstname'].setValue(this.data.name);
+    this.createClientForm.controls['firstname'].setValue(this?.data?.name ?? "");
   }
 
   buildForm(){
     this.createClientForm = this.formBuilder.group({
       companyName: [ "", this.isCompany && [Validators.required]],
       nip: [ "", this.isCompany && [Validators.required]],
-      firstname: [ this.data.name, [Validators.required]],
+      firstname: [ "", [Validators.required]],
       lastname: [ "", [Validators.required]],
       street: [""],
       city: [""],

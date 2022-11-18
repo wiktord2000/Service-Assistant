@@ -1,8 +1,10 @@
 import { Component, Input, OnInit, Self } from '@angular/core';
 import { NgControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Observable, startWith, debounceTime, of } from 'rxjs';
 import { Client } from 'src/app/_models/Client';
 import { ClientsService } from 'src/app/_services/clients.service';
+import { CreateClientDialogComponent } from 'src/app/_shared/_dialogs/create-client-dialog/create-client-dialog.component';
 
 @Component({
   selector: 'app-client-select-input',
@@ -16,7 +18,10 @@ export class ClientSelectInputComponent implements OnInit {
   filteredClients: Observable<Client[]>;
   isCasingUpdate: boolean = false;
 
-  constructor(@Self() public ngControl: NgControl, private clientsService: ClientsService) {
+  constructor(
+              @Self() public ngControl: NgControl,
+              public dialog: MatDialog, 
+              private clientsService: ClientsService) {
     this.ngControl.valueAccessor = this;
   }
 
@@ -80,8 +85,19 @@ export class ClientSelectInputComponent implements OnInit {
       : client.firstname + " " + client.lastname;
   }
 
-  onAddClient(event){
-    event.preventDefault();
+  onAddClient(){
+    const dialogRef = this.dialog.open(CreateClientDialogComponent, {
+      width: "900px",
+      data: {name: this.ngControl.value},
+    });
+
+    dialogRef.afterClosed().subscribe((client: Client) => {
+      if(client !== undefined){ 
+        this.selectedClient = client;
+        this.ngControl.control.setValue(this.clientToString(client));
+      }   
+      this.ngControl.control.updateValueAndValidity();
+    });
   }
 
   // We don't have to use it

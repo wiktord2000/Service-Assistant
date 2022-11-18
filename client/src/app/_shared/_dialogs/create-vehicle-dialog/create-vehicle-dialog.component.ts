@@ -44,7 +44,7 @@ export class CreateVehicleDialogComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA) public data?: {name?: string, client? : Client}) {}
 
   ngOnInit(): void {
-    this.vehicleForm.controls['brand'].setValue(this?.data?.name);
+    this.vehicleForm.controls['brand'].setValue(this?.data?.name ?? "");
   }
 
   onSaveChanges(){
