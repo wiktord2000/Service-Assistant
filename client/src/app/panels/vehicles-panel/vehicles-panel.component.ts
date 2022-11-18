@@ -28,7 +28,6 @@ export class VehiclesPanelComponent implements OnInit {
   onAddVehicle(){
     const dialogRef = this.dialog.open(CreateVehicleDialogComponent, {
       width: "900px",
-      data: {name: null},
     });
 
     dialogRef.afterClosed().subscribe((vehicle: Vehicle) => {

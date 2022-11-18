@@ -1,11 +1,12 @@
 import { ClientSelectInputComponent } from './../../../_forms/client-select-input/client-select-input.component';
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { finalize } from 'rxjs';
 import { Vehicle } from 'src/app/_models/Vehicle';
 import { SnackbarService } from 'src/app/_services/snackbar.service';
 import { VehiclesService } from 'src/app/_services/vehicles.service';
+import { Client } from 'src/app/_models/Client';
 
 const NUMBER_REGEX = /^\d+$/;
 
@@ -40,11 +41,10 @@ export class CreateVehicleDialogComponent implements OnInit {
               private snackbarService: SnackbarService,
               private vehiclesService: VehiclesService,
               public dialogRef: MatDialogRef<CreateVehicleDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: {name: string}) {}
-              
+              @Inject(MAT_DIALOG_DATA) public data?: {name?: string, client? : Client}) {}
 
   ngOnInit(): void {
-    this.vehicleForm.controls['brand'].setValue(this.data.name);
+    this.vehicleForm.controls['brand'].setValue(this?.data?.name);
   }
 
   onSaveChanges(){

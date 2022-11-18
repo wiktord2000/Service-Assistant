@@ -40,6 +40,7 @@
 
         <!-- Current owner -->
         <app-client-select-input
+            [selectedClient]="this?.data?.client"
             [label]="'Właściciel'" 
             [formControl]="vehicleForm.controls['currentOwner']">
         </app-client-select-input>

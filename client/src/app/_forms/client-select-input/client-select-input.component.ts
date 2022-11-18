@@ -22,6 +22,9 @@ export class ClientSelectInputComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // Set up the initial client name
+    if(this.selectedClient) this.ngControl.control.setValue(this.clientToString(this.selectedClient));
+
     // Track input value change
     this.ngControl.control.valueChanges.pipe(
         debounceTime(300),
@@ -71,6 +74,7 @@ export class ClientSelectInputComponent implements OnInit {
   }
 
   clientToString(client: Client){
+    if(!client) return "";
     return client.type === 'company' 
       ? client.companyName
       : client.firstname + " " + client.lastname;

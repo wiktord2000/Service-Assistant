@@ -1,3 +1,4 @@
+import { VehiclesTableComponent } from './../../_shared/_tables/vehicles-table/vehicles-table.component';
 import { OrdersTableComponent } from '../../_shared/_tables/orders-table/orders-table.component';
 import { SnackbarService } from './../../_services/snackbar.service';
 import { ClientsService } from '../../_services/clients.service';
@@ -7,6 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { Order } from 'src/app/_models/Order';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateVehicleDialogComponent } from 'src/app/_shared/_dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
+import { Vehicle } from 'src/app/_models/Vehicle';
 
 @Component({
   selector: 'app-client-profile',
@@ -16,6 +20,7 @@ import { Order } from 'src/app/_models/Order';
 export class ClientProfileComponent implements OnInit {
 
   @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;
+  @ViewChild(VehiclesTableComponent) vehiclesTable: VehiclesTableComponent;
   client: Client; 
   isCompany: boolean;
   isSaving: boolean = false;
@@ -24,6 +29,7 @@ export class ClientProfileComponent implements OnInit {
 
   constructor(private clientsService: ClientsService,
               private formBuilder: FormBuilder,
+              public dialog: MatDialog,
               private snackbarService: SnackbarService,
               private activatedRoute: ActivatedRoute ) { }
 
@@ -86,6 +92,18 @@ export class ClientProfileComponent implements OnInit {
           email: [client.email],
         }
       );
+    });
+  }
+
+  onAddVehicle(){
+
+    const dialogRef = this.dialog.open(CreateVehicleDialogComponent, {
+      width: "900px",
+      data: {client: this.client},
+    });
+
+    dialogRef.afterClosed().subscribe((vehicle: Vehicle) => {
+      if(vehicle) this.vehiclesTable.dataSource.addVehicle(vehicle);
     });
   }
 }
