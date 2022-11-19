@@ -29,7 +29,8 @@
       <mat-option 
             *ngFor="let client of filteredClients | async"
             [value]="clientToString(client)">
-        {{clientToString(client)}}
+            <mat-icon color="primary">{{this.client.type === 'company' ? 'groups' : 'person'}}</mat-icon>
+            {{clientToString(client)}}
       </mat-option>
     </mat-autocomplete>
 
