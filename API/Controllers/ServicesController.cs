@@ -48,8 +48,7 @@ namespace API.Controllers
 
             var service = await _context.Services
                             .Where(service => service.Id == id && service.AppUserId == userId)
-                            .ProjectTo<ServiceDto>(_mapper.ConfigurationProvider)
-                            .SingleOrDefaultAsync(service => service.Id == id);
+                            .ProjectTo<ServiceDto>(_mapper.ConfigurationProvider).FirstOrDefaultAsync();
 
             if(service == null) return NotFound("Nie znaleziono serwisu o podanym id!");
 
@@ -65,12 +64,6 @@ namespace API.Controllers
 
             if(serviceToUpdate == null) return NotFound($"Serwis o Id {id} nie istnieje!");
 
-            if(service.TotalNet == null || service.TotalGross == null){
-                // Calculate them
-                service.TotalNet = service.EstimatedTime * service.CostNet;
-                service.TotalGross = service.EstimatedTime * service.CostGross;
-            }
-
             _mapper.Map(service, serviceToUpdate);
             _context.Services.Update(serviceToUpdate);
 
@@ -79,15 +72,9 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ServiceDto>> CreateClient(ServiceCreateDto service)
+        public async Task<ActionResult<ServiceDto>> CreateService(ServiceCreateDto service)
         {   
             Service newService = new Service();
-
-            if(service.TotalNet == null || service.TotalGross == null){
-                // Calculate them
-                service.TotalNet = service.EstimatedTime * service.CostNet;
-                service.TotalGross = service.EstimatedTime * service.CostGross;
-            }
 
             _mapper.Map(service, newService);
             newService.AppUserId = User.GetUserId();
@@ -98,7 +85,7 @@ namespace API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteVehicle(int id)
+        public async Task<ActionResult> DeleteService(int id)
         {   
             var userId = User.GetUserId();    // -> Extensions (obtain id of sender)
 

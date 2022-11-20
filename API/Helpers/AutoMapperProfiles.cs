@@ -1,5 +1,6 @@
 using API.DTOs;
 using API.DTOs.ClientDtos;
+using API.DTOs.ProductDtos;
 using API.DTOs.ServiceDtos;
 using API.DTOs.VehicleDtos;
 using API.Entities;
@@ -26,13 +27,20 @@ namespace API.Helpers
             CreateMap<ClientCreateDto, Client>();
             CreateMap<VehicleUpdateDto, Vehicle>();
             CreateMap<VehicleCreateDto, Vehicle>();
+            // Service
             CreateMap<ServiceDto, Service>();
             CreateMap<ServiceDto, Service>().ReverseMap();
             CreateMap<ServiceUpdateDto, Service>();
             CreateMap<ServiceUpdateDto, Service>().ReverseMap();
             CreateMap<ServiceCreateDto, Service>();
             CreateMap<ServiceCreateDto, Service>().ReverseMap();
-            // CreateMap<Order, OrderDto>();
+            // Product
+            CreateMap<ProductDto, Product>();
+            CreateMap<ProductDto, Product>().ReverseMap();
+            CreateMap<ProductUpdateDto, Product>();
+            CreateMap<ProductUpdateDto, Product>().ReverseMap();
+            CreateMap<ProductCreateDto, Product>();
+            CreateMap<ProductCreateDto, Product>().ReverseMap();
         }
     }
 }

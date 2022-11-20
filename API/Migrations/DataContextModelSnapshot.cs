@@ -229,6 +229,86 @@ namespace API.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("API.Entities.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Availability")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<float>("BuyPriceGross")
+                        .HasColumnType("REAL");
+
+                    b.Property<float>("BuyPriceNet")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Ean")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Grade")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Manufacturer")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("Margin")
+                        .HasColumnType("REAL");
+
+                    b.Property<float>("Markup")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Notice")
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("Profit")
+                        .HasColumnType("REAL");
+
+                    b.Property<int>("Reserved")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<float>("SalesPriceGross")
+                        .HasColumnType("REAL");
+
+                    b.Property<float>("SalesPriceNet")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("Unit")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("Vat")
+                        .HasColumnType("REAL");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Products");
+                });
+
             modelBuilder.Entity("API.Entities.Service", b =>
                 {
                     b.Property<int>("Id")
@@ -418,6 +498,17 @@ namespace API.Migrations
                     b.Navigation("Vehicle");
                 });
 
+            modelBuilder.Entity("API.Entities.Product", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "AppUser")
+                        .WithMany("Products")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("API.Entities.Service", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
@@ -451,6 +542,8 @@ namespace API.Migrations
                     b.Navigation("Clients");
 
                     b.Navigation("Orders");
+
+                    b.Navigation("Products");
 
                     b.Navigation("Services");
 

@@ -73,7 +73,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<VehicleDetailsDto>> CreateClient(VehicleCreateDto vehicle)
+        public async Task<ActionResult<VehicleDetailsDto>> CreateVehicle(VehicleCreateDto vehicle)
         {   
             Vehicle newVehicle = new Vehicle();
 

@@ -35,5 +35,6 @@ namespace API.Entities
         public ICollection<Vehicle> Vehicles { get; set; }
         public ICollection<Client> Clients { get; set; }
         public ICollection<Service> Services { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

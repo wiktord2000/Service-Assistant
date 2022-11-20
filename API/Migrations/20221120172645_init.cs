@@ -93,6 +93,45 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Products",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Code = table.Column<string>(type: "TEXT", nullable: false),
+                    Manufacturer = table.Column<string>(type: "TEXT", nullable: false),
+                    Unit = table.Column<string>(type: "TEXT", nullable: false),
+                    Ean = table.Column<string>(type: "TEXT", nullable: true),
+                    Availability = table.Column<int>(type: "INTEGER", nullable: false),
+                    Reserved = table.Column<int>(type: "INTEGER", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    Notice = table.Column<string>(type: "TEXT", nullable: true),
+                    Grade = table.Column<int>(type: "INTEGER", nullable: false),
+                    Vat = table.Column<float>(type: "REAL", nullable: false),
+                    BuyPriceNet = table.Column<float>(type: "REAL", nullable: false),
+                    BuyPriceGross = table.Column<float>(type: "REAL", nullable: false),
+                    SalesPriceNet = table.Column<float>(type: "REAL", nullable: false),
+                    SalesPriceGross = table.Column<float>(type: "REAL", nullable: false),
+                    Profit = table.Column<float>(type: "REAL", nullable: false),
+                    Markup = table.Column<float>(type: "REAL", nullable: false),
+                    Margin = table.Column<float>(type: "REAL", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    AppUserId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Products_Users_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Services",
                 columns: table => new
                 {
@@ -241,6 +280,11 @@ namespace API.Migrations
                 column: "VehicleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Products_AppUserId",
+                table: "Products",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Services_AppUserId",
                 table: "Services",
                 column: "AppUserId");
@@ -260,6 +304,9 @@ namespace API.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "Products");
 
             migrationBuilder.DropTable(
                 name: "Services");
