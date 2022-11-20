@@ -229,6 +229,51 @@ namespace API.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("API.Entities.Service", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<float>("CostGross")
+                        .HasColumnType("REAL");
+
+                    b.Property<float>("CostNet")
+                        .HasColumnType("REAL");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Unit")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("createdAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<float>("estimatedTime")
+                        .HasColumnType("REAL");
+
+                    b.Property<float>("totalGross")
+                        .HasColumnType("REAL");
+
+                    b.Property<float>("totalNet")
+                        .HasColumnType("REAL");
+
+                    b.Property<DateTime>("updatedAt")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Services");
+                });
+
             modelBuilder.Entity("API.Entities.Status", b =>
                 {
                     b.Property<int>("Id")
@@ -373,6 +418,17 @@ namespace API.Migrations
                     b.Navigation("Vehicle");
                 });
 
+            modelBuilder.Entity("API.Entities.Service", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "AppUser")
+                        .WithMany("Services")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("API.Entities.Vehicle", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "AppUser")
@@ -395,6 +451,8 @@ namespace API.Migrations
                     b.Navigation("Clients");
 
                     b.Navigation("Orders");
+
+                    b.Navigation("Services");
 
                     b.Navigation("Vehicles");
                 });

@@ -144,6 +144,7 @@
           <!-- Invoice -->
           <button mat-icon-button 
                   color="primary"
+                  [disabled]="!(row.status.position === 3 || row.status.position === 4)"
                   aria-label="Invoice button" 
                   matTooltip="Wystaw fakturę" 
                   [matTooltipPosition]="'left'" 

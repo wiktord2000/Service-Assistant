@@ -19,6 +19,7 @@ namespace API.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<Service> Services { get; set; }
 
     }
 }

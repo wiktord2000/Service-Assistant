@@ -93,6 +93,34 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Services",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    CostNet = table.Column<float>(type: "REAL", nullable: false),
+                    CostGross = table.Column<float>(type: "REAL", nullable: false),
+                    Unit = table.Column<string>(type: "TEXT", nullable: false),
+                    estimatedTime = table.Column<float>(type: "REAL", nullable: false),
+                    totalNet = table.Column<float>(type: "REAL", nullable: false),
+                    totalGross = table.Column<float>(type: "REAL", nullable: false),
+                    createdAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    updatedAt = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    AppUserId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Services", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Services_Users_AppUserId",
+                        column: x => x.AppUserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Vehicles",
                 columns: table => new
                 {
@@ -213,6 +241,11 @@ namespace API.Migrations
                 column: "VehicleId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Services_AppUserId",
+                table: "Services",
+                column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Vehicles_AppUserId",
                 table: "Vehicles",
                 column: "AppUserId");
@@ -227,6 +260,9 @@ namespace API.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Orders");
+
+            migrationBuilder.DropTable(
+                name: "Services");
 
             migrationBuilder.DropTable(
                 name: "Statuses");
