@@ -9,6 +9,7 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 export class TextInputComponent implements ControlValueAccessor{
 
   @Input() label: string;
+  @Input() suffixText: string;
   @Input() type = 'text';
   @Input() isTextArea: boolean;
   

@@ -5,7 +5,10 @@
     
     <!-- Input (simple input / textArea) -->
     <input *ngIf="!isTextArea" type={{type}} [formControl]="ngControl.control" spellcheck="false" matInput>
+    <!-- Text area -->
     <textarea *ngIf="isTextArea" type={{type}} [formControl]="ngControl.control" spellcheck="false" matInput></textarea>
+    <!-- Suffix (if needed) -->
+    <div class="suffix" *ngIf="suffixText" matSuffix>{{suffixText}}</div>
 
     <!------------------------------------------------ Possible errors ---------------------------------------------->
 
