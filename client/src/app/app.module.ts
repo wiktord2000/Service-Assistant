@@ -49,6 +49,8 @@ import { ConfirmDialogComponent } from './_shared/_dialogs/confirm-dialog/confir
 import { CreateClientDialogComponent } from './_shared/_dialogs/create-client-dialog/create-client-dialog.component';
 import { CreateVehicleDialogComponent } from './_shared/_dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
 import { MailSendingDialogComponent } from './_shared/_dialogs/mail-sending-dialog/mail-sending-dialog.component';
+import { ServicesTableComponent } from './_shared/_tables/services-table/services-table.component';
+import { CreateServiceDialogComponent } from './_shared/_dialogs/create-service-dialog/create-service-dialog.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -91,7 +93,9 @@ import { MailSendingDialogComponent } from './_shared/_dialogs/mail-sending-dial
     ConfirmDialogComponent,
     CreateClientDialogComponent,
     CreateVehicleDialogComponent,
-    MailSendingDialogComponent
+    MailSendingDialogComponent,
+    ServicesTableComponent,
+    CreateServiceDialogComponent
   ],
   imports: [
     BrowserModule,
