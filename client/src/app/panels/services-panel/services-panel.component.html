@@ -1,1 +1,25 @@
-<p>services-panel works!</p>
+<div class="services-panel-container">
+  <div class="content-wrapper">
+    <!-- Filters section -->
+    <div class="filters-wrapper">
+      <!-- Add order button -->
+      <button
+        mat-raised-button
+        (click)="onAddService()"
+        color="primary"
+        aria-label="Add service button"
+      >
+        Dodaj usługę
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <!-- Net toggle -->
+      <mat-slide-toggle [labelPosition]="'before'" [(ngModel)]="isGross" color="primary">
+        {{ isGross ? "Brutto" : "Netto" }}
+      </mat-slide-toggle>
+    </div>
+
+    <!-- Services table -->
+    <app-services-table [isGross]="isGross"></app-services-table>
+  </div>
+</div>
