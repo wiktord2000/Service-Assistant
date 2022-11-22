@@ -15,11 +15,11 @@ namespace API.Entities
         public float CostGross { get; set; }
         [Required]
         public string Unit { get; set; }
-        public float estimatedTime { get; set; }
-        public float totalNet { get; set; }
-        public float totalGross { get; set; }
-        public DateTime createdAt { get; set; }  = DateTime.Now;
-        public DateTime updatedAt { get; set; }  = DateTime.Now;
+        public float EstimatedTime { get; set; }
+        public float TotalNet { get; set; }
+        public float TotalGross { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
         // Foreign keys
         public AppUser AppUser { get; set; }

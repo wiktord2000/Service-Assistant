@@ -10,14 +10,18 @@ namespace API.DTOs.ServiceDtos
     {   
         [Required]
         public string Name { get; set; }
-        public float CostNet { get; set; }
-        public float CostGross { get; set; }
+        [Required]
+        public float? CostNet { get; set; }
+        [Required]
+        public float? CostGross { get; set; }
         [Required]
         public string Unit { get; set; }
         [Required]
         public float? EstimatedTime { get; set; }
-        public float TotalNet { get; set; }
-        public float TotalGross { get; set; }
+        [Required]
+        public float? TotalNet { get; set; }
+        [Required]
+        public float? TotalGross { get; set; }
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
     }
 }
