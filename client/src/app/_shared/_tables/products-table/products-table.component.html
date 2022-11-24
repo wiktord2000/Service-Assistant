@@ -1,0 +1,123 @@
+<div class="mat-elevation-z{{ matElevationValue }}">
+  <div [ngClass]="fixedSize && 'table-container'" style="overflow: auto">
+    <table *ngIf="dataSource" mat-table class="full-width-table" matSort aria-label="Elements">
+      <!-- Product name -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nazwa produktu</th>
+        <td mat-cell *matCellDef="let row">
+          <span style="font-weight: 500; opacity: 0.8">{{ row.name }}</span>
+        </td>
+      </ng-container>
+
+      <!-- Code Column -->
+      <ng-container matColumnDef="code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Kod produktu</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.code }}
+        </td>
+      </ng-container>
+
+      <!-- Unit Column -->
+      <ng-container matColumnDef="unit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Jednostka</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.unit }}
+        </td>
+      </ng-container>
+
+      <!-- Availability Column -->
+      <ng-container matColumnDef="availability">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Dostępność</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.availability }}
+        </td>
+      </ng-container>
+
+      <!-- Buy Price Column -->
+      <ng-container matColumnDef="buyPrice">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Cena zakupu</th>
+        <td mat-cell *matCellDef="let row">
+          {{ isGross ? row.buyPriceGross.toFixed(2) : row.buyPriceNet.toFixed(2) }} zł
+        </td>
+      </ng-container>
+
+      <!-- Sales Price Column -->
+      <ng-container matColumnDef="salesPrice">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Cena sprzedaży</th>
+        <td mat-cell *matCellDef="let row">
+          {{ isGross ? row.salesPriceGross.toFixed(2) : row.salesPriceNet.toFixed(2) }} zł
+        </td>
+      </ng-container>
+
+      <!-- Manufacturer Column -->
+      <ng-container matColumnDef="manufacturer">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Producent</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.manufacturer }}
+        </td>
+      </ng-container>
+
+      <!-- Last Delivery Date Column -->
+      <ng-container matColumnDef="lastDelivery">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Data ostatniej dostawy</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.lastDelivery | date: "dd.MM.yyyy" }}
+        </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Operacje</th>
+        <td mat-cell *matCellDef="let row">
+          <!-- Delivery -->
+          <button
+            mat-icon-button
+            color="primary"
+            (click)="onDeliveryClick(row)"
+            aria-label="Delivery button"
+            matTooltip="Dostawa produktu"
+            [matTooltipPosition]="'left'"
+          >
+            <mat-icon>local_shipping</mat-icon>
+          </button>
+
+          <!-- Delete -->
+          <button
+            mat-icon-button
+            color="warn"
+            (click)="onDeleteClick(row)"
+            aria-label="Delete button"
+            matTooltip="Usuń usługę"
+            [matTooltipPosition]="'right'"
+          >
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- Row shown when there is no data -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [ngStyle]="{ border: '0px' }" colspan="10">
+          <div class="no-products-message">
+            <mat-icon>leaderboard</mat-icon>
+            <div>Brak produktów</div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <mat-paginator
+    #paginator
+    [length]="dataSource?.data?.length"
+    [pageIndex]="0"
+    [pageSize]="8"
+    [pageSizeOptions]="[8, 12, 16]"
+    aria-label="Wybierz stronę"
+  >
+  </mat-paginator>
+</div>
