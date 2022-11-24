@@ -1,14 +1,14 @@
-.mat-form-field{
-    width: 100%;
+.mat-form-field {
+  width: 100%;
 }
 
-.suffix{
-    padding: 0em 1em 0.63em 0.5em; 
-    font-size: 1.125em; 
-    opacity: 0.6;
+.suffix {
+  padding: 0em 1em 0.63em 0.5em;
+  font-size: 1.125em;
+  opacity: 0.6;
 }
 
 /* Make error label little bit higher */
 ::ng-deep .mat-form-field-subscript-wrapper {
-    margin-top: 0.3em;
+  margin-top: 0.3em;
 }

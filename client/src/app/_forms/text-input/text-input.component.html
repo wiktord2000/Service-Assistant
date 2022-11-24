@@ -1,37 +1,47 @@
 <mat-form-field appearance="fill">
+  <!-- Label -->
+  <mat-label>{{ label }}</mat-label>
 
-    <!-- Label -->
-    <mat-label>{{label}}</mat-label>
-    
-    <!-- Input (simple input / textArea) -->
-    <input *ngIf="!isTextArea" type={{type}} [formControl]="ngControl.control" spellcheck="false" matInput>
-    <!-- Text area -->
-    <textarea *ngIf="isTextArea" type={{type}} [formControl]="ngControl.control" spellcheck="false" matInput></textarea>
-    <!-- Suffix (if needed) -->
-    <div class="suffix" *ngIf="suffixText" matSuffix>{{suffixText}}</div>
+  <!-- Input (simple input / textArea) -->
+  <input
+    *ngIf="!isTextArea"
+    type="{{ type }}"
+    min="{{ type === 'number' && minNumber }}"
+    max="{{ type === 'number' && maxNumber }}"
+    [formControl]="ngControl.control"
+    spellcheck="false"
+    matInput
+  />
+  <!-- Text area -->
+  <textarea
+    *ngIf="isTextArea"
+    type="{{ type }}"
+    [formControl]="ngControl.control"
+    spellcheck="false"
+    matInput
+  ></textarea>
+  <!-- Suffix (if needed) -->
+  <div class="suffix" *ngIf="suffixText" matSuffix>{{ suffixText }}</div>
 
-    <!------------------------------------------------ Possible errors ---------------------------------------------->
+  <!------------------------------------------------ Possible errors ---------------------------------------------->
 
-    <!-- Required -->
-    <mat-error *ngIf="ngControl.control.errors?.required">
-        Pole nie może być puste
-    </mat-error>
+  <!-- Required -->
+  <mat-error *ngIf="ngControl.control.errors?.required"> Pole nie może być puste </mat-error>
 
-    <!-- IsMatching (custom) -->
-    <!-- <mat-error *ngIf="ngControl.control.errors?.isMatching && !(ngControl.control.errors?.required)"> -->
-    <mat-error *ngIf="ngControl.control.errors?.isMatching">
-        Pole różni się od poprzedniego
-    </mat-error>
+  <!-- IsMatching (custom) -->
+  <!-- <mat-error *ngIf="ngControl.control.errors?.isMatching && !(ngControl.control.errors?.required)"> -->
+  <mat-error *ngIf="ngControl.control.errors?.isMatching">
+    Pole różni się od poprzedniego
+  </mat-error>
 
-    <!-- Minlength -->
-    <mat-error *ngIf="ngControl.control.errors?.minlength">
-        <!-- Pole musi zawierać minimum {{registerForm.controls['password'].getError('minlength').requiredLength }} znaków! -->
-        Pole musi zawierać minimum {{ngControl.control.errors!['minlength'].requiredLength }} znaków!
-    </mat-error>
+  <!-- Minlength -->
+  <mat-error *ngIf="ngControl.control.errors?.minlength">
+    <!-- Pole musi zawierać minimum {{registerForm.controls['password'].getError('minlength').requiredLength }} znaków! -->
+    Pole musi zawierać minimum {{ ngControl.control.errors!["minlength"].requiredLength }} znaków!
+  </mat-error>
 
-    <!-- Pattern error -->
-    <mat-error *ngIf="ngControl.control.errors?.pattern">
-        Pole zawiera niedozwolone znaki!
-    </mat-error>
-    
+  <!-- Pattern error -->
+  <mat-error *ngIf="ngControl.control.errors?.pattern">
+    Pole zawiera niedozwolone znaki!
+  </mat-error>
 </mat-form-field>

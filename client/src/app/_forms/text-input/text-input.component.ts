@@ -6,20 +6,20 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
   templateUrl: './text-input.component.html',
   styleUrls: ['./text-input.component.css']
 })
-export class TextInputComponent implements ControlValueAccessor{
-
+export class TextInputComponent implements ControlValueAccessor {
   @Input() label: string;
   @Input() suffixText: string;
   @Input() type = 'text';
+  @Input() minNumber?: number;
+  @Input() maxNumber?: number;
   @Input() isTextArea: boolean;
-  
-  constructor(@Self() public ngControl: NgControl) { 
-    this.ngControl.valueAccessor = this; 
+
+  constructor(@Self() public ngControl: NgControl) {
+    this.ngControl.valueAccessor = this;
   }
-  
+
   // We don't have to use it
   writeValue(obj: any): void {}
   registerOnChange(fn: any): void {}
   registerOnTouched(fn: any): void {}
-  
 }
