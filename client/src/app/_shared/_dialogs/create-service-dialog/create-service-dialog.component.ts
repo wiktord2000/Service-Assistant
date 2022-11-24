@@ -16,7 +16,6 @@ const FLOAT_REGEX = /^[0-9]*\.[0-9]{2}$/;
 export class CreateServiceDialogComponent implements OnInit {
   isSaving: boolean = false;
   isCompany: boolean = false;
-  isUpdate: boolean = false;
 
   serviceForm: FormGroup = this.formBuilder.group({
     name: ['', [Validators.required]],
@@ -39,23 +38,15 @@ export class CreateServiceDialogComponent implements OnInit {
   ngOnInit(): void {
     // Subscribe inputs changes
     this.serviceForm.controls['costNet'].valueChanges.subscribe((value: string) => {
-      if (!this.isUpdate) {
-        this.isUpdate = true;
-        const costGross = Number(value) * 1.23;
-        this.serviceForm.controls['costGross'].setValue(costGross.toFixed(2));
-        this.updateTotalPrices();
-      }
-      this.isUpdate = false;
+      const costGross = Number(value) * 1.23;
+      this.serviceForm.controls['costGross'].setValue(costGross.toFixed(2), { emitEvent: false });
+      this.updateTotalPrices();
     });
 
     this.serviceForm.controls['costGross'].valueChanges.subscribe((value: string) => {
-      if (!this.isUpdate) {
-        this.isUpdate = true;
-        const costNet = Number(value) * 0.77;
-        this.serviceForm.controls['costNet'].setValue(costNet.toFixed(2));
-        this.updateTotalPrices();
-      }
-      this.isUpdate = false;
+      const costNet = Number(value) * 0.77;
+      this.serviceForm.controls['costNet'].setValue(costNet.toFixed(2), { emitEvent: false });
+      this.updateTotalPrices();
     });
 
     this.serviceForm.controls['estimatedTime'].valueChanges.subscribe((value: string) => {
