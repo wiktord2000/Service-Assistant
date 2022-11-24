@@ -1,0 +1,133 @@
+<!-- Title -->
+<h1 mat-dialog-title>Uzupełnij dane produktu</h1>
+<mat-divider></mat-divider>
+
+<!-- Content -->
+<div mat-dialog-content [style.max-height.vh]="70">
+  <!-- Form -->
+  <form
+    id="productForm"
+    [formGroup]="productForm"
+    (ngSubmit)="productForm.valid && onSaveChanges()"
+    class="create-product-form"
+  >
+    <!-- Product name -->
+    <app-text-input [label]="'Nazwa produktu'" [formControl]="productForm.controls['name']">
+    </app-text-input>
+
+    <div class="row">
+      <!-- Manufacturer -->
+      <app-text-input
+        class="manufacturer-input"
+        [label]="'Producent'"
+        [formControl]="productForm.controls['manufacturer']"
+      >
+      </app-text-input>
+
+      <!-- Code -->
+      <app-text-input
+        class="code-input"
+        [label]="'Kod produktu'"
+        [formControl]="productForm.controls['code']"
+      >
+      </app-text-input>
+    </div>
+
+    <div class="row">
+      <!-- EAN -->
+      <app-text-input [label]="'EAN (kod kresowy)'" [formControl]="productForm.controls['ean']">
+      </app-text-input>
+
+      <div class="row" style="width: calc(50% - 5em)">
+        <!-- Unit -->
+        <app-text-input
+          class="splitter"
+          [label]="'Jednostka'"
+          [formControl]="productForm.controls['unit']"
+        >
+        </app-text-input>
+        <!-- Availability -->
+        <app-text-input
+          class="splitter"
+          [label]="'Dostępność'"
+          [formControl]="productForm.controls['availability']"
+        >
+        </app-text-input>
+      </div>
+    </div>
+
+    <!-- Buy Price Section -->
+    <mat-divider></mat-divider>
+    <h2 class="section-text">Zakup</h2>
+    <mat-divider class="margin-bottom"></mat-divider>
+
+    <div class="row">
+      <!-- Buy Price Net -->
+      <app-text-input
+        [suffixText]="'zł'"
+        [label]="'Cena zakupu (netto)'"
+        [formControl]="productForm.controls['buyPriceNet']"
+      >
+      </app-text-input>
+
+      <!-- Buy Price Gross -->
+      <app-text-input
+        [suffixText]="'zł'"
+        [label]="'Cena zakupu (brutto)'"
+        [formControl]="productForm.controls['buyPriceGross']"
+      >
+      </app-text-input>
+    </div>
+
+    <!-- Sales Price Section -->
+    <mat-divider></mat-divider>
+    <h2 class="section-text">Sprzedaż</h2>
+    <mat-divider class="margin-bottom"></mat-divider>
+
+    <div class="row">
+      <!-- Margin -->
+      <app-text-input
+        class="margin"
+        [type]="'number'"
+        [minNumber]="'0'"
+        [maxNumber]="'100'"
+        [suffixText]="'%'"
+        [label]="'Marża'"
+        [formControl]="productForm.controls['margin']"
+      >
+      </app-text-input>
+
+      <!-- Sales Price Net -->
+      <app-text-input
+        class="sales-price"
+        [suffixText]="'zł'"
+        [label]="'Cena sprzedaży (netto)'"
+        [formControl]="productForm.controls['salesPriceNet']"
+      >
+      </app-text-input>
+
+      <!-- Sales Price Gross -->
+      <app-text-input
+        class="sales-price"
+        [suffixText]="'zł'"
+        [label]="'Cena sprzedaży (brutto)'"
+        [formControl]="productForm.controls['salesPriceGross']"
+      >
+      </app-text-input>
+    </div>
+  </form>
+</div>
+
+<!-- Actions -->
+<div [align]="'end'" mat-dialog-actions>
+  <button mat-button [mat-dialog-close]>Porzuć</button>
+  <button
+    form="productForm"
+    mat-button
+    color="primary"
+    [disabled]="!productForm.valid || isSaving"
+    cdkFocusInitial
+  >
+    {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
+  </button>
+</div>

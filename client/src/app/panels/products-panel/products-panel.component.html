@@ -1,0 +1,25 @@
+<div class="products-panel-container">
+  <div class="content-wrapper">
+    <!-- Filters section -->
+    <div class="filters-wrapper">
+      <!-- Add order button -->
+      <button
+        mat-raised-button
+        (click)="onAddProduct()"
+        color="primary"
+        aria-label="Add product button"
+      >
+        Dodaj produkt
+        <mat-icon>add</mat-icon>
+      </button>
+
+      <!-- Net toggle -->
+      <mat-slide-toggle [labelPosition]="'before'" [(ngModel)]="isGross" color="primary">
+        {{ isGross ? "Brutto" : "Netto" }}
+      </mat-slide-toggle>
+    </div>
+
+    <!-- Products table -->
+    <app-products-table [isGross]="isGross"></app-products-table>
+  </div>
+</div>

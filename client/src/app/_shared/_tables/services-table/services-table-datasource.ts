@@ -12,7 +12,6 @@ import { ServicesService } from 'src/app/_services/services.service';
  */
 export class ServicesTableDataSource extends DataSource<Service> {
   data: Service[] = []; // current data of table
-  statusPositions: number[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -111,7 +110,7 @@ export class ServicesTableDataSource extends DataSource<Service> {
   }
 
   getService(id: number): Service {
-    return this.data.find((vehicle) => vehicle.id === id);
+    return this.data.find((service) => service.id === id);
   }
 
   addService(service: Service): void {
@@ -126,7 +125,7 @@ export class ServicesTableDataSource extends DataSource<Service> {
   }
 
   deleteService(id: number): void {
-    this.servicesSubject.next(this.data.filter((vehicle) => vehicle.id !== id));
+    this.servicesSubject.next(this.data.filter((service) => service.id !== id));
   }
 
   private compareDates(fstDate: Date, sndDate: Date, isAsc: boolean) {
