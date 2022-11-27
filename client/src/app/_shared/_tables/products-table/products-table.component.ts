@@ -8,6 +8,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ConfirmDialogComponent } from '../../_dialogs/confirm-dialog/confirm-dialog.component';
+import { ProductDeliveryDialogComponent } from '../../_dialogs/product-delivery-dialog/product-delivery-dialog.component';
 
 @Component({
   selector: 'app-products-table',
@@ -32,7 +33,7 @@ export class ProductsTableComponent implements OnInit {
     'buyPrice',
     'salesPrice',
     'manufacturer',
-    'lastDelivery',
+    'lastDeliveryDate',
     'actions'
   ];
 
@@ -52,20 +53,6 @@ export class ProductsTableComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-
-  onDeliveryClick(product: Product) {
-    // const dialogRef = this.dialog.open(CreateProductDialogComponent, {
-    //   data: {
-    //     product: product
-    //   }
-    // });
-    // dialogRef.afterClosed().subscribe((product: Product) => {
-    //   if (!product) return;
-    //   console.log(product);
-    //   this.dataSource.updateProduct(product);
-    // });
-  }
-
   onDeleteClick(product: Product) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
@@ -86,6 +73,16 @@ export class ProductsTableComponent implements OnInit {
           this.snackbarService.showMessage('error', 'Problem z usunięciem produktu');
         }
       });
+    });
+  }
+
+  onDeliveryClick(product: Product) {
+    const dialogRef = this.dialog.open(ProductDeliveryDialogComponent, {
+      width: '600px',
+      data: { product: product }
+    });
+    dialogRef.afterClosed().subscribe((product: Product) => {
+      if (product !== undefined) this.dataSource.updateProduct(product);
     });
   }
 }

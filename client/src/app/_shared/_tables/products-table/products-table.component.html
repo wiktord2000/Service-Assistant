@@ -58,10 +58,10 @@
       </ng-container>
 
       <!-- Last Delivery Date Column -->
-      <ng-container matColumnDef="lastDelivery">
+      <ng-container matColumnDef="lastDeliveryDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Data ostatniej dostawy</th>
         <td mat-cell *matCellDef="let row">
-          {{ row.lastDelivery | date: "dd.MM.yyyy" }}
+          {{ row.lastDeliveryDate | date: "dd.MM.yyyy" }}
         </td>
       </ng-container>
 
