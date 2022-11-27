@@ -24,20 +24,6 @@
       >
       </app-text-input>
 
-      <!-- Code -->
-      <app-text-input
-        class="code-input"
-        [label]="'Kod produktu'"
-        [formControl]="productForm.controls['code']"
-      >
-      </app-text-input>
-    </div>
-
-    <div class="row">
-      <!-- EAN -->
-      <app-text-input [label]="'EAN (kod kresowy)'" [formControl]="productForm.controls['ean']">
-      </app-text-input>
-
       <div class="row" style="width: calc(50% - 5em)">
         <!-- Unit -->
         <app-text-input
@@ -54,6 +40,20 @@
         >
         </app-text-input>
       </div>
+    </div>
+
+    <div class="row">
+      <!-- EAN -->
+      <app-text-input [label]="'EAN (kod kresowy)'" [formControl]="productForm.controls['ean']">
+      </app-text-input>
+
+      <!-- Code -->
+      <app-text-input
+        class="code-input"
+        [label]="'Kod produktu'"
+        [formControl]="productForm.controls['code']"
+      >
+      </app-text-input>
     </div>
 
     <!-- Buy Price Section -->
@@ -90,7 +90,7 @@
         class="margin"
         [type]="'number'"
         [minNumber]="'0'"
-        [maxNumber]="'100'"
+        [maxNumber]="'99'"
         [suffixText]="'%'"
         [label]="'Marża'"
         [formControl]="productForm.controls['margin']"
