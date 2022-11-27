@@ -18,6 +18,7 @@ export interface Product {
   profit: number;
   markup: number;
   margin: number;
+  lastDeliveryDate?: Date;
   createdAt: Date;
   updatedAt: Date;
 }

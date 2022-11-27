@@ -53,6 +53,7 @@ import { CreateServiceDialogComponent } from './_shared/_dialogs/create-service-
 import { ProductsPanelComponent } from './panels/products-panel/products-panel.component';
 import { ProductsTableComponent } from './_shared/_tables/products-table/products-table.component';
 import { CreateProductDialogComponent } from './_shared/_dialogs/create-product-dialog/create-product-dialog.component';
+import { ProductDeliveryDialogComponent } from './_shared/_dialogs/product-delivery-dialog/product-delivery-dialog.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -99,7 +100,8 @@ import { CreateProductDialogComponent } from './_shared/_dialogs/create-product-
     CreateServiceDialogComponent,
     ProductsPanelComponent,
     ProductsTableComponent,
-    CreateProductDialogComponent
+    CreateProductDialogComponent,
+    ProductDeliveryDialogComponent
   ],
   imports: [
     BrowserModule,
