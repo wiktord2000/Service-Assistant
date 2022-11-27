@@ -1,0 +1,70 @@
+<div cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+  <!-- Title -->
+  <h1 mat-dialog-title>Dostawa produktu</h1>
+  <mat-divider></mat-divider>
+
+  <!-- Content -->
+  <div mat-dialog-content>
+    <form
+      id="deliveryForm"
+      [formGroup]="deliveryForm"
+      (ngSubmit)="deliveryForm.valid && onSaveChanges()"
+      class="product-delivery-form"
+    >
+      <div class="row">
+        <!-- Count -->
+        <app-text-input [label]="'Liczba'" [formControl]="deliveryForm.controls['count']">
+        </app-text-input>
+
+        <!-- Delivery date -->
+        <app-date-input
+          [label]="'Data dostawy'"
+          [formControl]="deliveryForm.controls['lastDeliveryDate']"
+        ></app-date-input>
+      </div>
+      <!-- isCurrentDate toggle -->
+      <div class="toggle-wrapper">
+        <mat-slide-toggle
+          [ngModelOptions]="{ standalone: true }"
+          [labelPosition]="'before'"
+          [(ngModel)]="isOldPrice"
+          (change)="onToggleChange()"
+          color="primary"
+        >
+          Zachowaj starą cenę zakupu
+        </mat-slide-toggle>
+      </div>
+      <div class="row">
+        <!-- Buy Price Net -->
+        <app-text-input
+          [suffixText]="'zł'"
+          [label]="'Cena zakupu (netto)'"
+          [formControl]="deliveryForm.controls['buyPriceNet']"
+        >
+        </app-text-input>
+
+        <!-- Buy Price Gross -->
+        <app-text-input
+          [suffixText]="'zł'"
+          [label]="'Cena zakupu (brutto)'"
+          [formControl]="deliveryForm.controls['buyPriceGross']"
+        >
+        </app-text-input>
+      </div>
+    </form>
+  </div>
+
+  <!-- Actions -->
+  <div [align]="'end'" mat-dialog-actions>
+    <button mat-button [mat-dialog-close]>Porzuć</button>
+    <button
+      form="deliveryForm"
+      mat-button
+      color="primary"
+      [disabled]="!deliveryForm.valid || isSaving"
+      cdkFocusInitial
+    >
+      {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
+    </button>
+  </div>
+</div>
