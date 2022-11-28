@@ -9,7 +9,7 @@ export interface Product {
   reserved: number;
   description: string;
   notice: string;
-  grade: number;
+  grade?: number;
   vat: number;
   buyPriceNet: number;
   buyPriceGross: number;

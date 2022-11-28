@@ -17,7 +17,7 @@ namespace API.DTOs.ProductDtos
         public int Reserved { get; set; }
         public string Description { get; set; }
         public string Notice { get; set; }
-        public int Grade { get; set; }
+        public int? Grade { get; set; }
         public float Vat { get; set; }
         public float BuyPriceNet { get; set; }
         public float BuyPriceGross { get; set; }
