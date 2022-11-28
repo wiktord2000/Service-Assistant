@@ -13,6 +13,7 @@ export class TextInputComponent implements ControlValueAccessor {
   @Input() minNumber?: number;
   @Input() maxNumber?: number;
   @Input() isTextArea: boolean;
+  @Input() rowsNumber: number = 3;
 
   constructor(@Self() public ngControl: NgControl) {
     this.ngControl.valueAccessor = this;

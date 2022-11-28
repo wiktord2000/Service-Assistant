@@ -16,6 +16,7 @@
   <textarea
     *ngIf="isTextArea"
     type="{{ type }}"
+    [rows]="rowsNumber"
     [formControl]="ngControl.control"
     spellcheck="false"
     matInput
