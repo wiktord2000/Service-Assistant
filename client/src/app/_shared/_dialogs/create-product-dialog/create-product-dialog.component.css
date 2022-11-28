@@ -10,27 +10,14 @@
 }
 
 .row > * {
-  flex: 1 1 auto;
-}
-
-.splitter {
-  width: 45%;
+  flex: 1 1 50%;
 }
 
 .margin {
-  width: 15%;
+  flex: 1 1 15% !important;
   min-width: 100px;
 }
 
 .sales-price {
-  width: 30%;
-}
-
-.margin-bottom {
-  margin-bottom: 1em;
-}
-
-.section-text {
-  text-align: center;
-  margin: 0.3em 0;
+  flex: 1 1 auto !important;
 }

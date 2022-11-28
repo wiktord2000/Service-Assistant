@@ -3,10 +3,10 @@
 <mat-divider></mat-divider>
 
 <!-- Content -->
-<div mat-dialog-content [style.max-height.vh]="70">
+<div mat-dialog-content [style.max-height.vh]="72">
   <!-- Form -->
   <form
-    id="productForm"
+    id="product-form"
     [formGroup]="productForm"
     (ngSubmit)="productForm.valid && onSaveChanges()"
     class="create-product-form"
@@ -24,20 +24,12 @@
       >
       </app-text-input>
 
-      <div class="row" style="width: calc(50% - 5em)">
+      <div class="row">
         <!-- Unit -->
-        <app-text-input
-          class="splitter"
-          [label]="'Jednostka'"
-          [formControl]="productForm.controls['unit']"
-        >
+        <app-text-input [label]="'Jednostka'" [formControl]="productForm.controls['unit']">
         </app-text-input>
         <!-- Availability -->
-        <app-text-input
-          class="splitter"
-          [label]="'Dostępność'"
-          [formControl]="productForm.controls['availability']"
-        >
+        <app-text-input [label]="'Dostępność'" [formControl]="productForm.controls['availability']">
         </app-text-input>
       </div>
     </div>
@@ -57,9 +49,7 @@
     </div>
 
     <!-- Buy Price Section -->
-    <mat-divider></mat-divider>
-    <h2 class="section-text">Zakup</h2>
-    <mat-divider class="margin-bottom"></mat-divider>
+    <app-custom-header [headerText]="'Zakup'"></app-custom-header>
 
     <div class="row">
       <!-- Buy Price Net -->
@@ -80,9 +70,7 @@
     </div>
 
     <!-- Sales Price Section -->
-    <mat-divider></mat-divider>
-    <h2 class="section-text">Sprzedaż</h2>
-    <mat-divider class="margin-bottom"></mat-divider>
+    <app-custom-header [headerText]="'Sprzedaż'"></app-custom-header>
 
     <div class="row">
       <!-- Margin -->
@@ -122,7 +110,7 @@
 <div [align]="'end'" mat-dialog-actions>
   <button mat-button [mat-dialog-close]>Porzuć</button>
   <button
-    form="productForm"
+    form="product-form"
     mat-button
     color="primary"
     [disabled]="!productForm.valid || isSaving"
