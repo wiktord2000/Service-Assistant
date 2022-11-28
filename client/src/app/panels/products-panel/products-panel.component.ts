@@ -28,7 +28,7 @@ export class ProductsPanelComponent implements OnInit {
 
   onAddProduct() {
     const dialogRef = this.dialog.open(CreateProductDialogComponent, {
-      width: '600px'
+      width: '700px'
     });
     dialogRef.afterClosed().subscribe((product: Product) => {
       if (product !== undefined) this.productsTable.dataSource.addProduct(product);

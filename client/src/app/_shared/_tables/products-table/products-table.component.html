@@ -5,7 +5,7 @@
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Nazwa produktu</th>
         <td mat-cell *matCellDef="let row">
-          <span style="font-weight: 500; opacity: 0.8">{{ row.name }}</span>
+          <app-product-profile-link [product]="row"> </app-product-profile-link>
         </td>
       </ng-container>
 

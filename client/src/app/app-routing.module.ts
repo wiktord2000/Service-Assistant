@@ -15,6 +15,7 @@ import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-p
 import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
 import { OrderProfileComponent } from './profiles/order-profile/order-profile.component';
 import { ProductsPanelComponent } from './panels/products-panel/products-panel.component';
+import { ProductProfileComponent } from './profiles/product-profile/product-profile.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -26,13 +27,14 @@ const routes: Routes = [
     children: [
       { path: 'orders', component: OrdersPanelComponent },
       { path: 'services', component: ServicesPanelComponent },
+      { path: 'products', component: ProductsPanelComponent },
       { path: 'clients', component: ClientsPanelComponent },
       { path: 'vehicles', component: VehiclesPanelComponent },
-      { path: 'parts', component: ProductsPanelComponent },
       { path: 'statistics', component: StatisticsPanelComponent },
       { path: 'clients/:id', component: ClientProfileComponent },
       { path: 'vehicles/:id', component: VehicleProfileComponent },
-      { path: 'orders/:id', component: OrderProfileComponent }
+      { path: 'orders/:id', component: OrderProfileComponent },
+      { path: 'products/:id', component: ProductProfileComponent }
     ]
   },
   { path: 'errors', component: TestErrorsComponent },

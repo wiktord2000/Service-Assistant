@@ -54,6 +54,9 @@ import { ProductsPanelComponent } from './panels/products-panel/products-panel.c
 import { ProductsTableComponent } from './_shared/_tables/products-table/products-table.component';
 import { CreateProductDialogComponent } from './_shared/_dialogs/create-product-dialog/create-product-dialog.component';
 import { ProductDeliveryDialogComponent } from './_shared/_dialogs/product-delivery-dialog/product-delivery-dialog.component';
+import { ProductProfileComponent } from './profiles/product-profile/product-profile.component';
+import { ProductProfileLinkComponent } from './_shared/_links/product-profile-link/product-profile-link.component';
+import { CustomHeaderComponent } from './_shared/custom-header/custom-header.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -101,7 +104,10 @@ import { ProductDeliveryDialogComponent } from './_shared/_dialogs/product-deliv
     ProductsPanelComponent,
     ProductsTableComponent,
     CreateProductDialogComponent,
-    ProductDeliveryDialogComponent
+    ProductDeliveryDialogComponent,
+    ProductProfileComponent,
+    ProductProfileLinkComponent,
+    CustomHeaderComponent
   ],
   imports: [
     BrowserModule,

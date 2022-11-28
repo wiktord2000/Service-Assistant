@@ -1,0 +1,269 @@
+<div *ngIf="product" class="content-wrapper">
+  <!-- Aggregator -->
+  <div class="content header-border-radius mat-elevation-z10">
+    <!-- Header -->
+    <div class="header header-border-radius">
+      <!-- Product name -->
+      <div class="product-name">{{ product.name }}</div>
+
+      <!-- Product Code -->
+      <div class="product-code">{{ product.code }}</div>
+
+      <!-- Product Manufacturer -->
+      <div class="right-corner-label">
+        <mat-icon style="vertical-align: text-bottom">sell</mat-icon>
+        {{ product.manufacturer }}
+      </div>
+
+      <!-- Right bottom data -->
+      <div class="right-bottom-data">
+        <!-- Availability -->
+        Dostępność:
+        <span style="font-weight: 500">{{ product.availability }}</span>
+      </div>
+    </div>
+
+    <!-- Material tabs -->
+    <div class="tabs">
+      <mat-tab-group animationDuration="0ms" mat-align-tabs="start">
+        <!-- Product's data -->
+        <mat-tab label="Dane towaru">
+          <ng-template [ngTemplateOutlet]="productData"></ng-template>
+        </mat-tab>
+
+        <!-- Product's description -->
+        <mat-tab label="Opis towaru">
+          <ng-template [ngTemplateOutlet]="productDescription"></ng-template>
+        </mat-tab>
+
+        <!-- Product's orders -->
+        <mat-tab label="Powiazane zlecenia">
+          <ng-template [ngTemplateOutlet]="productOrders"></ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+
+<!------------------------------------------------------------------- Data Update Tab--------------------------------------------------------------------->
+<ng-template #productData>
+  <div class="tab-wrapper">
+    <!-- Form -->
+    <form
+      [formGroup]="productDataForm"
+      (ngSubmit)="productDataForm.valid && onProductDataSave()"
+      class="create-product-form"
+    >
+      <!-- Product name -->
+      <app-text-input [label]="'Nazwa produktu'" [formControl]="productDataForm.controls['name']">
+      </app-text-input>
+
+      <div class="row">
+        <!-- Manufacturer -->
+        <app-text-input
+          class="manufacturer-input"
+          [label]="'Producent'"
+          [formControl]="productDataForm.controls['manufacturer']"
+        >
+        </app-text-input>
+
+        <div class="row">
+          <!-- Unit -->
+          <app-text-input [label]="'Jednostka'" [formControl]="productDataForm.controls['unit']">
+          </app-text-input>
+          <!-- Availability -->
+          <app-text-input
+            [label]="'Dostępność'"
+            [formControl]="productDataForm.controls['availability']"
+          >
+          </app-text-input>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- EAN -->
+        <app-text-input
+          [label]="'EAN (kod kresowy)'"
+          [formControl]="productDataForm.controls['ean']"
+        >
+        </app-text-input>
+
+        <!-- Code -->
+        <app-text-input
+          class="code-input"
+          [label]="'Kod produktu'"
+          [formControl]="productDataForm.controls['code']"
+        >
+        </app-text-input>
+      </div>
+
+      <!-- Buy Price Section -->
+      <app-custom-header [headerText]="'Zakup'"></app-custom-header>
+
+      <div class="row">
+        <!-- Buy Price Net -->
+        <app-text-input
+          [suffixText]="'zł'"
+          [label]="'Cena zakupu (netto)'"
+          [formControl]="productDataForm.controls['buyPriceNet']"
+        >
+        </app-text-input>
+
+        <!-- Buy Price Gross -->
+        <app-text-input
+          [suffixText]="'zł'"
+          [label]="'Cena zakupu (brutto)'"
+          [formControl]="productDataForm.controls['buyPriceGross']"
+        >
+        </app-text-input>
+      </div>
+
+      <!-- Sales Price Section -->
+      <app-custom-header [headerText]="'Sprzedaż'"></app-custom-header>
+
+      <div class="row">
+        <!-- Margin -->
+        <app-text-input
+          class="margin"
+          [type]="'number'"
+          [minNumber]="'0'"
+          [maxNumber]="'99'"
+          [suffixText]="'%'"
+          [label]="'Marża'"
+          [formControl]="productDataForm.controls['margin']"
+        >
+        </app-text-input>
+
+        <!-- Sales Price Net -->
+        <app-text-input
+          class="sales-price"
+          [suffixText]="'zł'"
+          [label]="'Cena sprzedaży (netto)'"
+          [formControl]="productDataForm.controls['salesPriceNet']"
+        >
+        </app-text-input>
+
+        <!-- Sales Price Gross -->
+        <app-text-input
+          class="sales-price"
+          [suffixText]="'zł'"
+          [label]="'Cena sprzedaży (brutto)'"
+          [formControl]="productDataForm.controls['salesPriceGross']"
+        >
+        </app-text-input>
+      </div>
+      <!-- Save button -->
+      <div class="save-button-area">
+        <button
+          mat-raised-button
+          type="submit"
+          class="save-button"
+          color="primary"
+          [disabled]="!productDataForm.dirty || !productDataForm.valid || this.isSaving"
+        >
+          {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<!------------------------------------------------------------------- Vehicle's Description Tab --------------------------------------------------------------------->
+<ng-template #productDescription>
+  <div class="tab-wrapper">
+    <form
+      [formGroup]="productDescriptionForm"
+      (ngSubmit)="productDescriptionForm.valid && onProductDescriptionSave()"
+    >
+      <div class="description-wrapper">
+        <!-- Description Section -->
+        <div class="section">
+          <div class="description">
+            <!-- Description Header -->
+            <app-custom-header [headerText]="'Opis'"></app-custom-header>
+            <!-- Description -->
+            <app-text-input
+              [isTextArea]="true"
+              [rowsNumber]="11"
+              [formControl]="productDescriptionForm.controls['description']"
+            >
+            </app-text-input>
+          </div>
+        </div>
+        <!-- Notices and Grade Section -->
+        <div class="section">
+          <div class="notices-and-grade">
+            <!-- Notices -->
+            <div>
+              <!-- Notices Header -->
+              <app-custom-header [headerText]="'Uwagi'"></app-custom-header>
+              <!-- Notices -->
+              <app-text-input
+                [isTextArea]="true"
+                [formControl]="productDescriptionForm.controls['notice']"
+              >
+              </app-text-input>
+            </div>
+
+            <!-- Grade -->
+            <div>
+              <!-- Grade Section -->
+              <app-custom-header [headerText]="'Ocena'"></app-custom-header>
+              <!-- Grade input -->
+              <app-text-input
+                [type]="'number'"
+                [minNumber]="'1'"
+                [maxNumber]="'10'"
+                [suffixText]="'/10'"
+                [formControl]="productDescriptionForm.controls['grade']"
+              >
+              </app-text-input>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Save button -->
+      <div class="save-button-area">
+        <button
+          mat-raised-button
+          type="submit"
+          class="save-button"
+          color="primary"
+          [disabled]="
+            !productDescriptionForm.dirty || !productDescriptionForm.valid || this.isSaving
+          "
+        >
+          {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<!------------------------------------------------------------------- Vehicle's Orders Tab --------------------------------------------------------------------->
+<ng-template #productOrders>
+  <div class="tab-wrapper">
+    TODO
+    <!-- <div class="filters-wrapper"> -->
+    <!-- Add order button -->
+    <!-- <button mat-raised-button color="primary" aria-label="Add order button">
+        Dodaj zlecenie
+        <mat-icon>add</mat-icon>
+      </button> -->
+    <!-- Hide finished toggle -->
+    <!-- <mat-slide-toggle (toggleChange)="onToggleChange()" color="primary" checked="displayFinished">
+        Ukryj zakończone
+      </mat-slide-toggle>
+    </div> -->
+
+    <!-- Table -->
+    <!-- <app-orders-table
+      [hideVehicleColumn]="true"
+      [fixedSize]="false"
+      [matElevationValue]="1"
+      [initialData]="filterFinshedOrders(vehicle.orders)"
+      [hideClientColumn]="true"
+    >
+    </app-orders-table> -->
+  </div>
+</ng-template>
