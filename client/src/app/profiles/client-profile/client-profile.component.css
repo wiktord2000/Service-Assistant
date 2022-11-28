@@ -1,123 +1,118 @@
-:host{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    /* main: #5eb8ff | primary: #0288d1*/
-    --tabs-main: hsl(210, 84%, 62%);   
-    --tabs-primary: hsl(202, 97%, 34%);
-    --tabs-secondary: #ffffff88;
-    --main-border-radius: 1rem;
+:host {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  --tabs-main: #52a4b6;
+  --tabs-primary: #368799;
+  --tabs-secondary: #ffffff88;
+  --main-border-radius: 1rem;
 }
 
-.content-wrapper{
-    flex: 1;
-    margin: 5vh 10vw;
-    display: flex;
-} 
-
-.content{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 100%;
+.content-wrapper {
+  flex: 1;
+  margin: 5vh 10vw;
+  display: flex;
 }
 
-.header{
-    min-height: 4em;
-    padding: 3em;
-    padding-bottom: 1em;
-    background-color: var(--tabs-main);
-    position: relative;
-    color: white;
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
 }
 
-.header-border-radius{
-    border-top-left-radius: var(--main-border-radius);
-    border-top-right-radius: var(--main-border-radius);
+.header {
+  min-height: 4em;
+  padding: 3em;
+  padding-bottom: 1em;
+  background-color: var(--tabs-main);
+  position: relative;
+  color: white;
 }
 
-.right-corner-label{
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 1em 2em;
-    font-size: 1.25em;
-    border-bottom-left-radius: var(--main-border-radius);
-    border-top-right-radius: var(--main-border-radius);
-    color: white;
-    font-weight: 500;
-    background-color: var(--tabs-primary);
+.header-border-radius {
+  border-top-left-radius: var(--main-border-radius);
+  border-top-right-radius: var(--main-border-radius);
 }
 
-.right-bottom-data{
-    position: absolute;
-    right: 1.5em;
-    text-align: right;
-    bottom: -30px;
-    z-index: 2;
+.right-corner-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1em 2em;
+  font-size: 1.25em;
+  border-bottom-left-radius: var(--main-border-radius);
+  border-top-right-radius: var(--main-border-radius);
+  color: white;
+  font-weight: 500;
+  background-color: var(--tabs-primary);
 }
 
-.tabs{
-    flex: 1 1 auto;
-    border-bottom: 1em solid var(--tabs-main);
+.right-bottom-data {
+  position: absolute;
+  right: 1.5em;
+  text-align: right;
+  bottom: -30px;
+  z-index: 2;
 }
 
+.tabs {
+  flex: 1 1 auto;
+  border-bottom: 1em solid var(--tabs-main);
+}
 
 /* Client Tabs Common*/
-.tab-wrapper{
-    padding: 3em;
+.tab-wrapper {
+  padding: 3em;
 }
 
-.filters-wrapper{
-    display: flex;
-    justify-content: space-between;
-    align-items: centers;
-    padding-bottom: 1em;
+.filters-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: centers;
+  padding-bottom: 1em;
 }
 
 /* Client data */
-.edit-form{
-    display: flex;
-    flex-wrap: wrap;
+.edit-form {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.edit-form>*{
-    flex: 1 1 50%;
-    box-sizing: border-box;
-    padding: 0 1.5em;
+.edit-form > * {
+  flex: 1 1 50%;
+  box-sizing: border-box;
+  padding: 0 1.5em;
 }
 
-.save-button-area{
-    text-align: end;
-    margin-top: 1em;
+.save-button-area {
+  text-align: end;
+  margin-top: 1em;
 }
 
-.save-button{
-    width: 100%;
-    max-width: 12em;
+.save-button {
+  width: 100%;
+  max-width: 12em;
 }
-
 
 /* Styling angular material tabs */
-::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label{
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    background-color: var(--tabs-secondary);
-    margin-left: 5px;
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  background-color: var(--tabs-secondary);
+  margin-left: 5px;
 }
 
 ::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
-    color:white;
-    background-color: var(--tabs-primary);
+  color: white;
+  background-color: var(--tabs-primary);
 }
-    
+
 ::ng-deep .mat-tab-list .mat-tab-labels {
-    background-color: var(--tabs-main);
-    /* padding-left: 0.25em; */
+  background-color: var(--tabs-main);
+  /* padding-left: 0.25em; */
 }
 
 ::ng-deep .mat-ink-bar {
-    display: none;
+  display: none;
 }
-
-    

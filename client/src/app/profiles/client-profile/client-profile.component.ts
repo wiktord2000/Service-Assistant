@@ -18,28 +18,30 @@ import { Vehicle } from 'src/app/_models/Vehicle';
   styleUrls: ['./client-profile.component.css']
 })
 export class ClientProfileComponent implements OnInit {
-
   @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;
   @ViewChild(VehiclesTableComponent) vehiclesTable: VehiclesTableComponent;
-  client: Client; 
+  client: Client;
   isCompany: boolean;
   isSaving: boolean = false;
   displayFinished: boolean = false;
-  editForm : FormGroup;
+  editForm: FormGroup;
 
-  constructor(private clientsService: ClientsService,
-              private formBuilder: FormBuilder,
-              public dialog: MatDialog,
-              private snackbarService: SnackbarService,
-              private activatedRoute: ActivatedRoute ) { }
+  constructor(
+    private clientsService: ClientsService,
+    private formBuilder: FormBuilder,
+    public dialog: MatDialog,
+    private snackbarService: SnackbarService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.loadClient();
   }
 
-  onSaveChanges(){
+  onSaveChanges() {
     this.isSaving = true;
-    this.clientsService.updateClient(this.client.id, this.editForm.value)
+    this.clientsService
+      .updateClient(this.client.id, this.editForm.value)
       .pipe(
         finalize(() => {
           this.isSaving = false;
@@ -47,63 +49,58 @@ export class ClientProfileComponent implements OnInit {
       )
       .subscribe({
         next: () => {
-          this.client = {...this.client, ...this.editForm.value};    // Update specific props -> really handy
-          this.snackbarService.showMessage('success', "Pomyślnie zaktualizowano dane klienta");
+          this.client = { ...this.client, ...this.editForm.value }; // Update specific props -> really handy
+          this.snackbarService.showMessage('success', 'Pomyślnie zaktualizowano dane klienta');
           this.editForm.reset(this.client);
         },
         error: (error) => {
           this.snackbarService.showMessage('error', error);
         }
-    });
+      });
   }
 
-  onToggleChange(){
+  onToggleChange() {
     this.displayFinished = !this.displayFinished;
-    this.displayFinished 
+    this.displayFinished
       ? this.ordersTable.dataSource.setOrders(this.client.orders)
       : this.ordersTable.dataSource.setOrders(this.filterFinshedOrders(this.client.orders));
   }
 
-  filterFinshedOrders(orders: Order[]){
+  filterFinshedOrders(orders: Order[]) {
     return orders.filter((order) => order.status.position !== 4);
   }
 
-  loadClient(){
-
+  loadClient() {
     const clientId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
-    this.clientsService.getClient(clientId).subscribe(client => {
-
+    this.clientsService.getClient(clientId).subscribe((client) => {
       // Store client data
       this.client = client;
       this.isCompany = client.type === 'company';
 
       // Build form
-      this.editForm = this.formBuilder.group(
-        {
-          companyName: [ client.companyName, this.isCompany && [Validators.required]],
-          nip: [ client.nip, this.isCompany && [Validators.required]],
-          firstname: [ client.firstname, [Validators.required]],
-          lastname: [client.lastname, [Validators.required]],
-          street: [client.street],
-          city: [client.city],
-          postalCode: [client.postalCode],
-          countryCode: [client.postalCode],
-          phone: [client.phone],
-          email: [client.email],
-        }
-      );
+      this.editForm = this.formBuilder.group({
+        companyName: [client.companyName, this.isCompany && [Validators.required]],
+        nip: [client.nip, this.isCompany && [Validators.required]],
+        firstname: [client.firstname, [Validators.required]],
+        lastname: [client.lastname, [Validators.required]],
+        street: [client.street],
+        city: [client.city],
+        postalCode: [client.postalCode],
+        countryCode: [client.postalCode],
+        phone: [client.phone],
+        email: [client.email]
+      });
     });
   }
 
-  onAddVehicle(){
-
+  onAddVehicle() {
     const dialogRef = this.dialog.open(CreateVehicleDialogComponent, {
-      width: "900px",
-      data: {client: this.client},
+      width: '900px',
+      data: { client: this.client }
     });
 
     dialogRef.afterClosed().subscribe((vehicle: Vehicle) => {
-      if(vehicle) this.vehiclesTable.dataSource.addVehicle(vehicle);
+      if (vehicle) this.vehiclesTable.dataSource.addVehicle(vehicle);
     });
   }
 }

@@ -12,26 +12,26 @@ import { VehiclesTableComponent } from 'src/app/_shared/_tables/vehicles-table/v
   styleUrls: ['./vehicles-panel.component.css']
 })
 export class VehiclesPanelComponent implements OnInit {
-
   @ViewChild(VehiclesTableComponent) vehiclesTable!: VehiclesTableComponent;
-  
-  constructor(public snackbarService : SnackbarService,
-              public dialog: MatDialog,
-              public vehiclesService: VehiclesService) {
-  }
+
+  constructor(
+    public snackbarService: SnackbarService,
+    public dialog: MatDialog,
+    public vehiclesService: VehiclesService
+  ) {}
   ngAfterViewInit(): void {
     this.vehiclesTable.dataSource.loadVehicles();
   }
 
   ngOnInit(): void {}
 
-  onAddVehicle(){
+  onAddVehicle() {
     const dialogRef = this.dialog.open(CreateVehicleDialogComponent, {
-      width: "900px",
+      width: '900px'
     });
 
     dialogRef.afterClosed().subscribe((vehicle: Vehicle) => {
-      if(vehicle !== undefined) this.vehiclesTable.dataSource.addVehicle(vehicle);
+      if (vehicle !== undefined) this.vehiclesTable.dataSource.addVehicle(vehicle);
     });
   }
 }
