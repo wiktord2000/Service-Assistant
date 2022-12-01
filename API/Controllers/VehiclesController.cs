@@ -28,9 +28,16 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<VehicleDetailsDto>>> GetVehicles()
+        public async Task<ActionResult<IEnumerable<VehicleDetailsDto>>> GetVehicles([FromQuery] int? clientId)
         {   
             var username = User.GetUsername();    // -> Extensions
+
+            if(clientId != null){
+                return await _context.Vehicles
+                            .Where(vehicle => vehicle.AppUser.UserName == username && vehicle.CurrentOwnerId == clientId)
+                            .ProjectTo<VehicleDetailsDto>(_mapper.ConfigurationProvider)
+                            .ToListAsync();
+            }
 
             return await _context.Vehicles
                             .Where(vehicle => vehicle.AppUser.UserName == username)
@@ -98,6 +105,22 @@ namespace API.Controllers
 
             if(await _context.SaveChangesAsync() > 0) return NoContent();
             return StatusCode(StatusCodes.Status500InternalServerError, "Problem z usunięciem pojazdu!");
+        }
+
+        [HttpGet]
+        [Route("search")]
+        public async Task<ActionResult<IEnumerable<VehicleDto>>> GetVehiclesSerach([FromQuery] int vehiclesNumber, [FromQuery] string match)
+        {   
+            var username = User.GetUsername();    // -> Extensions
+
+            return await _context.Vehicles
+                    .Where(vehicle => (vehicle.AppUser.UserName == username 
+                        && ((vehicle.Brand + " " + vehicle.Model + " (" + vehicle.RegistrationNumber + ")").ToLower().Contains(match) 
+                        || match == null))) 
+                            
+                    .Take(vehiclesNumber)
+                    .ProjectTo<VehicleDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
         }
 
     }
