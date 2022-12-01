@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CustomHeaderComponent implements OnInit {
   @Input() headerText: string;
+  @Input() disableTopDivider: boolean = false;
 
   constructor() {}
 
