@@ -57,6 +57,8 @@ import { ProductDeliveryDialogComponent } from './_shared/_dialogs/product-deliv
 import { ProductProfileComponent } from './profiles/product-profile/product-profile.component';
 import { ProductProfileLinkComponent } from './_shared/_links/product-profile-link/product-profile-link.component';
 import { CustomHeaderComponent } from './_shared/custom-header/custom-header.component';
+import { CreateOrderDialogComponent } from './_shared/_dialogs/create-order-dialog/create-order-dialog.component';
+import { VehicleSelectInputComponent } from './_forms/vehicle-select-input/vehicle-select-input.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -107,7 +109,9 @@ import { CustomHeaderComponent } from './_shared/custom-header/custom-header.com
     ProductDeliveryDialogComponent,
     ProductProfileComponent,
     ProductProfileLinkComponent,
-    CustomHeaderComponent
+    CustomHeaderComponent,
+    CreateOrderDialogComponent,
+    VehicleSelectInputComponent
   ],
   imports: [
     BrowserModule,

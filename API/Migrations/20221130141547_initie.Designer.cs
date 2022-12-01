@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221130141547_initie")]
+    partial class initie
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
@@ -197,26 +199,23 @@ namespace API.Migrations
                     b.Property<int>("StatusId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<float>("TotalGross")
+                    b.Property<float?>("TotalGross")
                         .HasColumnType("REAL");
 
-                    b.Property<float>("TotalJobsGross")
+                    b.Property<float?>("TotalJobsGross")
                         .HasColumnType("REAL");
 
-                    b.Property<float>("TotalJobsNet")
+                    b.Property<float?>("TotalJobsNet")
                         .HasColumnType("REAL");
 
-                    b.Property<float>("TotalNet")
+                    b.Property<float?>("TotalNet")
                         .HasColumnType("REAL");
 
-                    b.Property<float>("TotalPartsGross")
+                    b.Property<float?>("TotalPartsGross")
                         .HasColumnType("REAL");
 
-                    b.Property<float>("TotalPartsNet")
+                    b.Property<float?>("TotalPartsNet")
                         .HasColumnType("REAL");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("TEXT");
 
                     b.Property<int?>("VehicleId")
                         .HasColumnType("INTEGER");
