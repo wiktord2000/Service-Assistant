@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Self } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, Self } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, startWith, debounceTime, of } from 'rxjs';
@@ -12,90 +12,97 @@ import { CreateClientDialogComponent } from 'src/app/_shared/_dialogs/create-cli
   styleUrls: ['./client-select-input.component.css']
 })
 export class ClientSelectInputComponent implements OnInit {
-  @Input() label: string = "Klient";
+  @Input() label: string = 'Klient';
   @Input() selectedClient?: Client;
-  clients: Client[] = [];
+  @Output() clientChange: EventEmitter<Client> = new EventEmitter();
   filteredClients: Observable<Client[]>;
-  isCasingUpdate: boolean = false;
 
   constructor(
-              @Self() public ngControl: NgControl,
-              public dialog: MatDialog, 
-              private clientsService: ClientsService) {
+    @Self() public ngControl: NgControl,
+    public dialog: MatDialog,
+    private clientsService: ClientsService
+  ) {
     this.ngControl.valueAccessor = this;
   }
 
   ngOnInit(): void {
-
     // Set up the initial client name
-    if(this.selectedClient) this.ngControl.control.setValue(this.clientToString(this.selectedClient));
+    if (this.selectedClient)
+      this.ngControl.control.setValue(this.clientToString(this.selectedClient));
 
     // Track input value change
-    this.ngControl.control.valueChanges.pipe(
+    this.ngControl.control.valueChanges
+      .pipe(
         debounceTime(300),
         // distinctUntilChanged(),
         startWith('')
       )
       .subscribe((value: string) => {
-
-        if(this.isCasingUpdate){
-          this.isCasingUpdate = !this.isCasingUpdate;
-          return;
-        }
-
         // Init state (even if input has any starting value the changing value will be empty string ""))
-        if(value !== this.ngControl.value && this.selectedClient) return;
+        if (value !== this.ngControl.value && this.selectedClient) return;
 
         this.loadClients(value.toLowerCase()).subscribe((clients) => {
-
-          this.selectedClient = clients.length === 1 && this.clientToString(clients[0]).toLowerCase() === this.ngControl.value.toLowerCase() 
-              ? this.selectedClient = clients[0] 
+          this.selectedClient =
+            clients.length === 1 &&
+            this.clientToString(clients[0]).toLowerCase() === this.ngControl.value.toLowerCase()
+              ? (this.selectedClient = clients[0])
               : null;
 
-          if(this.selectedClient){
-
-            if(this.ngControl.value !== this.clientToString(this.selectedClient)){
-              this.isCasingUpdate = true;
-              this.ngControl.control.setValue(this.clientToString(this.selectedClient));
+          this.clientChange.emit(this.selectedClient);
+          if (this.selectedClient) {
+            if (this.ngControl.value !== this.clientToString(this.selectedClient)) {
+              this.ngControl.control.setValue(this.clientToString(this.selectedClient), {
+                emitEvent: false
+              });
             }
           }
 
           this.filteredClients = of(clients);
 
-          if(!this.selectedClient && this.ngControl.value){
-            this.ngControl.control.setErrors({'incorrect': true});
-            this.ngControl.control.markAsTouched();
-          }
-          else{
+          if (!this.selectedClient) {
+            if (this.ngControl.value === '' && !this.ngControl.hasError('required')) {
+              this.ngControl.control.setErrors(null);
+            } else {
+              this.ngControl.hasError('required')
+                ? this.ngControl.control.setErrors({ required: true })
+                : this.ngControl.control.setErrors({ incorrect: true });
+              // this.ngControl.control.markAsTouched();
+            }
+          } else {
             this.ngControl.control.setErrors(null);
-          } 
-        })
-
-      })
+          }
+        });
+      });
   }
 
-  private loadClients(match: string){
+  private loadClients(match: string) {
     return this.clientsService.getClientsSearch(10, match);
   }
 
-  clientToString(client: Client){
-    if(!client) return "";
-    return client.type === 'company' 
-      ? client.companyName
-      : client.firstname + " " + client.lastname;
+  clear() {
+    this.selectedClient = null;
+    this.filteredClients = of([]);
+    this.ngControl.control.setValue('', { emitEvent: false });
   }
 
-  onAddClient(){
+  clientToString(client: Client) {
+    if (!client) return '';
+    return client.type === 'company'
+      ? client.companyName
+      : client.firstname + ' ' + client.lastname;
+  }
+
+  onAddClient() {
     const dialogRef = this.dialog.open(CreateClientDialogComponent, {
-      width: "900px",
-      data: {name: this.ngControl.value},
+      width: '900px',
+      data: { name: this.ngControl.value }
     });
 
     dialogRef.afterClosed().subscribe((client: Client) => {
-      if(client !== undefined){ 
+      if (client !== undefined) {
         this.selectedClient = client;
         this.ngControl.control.setValue(this.clientToString(client));
-      }   
+      }
       this.ngControl.control.updateValueAndValidity();
     });
   }
