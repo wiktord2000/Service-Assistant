@@ -7,40 +7,45 @@ import { Client } from '../_models/Client';
   providedIn: 'root'
 })
 export class ClientsService {
-
   private baseUrl: String = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getClients(){
+  getClients() {
     return this.http.get<Client[]>(this.baseUrl + 'clients/');
   }
 
-  getClientsSearch(clientsNumber: number, match: string){
+  getVehicleClients(vehicleId?: number) {
+    if (!vehicleId) return this.getClientsSearch(10, '');
 
+    let params = new HttpParams().appendAll({
+      vehicleId: vehicleId
+    });
+    return this.http.get<Client[]>(this.baseUrl + 'clients', { params });
+  }
+
+  getClientsSearch(clientsNumber: number, match: string) {
     let params = new HttpParams().appendAll({
       clientsNumber: clientsNumber,
       match: match
-    })
+    });
 
-    return this.http.get<Client[]>(this.baseUrl + 'clients/search', {params});
+    return this.http.get<Client[]>(this.baseUrl + 'clients/search', { params });
   }
 
   getClient(id: number) {
     return this.http.get<Client>(this.baseUrl + 'clients/' + id);
   }
 
-  addClient(client: Client){
-    console.log(client);
+  addClient(client: Client) {
     return this.http.post<Client>(this.baseUrl + 'clients/', client);
   }
 
-  updateClient(id: number, client: Client){
+  updateClient(id: number, client: Client) {
     return this.http.put<Client>(this.baseUrl + 'clients/' + id, client);
   }
 
-  deleteClient(id: number){
+  deleteClient(id: number) {
     return this.http.delete(this.baseUrl + 'clients/' + id);
   }
-
 }

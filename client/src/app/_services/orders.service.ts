@@ -8,37 +8,45 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class OrdersService {
-
   private baseUrl: String = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getOrders(statusPostions?: number[]){
-
+  getOrders(statusPostions?: number[]) {
     // If no array provided - simple request
-    if(!statusPostions) return this.http.get<Order[]>(this.baseUrl + "orders");
+    if (!statusPostions) return this.http.get<Order[]>(this.baseUrl + 'orders');
 
     // Otherwise - append query params
-    let params = statusPostions.reduce((params, statusPosition) => params.append('statusPositions', statusPosition), new HttpParams());
-    return this.http.get<Order[]>(this.baseUrl + "orders", {params});
+    let params = statusPostions.reduce(
+      (params, statusPosition) => params.append('statusPositions', statusPosition),
+      new HttpParams()
+    );
+    return this.http.get<Order[]>(this.baseUrl + 'orders', { params });
   }
 
   getOrder(id: number) {
     return this.http.get<Order>(this.baseUrl + 'orders/' + id);
   }
 
-  updateOrder(order: Order){
+  addOrder(order: Order) {
+    return this.http.post<Order>(this.baseUrl + 'orders/', order);
+  }
+
+  updateOrder(order: Order) {
     return this.http.put<Order>(`${environment.apiUrl}orders/${order.id}`, order);
   }
 
-  updateOrderPatch(id: number, dataToUpdate: object){
-    if(!dataToUpdate) return;
-    
-    let body = Object.keys(dataToUpdate)
-                .map((key) => {
-                  return {op: "replace", path: key, value: dataToUpdate[key]}
-                })
+  updateOrderPatch(id: number, dataToUpdate: object) {
+    if (!dataToUpdate) return;
+
+    let body = Object.keys(dataToUpdate).map((key) => {
+      return { op: 'replace', path: key, value: dataToUpdate[key] };
+    });
 
     return this.http.patch(`${environment.apiUrl}orders/${id}`, body);
+  }
+
+  deleteOrder(id: number) {
+    return this.http.delete<Order>(this.baseUrl + 'orders/' + id);
   }
 }
