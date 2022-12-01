@@ -28,9 +28,16 @@ namespace API.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ClientDto>>> GetClients()
+        public async Task<ActionResult<IEnumerable<ClientDto>>> GetClients([FromQuery] int? vehicleId)
         {   
             var username = User.GetUsername();    // -> Extensions
+
+            if(vehicleId != null){
+                return await _context.Clients
+                            .Where(client => client.AppUser.UserName == username && client.Vehicles.Any((vehicle) => vehicle.Id == vehicleId))
+                            .ProjectTo<ClientDto>(_mapper.ConfigurationProvider)
+                            .ToListAsync();
+            }
 
             return await _context.Clients
                             .Where(client => client.AppUser.UserName == username)
