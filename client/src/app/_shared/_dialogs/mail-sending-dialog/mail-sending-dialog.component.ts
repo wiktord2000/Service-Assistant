@@ -1,3 +1,4 @@
+import { finalize } from 'rxjs';
 import { EmailMessage } from './../../../_models/EmailMessage';
 import { SnackbarService } from './../../../_services/snackbar.service';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -18,7 +19,7 @@ export class MailSendingDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<MailSendingDialogComponent>,
     private snackbarService: SnackbarService
   ) {}
-
+  isSending: boolean = false;
   emails: string[] = [];
   history: string[][] = [];
   historySize: number = 10;
@@ -35,6 +36,7 @@ export class MailSendingDialogComponent implements OnInit {
   }
 
   onSendEmail() {
+    this.isSending = true;
     let { subject, message } = this.messageForm.value;
 
     let emailMessage: EmailMessage = {
@@ -43,18 +45,25 @@ export class MailSendingDialogComponent implements OnInit {
       emails: this.emails
     };
 
-    this.mailService.postMail(emailMessage).subscribe({
-      next: () => {
-        // Show snackbar
-        this.snackbarService.showMessage('success', 'Pomyślnie wysłano wiadomość');
-        // Close dialog
-        this.dialogRef.close();
-      },
-      error: (err) => {
-        this.snackbarService.showMessage('error', err.error);
-        console.log(err);
-      }
-    });
+    this.mailService
+      .postMail(emailMessage)
+      .pipe(
+        finalize(() => {
+          this.isSending = false;
+        })
+      )
+      .subscribe({
+        next: () => {
+          // Show snackbar
+          this.snackbarService.showMessage('success', 'Pomyślnie wysłano wiadomość');
+          // Close dialog
+          this.dialogRef.close();
+        },
+        error: (err) => {
+          this.snackbarService.showMessage('error', err.error);
+          console.log(err);
+        }
+      });
   }
 
   // History functionality
