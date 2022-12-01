@@ -1,0 +1,47 @@
+:host {
+  --wrappers-padding: 2em;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin: 0 1em;
+}
+
+.create-order-form {
+  padding-top: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.vehicle-and-client-wrapper {
+  display: flex;
+}
+
+.vehicle-wrapper {
+  flex: 1 1 50%;
+  padding: var(--wrappers-padding);
+  padding-bottom: 0.5em;
+}
+
+.client-wrapper {
+  flex: 1 1 50%;
+  padding: var(--wrappers-padding);
+  padding-bottom: 0.5em;
+}
+
+.services-wrapper {
+  padding: var(--wrappers-padding);
+}
+.products-wrapper {
+  padding: var(--wrappers-padding);
+}
+
+.summary-wrapper {
+  padding: var(--wrappers-padding);
+}
+
+.w-100 {
+  width: 100%;
+}

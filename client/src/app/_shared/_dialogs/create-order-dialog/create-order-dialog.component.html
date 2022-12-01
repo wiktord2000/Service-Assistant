@@ -1,0 +1,117 @@
+<!-- Title -->
+<div mat-dialog-title class="header">
+  <h1>Uzupełnij dane zlecenia</h1>
+  <mat-slide-toggle
+    [labelPosition]="'before'"
+    [(ngModel)]="isPricing"
+    (change)="onToggleChange()"
+    color="primary"
+  >
+    Wycena
+  </mat-slide-toggle>
+</div>
+<mat-divider *ngIf="!isPricing"></mat-divider>
+
+<!-- Content -->
+<div mat-dialog-content [style.max-height.vh]="80">
+  <form
+    id="order-form"
+    [formGroup]="orderForm"
+    (ngSubmit)="orderForm.valid && onSaveChanges()"
+    class="create-product-form"
+  >
+    <!-- Vehicle and Client (possible hidden) -->
+    <div *ngIf="!isPricing" class="vehicle-and-client-wrapper">
+      <!-- Client -->
+      <div class="client-wrapper">
+        <!-- Header -->
+        <app-custom-header [headerText]="'Klient'"></app-custom-header>
+        <!-- Client Selector -->
+        <app-client-select-input
+          (clientChange)="onClientChange($event)"
+          [selectedClient]="selectedClient"
+          [label]="'Klient'"
+          [formControl]="orderForm.controls['client']"
+        ></app-client-select-input>
+
+        <!-- Client Description -->
+        <app-text-input
+          [isTextArea]="true"
+          [rowsNumber]="4"
+          [label]="'Opis klienta'"
+          [formControl]="orderForm.controls['clientDescription']"
+        >
+        </app-text-input>
+        {{ selectedClient | json }}
+      </div>
+
+      <!-- Vertical Divider -->
+      <mat-divider [vertical]="true"></mat-divider>
+
+      <!-- Vehicle -->
+      <div class="vehicle-wrapper">
+        <!-- Header -->
+        <app-custom-header [headerText]="'Pojazd'"></app-custom-header>
+        <!-- Vehicle selector -->
+        <app-vehicle-select-input
+          (vehicleChange)="onVehicleChange($event)"
+          [selectedVehicle]="selectedVehicle"
+          [formControl]="orderForm.controls['vehicle']"
+        ></app-vehicle-select-input>
+
+        <!-- Mealage -->
+        <app-text-input
+          [suffixText]="'km'"
+          [label]="'Przebieg'"
+          [formControl]="orderForm.controls['mileage']"
+        >
+        </app-text-input>
+
+        <!-- Fuel level -->
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Poziom paliwa</mat-label>
+          <mat-select formControlName="fuelLevel">
+            <mat-option value="1/4">1/4</mat-option>
+            <mat-option value="2/4">2/4</mat-option>
+            <mat-option value="3/4">3/4</mat-option>
+            <mat-option value="4/4">4/4</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        {{ selectedVehicle | json }}
+      </div>
+    </div>
+
+    <!-- Services and Products -->
+    <div class="services-and-products-wrapper">
+      <!-- Services -->
+      <app-custom-header [headerText]="'Usługi'"></app-custom-header>
+      <div class="services-wrapper">{{ orderForm.value | json }}</div>
+
+      <!-- Products -->
+      <app-custom-header [headerText]="'Towary'"></app-custom-header>
+      <div class="products-wrapper">{{ orderForm.valid }}</div>
+
+      <!-- Summary -->
+      <ng-container *ngIf="isPricing">
+        <app-custom-header [headerText]="'Podsumowanie'"></app-custom-header>
+        <div class="summary-wrapper">summary</div>
+      </ng-container>
+    </div>
+  </form>
+</div>
+
+<!-- Actions -->
+<mat-divider></mat-divider>
+<div [align]="'end'" mat-dialog-actions>
+  <button mat-button [mat-dialog-close]>Porzuć</button>
+  <button
+    form="order-form"
+    mat-button
+    color="primary"
+    [disabled]="!(orderForm.valid || isPricing) || isSaving"
+    cdkFocusInitial
+  >
+    {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
+  </button>
+</div>
