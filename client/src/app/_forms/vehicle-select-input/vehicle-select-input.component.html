@@ -1,0 +1,39 @@
+<mat-form-field appearance="fill">
+  <!-- Label -->
+  <mat-label>{{ label }}</mat-label>
+
+  <!-- Input -->
+  <input
+    type="text"
+    aria-label="Number"
+    matInput
+    [formControl]="ngControl.control"
+    [matAutocomplete]="auto"
+  />
+
+  <!-- Add button if not found -->
+  <button
+    *ngIf="ngControl.control.invalid"
+    (click)="onAddVehicle()"
+    matSuffix
+    matTooltip="Dodaj pojazd"
+    [matTooltipPosition]="'right'"
+    mat-icon-button
+  >
+    <mat-icon color="primary">add</mat-icon>
+  </button>
+
+  <!-- Errors -->
+  <mat-error *ngIf="ngControl.control.hasError('incorrect')"
+    >Wprowadzony {{ label.toLowerCase() }} nie istnieje. Dodaj go, aby zapisać zmiany.</mat-error
+  >
+  <mat-error *ngIf="ngControl.control.hasError('required')">Pole jest wymagane.</mat-error>
+
+  <!-- Autocomplate -->
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option *ngFor="let vehicle of filteredVehicles | async" [value]="vehicleToString(vehicle)">
+      <mat-icon color="primary">directions_car</mat-icon>
+      {{ vehicleToString(vehicle) }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
