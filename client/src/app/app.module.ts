@@ -43,7 +43,7 @@ import { OrdersTableComponent } from './_shared/_tables/orders-table/orders-tabl
 import { VehiclesTableComponent } from './_shared/_tables/vehicles-table/vehicles-table.component';
 import { ClientsTableComponent } from './_shared/_tables/clients-table/clients-table.component';
 import { SendEmailLinkComponent } from './_shared/_links/send-email-link/send-email-link.component';
-import { ClientSelectInputComponent } from './_forms/client-select-input/client-select-input.component';
+import { ClientSelectInputComponent } from './_forms/_complex-selectors/client-select-input/client-select-input.component';
 import { ConfirmDialogComponent } from './_shared/_dialogs/confirm-dialog/confirm-dialog.component';
 import { CreateClientDialogComponent } from './_shared/_dialogs/create-client-dialog/create-client-dialog.component';
 import { CreateVehicleDialogComponent } from './_shared/_dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
@@ -58,7 +58,9 @@ import { ProductProfileComponent } from './profiles/product-profile/product-prof
 import { ProductProfileLinkComponent } from './_shared/_links/product-profile-link/product-profile-link.component';
 import { CustomHeaderComponent } from './_shared/custom-header/custom-header.component';
 import { CreateOrderDialogComponent } from './_shared/_dialogs/create-order-dialog/create-order-dialog.component';
-import { VehicleSelectInputComponent } from './_forms/vehicle-select-input/vehicle-select-input.component';
+import { VehicleSelectInputComponent } from './_forms/_complex-selectors/vehicle-select-input/vehicle-select-input.component';
+import { ServiceSelectInputComponent } from './_forms/_complex-selectors/service-select-input/service-select-input.component';
+import { OrderServicesTableComponent } from './_shared/_tables/order-services-table/order-services-table.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -111,7 +113,9 @@ import { VehicleSelectInputComponent } from './_forms/vehicle-select-input/vehic
     ProductProfileLinkComponent,
     CustomHeaderComponent,
     CreateOrderDialogComponent,
-    VehicleSelectInputComponent
+    VehicleSelectInputComponent,
+    ServiceSelectInputComponent,
+    OrderServicesTableComponent
   ],
   imports: [
     BrowserModule,
