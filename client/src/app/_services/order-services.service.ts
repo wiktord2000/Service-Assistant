@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { OrderService } from '../_models/OrderService';
@@ -11,8 +11,14 @@ export class OrderServicesService {
 
   constructor(private http: HttpClient) {}
 
-  getOrderServices() {
-    return this.http.get<OrderService[]>(this.baseUrl + 'orderServices/');
+  getOrderServices(orderId?: number) {
+    if (!orderId) this.http.get<OrderService[]>(this.baseUrl + 'orderServices/');
+
+    let params = new HttpParams().appendAll({
+      orderId: orderId
+    });
+
+    return this.http.get<OrderService[]>(this.baseUrl + 'orderServices/', { params });
   }
 
   getOrderService(id: number) {
