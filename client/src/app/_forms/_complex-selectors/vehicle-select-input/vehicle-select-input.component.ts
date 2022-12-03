@@ -98,7 +98,7 @@ export class VehicleSelectInputComponent implements OnInit {
     dialogRef.afterClosed().subscribe((vehicle: Vehicle) => {
       if (vehicle !== undefined) {
         this.selectedVehicle = vehicle;
-        this.ngControl.control.setValue(this.vehicleToString(vehicle));
+        this.ngControl.control.setValue(this.vehicleToString(vehicle), { emitEvent: false });
       }
       this.ngControl.control.updateValueAndValidity();
     });

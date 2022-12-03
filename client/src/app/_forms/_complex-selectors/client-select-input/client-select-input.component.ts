@@ -101,7 +101,7 @@ export class ClientSelectInputComponent implements OnInit {
     dialogRef.afterClosed().subscribe((client: Client) => {
       if (client !== undefined) {
         this.selectedClient = client;
-        this.ngControl.control.setValue(this.clientToString(client));
+        this.ngControl.control.setValue(this.clientToString(client), { emitEvent: false });
       }
       this.ngControl.control.updateValueAndValidity();
     });
