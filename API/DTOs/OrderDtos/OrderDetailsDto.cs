@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.DTOs.OrderProductsDtos;
 
 namespace API.DTOs.OrderDtos
 {
@@ -35,5 +36,6 @@ namespace API.DTOs.OrderDtos
         public ClientDto Client { get; set; }
         public VehicleDto Vehicle { get; set; }
         public ICollection<OrderServiceDto> OrderServices { get; set; }
+        public ICollection<OrderProductDto> OrderProducts { get; set; }
     }
 }
