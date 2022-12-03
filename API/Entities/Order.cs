@@ -15,16 +15,18 @@ namespace API.Entities
         public DateTime? AdmissionDate { get; set; }
         public DateTime? DeadlineDate { get; set; }
         public string ClientDescription { get; set; }
+        public string FuelLevel { get; set; }
         public string RepairDescription { get; set; }
         public string InvoiceId { get; set; }
         public int? Mileage { get; set; }
-        public float? TotalJobsNet { get; set; }
-        public float? TotalJobsGross { get; set; }
-        public float? TotalPartsNet { get; set; }
-        public float? TotalPartsGross { get; set; }
-        public float? TotalNet { get; set; }
-        public float? TotalGross { get; set; }
+        public float TotalJobsNet { get; set; }
+        public float TotalJobsGross { get; set; }
+        public float TotalPartsNet { get; set; }
+        public float TotalPartsGross { get; set; }
+        public float TotalNet { get; set; }
+        public float TotalGross { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.Now;
         public DateTime? FinishDate { get; set; }
 
         // -------------------- Foreign keys
@@ -37,6 +39,7 @@ namespace API.Entities
         public Status Status { get; set; }
         public Client Client { get; set; }
         public Vehicle Vehicle { get; set; }
-        
+        public ICollection<OrderService> OrderServices { get; set; }
+        public ICollection<OrderProduct> OrderProducts { get; set; }
     }
 }
