@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { finalize } from 'rxjs';
 import { Product } from 'src/app/_models/product';
 import { ProductsService } from 'src/app/_services/products.service';
@@ -36,7 +36,8 @@ export class CreateProductDialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     private snackbarService: SnackbarService,
     private productsService: ProductsService,
-    public dialogRef: MatDialogRef<CreateProductDialogComponent>
+    public dialogRef: MatDialogRef<CreateProductDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data?: { name?: string }
   ) {}
 
   ngOnInit(): void {
@@ -72,6 +73,10 @@ export class CreateProductDialogComponent implements OnInit {
       });
       this.calculateUp();
     });
+
+    if (this?.data?.name) {
+      this.productForm.controls['name'].setValue(this.data.name);
+    }
   }
 
   // Calculate up fields (buyPriceNet and buyPriceGross)
