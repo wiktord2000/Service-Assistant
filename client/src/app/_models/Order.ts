@@ -1,4 +1,6 @@
 import { Client } from './Client';
+import { OrderProduct } from './OrderProduct';
+import { OrderService } from './OrderService';
 import { Status } from './Status';
 import { Vehicle } from './Vehicle';
 
@@ -27,4 +29,6 @@ export interface Order {
   status: Status;
   client: Client;
   vehicle: Vehicle;
+  orderServices: Array<OrderService>;
+  orderProducts: Array<OrderProduct>;
 }
