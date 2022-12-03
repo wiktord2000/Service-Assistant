@@ -5,7 +5,7 @@
   <!-- Input -->
   <input
     type="text"
-    aria-label="Number"
+    aria-label="Product input"
     matInput
     [formControl]="ngControl.control"
     [matAutocomplete]="auto"
@@ -14,10 +14,10 @@
   <!-- Add button if not found -->
   <button
     *ngIf="ngControl.control.invalid"
-    (click)="onAddClient()"
+    (click)="onAddProduct()"
     type="button"
     matSuffix
-    matTooltip="Dodaj klienta"
+    matTooltip="Dodaj usługę"
     [matTooltipPosition]="'right'"
     mat-icon-button
   >
@@ -32,11 +32,13 @@
 
   <!-- Autocomplate -->
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-    <mat-option *ngFor="let client of displayingClients | async" [value]="clientToString(client)">
-      <mat-icon color="primary">{{
-        this.client.type === "company" ? "groups" : "person"
-      }}</mat-icon>
-      {{ clientToString(client) }}
+    <mat-option
+      *ngFor="let product of displayingProducts | async"
+      [value]="productToString(product)"
+    >
+      <mat-icon color="primary">sell</mat-icon>
+      {{ productToString(product) }} -
+      <span style="font-weight: 500"> {{ product.salesPriceGross.toFixed(2) }}zł </span>
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>

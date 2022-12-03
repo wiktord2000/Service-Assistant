@@ -15,7 +15,8 @@ export class VehicleSelectInputComponent implements OnInit {
   @Input() label: string = 'Pojazd';
   @Input() selectedVehicle?: Vehicle;
   @Output() vehicleChange: EventEmitter<Vehicle> = new EventEmitter();
-  filteredVehicles: Observable<Vehicle[]>;
+  possibleVehicles: Vehicle[] = [];
+  displayingVehicles: Observable<Vehicle[]> = of([]);
 
   constructor(
     @Self() public ngControl: NgControl,
@@ -40,37 +41,55 @@ export class VehicleSelectInputComponent implements OnInit {
       .subscribe((value: string) => {
         // Init state (even if input has any starting value the changing value will be empty string ""))
         if (value !== this.ngControl.value && this.selectedVehicle) return;
+        // Check that currently have a candidate (cover also case when one from the list has been selected)
+        let candidates = this.possibleVehicles.filter(
+          (vehicle) => this.vehicleToString(vehicle) === value
+        );
 
+        if (candidates.length) {
+          this.selectedVehicle = candidates[0];
+          this.vehicleChange.emit(candidates[0]);
+          this.displayingVehicles = of(candidates);
+          return;
+        }
+
+        // Request
         this.loadVehicles(value.toLowerCase()).subscribe((vehicles) => {
+          this.possibleVehicles = vehicles;
+          this.displayingVehicles = of(vehicles);
+
+          // Automatically select when found match
           this.selectedVehicle =
             vehicles.length === 1 &&
             this.vehicleToString(vehicles[0]).toLowerCase() === this.ngControl.value.toLowerCase()
               ? (this.selectedVehicle = vehicles[0])
               : null;
 
+          // Inform about change
           this.vehicleChange.emit(this.selectedVehicle);
+
+          // Update letter casing of input (if needed)
+          if (
+            this.selectedVehicle &&
+            this.ngControl.value !== this.vehicleToString(this.selectedVehicle)
+          ) {
+            this.ngControl.control.setValue(this.vehicleToString(this.selectedVehicle), {
+              emitEvent: false
+            });
+          }
+
+          // Errors handling
           if (this.selectedVehicle) {
-            if (this.ngControl.value !== this.vehicleToString(this.selectedVehicle)) {
-              this.ngControl.control.setValue(this.vehicleToString(this.selectedVehicle), {
-                emitEvent: false
-              });
-            }
-          }
-
-          this.filteredVehicles = of(vehicles);
-
-          if (!this.selectedVehicle) {
-            if (this.ngControl.value === '' && !this.ngControl.hasError('required')) {
-              this.ngControl.control.setErrors(null);
-            } else {
-              this.ngControl.hasError('required')
-                ? this.ngControl.control.setErrors({ required: true })
-                : this.ngControl.control.setErrors({ incorrect: true });
-              // this.ngControl.control.markAsTouched();
-            }
-          } else {
             this.ngControl.control.setErrors(null);
+            return;
           }
+          if (this.ngControl.value !== '') {
+            this.ngControl.control.setErrors({ incorrect: true });
+            return;
+          }
+          this.ngControl.hasError('required')
+            ? this.ngControl.control.setErrors({ required: true })
+            : this.ngControl.control.setErrors(null);
         });
       });
   }
@@ -79,9 +98,11 @@ export class VehicleSelectInputComponent implements OnInit {
     return this.vehiclesService.getVehiclesSearch(10, match);
   }
 
-  clear() {
+  clear(emitEvent: boolean = false) {
     this.selectedVehicle = null;
-    this.filteredVehicles = of([]);
+    if (emitEvent) this.vehicleChange.emit(null);
+    this.possibleVehicles = [];
+    this.displayingVehicles = of([]);
     this.ngControl.control.setValue('', { emitEvent: false });
   }
 
@@ -98,9 +119,10 @@ export class VehicleSelectInputComponent implements OnInit {
     dialogRef.afterClosed().subscribe((vehicle: Vehicle) => {
       if (vehicle !== undefined) {
         this.selectedVehicle = vehicle;
+        this.vehicleChange.emit(vehicle);
+        this.displayingVehicles = of([vehicle]);
         this.ngControl.control.setValue(this.vehicleToString(vehicle), { emitEvent: false });
       }
-      this.ngControl.control.updateValueAndValidity();
     });
   }
 

@@ -32,7 +32,10 @@
 
   <!-- Autocomplate -->
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-    <mat-option *ngFor="let vehicle of filteredVehicles | async" [value]="vehicleToString(vehicle)">
+    <mat-option
+      *ngFor="let vehicle of displayingVehicles | async"
+      [value]="vehicleToString(vehicle)"
+    >
       <mat-icon color="primary">directions_car</mat-icon>
       {{ vehicleToString(vehicle) }}
     </mat-option>

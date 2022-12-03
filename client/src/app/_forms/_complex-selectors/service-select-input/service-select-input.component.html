@@ -32,7 +32,10 @@
 
   <!-- Autocomplate -->
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-    <mat-option *ngFor="let service of filteredServices | async" [value]="serviceToString(service)">
+    <mat-option
+      *ngFor="let service of displayingServices | async"
+      [value]="serviceToString(service)"
+    >
       <mat-icon color="primary">construction</mat-icon>
       {{ serviceToString(service) }}
     </mat-option>
