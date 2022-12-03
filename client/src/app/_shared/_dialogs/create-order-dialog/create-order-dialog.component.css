@@ -33,15 +33,50 @@
 
 .services-wrapper {
   padding: var(--wrappers-padding);
+  padding-top: 0.5em;
 }
 .products-wrapper {
   padding: var(--wrappers-padding);
-}
-
-.summary-wrapper {
-  padding: var(--wrappers-padding);
+  padding-top: 0.5em;
 }
 
 .w-100 {
   width: 100%;
+}
+
+/* Adding strip */
+.add-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.add-wrapper > app-service-select-input,
+.add-wrapper > app-product-select-input {
+  flex: 1 1 auto;
+  margin-right: 1em;
+}
+
+.add-button {
+  margin-top: 0.4em;
+  min-width: 90px;
+  width: 10%;
+  height: 3em;
+}
+
+.count-input {
+  min-width: 80px;
+  width: 8%;
+  margin-right: 1em;
+}
+
+.summary-text {
+  flex: 1;
+  margin-left: 2.5em;
+  font-weight: 500;
+  font-size: 1.25em;
+  color: #3f51b5;
+}
+
+.summary-price {
+  font-weight: 600;
 }
