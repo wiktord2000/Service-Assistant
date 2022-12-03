@@ -1,11 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { OrderService } from 'src/app/_models/OrderService';
 import { OrderServicesService } from 'src/app/_services/order-services.service';
-import { SnackbarService } from 'src/app/_services/snackbar.service';
 import { OrderServicesTableDataSource } from './order-services-table-datasource';
 
 @Component({
@@ -14,8 +10,6 @@ import { OrderServicesTableDataSource } from './order-services-table-datasource'
   styleUrls: ['./order-services-table.component.css']
 })
 export class OrderServicesTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator; // ! - assured that paginator exists
-  @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<OrderService>;
   @Input() initialData?: OrderService[];
   @Input() matElevationValue?: number = 8;
@@ -29,10 +23,7 @@ export class OrderServicesTableComponent implements OnInit {
     'actions'
   ];
 
-  constructor(
-    public orderServicesService: OrderServicesService,
-    private snackbarService: SnackbarService
-  ) {}
+  constructor(public orderServicesService: OrderServicesService) {}
 
   ngOnInit(): void {
     // Create DataSource (with initialData if needed)
@@ -40,8 +31,6 @@ export class OrderServicesTableComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
 

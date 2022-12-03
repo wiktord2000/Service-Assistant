@@ -1,8 +1,6 @@
 import { OrderServicesService } from './../../../_services/order-services.service';
 import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { BehaviorSubject, map, merge, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { OrderService } from 'src/app/_models/OrderService';
 
 /**
@@ -12,8 +10,6 @@ import { OrderService } from 'src/app/_models/OrderService';
  */
 export class OrderServicesTableDataSource extends DataSource<OrderService> {
   data: OrderService[] = []; // current data of table
-  paginator: MatPaginator | undefined;
-  sort: MatSort | undefined;
 
   private orderServicesSubject = new BehaviorSubject<OrderService[]>([]);
 
@@ -28,23 +24,13 @@ export class OrderServicesTableDataSource extends DataSource<OrderService> {
   /**
    * Connect this data source to the table. The table will only update when
    * the returned stream emits new items.
-   * @returns ---------------------------------> A stream of the items to be rendered.
+   * @returns ---------------------------------> A stream of the items to be rendered !!!!.
    */
   connect(): Observable<OrderService[]> {
-    if (!this.paginator || !this.sort)
-      throw Error('Please set the paginator and sort on the data source before connecting.');
-
-    // Combine everything that affects the rendered data into one update stream for the data-table to consume.
-    // In the nutshell update displaying data when one of the events (pageEvent, sort, orderServicesSubject.next) has occured
-    return merge(
-      this.orderServicesSubject.asObservable(),
-      this.paginator.page,
-      this.sort.sortChange
-    ).pipe(
-      map((value) => {
-        if (Array.isArray(value)) this.data = value;
-        // console.log(value);   <- nice to track events behavior
-        return this.getPagedData(this.getSortedData([...this.data]));
+    return this.orderServicesSubject.asObservable().pipe(
+      map((data) => {
+        this.data = data;
+        return data;
       })
     );
   }
@@ -57,43 +43,8 @@ export class OrderServicesTableDataSource extends DataSource<OrderService> {
     this.orderServicesSubject.complete();
   }
 
-  /**
-   * Paginate the data (client-side). If you're using server-side pagination,
-   * this would be replaced by requesting the appropriate data from the server.
-   */
-  private getPagedData(data: OrderService[]): OrderService[] {
-    if (!this.paginator) return data;
-    const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
-    return data.splice(startIndex, this.paginator.pageSize);
-  }
-
-  /**
-   * Sort the data (client-side). If you're using server-side sorting,
-   * this would be replaced by requesting the appropriate data from the server.
-   */
-  private getSortedData(data: OrderService[]): OrderService[] {
-    if (!this.sort || !this.sort.active || this.sort.direction === '') return data;
-
-    // Defining sorting strategy for every column
-    return data.sort((a, b) => {
-      const isAsc = this.sort?.direction === 'asc';
-      switch (this.sort?.active) {
-        // case 'name':
-        //   return this.defaultCompare(a.name, b.name, isAsc);
-        // case 'cost':
-        //   return this.defaultCompare(a.costGross, b.costGross, !isAsc);
-        // case 'estimatedTime':
-        //   return this.defaultCompare(a.estimatedTime, b.estimatedTime, !isAsc);
-        // case 'total':
-        //   return this.defaultCompare(a.totalGross, b.totalGross, !isAsc);
-        default:
-          return 0;
-      }
-    });
-  }
-
-  loadOrderServices() {
-    this.orderServicesService.getOrderServices().subscribe({
+  loadOrderServices(orderId: number) {
+    this.orderServicesService.getOrderServices(orderId).subscribe({
       next: (orderServices) => {
         this.orderServicesSubject.next(orderServices);
       }
@@ -128,12 +79,15 @@ export class OrderServicesTableDataSource extends DataSource<OrderService> {
     this.orderServicesSubject.next(this.data.filter((orderService) => orderService.id !== id));
   }
 
-  private compareDates(fstDate: Date, sndDate: Date, isAsc: boolean) {
-    return (fstDate.getTime() - sndDate.getTime()) * (isAsc ? 1 : -1);
+  getTotalTime() {
+    return this.data.reduce((total, service) => {
+      return total + service.approvedEstimatedTime;
+    }, 0.0);
   }
 
-  /** Simple sort comparator for example ID/Name columns (for client-side sorting). */
-  private defaultCompare(a: string | number, b: string | number, isAsc: boolean): number {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+  getTotalCostGross() {
+    return this.data.reduce((total, service) => {
+      return total + service.approvedCostGross * service.approvedEstimatedTime;
+    }, 0.0);
   }
 }

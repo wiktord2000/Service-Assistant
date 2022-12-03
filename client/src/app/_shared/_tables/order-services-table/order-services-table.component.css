@@ -17,6 +17,10 @@
   opacity: 0.6;
 }
 
+.summary-text {
+  font-weight: 500;
+}
+
 /* Separate the columns content*/
 td.mat-cell {
   padding-right: 0.5em !important;
