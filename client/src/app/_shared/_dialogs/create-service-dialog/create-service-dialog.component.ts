@@ -32,7 +32,7 @@ export class CreateServiceDialogComponent implements OnInit {
     private snackbarService: SnackbarService,
     private servicesService: ServicesService,
     public dialogRef: MatDialogRef<CreateServiceDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data?: { service?: Service }
+    @Inject(MAT_DIALOG_DATA) public data?: { service?: Service; name?: string }
   ) {}
 
   ngOnInit(): void {
@@ -69,6 +69,9 @@ export class CreateServiceDialogComponent implements OnInit {
         totalNet: initData.totalNet.toFixed(2),
         totalGross: initData.totalGross.toFixed(2)
       });
+    }
+    if (this?.data?.name) {
+      this.serviceForm.controls['name'].setValue(this.data.name);
     }
   }
 
