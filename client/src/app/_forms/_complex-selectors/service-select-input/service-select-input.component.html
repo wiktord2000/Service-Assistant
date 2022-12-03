@@ -15,6 +15,7 @@
   <button
     *ngIf="ngControl.control.invalid"
     (click)="onAddService()"
+    type="button"
     matSuffix
     matTooltip="Dodaj usługę"
     [matTooltipPosition]="'right'"
@@ -32,7 +33,7 @@
   <!-- Autocomplate -->
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
     <mat-option *ngFor="let service of filteredServices | async" [value]="serviceToString(service)">
-      <mat-icon color="primary">directions_car</mat-icon>
+      <mat-icon color="primary">construction</mat-icon>
       {{ serviceToString(service) }}
     </mat-option>
   </mat-autocomplete>
