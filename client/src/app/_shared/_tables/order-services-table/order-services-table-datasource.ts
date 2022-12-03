@@ -64,8 +64,8 @@ export class OrderServicesTableDataSource extends DataSource<OrderService> {
     return this.data.find((orderService) => orderService.id === id);
   }
 
-  addOrderService(orderServices: OrderService): void {
-    this.orderServicesSubject.next([orderServices, ...this.data]);
+  addOrderService(orderService: OrderService): void {
+    this.orderServicesSubject.next([orderService, ...this.data]);
   }
 
   updateOrderService(updatedOrderService: OrderService) {

@@ -10,7 +10,7 @@ namespace API.DTOs.OrderProductsDtos
     {
         [Required]
         public string ApprovedProductName { get; set; }
-        public int ApprovedSalesPriceGross { get; set; }
+        public float ApprovedSalesPriceGross { get; set; }
         public int Count { get; set; }
         public bool IsProvided { get; set; } = false;
         public bool IsReserved { get; set; } = false;

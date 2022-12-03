@@ -11,6 +11,6 @@ export interface OrderProduct {
   deliveryTime?: Date;
   orderId: number;
   productId: number;
-  order: Order;
-  product: Product;
+  order?: Order;
+  product?: Product;
 }

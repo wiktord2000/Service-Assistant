@@ -61,6 +61,8 @@ import { CreateOrderDialogComponent } from './_shared/_dialogs/create-order-dial
 import { VehicleSelectInputComponent } from './_forms/_complex-selectors/vehicle-select-input/vehicle-select-input.component';
 import { ServiceSelectInputComponent } from './_forms/_complex-selectors/service-select-input/service-select-input.component';
 import { OrderServicesTableComponent } from './_shared/_tables/order-services-table/order-services-table.component';
+import { OrderProductsTableComponent } from './_shared/_tables/order-products-table/order-products-table.component';
+import { ProductSelectInputComponent } from './_forms/_complex-selectors/product-select-input/product-select-input.component';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -115,7 +117,9 @@ import { OrderServicesTableComponent } from './_shared/_tables/order-services-ta
     CreateOrderDialogComponent,
     VehicleSelectInputComponent,
     ServiceSelectInputComponent,
-    OrderServicesTableComponent
+    OrderServicesTableComponent,
+    OrderProductsTableComponent,
+    ProductSelectInputComponent
   ],
   imports: [
     BrowserModule,
