@@ -46,6 +46,8 @@ namespace API.Helpers
             // Orders
             CreateMap<OrderDto, Order>();
             CreateMap<OrderDto, Order>().ReverseMap();
+            CreateMap<OrderDetailsDto, Order>();
+            CreateMap<OrderDetailsDto, Order>().ReverseMap();
             CreateMap<OrderUpdateDto, Order>();
             CreateMap<OrderUpdateDto, Order>().ReverseMap();
             CreateMap<OrderCreateDto, Order>();
