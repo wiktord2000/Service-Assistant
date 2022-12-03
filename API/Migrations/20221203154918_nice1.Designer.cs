@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221203154918_nice1")]
+    partial class nice1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
@@ -233,46 +235,6 @@ namespace API.Migrations
                     b.HasIndex("VehicleId");
 
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("API.Entities.OrderProduct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ApprovedProductName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<float>("ApprovedSalesPriceGross")
-                        .HasColumnType("REAL");
-
-                    b.Property<int>("Count")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime?>("DeliveryTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsProvided")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("IsReserved")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderProducts");
                 });
 
             modelBuilder.Entity("API.Entities.OrderService", b =>
@@ -584,25 +546,6 @@ namespace API.Migrations
                     b.Navigation("Vehicle");
                 });
 
-            modelBuilder.Entity("API.Entities.OrderProduct", b =>
-                {
-                    b.HasOne("API.Entities.Order", "Order")
-                        .WithMany("OrderProducts")
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("API.Entities.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Order");
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("API.Entities.OrderService", b =>
                 {
                     b.HasOne("API.Entities.Order", "Order")
@@ -683,8 +626,6 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.Order", b =>
                 {
-                    b.Navigation("OrderProducts");
-
                     b.Navigation("OrderServices");
                 });
 

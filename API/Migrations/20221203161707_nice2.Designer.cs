@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221203161707_nice2")]
+    partial class nice2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.3");
@@ -587,7 +589,7 @@ namespace API.Migrations
             modelBuilder.Entity("API.Entities.OrderProduct", b =>
                 {
                     b.HasOne("API.Entities.Order", "Order")
-                        .WithMany("OrderProducts")
+                        .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -683,8 +685,6 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.Order", b =>
                 {
-                    b.Navigation("OrderProducts");
-
                     b.Navigation("OrderServices");
                 });
 
