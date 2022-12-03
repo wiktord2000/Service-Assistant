@@ -41,6 +41,22 @@ namespace API.Controllers
                             .ToListAsync();
         }
 
+        [HttpGet]
+        [Route("search")]
+        public async Task<ActionResult<IEnumerable<ServiceDto>>> GetServicesSerach([FromQuery] int servicesNumber, [FromQuery] string match)
+        {   
+            var userId = User.GetUserId();   // -> Extensions
+
+            return await _context.Services
+                    .Where(service => (service.AppUser.Id == userId 
+                        && (service.Name.ToLower().Contains(match) 
+                        || match == null))) 
+                            
+                    .Take(servicesNumber)
+                    .ProjectTo<ServiceDto>(_mapper.ConfigurationProvider)
+                    .ToListAsync();
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ServiceDto>> GetService(int id)
         {   

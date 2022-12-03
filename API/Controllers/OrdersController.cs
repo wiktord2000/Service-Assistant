@@ -1,5 +1,8 @@
 using API.Data;
 using API.DTOs;
+using API.DTOs.OrderDtos;
+using API.DTOs.OrderServicesDtos;
+using API.DTOs.ProductDtos;
 using API.Entities;
 using API.Extensions;
 using AutoMapper;
@@ -27,58 +30,65 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrders([FromQuery] int[] statusPositions)
         {   
-            var username = User.GetUsername();    // -> Extensions
+            var userId = User.GetUserId();    // -> Extensions
 
             return await _context.Orders
-                            .Where(order => order.AppUser.UserName == username && (statusPositions.Length == 0 || statusPositions.Contains(order.Status.Position)))
+                            .Where(order => order.AppUser.Id == userId && (statusPositions.Length == 0 || statusPositions.Contains(order.Status.Position)))
                             .ProjectTo<OrderDto>(_mapper.ConfigurationProvider)
                             .ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<OrderDto>> GetOrder(int id)
+        public async Task<ActionResult<OrderDetailsDto>> GetOrder(int id)
         {   
-            // var username = User.GetUsername();    // -> Extensions
+            var userId = User.GetUserId();    // -> Extensions
 
             var order = await _context.Orders
-                            .ProjectTo<OrderDto>(_mapper.ConfigurationProvider)
-                            .SingleOrDefaultAsync(order => order.Id == id);
+                            .Where(order => order.Id == id && order.AppUserId == userId)
+                            .ProjectTo<OrderDetailsDto>(_mapper.ConfigurationProvider)
+                            .SingleOrDefaultAsync();
 
             if(order == null) return NotFound("Nie znaleziono zlecenia o podanym id!");
 
             return order;
         }
 
+        [HttpPost]
+        public async Task<ActionResult<OrderDto>> CreateOrder(OrderCreateDto order)
+        {   
+            Order newOrder = new Order();
+            // Provide orderNumber (server side)
+            var currentDate = DateTime.Now;
+            var dateUniqueValue = currentDate.Hour*currentDate.Minute*currentDate.Second;
+            newOrder.OrderNumber = $"ZL {currentDate.Year.ToString().Substring(2)}/{currentDate.Month}/{currentDate.Day}.{dateUniqueValue}";
+            var newState = new Status();
+            // Provide new Status
+            _context.Statuses.Add(newState);
+            if(await _context.SaveChangesAsync() <= 0) StatusCode(StatusCodes.Status500InternalServerError, "Problem z dodaniem statusu!");
+            newOrder.StatusId = newState.Id;
+
+            _mapper.Map(order, newOrder);
+            newOrder.AppUserId = User.GetUserId();
+            _context.Orders.Add(newOrder);
+
+            if(await _context.SaveChangesAsync() > 0){
+                return _mapper.Map(newOrder, new OrderDto());
+            } 
+            return StatusCode(StatusCodes.Status500InternalServerError, "Problem z dodaniem zlecenia!");
+        }
+
         [HttpPut("{id}")]
-        public async Task<ActionResult<Order>>UpdateOrder(int id, OrderDto order){
-            // Probably we should check that specific user contains this order
-            // if(!(await this.OrderExists(id))) return BadRequest("Zlecenie o danym id nie istnieje!");
+        public async Task<ActionResult<Order>>UpdateOrder(int id, OrderUpdateDto order){
+            var userId = User.GetUserId();    // -> Extensions
 
-            if(id != order.Id) return BadRequest("Niepoprawne id");
-
-            Order orderToUpdate = await _context.Orders.FirstOrDefaultAsync(order => order.Id == id);
+            var orderToUpdate = await _context.Orders.FirstOrDefaultAsync(order => order.Id == id && order.AppUserId == userId);
 
             if(orderToUpdate == null) return NotFound($"Zlecenie o Id {id} nie istnieje!");
 
-            orderToUpdate.OrderNumber = order.OrderNumber;
-            orderToUpdate.AdmissionDate = order.AdmissionDate;
-            orderToUpdate.DeadlineDate = order.DeadlineDate;
-            orderToUpdate.ClientDescription = order.ClientDescription;
-            orderToUpdate.RepairDescription = order.RepairDescription;
-            orderToUpdate.InvoiceId = order.InvoiceId;
-            orderToUpdate.Mileage = order.Mileage;
-            orderToUpdate.TotalJobsNet = order.TotalJobsNet;
-            orderToUpdate.TotalJobsGross = order.TotalJobsGross;
-            orderToUpdate.TotalPartsNet = order.TotalPartsNet;
-            orderToUpdate.TotalNet = order.TotalNet;
-            orderToUpdate.TotalGross = order.TotalGross;
-            orderToUpdate.FinishDate = order.FinishDate;
-            orderToUpdate.ClientId = order.ClientId;
-            orderToUpdate.VehicleId = order.VehicleId;
-
+            _mapper.Map(order, orderToUpdate);
             _context.Orders.Update(orderToUpdate);
-                
-            if(await _context.SaveChangesAsync() > 0) return orderToUpdate;
+
+            if(await _context.SaveChangesAsync() > 0) return NoContent();
             return StatusCode(StatusCodes.Status500InternalServerError, "Problem z aktualizacją zlecenia!");
         }
 
@@ -87,7 +97,8 @@ namespace API.Controllers
 
             if(patchOrder == null) return BadRequest(ModelState);
 
-            var orderToUpdate = await _context.Orders.FirstOrDefaultAsync((order) => order.Id == id);
+            var userId = User.GetUserId();    // -> Extensions
+            var orderToUpdate = await _context.Orders.FirstOrDefaultAsync(order => order.Id == id && order.AppUserId == userId);
             if(orderToUpdate == null) return NotFound($"Zlecenie o Id {id} nie istnieje!");
 
             patchOrder.ApplyTo(orderToUpdate, ModelState);
@@ -98,13 +109,19 @@ namespace API.Controllers
             return StatusCode(StatusCodes.Status500InternalServerError, "Problem z aktualizacją zlecenia!");
         }
 
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteOrder(int id)
+        {   
+            var userId = User.GetUserId();    // -> Extensions (obtain id of sender)
 
-        // Check whether specific order exists in db
-        private async Task<bool> OrderExists(int orderId)
-        {
-            // Get current username
-            var username = User.GetUsername();
-            return await _context.Orders.AnyAsync((order) => order.Id == orderId && order.AppUser.UserName == username);
+            var orderToDelete = await _context.Orders.FirstOrDefaultAsync(order => (order.Id == id) && order.AppUserId == userId);
+
+            if(orderToDelete == null) return NotFound($"Zlecenie o Id {id} nie istnieje!");
+
+            _context.Orders.Remove(orderToDelete);
+
+            if(await _context.SaveChangesAsync() > 0) return NoContent();
+            return StatusCode(StatusCodes.Status500InternalServerError, "Problem z usunięciem zlecenia!");
         }
     }
 }

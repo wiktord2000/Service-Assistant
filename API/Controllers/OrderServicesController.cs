@@ -80,7 +80,9 @@ namespace API.Controllers
             _mapper.Map(orderService, newOrderService);
             _context.OrderServices.Add(newOrderService);
 
-            if(await _context.SaveChangesAsync() > 0) return _mapper.Map(newOrderService, new OrderServiceDto());
+            if(await _context.SaveChangesAsync() > 0){
+                return _mapper.Map(newOrderService, new OrderServiceDto());
+            } 
             return StatusCode(StatusCodes.Status500InternalServerError, "Problem z dodaniem zasobu!");
         }
 
