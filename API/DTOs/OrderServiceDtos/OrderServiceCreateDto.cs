@@ -13,6 +13,7 @@ namespace API.DTOs.OrderServicesDtos
         public float ApprovedEstimatedTime { get; set; }
         public float ApprovedCostGross { get; set; }
         public float WorkedTime { get; set; }
+        public bool IsCompleted { get; set; }
         [Required]
         public int? OrderId { get; set; }
         [Required]

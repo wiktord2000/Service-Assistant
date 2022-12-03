@@ -9,6 +9,7 @@ export interface OrderService {
   approvedEstimatedTime: number;
   approvedCostGross: number;
   workedTime: number;
+  isCompleted: boolean;
   order?: Order;
   service?: Service;
 }

@@ -12,6 +12,7 @@ namespace API.DTOs
         public float ApprovedEstimatedTime { get; set; }
         public float ApprovedCostGross { get; set; }
         public float WorkedTime { get; set; }
+        public bool IsCompleted { get; set; }
         public int OrderId { get; set; }
         public int ServiceId { get; set; }
     }
