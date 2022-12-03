@@ -1,6 +1,7 @@
 using API.DTOs;
 using API.DTOs.ClientDtos;
 using API.DTOs.OrderDtos;
+using API.DTOs.OrderProductsDtos;
 using API.DTOs.OrderServicesDtos;
 using API.DTOs.ProductDtos;
 using API.DTOs.ServiceDtos;
@@ -43,7 +44,7 @@ namespace API.Helpers
             CreateMap<ProductUpdateDto, Product>().ReverseMap();
             CreateMap<ProductCreateDto, Product>();
             CreateMap<ProductCreateDto, Product>().ReverseMap();
-            // Orders
+            // Order
             CreateMap<OrderDto, Order>();
             CreateMap<OrderDto, Order>().ReverseMap();
             CreateMap<OrderDetailsDto, Order>();
@@ -52,13 +53,20 @@ namespace API.Helpers
             CreateMap<OrderUpdateDto, Order>().ReverseMap();
             CreateMap<OrderCreateDto, Order>();
             CreateMap<OrderCreateDto, Order>().ReverseMap();
-            // OrderServices
+            // OrderService
             CreateMap<OrderServiceDto, OrderService>();
             CreateMap<OrderServiceDto, OrderService>().ReverseMap();
             CreateMap<OrderServiceUpdateDto, OrderService>();
             CreateMap<OrderServiceUpdateDto, OrderService>().ReverseMap();
             CreateMap<OrderServiceCreateDto, OrderService>();
             CreateMap<OrderServiceCreateDto, OrderService>().ReverseMap();
+            // OrderProduct
+            CreateMap<OrderProductDto, OrderProduct>();
+            CreateMap<OrderProductDto, OrderProduct>().ReverseMap();
+            CreateMap<OrderProductUpdateDto, OrderProduct>();
+            CreateMap<OrderProductUpdateDto, OrderProduct>().ReverseMap();
+            CreateMap<OrderProductCreateDto, OrderProduct>();
+            CreateMap<OrderProductCreateDto, OrderProduct>().ReverseMap();
         }
     }
 }
