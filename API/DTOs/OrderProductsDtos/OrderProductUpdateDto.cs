@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace API.DTOs.OrderProductsDtos
+{
+    public class OrderProductUpdateDto
+    {
+        [Required]
+        public string ApprovedProductName { get; set; }
+        public float ApprovedSalesPriceGross { get; set; }
+        public int Count { get; set; }
+        public bool IsProvided { get; set; } = false;
+        public bool IsReserved { get; set; } = false;
+        public DateTime? DeliveryTime { get; set; }
+    }
+}
