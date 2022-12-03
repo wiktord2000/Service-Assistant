@@ -41,15 +41,14 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("search")]
-        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsSerach([FromQuery] int productsNumber, [FromQuery] string match)
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsSearch([FromQuery] int productsNumber, [FromQuery] string match)
         {   
             var userId = User.GetUserId();   // -> Extensions
 
             return await _context.Products
                     .Where(product => (product.AppUser.Id == userId 
-                        && (product.Name.ToLower().Contains(match) 
-                        || match == null))) 
-                            
+                        && (match == null || product.Name.ToLower().Contains(match))
+                        )) 
                     .Take(productsNumber)
                     .ProjectTo<ProductDto>(_mapper.ConfigurationProvider)
                     .ToListAsync();
