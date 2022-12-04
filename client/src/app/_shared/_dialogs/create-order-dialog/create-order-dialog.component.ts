@@ -1,9 +1,9 @@
 import { OrderServicesService } from './../../../_services/order-services.service';
 import { OrderService } from './../../../_models/OrderService';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
-import { finalize, forkJoin, of } from 'rxjs';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { finalize, forkJoin, of, take } from 'rxjs';
 import { ClientSelectInputComponent } from 'src/app/_forms/_complex-selectors/client-select-input/client-select-input.component';
 import { VehicleSelectInputComponent } from 'src/app/_forms/_complex-selectors/vehicle-select-input/vehicle-select-input.component';
 import { Client } from 'src/app/_models/Client';
@@ -21,13 +21,14 @@ import { OrderProduct } from 'src/app/_models/OrderProduct';
 import { OrderProductsService } from 'src/app/_services/order-products.service';
 
 const INTEGER_REGEX = /^\+?(0|[1-9]\d*)$/;
+const UNASSIGNED_ID = -1;
 
 @Component({
   selector: 'app-create-order-dialog',
   templateUrl: './create-order-dialog.component.html',
   styleUrls: ['./create-order-dialog.component.css']
 })
-export class CreateOrderDialogComponent implements OnInit {
+export class CreateOrderDialogComponent implements OnInit, AfterViewInit {
   @ViewChild(ClientSelectInputComponent) clientSelectInput!: ClientSelectInputComponent;
   @ViewChild(VehicleSelectInputComponent) vehicleSelectInput!: VehicleSelectInputComponent;
   @ViewChild(OrderServicesTableComponent) servicesTable!: OrderServicesTableComponent;
@@ -38,7 +39,8 @@ export class CreateOrderDialogComponent implements OnInit {
   selectedVehicle: Vehicle = null;
   selectedService: Service = null;
   selectedProduct: Product = null;
-  servicesArray: OrderService[] = [];
+  initialServices: OrderService[] = [];
+  initialProducts: OrderProduct[] = [];
 
   serviceForm: FormGroup = this.formBuilder.group({
     service: ['']
@@ -65,8 +67,25 @@ export class CreateOrderDialogComponent implements OnInit {
     private clientsService: ClientsService,
     private orderServicesService: OrderServicesService,
     private orderProductsService: OrderProductsService,
-    public dialogRef: MatDialogRef<CreateOrderDialogComponent>
-  ) {}
+    public dialogRef: MatDialogRef<CreateOrderDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data?: { order?: Order }
+  ) {
+    // Set pricing mode if gets orderId (it means it wll be update dialog)
+    if (this?.data?.order.id) this.isPricing = true;
+  }
+  ngAfterViewInit(): void {
+    if (this?.data?.order.id) {
+      // Load data to tables
+      this.orderServicesService.getOrderServices(this.data.order.id).subscribe((services) => {
+        this.initialServices = services;
+        this.servicesTable.dataSource.setOrderServices(services);
+      });
+      this.orderProductsService.getOrderProducts(this.data.order.id).subscribe((products) => {
+        this.initialProducts = products;
+        this.productsTable.dataSource.setOrderProducts(products);
+      });
+    }
+  }
 
   ngOnInit(): void {}
 
@@ -105,7 +124,7 @@ export class CreateOrderDialogComponent implements OnInit {
 
     this.servicesTable.dataSource.addOrderService({
       id: maxId + 1,
-      orderId: 0,
+      orderId: UNASSIGNED_ID,
       serviceId: id,
       approvedCostGross: costGross,
       approvedEstimatedTime: estimatedTime,
@@ -126,7 +145,7 @@ export class CreateOrderDialogComponent implements OnInit {
 
     this.productsTable.dataSource.addOrderProduct({
       id: maxId + 1,
-      orderId: 0,
+      orderId: UNASSIGNED_ID,
       productId: id,
       approvedSalesPriceGross: salesPriceGross,
       approvedProductName: name,
@@ -145,6 +164,43 @@ export class CreateOrderDialogComponent implements OnInit {
   onSaveChanges() {
     this.isSaving = true;
 
+    // Calculate new prices
+    let totalJobsGross = this.servicesTable.dataSource.getTotalCostGross();
+    let totalPartsGross = this.productsTable.dataSource.getTotalSalesPriceGross();
+    let totalGross = totalJobsGross + totalPartsGross;
+
+    let updatedPrices = {
+      totalJobsNet: totalJobsGross / 1.23,
+      totalJobsGross: totalJobsGross,
+      totalPartsNet: totalPartsGross / 1.23,
+      totalPartsGross: totalPartsGross,
+      totalNet: totalGross / 1.23,
+      totalGross: totalGross
+    };
+
+    // When only update services and products (have got order)
+    if (this?.data?.order) {
+      this.addServicesToOrder(this.data.order.id);
+      this.addProductsToOrder(this.data.order.id);
+      let updatedOrder = {
+        ...this.data.order,
+        ...updatedPrices,
+        orderServices: this.servicesTable.dataSource.data,
+        orderProducts: this.productsTable.dataSource.data
+      };
+      this.ordersService.updateOrder(updatedOrder).subscribe({
+        next: () => {
+          this.dialogRef.close(updatedOrder);
+          this.snackbarService.showMessage('success', 'Pomyślnie zaktualizowano zlecenie');
+        },
+        error: (err) => {
+          console.log(err);
+          this.snackbarService.showMessage('error', 'Problem z aktualizacją zlecenia!');
+        }
+      });
+      return;
+    }
+
     let formValue = this.isPricing
       ? {}
       : {
@@ -153,19 +209,10 @@ export class CreateOrderDialogComponent implements OnInit {
           vehicleId: this.selectedVehicle?.id
         };
 
-    let totalJobsGross = this.servicesTable.dataSource.getTotalCostGross();
-    let totalPartsGross = this.productsTable.dataSource.getTotalSalesPriceGross();
-    let totalGross = totalJobsGross + totalPartsGross;
-
     this.ordersService
       .addOrder({
         ...formValue,
-        totalJobsNet: totalJobsGross / 1.23,
-        totalJobsGross: totalJobsGross,
-        totalPartsNet: totalPartsGross / 1.23,
-        totalPartsGross: totalPartsGross,
-        totalNet: totalGross / 1.23,
-        totalGross: totalGross
+        ...updatedPrices
       })
       .pipe(
         finalize(() => {
@@ -175,12 +222,14 @@ export class CreateOrderDialogComponent implements OnInit {
       .subscribe({
         next: (order: Order) => {
           this.snackbarService.showMessage('success', 'Pomyślnie dodano nowe zlecenie');
-          this.addServicesToOrder(order, this.servicesTable.dataSource.getOrderServices());
-          this.addProductsToOrder(order, this.productsTable.dataSource.getOrderProducts());
+          this.addServicesToOrder(order.id);
+          this.addProductsToOrder(order.id);
           this.dialogRef.close({
             ...order,
             client: this.isPricing ? null : this.selectedClient,
-            vehicle: this.isPricing ? null : this.selectedVehicle
+            vehicle: this.isPricing ? null : this.selectedVehicle,
+            services: this.servicesTable.dataSource.data,
+            products: this.productsTable.dataSource.data
           });
         },
         error: (error) => {
@@ -189,15 +238,26 @@ export class CreateOrderDialogComponent implements OnInit {
       });
   }
 
-  addServicesToOrder(order: Order, orderServices: OrderService[]) {
-    // Prepare multiple request to handle
-    let observableArray = orderServices.map((service) =>
-      this.orderServicesService.addOrderService({ ...service, orderId: order.id })
+  addServicesToOrder(orderId: number) {
+    // Pick current table state
+    let currentServices = this.servicesTable.dataSource.data;
+    // Check what we actually have to add (items with orderId === UNASSIGNED_ID)
+    let toAddServices = currentServices.filter((service) => service.orderId === UNASSIGNED_ID);
+    let remainingServices = currentServices.filter((service) => service.orderId !== UNASSIGNED_ID);
+    let toDeleteServices = this.initialServices.filter(
+      (service) => !remainingServices.some((remainingService) => remainingService.id === service.id)
     );
 
-    forkJoin<OrderService[]>([...observableArray]).subscribe({
+    let observableAddArray = toAddServices.map((service) =>
+      this.orderServicesService.addOrderService({ ...service, orderId: orderId })
+    );
+    let observableDeleteArray = toDeleteServices.map((service) =>
+      this.orderServicesService.deleteOrderService(service.id)
+    );
+
+    forkJoin<Object[]>([...observableAddArray, ...observableDeleteArray]).subscribe({
       next: (data) => {
-        console.log(data);
+        console.log('Add services result', data);
       },
       error: (err) => {
         this.snackbarService.showMessage('error', 'Problem z zapisem usług!');
@@ -206,15 +266,26 @@ export class CreateOrderDialogComponent implements OnInit {
     });
   }
 
-  addProductsToOrder(order: Order, orderProducts: OrderProduct[]) {
-    // Prepare multiple request to handle
-    let observableArray = orderProducts.map((product) =>
-      this.orderProductsService.addOrderProduct({ ...product, orderId: order.id })
+  addProductsToOrder(orderId: number) {
+    // Pick current table state
+    let currentProducts = this.productsTable.dataSource.data;
+    // Check what we actually have to add (items with orderId === UNASSIGNED_ID)
+    let toAddProducts = currentProducts.filter((product) => product.orderId === UNASSIGNED_ID);
+    let remainingProducts = currentProducts.filter((product) => product.orderId !== UNASSIGNED_ID);
+    let toDeleteProducts = this.initialProducts.filter(
+      (product) => !remainingProducts.some((remainingProduct) => remainingProduct.id === product.id)
     );
 
-    forkJoin<OrderProduct[]>(observableArray).subscribe({
+    let observableAddArray = toAddProducts.map((product) =>
+      this.orderProductsService.addOrderProduct({ ...product, orderId: orderId })
+    );
+    let observableDeleteArray = toDeleteProducts.map((product) =>
+      this.orderProductsService.deleteOrderProduct(product.id)
+    );
+
+    forkJoin<Object[]>([...observableAddArray, ...observableDeleteArray]).subscribe({
       next: (data) => {
-        console.log(data);
+        console.log('Add products result', data);
       },
       error: (err) => {
         this.snackbarService.showMessage('error', 'Problem z zapisem towarów!');

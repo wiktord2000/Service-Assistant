@@ -1,7 +1,12 @@
 <!-- Title -->
 <div mat-dialog-title class="header">
   <h1>Uzupełnij dane zlecenia</h1>
-  <mat-slide-toggle [labelPosition]="'before'" [(ngModel)]="isPricing" color="primary">
+  <mat-slide-toggle
+    [ngStyle]="{ display: data?.order ? 'none' : '' }"
+    [labelPosition]="'before'"
+    [(ngModel)]="isPricing"
+    color="primary"
+  >
     Wycena
   </mat-slide-toggle>
 </div>
@@ -171,7 +176,9 @@
       !(
         (!isPricing && orderForm.valid) ||
         (isPricing &&
-          (servicesTable.dataSource.data.length || productsTable.dataSource.data.length))
+          (servicesTable?.dataSource.data.length ||
+            productsTable?.dataSource.data.length ||
+            this?.data?.order))
       ) || isSaving
     "
     cdkFocusInitial
