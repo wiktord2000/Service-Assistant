@@ -9,13 +9,13 @@ import { Vehicle } from 'src/app/_models/Vehicle';
   styleUrls: ['./vehicle-profile-link.component.css']
 })
 export class VehicleProfileLinkComponent implements OnInit {
-
   @Input() vehicle: Vehicle;
-  @Input() tooltipPosition: TooltipPosition = "right";
-  @Input() color: ThemePalette = "primary";
+  @Input() tooltipPosition: TooltipPosition = 'right';
+  @Input() color: ThemePalette = 'primary';
   @Input() customColor?: string;
   @Input() containLabel: boolean = false;
+  @Input() includeIcon: boolean = false;
+  @Input() iconPosition: 'left' | 'right' = 'right';
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

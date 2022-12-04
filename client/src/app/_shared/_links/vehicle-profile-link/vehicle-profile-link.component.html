@@ -1,14 +1,20 @@
 <!-- Vehicle link -->
-<a *ngIf="vehicle"
-    matTooltip="Profil pojazdu" 
-    [matTooltipPosition]="tooltipPosition" 
-    mat-button 
-    aria-label="Vehicle profile"
-    routerLink="/vehicles/{{vehicle.id}}"
-    [style.color]="customColor"
-    [color]="color">
-        
-        {{vehicle.brand}} {{vehicle.model}}
-        <div *ngIf="containLabel" class="label">Pojazd</div>
+<a
+  *ngIf="vehicle"
+  matTooltip="Profil pojazdu"
+  [matTooltipPosition]="tooltipPosition"
+  mat-button
+  aria-label="Vehicle profile"
+  routerLink="/vehicles/{{ vehicle.id }}"
+  [style.color]="customColor"
+  [color]="color"
+>
+  <mat-icon *ngIf="includeIcon && iconPosition === 'left'" style="font-size: 1.5em"
+    >directions_car</mat-icon
+  >
+  {{ vehicle.brand }} {{ vehicle.model }}
+  <div *ngIf="containLabel" class="label">Pojazd</div>
+  <mat-icon *ngIf="includeIcon && iconPosition === 'right'" style="font-size: 1.5em"
+    >directions_car</mat-icon
+  >
 </a>
-
