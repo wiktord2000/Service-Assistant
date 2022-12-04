@@ -1,1 +1,202 @@
-<p *ngIf="order">{{order | json}}</p>
+<div *ngIf="order" class="content-wrapper">
+  <!-- Aggregator -->
+  <div class="content header-border-radius mat-elevation-z10">
+    <!-- Header -->
+    <div class="header header-border-radius">
+      <!-- Order number -->
+      <div class="order-number">{{ order.orderNumber }}</div>
+
+      <!-- Vehicle -->
+      <div class="vehicle-link-wrapper">
+        <app-vehicle-profile-link
+          [customColor]="'white'"
+          [vehicle]="order.vehicle"
+        ></app-vehicle-profile-link>
+      </div>
+
+      <!-- Order status -->
+      <div class="right-corner-label">
+        <mat-icon style="vertical-align: text-bottom">sell</mat-icon>
+        {{ order.status.name }}
+      </div>
+
+      <!-- Right bottom data -->
+      <div class="right-bottom-data">
+        <!-- Client link -->
+        <app-client-profile-link
+          [customColor]="'white'"
+          [containLabel]="true"
+          [client]="order.client"
+        ></app-client-profile-link>
+      </div>
+    </div>
+
+    <!-- Material tabs -->
+    <div class="tabs">
+      <mat-tab-group animationDuration="0ms" mat-align-tabs="start">
+        <!-- Order's data -->
+        <mat-tab label="Dane zlecenia">
+          <ng-template [ngTemplateOutlet]="orderData"></ng-template>
+        </mat-tab>
+
+        <!-- Services and Products -->
+        <mat-tab label="Usługi i towary">
+          <ng-template [ngTemplateOutlet]="orderServicesAndProducts"></ng-template>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>
+
+<!------------------------------------------------------------------- Data Update Tab--------------------------------------------------------------------->
+<ng-template #orderData>
+  <div class="tab-wrapper">
+    <!-- Form -->
+    <form
+      id="order-form"
+      [formGroup]="orderForm"
+      (ngSubmit)="orderForm.valid && onSaveChanges()"
+      class="create-product-form"
+    >
+      <!-- Vehicle and Client -->
+      <div class="vehicle-and-client-wrapper">
+        <!-- Client -->
+        <div class="client-wrapper">
+          <!-- Header -->
+          <app-custom-header [headerText]="'Klient'"></app-custom-header>
+
+          <!-- Client Selector -->
+          <app-client-select-input
+            (clientChange)="onClientChange($event)"
+            [selectedClient]="selectedClient"
+            [label]="'Klient'"
+            [formControl]="orderForm.controls['client']"
+          ></app-client-select-input>
+
+          <!-- Client Description -->
+          <app-text-input
+            [isTextArea]="true"
+            [rowsNumber]="4"
+            [label]="'Opis klienta'"
+            [formControl]="orderForm.controls['clientDescription']"
+          >
+          </app-text-input>
+        </div>
+
+        <!-- Vertical Divider -->
+        <mat-divider [vertical]="true"></mat-divider>
+
+        <!-- Vehicle -->
+        <div class="vehicle-wrapper">
+          <!-- Header -->
+          <app-custom-header [headerText]="'Pojazd'"></app-custom-header>
+
+          <!-- Vehicle selector -->
+          <app-vehicle-select-input
+            (vehicleChange)="onVehicleChange($event)"
+            [selectedVehicle]="selectedVehicle"
+            [formControl]="orderForm.controls['vehicle']"
+          ></app-vehicle-select-input>
+
+          <!-- Mealage -->
+          <app-text-input
+            [suffixText]="'km'"
+            [label]="'Przebieg'"
+            [formControl]="orderForm.controls['mileage']"
+          >
+          </app-text-input>
+
+          <!-- Fuel level -->
+          <mat-form-field class="w-100" appearance="fill">
+            <mat-label>Poziom paliwa</mat-label>
+            <mat-select formControlName="fuelLevel">
+              <mat-option value="1/4">1/4</mat-option>
+              <mat-option value="2/4">2/4</mat-option>
+              <mat-option value="3/4">3/4</mat-option>
+              <mat-option value="4/4">4/4</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- More about order-->
+      <div class="services-wrapper">
+        <app-custom-header style="margin-top: 0px" [headerText]="'Zlecenie'"></app-custom-header>
+        <div>
+          <!-- Other Form fiels-->
+        </div>
+      </div>
+
+      <div class="section-wrapper">
+        <!-- Save button -->
+        <div class="save-button-area">
+          <button
+            mat-raised-button
+            type="submit"
+            class="save-button"
+            color="primary"
+            [disabled]="!orderForm.dirty || !orderForm.valid || this.isSaving"
+          >
+            {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<!------------------------------------------------------------------- Order's Services And Products Tab --------------------------------------------------------------------->
+<ng-template #orderServicesAndProducts>
+  <div class="tab-wrapper">
+    <!-- Services -->
+    <div class="section-wrapper">
+      <!-- Services header-->
+      <app-custom-header [headerText]="'Usługi'"></app-custom-header>
+
+      <!-- OrderServices Table -->
+      <app-order-services-table
+        [hideActions]="true"
+        [initialData]="order.orderServices"
+        [fixedSize]="false"
+        [matElevationValue]="2"
+      ></app-order-services-table>
+    </div>
+    <!-- Products -->
+    <div class="section-wrapper">
+      <!-- Products header -->
+      <app-custom-header [headerText]="'Towary'"></app-custom-header>
+
+      <!-- OrderProducts Table -->
+      <app-order-products-table
+        [hideActions]="true"
+        [initialData]="order.orderProducts"
+        [fixedSize]="false"
+        [matElevationValue]="2"
+      ></app-order-products-table>
+
+      <!-- Summary -->
+      <div class="summary-wrapper">
+        <mat-divider></mat-divider>
+        <!-- Summary-wrapper -->
+        <div class="summary-content">
+          <!-- Summary -->
+          <div class="summary-text">
+            Razem: <span class="summary-price">{{ order.totalGross.toFixed(2) }} zł</span>
+          </div>
+
+          <!-- Edit Button -->
+          <button
+            mat-raised-button
+            type="button"
+            class="save-button"
+            (click)="onEditClick()"
+            color="primary"
+          >
+            <mat-icon style="margin-right: 4px">edit</mat-icon>
+            <span>Edytuj</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
