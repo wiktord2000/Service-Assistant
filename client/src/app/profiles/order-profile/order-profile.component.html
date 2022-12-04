@@ -16,8 +16,11 @@
 
       <!-- Order status -->
       <div class="right-corner-label">
-        <mat-icon style="vertical-align: text-bottom">sell</mat-icon>
-        {{ order.status.name }}
+        <app-status-selector
+          [darkMode]="true"
+          [appearance]="'fill'"
+          [status]="order.status"
+        ></app-status-selector>
       </div>
 
       <!-- Right bottom data -->
@@ -121,10 +124,33 @@
 
       <!-- More about order-->
       <div class="services-wrapper">
-        <app-custom-header style="margin-top: 0px" [headerText]="'Zlecenie'"></app-custom-header>
-        <div>
-          <!-- Other Form fiels-->
+        <!-- Header -->
+        <app-custom-header
+          style="margin-top: 0px"
+          [headerText]="'Dodatkowe informacje'"
+        ></app-custom-header>
+
+        <!-- Deadline and admission date -->
+        <div class="row" style="margin-top: 1.5em">
+          <!-- Admission -->
+          <app-date-and-time-input
+            [label]="'Dostarczenie auta'"
+            [formControl]="orderForm.controls['admissionDate']"
+          ></app-date-and-time-input>
+
+          <!-- Deadline -->
+          <app-date-and-time-input
+            [label]="'Termin naprawy'"
+            [formControl]="orderForm.controls['deadlineDate']"
+          ></app-date-and-time-input>
         </div>
+
+        <app-text-input
+          [label]="'Uwagi po wykonaniu zlecenia'"
+          [isTextArea]="true"
+          [rowsNumber]="4"
+          [formControl]="orderForm.controls['repairDescription']"
+        ></app-text-input>
       </div>
 
       <div class="section-wrapper">

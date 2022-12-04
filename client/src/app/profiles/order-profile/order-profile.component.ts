@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
+import { finalize, of } from 'rxjs';
 import { ClientSelectInputComponent } from 'src/app/_forms/_complex-selectors/client-select-input/client-select-input.component';
 import { VehicleSelectInputComponent } from 'src/app/_forms/_complex-selectors/vehicle-select-input/vehicle-select-input.component';
 import { Client } from 'src/app/_models/Client';
@@ -36,7 +36,10 @@ export class OrderProfileComponent implements OnInit, AfterViewInit {
     vehicle: ['', [Validators.required]],
     clientDescription: [''],
     mileage: ['', [Validators.pattern(INTEGER_REGEX)]],
-    fuelLevel: ['']
+    fuelLevel: [''],
+    admissionDate: [''],
+    deadlineDate: [''],
+    repairDescription: ['']
   });
 
   constructor(
@@ -61,6 +64,16 @@ export class OrderProfileComponent implements OnInit, AfterViewInit {
     const orderId = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.ordersService.getOrder(orderId).subscribe((order) => {
       this.order = order;
+      this.selectedClient = order.client;
+      this.selectedVehicle = order.vehicle;
+      this.orderForm.patchValue({
+        clientDescription: this.order.clientDescription,
+        mileage: this.order.mileage,
+        fuelLevel: this.order.fuelLevel,
+        admissionDate: this.order.admissionDate,
+        deadlineDate: this.order.deadlineDate,
+        repairDescription: this.order.repairDescription
+      });
     });
   }
 
@@ -97,5 +110,36 @@ export class OrderProfileComponent implements OnInit, AfterViewInit {
       this.servicesTable.dataSource.setOrderServices(order.orderServices);
       this.productsTable.dataSource.setOrderProducts(order.orderProducts);
     });
+  }
+
+  onSaveChanges() {
+    this.isSaving = true;
+
+    const updateData: Order = {
+      ...this.order,
+      ...this.orderForm.value,
+      clientId: this.selectedClient?.id ?? null,
+      vehicleId: this.selectedVehicle?.id ?? null
+    };
+
+    this.ordersService
+      .updateOrder(updateData)
+      .pipe(
+        finalize(() => {
+          this.isSaving = false;
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.order.client = this.selectedClient;
+          this.order.vehicle = this.selectedVehicle;
+          this.order = { ...this.order, ...updateData };
+          this.snackbarService.showMessage('success', 'Pomyślnie zaktualizowano dane zlecenia');
+          this.orderForm.reset(this.order);
+        },
+        error: (error) => {
+          this.snackbarService.showMessage('error', error);
+        }
+      });
   }
 }

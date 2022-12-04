@@ -49,13 +49,16 @@
   position: absolute;
   top: 0;
   right: 0;
-  padding: 1em 2em;
-  font-size: 1.25em;
+  padding: 0em 1em;
+  padding-top: 1.5em;
+  padding-right: 1.5em;
+  /* padding: 1em 2em; */
+  /* font-size: 1.25em; */
   border-bottom-left-radius: var(--main-border-radius);
   border-top-right-radius: var(--main-border-radius);
   color: white;
   font-weight: 500;
-  background-color: var(--tabs-primary);
+  /* background-color: var(--tabs-primary); */
 }
 
 .right-bottom-data {
@@ -159,4 +162,13 @@
 
 .summary-price {
   font-weight: 600;
+}
+
+.row {
+  display: flex;
+  gap: 1em;
+}
+
+.row > * {
+  flex: 1 1 50%;
 }
