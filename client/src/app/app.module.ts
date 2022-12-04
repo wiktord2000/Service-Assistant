@@ -38,7 +38,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { DateAndTimePickerComponent } from './_shared/date-and-time-picker/date-and-time-picker.component';
 import { VehicleProfileLinkComponent } from './_shared/_links/vehicle-profile-link/vehicle-profile-link.component';
 import { DateAndTimeInputComponent } from './_forms/date-and-time-input/date-and-time-input.component';
-import { StatusSelectorComponent } from './_shared/_tables/orders-table/status-selector/status-selector.component';
+import { StatusSelectorComponent } from './_forms/_complex-selectors/status-selector/status-selector.component';
 import { OrdersTableComponent } from './_shared/_tables/orders-table/orders-table.component';
 import { VehiclesTableComponent } from './_shared/_tables/vehicles-table/vehicles-table.component';
 import { ClientsTableComponent } from './_shared/_tables/clients-table/clients-table.component';
