@@ -14,13 +14,16 @@ export class OrderProductsTableComponent implements OnInit {
   @Input() initialData?: OrderProduct[];
   @Input() matElevationValue?: number = 8;
   @Input() fixedSize?: boolean = true;
+  @Input() hideActions: boolean = false;
 
   dataSource: OrderProductsTableDataSource;
-  displayedColumns = ['approvedProductName', 'count', 'approvedSalesPriceGross', 'actions'];
+  displayedColumns = ['approvedProductName', 'count', 'approvedSalesPriceGross'];
 
   constructor(public orderProductsService: OrderProductsService) {}
 
   ngOnInit(): void {
+    // Hide actions if needed
+    if (!this.hideActions) this.displayedColumns.push('actions');
     // Create DataSource (with initialData if needed)
     this.dataSource = new OrderProductsTableDataSource(this.orderProductsService, this.initialData);
   }

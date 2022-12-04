@@ -14,18 +14,16 @@ export class OrderServicesTableComponent implements OnInit {
   @Input() initialData?: OrderService[];
   @Input() matElevationValue?: number = 8;
   @Input() fixedSize?: boolean = true;
+  @Input() hideActions: boolean = false;
 
   dataSource: OrderServicesTableDataSource;
-  displayedColumns = [
-    'approvedServiceName',
-    'approvedEstimatedTime',
-    'approvedTotalCostGross',
-    'actions'
-  ];
+  displayedColumns = ['approvedServiceName', 'approvedEstimatedTime', 'approvedTotalCostGross'];
 
   constructor(public orderServicesService: OrderServicesService) {}
 
   ngOnInit(): void {
+    // Hide actions if needed
+    if (!this.hideActions) this.displayedColumns.push('actions');
     // Create DataSource (with initialData if needed)
     this.dataSource = new OrderServicesTableDataSource(this.orderServicesService, this.initialData);
   }
