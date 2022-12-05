@@ -69,7 +69,7 @@ namespace API.Controllers
             var userId = User.GetUserId();    // -> Extensions
 
             return await _context.Orders
-                            .Where((order) => order.AppUserId == userId)
+                            .Where((order) => order.AppUserId == userId && order.ClientId != null)
                             .GroupBy((order) => order.ClientId)
                             .Select(g => new ClientOrdersStatistics{ ClientId = (int)g.Key, OrdersCount = g.Count() })
                             .OrderByDescending((obj) => obj.OrdersCount)
