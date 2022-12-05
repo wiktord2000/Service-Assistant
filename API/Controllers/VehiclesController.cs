@@ -97,9 +97,13 @@ namespace API.Controllers
         {   
             var userId = User.GetUserId();    // -> Extensions (obtain id of sender)
 
-            var vehicleToDelete = await _context.Vehicles.FirstOrDefaultAsync(vehicle => (vehicle.Id == id) && vehicle.AppUserId == userId);
+            var vehicleToDelete = await _context.Vehicles
+                .Include(vehicle => vehicle.Orders)
+                .FirstOrDefaultAsync(vehicle => (vehicle.Id == id) && vehicle.AppUserId == userId);
 
             if(vehicleToDelete == null) return NotFound($"Pojazd o Id {id} nie istnieje!");
+
+            if(vehicleToDelete.Orders.Count != 0) return BadRequest($"Pojazd jest powiązany ze zleceniami!");
 
             _context.Vehicles.Remove(vehicleToDelete);
 

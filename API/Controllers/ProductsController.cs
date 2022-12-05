@@ -107,6 +107,9 @@ namespace API.Controllers
 
             if(productToDelete == null) return NotFound($"Produkt o Id {id} nie istnieje!");
 
+            var productOrders = await _context.OrderProducts.FirstOrDefaultAsync(order => order.ProductId == id);
+            if(productOrders != null) return BadRequest($"Produkt jest powiązany ze zleceniami!");
+
             _context.Products.Remove(productToDelete);
 
             if(await _context.SaveChangesAsync() > 0) return NoContent();

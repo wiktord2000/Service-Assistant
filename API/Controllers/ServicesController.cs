@@ -108,6 +108,9 @@ namespace API.Controllers
             var serviceToDelete = await _context.Services.FirstOrDefaultAsync(service => (service.Id == id) && service.AppUserId == userId);
 
             if(serviceToDelete == null) return NotFound($"Serwis o Id {id} nie istnieje!");
+            
+            var serviceOrders = await _context.OrderServices.FirstOrDefaultAsync(order => order.ServiceId == id);
+            if(serviceOrders != null) return BadRequest($"Usługa jest powiązana ze zleceniami!");
 
             _context.Services.Remove(serviceToDelete);
 

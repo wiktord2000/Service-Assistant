@@ -141,9 +141,12 @@ namespace API.Controllers
         {   
             var userId = User.GetUserId();    // -> Extensions (obtain id of sender)
 
-            var clientToDelete = await _context.Clients.FirstOrDefaultAsync(client => (client.Id == id) && client.AppUserId == userId);
+            var clientToDelete = await _context.Clients
+                            .Include((client) => client.Orders)
+                            .FirstOrDefaultAsync(client => (client.Id == id) && client.AppUserId == userId);
 
             if(clientToDelete == null) return NotFound($"Klient o Id {id} nie istnieje!");
+            if(clientToDelete.Orders.Count != 0) return BadRequest($"Klient posiada zlecenia!");
 
             _context.Clients.Remove(clientToDelete);
 
