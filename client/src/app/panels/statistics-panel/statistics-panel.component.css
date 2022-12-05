@@ -1,4 +1,30 @@
-:host{
-    flex: 1;
-    display: flex;
+:host {
+  flex: 1;
+  display: flex;
+}
+
+.statistics-panel-container {
+  flex: 1;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-wrapper {
+  width: 75%;
+  height: 90%;
+  text-align: center;
+}
+
+.chart-wrapper {
+  display: inline-block;
+  margin-top: 2em;
+  height: 70%;
+  width: 90%;
+}
+
+.top-selector-wrapper {
+  text-align: start;
+  margin-left: 5em;
 }

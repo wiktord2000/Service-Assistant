@@ -1,1 +1,52 @@
-<p>statistics-panel works!</p>
+<div class="statistics-panel-container">
+  <div class="content-wrapper">
+    <!-- Header -->
+    <app-custom-header [headerText]="'Klienci z największą liczbą zleceń'"></app-custom-header>
+    <!-- Chart -->
+    <div class="chart-wrapper">
+      <ngx-charts-bar-vertical
+        (select)="onSelect($event)"
+        [results]="results"
+        [legend]="true"
+        [legendTitle]="'Klient'"
+        [legendPosition]="'right'"
+        [rotateXAxisTicks]="true"
+        [xAxis]="true"
+        [yAxis]="true"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [xAxisLabel]="'Klient'"
+        [yAxisLabel]="'Liczba zleceń'"
+        [rotateXAxisTicks]="false"
+        [noBarWhenZero]="false"
+        [maxXAxisTickLength]="10"
+        [yAxisTickFormatting]="yAxisTickFormatting"
+      >
+        <!-- Custom tooltip -->
+        <ng-template #tooltipTemplate let-model="model">
+          <div style="padding: 0.5em">
+            <app-client-profile-link
+              [customColor]="'white'"
+              [client]="model?.extra?.client"
+            ></app-client-profile-link>
+            <hr />
+            <div>{{ model.value }}</div>
+          </div>
+        </ng-template>
+      </ngx-charts-bar-vertical>
+
+      <!-- Top selector -->
+      <div class="top-selector-wrapper">
+        <mat-form-field appearance="outline">
+          <mat-label>Top</mat-label>
+          <mat-select (selectionChange)="onSelectionChange()" [(value)]="selectedNumber">
+            <mat-option *ngFor="let top of topSizes" [value]="top">
+              {{ top }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matPrefix color="primary">leaderboard</mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div>
