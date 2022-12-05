@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
 using API.DTOs.ClientDtos;
+using API.DTOs.StatisticsDtos;
 using API.Entities;
 using API.Extensions;
 using AutoMapper;
@@ -61,18 +62,45 @@ namespace API.Controllers
                     .ToListAsync();
         }
 
+        [HttpGet]
+        [Route("statistics")]
+        public async Task<ActionResult<IEnumerable<ClientOrdersStatistics>>> GetClientsStatistics([FromQuery] int clientsCount = 10)
+        {   
+            var userId = User.GetUserId();    // -> Extensions
+
+            return await _context.Orders
+                            .Where((order) => order.AppUserId == userId)
+                            .GroupBy((order) => order.ClientId)
+                            .Select(g => new ClientOrdersStatistics{ ClientId = (int)g.Key, OrdersCount = g.Count() })
+                            .OrderByDescending((obj) => obj.OrdersCount)
+                            .Take(clientsCount).
+                            ToListAsync();
+        }
+
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ClientDetailsDto>> GetClient(int id)
+        public async Task<ActionResult<ClientDetailsDto>> GetClient(int id, [FromQuery] bool brief = false )
         {   
-            // var username = User.GetUsername();    // -> Extensions
+            var userId = User.GetUserId();    // -> Extensions
 
-            var client = await _context.Clients
-                            .ProjectTo<ClientDetailsDto>(_mapper.ConfigurationProvider)
-                            .SingleOrDefaultAsync(client => client.Id == id);
+            ClientDetailsDto client = new ClientDetailsDto();
+
+            if(brief){
+                var briefClient = await _context.Clients
+                    .Where(client => client.AppUserId == userId)
+                    .ProjectTo<ClientDto>(_mapper.ConfigurationProvider)
+                    .SingleOrDefaultAsync(client => client.Id == id);
+
+                _mapper.Map(briefClient, client);
+            }
+            else{
+                client = await _context.Clients
+                    .Where(client => client.AppUserId == userId)
+                    .ProjectTo<ClientDetailsDto>(_mapper.ConfigurationProvider)
+                    .SingleOrDefaultAsync(client => client.Id == id);
+            }
 
             if(client == null) return NotFound("Nie znaleziono klienta o podanym id!");
-
             return client;
         }
 
