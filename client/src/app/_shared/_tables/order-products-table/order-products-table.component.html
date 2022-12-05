@@ -5,7 +5,14 @@
       <ng-container matColumnDef="approvedProductName">
         <th mat-header-cell *matHeaderCellDef>Nazwa towaru</th>
         <td mat-cell *matCellDef="let row">
-          {{ row.approvedProductName }}
+          <a
+            *ngIf="row.productId"
+            mat-button
+            color="primary"
+            routerLink="/products/{{ row.productId }}"
+            >{{ row.approvedProductName }}</a
+          >
+          <span *ngIf="!row.productId">{{ row.approvedProductName }}</span>
         </td>
         <!-- Summary cell -->
         <td mat-footer-cell *matFooterCellDef>

@@ -15,8 +15,7 @@ import { ConfirmDialogComponent } from '../../_dialogs/confirm-dialog/confirm-di
   styleUrls: ['./vehicles-table.component.css']
 })
 export class VehiclesTableComponent implements OnInit {
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;    // ! - assured that paginator exists
+  @ViewChild(MatPaginator) paginator!: MatPaginator; // ! - assured that paginator exists
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Vehicle>;
   @Input() initialData?: Vehicle[];
@@ -25,19 +24,31 @@ export class VehiclesTableComponent implements OnInit {
   @Input() fixedSize?: boolean = true;
 
   dataSource: VehiclesTableDataSource;
-  displayedColumns= ["vehicleName", "registrationNumber", "vin", "currentOwner", "productionDate", "capacity", "engineFuel", "enginePower", "actions"];
-                      
+  displayedColumns = [
+    'vehicleName',
+    'registrationNumber',
+    'vin',
+    'currentOwner',
+    'productionDate',
+    'capacity',
+    'engineFuel',
+    'enginePower',
+    'actions'
+  ];
 
-  
-  constructor(public vehiclesService: VehiclesService,
-              public dialog: MatDialog,
-              private snackbarService: SnackbarService) {}
-  
+  constructor(
+    public vehiclesService: VehiclesService,
+    public dialog: MatDialog,
+    private snackbarService: SnackbarService
+  ) {}
+
   ngOnInit(): void {
     // Create DataSource (with initialData if needed)
     this.dataSource = new VehiclesTableDataSource(this.vehiclesService, this.initialData);
     // Hide client column (if needed)
-    this.displayedColumns = this.displayedColumns.filter((column) => !(column === 'currentOwner' && this.hideCurrentOwnerColumn));
+    this.displayedColumns = this.displayedColumns.filter(
+      (column) => !(column === 'currentOwner' && this.hideCurrentOwnerColumn)
+    );
   }
 
   ngAfterViewInit(): void {
@@ -46,29 +57,26 @@ export class VehiclesTableComponent implements OnInit {
     this.table.dataSource = this.dataSource;
   }
 
-  onDeleteClick(vehicle: Vehicle){
-    
+  onDeleteClick(vehicle: Vehicle) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
-              headerText: "Usuwanie pojazdu",
-              bodyText: `<h3>Czy na pewno chcesz usunąć pojazd <strong>${vehicle.brand} ${vehicle.model}</strong> ?<h3>`
-            },
+        headerText: 'Usuwanie pojazdu',
+        bodyText: `<h3>Czy na pewno chcesz usunąć pojazd <strong>${vehicle.brand} ${vehicle.model}</strong> ?<h3>`
+      }
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if(!result) return;
+      if (!result) return;
 
       this.vehiclesService.deleteVehicle(vehicle.id).subscribe({
         next: () => {
-          this.snackbarService.showMessage('success', "Pomyślnie usunięto pojazd");
+          this.snackbarService.showMessage('success', 'Pomyślnie usunięto pojazd');
           this.dataSource.deleteVehicle(vehicle.id);
         },
-        error: () => {
-          this.snackbarService.showMessage('error', "Problem z usunięciem pojazdu");
+        error: ({ error }) => {
+          this.snackbarService.showMessage('error', error);
         }
-      })
-    })
-    
+      });
+    });
   }
-
 }

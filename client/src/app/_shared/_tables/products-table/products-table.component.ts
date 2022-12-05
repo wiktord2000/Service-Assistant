@@ -69,8 +69,8 @@ export class ProductsTableComponent implements OnInit {
           this.snackbarService.showMessage('success', 'Pomyślnie usunięto produkt');
           this.dataSource.deleteProduct(product.id);
         },
-        error: () => {
-          this.snackbarService.showMessage('error', 'Problem z usunięciem produktu');
+        error: ({ error }) => {
+          this.snackbarService.showMessage('error', error);
         }
       });
     });

@@ -15,8 +15,7 @@ import { ClientsTableDataSource } from './clients-table-datasource';
   styleUrls: ['./clients-table.component.css']
 })
 export class ClientsTableComponent implements OnInit {
-
-  @ViewChild(MatPaginator) paginator!: MatPaginator;    // ! - assured that paginator exists
+  @ViewChild(MatPaginator) paginator!: MatPaginator; // ! - assured that paginator exists
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Client>;
   @Input() initialData?: Client[];
@@ -24,14 +23,14 @@ export class ClientsTableComponent implements OnInit {
   @Input() fixedSize?: boolean = true;
 
   dataSource: ClientsTableDataSource;
-  displayedColumns= ["client", "address", "phone", "email", "actions"];
-                      
+  displayedColumns = ['client', 'address', 'phone', 'email', 'actions'];
 
-  
-  constructor(public clientsService: ClientsService,
-              public dialog: MatDialog,
-              private snackbarService: SnackbarService) {}
-  
+  constructor(
+    public clientsService: ClientsService,
+    public dialog: MatDialog,
+    private snackbarService: SnackbarService
+  ) {}
+
   ngOnInit(): void {
     // Create DataSource (with initialData if needed)
     this.dataSource = new ClientsTableDataSource(this.clientsService, this.initialData);
@@ -43,33 +42,34 @@ export class ClientsTableComponent implements OnInit {
     this.table.dataSource = this.dataSource;
   }
 
-  onDeleteClick(client: Client){
-
+  onDeleteClick(client: Client) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
-              headerText: "Usuwanie klienta",
-              bodyText: `<h3>Czy na pewno chcesz usunąć klienta <strong>${this.clientToString(client)}</strong> ?<h3>`
-            },
+        headerText: 'Usuwanie klienta',
+        bodyText: `<h3>Czy na pewno chcesz usunąć klienta <strong>${this.clientToString(
+          client
+        )}</strong> ?<h3>`
+      }
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if(!result) return;
+      if (!result) return;
 
       this.clientsService.deleteClient(client.id).subscribe({
         next: () => {
-          this.snackbarService.showMessage('success', "Pomyślnie usunięto klienta");
+          this.snackbarService.showMessage('success', 'Pomyślnie usunięto klienta');
           this.dataSource.deleteClient(client.id);
         },
-        error: () => {
-          this.snackbarService.showMessage('error', "Problem z usunięciem klienta");
+        error: ({ error }) => {
+          this.snackbarService.showMessage('error', error);
         }
-      })
-    })
-    
+      });
+    });
   }
 
   clientToString(client: Client): string {
-    return client.type === 'company' ? client.companyName : client.firstname + " " + client.lastname;
+    return client.type === 'company'
+      ? client.companyName
+      : client.firstname + ' ' + client.lastname;
   }
-
 }

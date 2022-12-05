@@ -75,8 +75,8 @@ export class ServicesTableComponent implements OnInit {
           this.snackbarService.showMessage('success', 'Pomyślnie usunięto usługę');
           this.dataSource.deleteService(service.id);
         },
-        error: () => {
-          this.snackbarService.showMessage('error', 'Problem z usunięciem pojazdu');
+        error: ({ error }) => {
+          this.snackbarService.showMessage('error', error);
         }
       });
     });
