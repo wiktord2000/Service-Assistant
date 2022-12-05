@@ -11,9 +11,9 @@ namespace API.Entities
     {
         public int Id { get; set; }
         [Required]
-        public int Position { get; set; }
+        public int Position { get; set; } = 0;
         [Required]
-        public string Name { get; set; }
+        public string Name { get; set; } = "Wycena";
         public bool? Finished { get; set; } = false;
         public bool? IsPaid { get; set; } = false;
         public bool? HasInvoice { get; set; } = false;
