@@ -16,20 +16,29 @@ namespace API.Helpers
         public AutoMapperProfiles()
         {
             // Map <From , To>
+            // Client
             CreateMap<Client, ClientDto>();
+            CreateMap<Client, ClientDto>().ReverseMap();
             CreateMap<Client, ClientDetailsDto>();
             CreateMap<Client, ClientDetailsDto>().ReverseMap();
+            CreateMap<Client, ClientUpdateDto>();
+            CreateMap<Client, ClientUpdateDto>().ReverseMap();
+            CreateMap<Client, ClientCreateDto>();
+            CreateMap<Client, ClientCreateDto>().ReverseMap();
+            CreateMap<ClientDto, ClientDetailsDto>();
+            CreateMap<ClientDto, ClientDetailsDto>().ReverseMap();
+            // Vehicle
             CreateMap<Vehicle, VehicleDto>();
             CreateMap<Vehicle, VehicleDto>().ReverseMap();
             CreateMap<Vehicle, VehicleDetailsDto>();
-            CreateMap<Order, OrderDto>();
-            CreateMap<Order, OrderDto>().ReverseMap();
-            CreateMap<Status, StatusDto>();
-            CreateMap<Status, StatusDto>().ReverseMap();
-            CreateMap<ClientUpdateDto, Client>();
-            CreateMap<ClientCreateDto, Client>();
             CreateMap<VehicleUpdateDto, Vehicle>();
             CreateMap<VehicleCreateDto, Vehicle>();
+            // Order
+            CreateMap<Order, OrderDto>();
+            CreateMap<Order, OrderDto>().ReverseMap();
+            // Satus
+            CreateMap<Status, StatusDto>();
+            CreateMap<Status, StatusDto>().ReverseMap();
             // Service
             CreateMap<ServiceDto, Service>();
             CreateMap<ServiceDto, Service>().ReverseMap();
