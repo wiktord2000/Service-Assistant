@@ -33,8 +33,14 @@ export class ClientsService {
     return this.http.get<Client[]>(this.baseUrl + 'clients/search', { params });
   }
 
-  getClient(id: number) {
-    return this.http.get<Client>(this.baseUrl + 'clients/' + id);
+  getClient(id: number, brief: boolean = false) {
+    let params = brief
+      ? new HttpParams().appendAll({
+          brief: brief
+        })
+      : {};
+
+    return this.http.get<Client>(this.baseUrl + 'clients/' + id, { params });
   }
 
   addClient(client: Client) {
