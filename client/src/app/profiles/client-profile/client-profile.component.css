@@ -2,9 +2,9 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  --tabs-main: #52a4b6;
-  --tabs-primary: #368799;
-  --tabs-secondary: #ffffff88;
+  --tabs-main: hsl(207, 42%, 47%);
+  --tabs-primary: hsl(207, 42%, 40%);
+  --tabs-secondary: #ffffffbb;
   --main-border-radius: 1rem;
 }
 
