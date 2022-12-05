@@ -1,7 +1,10 @@
 <div class="statistics-panel-container">
-  <div class="content-wrapper">
+  <div class="content-wrapper mat-elevation-z8">
     <!-- Header -->
-    <app-custom-header [headerText]="'Klienci z największą liczbą zleceń'"></app-custom-header>
+    <app-custom-header
+      [disableTopDivider]="true"
+      [headerText]="'Klienci z największą liczbą zleceń'"
+    ></app-custom-header>
     <!-- Chart -->
     <div class="chart-wrapper">
       <ngx-charts-bar-vertical
