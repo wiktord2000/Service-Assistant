@@ -63,6 +63,7 @@ import { ServiceSelectInputComponent } from './_forms/_complex-selectors/service
 import { OrderServicesTableComponent } from './_shared/_tables/order-services-table/order-services-table.component';
 import { OrderProductsTableComponent } from './_shared/_tables/order-products-table/order-products-table.component';
 import { ProductSelectInputComponent } from './_forms/_complex-selectors/product-select-input/product-select-input.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 // Let application know what you use in project e.g. components or another modules
 @NgModule({
@@ -130,7 +131,8 @@ import { ProductSelectInputComponent } from './_forms/_complex-selectors/product
     FormsModule,
     SharedModule,
     ReactiveFormsModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    NgxChartsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
