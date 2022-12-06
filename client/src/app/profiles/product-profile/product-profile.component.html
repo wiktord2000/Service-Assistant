@@ -243,27 +243,21 @@
 <!------------------------------------------------------------------- Vehicle's Orders Tab --------------------------------------------------------------------->
 <ng-template #productOrders>
   <div class="tab-wrapper">
-    TODO
-    <!-- <div class="filters-wrapper"> -->
-    <!-- Add order button -->
-    <!-- <button mat-raised-button color="primary" aria-label="Add order button">
-        Dodaj zlecenie
-        <mat-icon>add</mat-icon>
-      </button> -->
-    <!-- Hide finished toggle -->
-    <!-- <mat-slide-toggle (toggleChange)="onToggleChange()" color="primary" checked="displayFinished">
+    <div class="filters-wrapper">
+      <!-- Hide finished toggle -->
+      <mat-slide-toggle (toggleChange)="onToggleChange()" color="primary" checked="displayFinished">
         Ukryj zakończone
       </mat-slide-toggle>
-    </div> -->
+    </div>
 
     <!-- Table -->
-    <!-- <app-orders-table
-      [hideVehicleColumn]="true"
+    <app-orders-table
+      *ngIf="this.orders"
       [fixedSize]="false"
       [matElevationValue]="1"
-      [initialData]="filterFinshedOrders(vehicle.orders)"
+      [initialData]="filterFinshedOrders(this.orders)"
       [hideClientColumn]="true"
     >
-    </app-orders-table> -->
+    </app-orders-table>
   </div>
 </ng-template>

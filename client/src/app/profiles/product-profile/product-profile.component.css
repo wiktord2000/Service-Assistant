@@ -78,9 +78,7 @@
 }
 
 .filters-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: centers;
+  text-align: end;
   padding-bottom: 1em;
 }
 

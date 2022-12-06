@@ -2,7 +2,9 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs';
+import { Order } from 'src/app/_models/Order';
 import { Product } from 'src/app/_models/product';
+import { OrdersService } from 'src/app/_services/orders.service';
 import { ProductsService } from 'src/app/_services/products.service';
 import { SnackbarService } from 'src/app/_services/snackbar.service';
 import { OrdersTableComponent } from 'src/app/_shared/_tables/orders-table/orders-table.component';
@@ -20,6 +22,7 @@ const ONE_TO_TEN_REGEX = /\b([1-9]|10)\b/;
 export class ProductProfileComponent implements OnInit {
   @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;
   product: Product;
+  orders: Order[] = null;
   displayFinished: boolean = false;
   isSaving: boolean = false;
   productDataForm: FormGroup = this.formBuilder.group({
@@ -44,6 +47,7 @@ export class ProductProfileComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
+    private ordersService: OrdersService,
     private formBuilder: FormBuilder,
     private snackbarService: SnackbarService,
     private activatedRoute: ActivatedRoute
@@ -112,6 +116,14 @@ export class ProductProfileComponent implements OnInit {
         notice: product.notice,
         grade: product.grade
       });
+
+      this.loadProductOrders();
+    });
+  }
+
+  loadProductOrders() {
+    this.ordersService.getOrdersWithProduct(this.product.id).subscribe((orders) => {
+      this.orders = orders;
     });
   }
 
@@ -198,5 +210,16 @@ export class ProductProfileComponent implements OnInit {
     this.productDataForm.controls['salesPriceGross'].setValue((salesPriceNet * 1.23).toFixed(2), {
       emitEvent: false
     });
+  }
+
+  filterFinshedOrders(orders: Order[]) {
+    return orders.filter((order) => order.status.position !== 4);
+  }
+
+  onToggleChange() {
+    this.displayFinished = !this.displayFinished;
+    this.displayFinished
+      ? this.ordersTable.dataSource.setOrders(this.orders)
+      : this.ordersTable.dataSource.setOrders(this.filterFinshedOrders(this.orders));
   }
 }
