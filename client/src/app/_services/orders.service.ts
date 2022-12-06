@@ -24,6 +24,13 @@ export class OrdersService {
     return this.http.get<Order[]>(this.baseUrl + 'orders', { params });
   }
 
+  getOrdersWithProduct(productId: number) {
+    let params = new HttpParams().appendAll({
+      productId: productId
+    });
+    return this.http.get<Order[]>(this.baseUrl + 'orders', { params });
+  }
+
   getOrder(id: number) {
     return this.http.get<Order>(this.baseUrl + 'orders/' + id);
   }
