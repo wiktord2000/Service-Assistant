@@ -47,7 +47,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.dataSource = new OrdersTableDataSource(this.ordersService);
+    this.dataSource = new OrdersTableDataSource(this.ordersService, this.initialData ?? []);
 
     // Hide client or/and vehicle column if needed
     this.displayedColumns = this.displayedColumns.filter(
@@ -57,8 +57,6 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
           (column === 'vehicle' && this.hideVehicleColumn)
         )
     );
-
-    this.initialData && this.dataSource.setOrders(this.initialData);
   }
 
   ngAfterViewInit(): void {

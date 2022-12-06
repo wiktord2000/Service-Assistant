@@ -23,8 +23,10 @@ export class OrdersTableDataSource extends DataSource<Order> {
     super();
 
     // Fill using initial data if needed
-    this.data = initialData ?? [];
-    this.ordersSubject.next(this.data); // Maybe not needed
+    if (initialData) {
+      this.data = initialData;
+      this.ordersSubject.next(this.data);
+    }
   }
 
   /**
