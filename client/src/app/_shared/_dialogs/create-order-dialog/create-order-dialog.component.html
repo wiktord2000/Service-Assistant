@@ -2,7 +2,7 @@
 <div mat-dialog-title class="header">
   <h1>Uzupełnij dane zlecenia</h1>
   <mat-slide-toggle
-    [ngStyle]="{ display: data?.order ? 'none' : '' }"
+    [ngStyle]="{ display: this?.data?.order ? 'none' : '' }"
     [labelPosition]="'before'"
     [(ngModel)]="isPricing"
     color="primary"

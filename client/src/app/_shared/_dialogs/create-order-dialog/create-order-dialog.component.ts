@@ -35,8 +35,8 @@ export class CreateOrderDialogComponent implements OnInit, AfterViewInit {
   @ViewChild(OrderProductsTableComponent) productsTable!: OrderProductsTableComponent;
   isPricing: boolean = false;
   isSaving: boolean = false;
-  selectedClient: Client = null;
-  selectedVehicle: Vehicle = null;
+  selectedClient: Client = this?.data?.client ?? null;
+  selectedVehicle: Vehicle = this?.data?.vehicle ?? null;
   selectedService: Service = null;
   selectedProduct: Product = null;
   initialServices: OrderService[] = [];
@@ -68,13 +68,13 @@ export class CreateOrderDialogComponent implements OnInit, AfterViewInit {
     private orderServicesService: OrderServicesService,
     private orderProductsService: OrderProductsService,
     public dialogRef: MatDialogRef<CreateOrderDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data?: { order?: Order }
+    @Inject(MAT_DIALOG_DATA) public data?: { order?: Order; client?: Client; vehicle?: Vehicle }
   ) {
     // Set pricing mode if gets orderId (it means it wll be update dialog)
-    if (this?.data?.order.id) this.isPricing = true;
+    if (this?.data?.order?.id) this.isPricing = true;
   }
   ngAfterViewInit(): void {
-    if (this?.data?.order.id) {
+    if (this?.data?.order?.id) {
       // Load data to tables
       this.orderServicesService.getOrderServices(this.data.order.id).subscribe((services) => {
         this.initialServices = services;

@@ -9,6 +9,8 @@ import { Order } from 'src/app/_models/Order';
 import { OrdersTableComponent } from 'src/app/_shared/_tables/orders-table/orders-table.component';
 import { finalize } from 'rxjs';
 import { Client } from 'src/app/_models/Client';
+import { CreateOrderDialogComponent } from 'src/app/_shared/_dialogs/create-order-dialog/create-order-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 const NUMBER_REGEX = /^\d+$/;
 
@@ -45,7 +47,8 @@ export class VehicleProfileComponent implements OnInit, AfterViewInit {
     private vehiclesService: VehiclesService,
     private formBuilder: FormBuilder,
     private snackbarService: SnackbarService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -132,5 +135,15 @@ export class VehicleProfileComponent implements OnInit, AfterViewInit {
 
   filterFinshedOrders(orders: Order[]) {
     return orders.filter((order) => order.status.position !== 4);
+  }
+
+  onAddOrder() {
+    const dialogRef = this.dialog.open(CreateOrderDialogComponent, {
+      width: '800px',
+      data: { vehicle: this.vehicle }
+    });
+    dialogRef.afterClosed().subscribe((order: Order) => {
+      if (order !== undefined) this.ordersTable.dataSource.addOrder(order);
+    });
   }
 }

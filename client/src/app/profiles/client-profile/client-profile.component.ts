@@ -11,6 +11,7 @@ import { Order } from 'src/app/_models/Order';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateVehicleDialogComponent } from 'src/app/_shared/_dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
 import { Vehicle } from 'src/app/_models/Vehicle';
+import { CreateOrderDialogComponent } from 'src/app/_shared/_dialogs/create-order-dialog/create-order-dialog.component';
 
 @Component({
   selector: 'app-client-profile',
@@ -101,6 +102,16 @@ export class ClientProfileComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((vehicle: Vehicle) => {
       if (vehicle) this.vehiclesTable.dataSource.addVehicle(vehicle);
+    });
+  }
+
+  onAddOrder() {
+    const dialogRef = this.dialog.open(CreateOrderDialogComponent, {
+      width: '800px',
+      data: { client: this.client }
+    });
+    dialogRef.afterClosed().subscribe((order: Order) => {
+      if (order !== undefined) this.ordersTable.dataSource.addOrder(order);
     });
   }
 }
