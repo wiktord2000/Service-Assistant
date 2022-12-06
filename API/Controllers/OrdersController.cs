@@ -35,12 +35,14 @@ namespace API.Controllers
             if(productId != null){
                 return await _context.Orders
                             .Where(order => order.AppUser.Id == userId && order.OrderProducts.Any((orderProduct) => orderProduct.ProductId == productId))
+                            .OrderByDescending((order) => order.CreatedAt)
                             .ProjectTo<OrderDto>(_mapper.ConfigurationProvider)
                             .ToListAsync();
             }
 
             return await _context.Orders
                             .Where(order => order.AppUser.Id == userId && (statusPositions.Length == 0 || statusPositions.Contains(order.Status.Position)))
+                            .OrderByDescending((order) => order.CreatedAt)
                             .ProjectTo<OrderDto>(_mapper.ConfigurationProvider)
                             .ToListAsync();
         }
