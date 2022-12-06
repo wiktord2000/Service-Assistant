@@ -28,9 +28,16 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrders([FromQuery] int[] statusPositions)
+        public async Task<ActionResult<IEnumerable<OrderDto>>> GetOrders([FromQuery] int[] statusPositions, [FromQuery] int? productId)
         {   
             var userId = User.GetUserId();    // -> Extensions
+
+            if(productId != null){
+                return await _context.Orders
+                            .Where(order => order.AppUser.Id == userId && order.OrderProducts.Any((orderProduct) => orderProduct.ProductId == productId))
+                            .ProjectTo<OrderDto>(_mapper.ConfigurationProvider)
+                            .ToListAsync();
+            }
 
             return await _context.Orders
                             .Where(order => order.AppUser.Id == userId && (statusPositions.Length == 0 || statusPositions.Contains(order.Status.Position)))
