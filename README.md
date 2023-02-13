@@ -44,17 +44,29 @@ The implemented application offered a simple user interface, instinctive associa
 
 <kbd><img width="100%" src="https://user-images.githubusercontent.com/63188869/218578371-fd877fac-4f2a-43c8-98f8-9889fc597600.png" /></kbd>
 
-<kbd><img width=400 src="https://user-images.githubusercontent.com/63188869/218578058-d9d3306a-cf97-4217-88b2-ecadc48640cd.png" /></kbd>
-<kbd><img width=550 src="https://user-images.githubusercontent.com/63188869/218578352-41b9c924-2a5e-4250-a266-31b896eac846.png" /></kbd>
+### Adding order
 
-### Profiles
+<kbd><img width=600 src="https://user-images.githubusercontent.com/63188869/218578058-d9d3306a-cf97-4217-88b2-ecadc48640cd.png" /></kbd>
+
+### Adding client
+
+<kbd><img width=600 src="https://user-images.githubusercontent.com/63188869/218578352-41b9c924-2a5e-4250-a266-31b896eac846.png" /></kbd>
+
+
+### Order's profile
 <kbd><img width=600 src="https://user-images.githubusercontent.com/63188869/218579577-c4e96662-d989-4b0f-bbdc-579326cd1858.png" /></kbd>
 
 <kbd><img width=600 src="https://user-images.githubusercontent.com/63188869/218579585-e3aaf065-cdbd-4d4d-b649-96e1b1947d9d.png" /></kbd>
 
+### Part's profile
+
 <kbd><img width=600 src="https://user-images.githubusercontent.com/63188869/218579606-b712d75f-6ae8-411e-b19b-bae76bfa39c7.png" /></kbd>
 
+### Vehicle's profile
+
 <kbd><img width=600 src="https://user-images.githubusercontent.com/63188869/218579620-52ef3e7d-6923-44fa-b5f2-4a13a4194ca7.png" /></kbd>
+
+### Client's profile
 
 <kbd><img width=600 src="https://user-images.githubusercontent.com/63188869/218579626-1c266a1a-c860-430e-913a-3c13b3020bfe.png" /></kbd>
 
