@@ -3,7 +3,7 @@ The purpose of the engineering project was to design and implement a web applica
 
 The implemented application offered a simple user interface, instinctive associations between resources, and facilitated communication with the customer by sending e-mails without the need to use external mailboxes. Additionally, the application offers the ability to analyze collected data, which can be used to make strategic decisions by the company.
 
-<img width=200 src="https://user-images.githubusercontent.com/63188869/218562492-2779f525-26c4-4e8f-9455-e91a034a6242.png" />
+<img width=180 src="https://user-images.githubusercontent.com/63188869/218562492-2779f525-26c4-4e8f-9455-e91a034a6242.png" />
 
 ## Use cases
 
