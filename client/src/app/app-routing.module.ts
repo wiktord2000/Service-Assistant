@@ -18,7 +18,7 @@ import { ProductsPanelComponent } from './panels/products-panel/products-panel.c
 import { ProductProfileComponent } from './profiles/product-profile/product-profile.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   {
     path: '',
@@ -40,7 +40,7 @@ const routes: Routes = [
   { path: 'errors', component: TestErrorsComponent },
   { path: 'server-error', component: ServerErrorComponent },
   { path: 'not-found', component: NotFoundComponent },
-  { path: '**', component: NotFoundComponent, pathMatch: 'full' } //when path doesn't match
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' } //when path doesn't match (Wildcard)
 ];
 
 @NgModule({

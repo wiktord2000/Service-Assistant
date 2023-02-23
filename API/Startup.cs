@@ -51,7 +51,10 @@ namespace API
 
             app.UseRouting();
             // Add cors 2.  - allow frontend to retrive data from api
-            app.UseCors( x => x.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));      // The position is important - don't change place
+            app.UseCors( x => x.AllowAnyHeader()
+                            .AllowAnyMethod()
+                            .SetIsOriginAllowed(origin => true)
+                            .AllowCredentials());      // The position is important - don't change place
 
             app.UseAuthentication();
             app.UseAuthorization();
