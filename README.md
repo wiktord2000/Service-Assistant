@@ -44,7 +44,7 @@ The implemented application offered a simple user interface, instinctive associa
 9. Enjoy it!
 
 > **:exclamation: Note: You don't have to create new account :exclamation:**<br/> 
-> I recommend you to use created account with mocked data using following credentials:<br/> 
+> I recommend you to use the account with mocked data using following credentials:<br/> 
 > **Login:** <code>wiktor</code><br/> 
 > **Password:** <code>qweqweqwe</code>
 
