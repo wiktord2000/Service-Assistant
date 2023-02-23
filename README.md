@@ -40,8 +40,8 @@ The implemented application offered a simple user interface, instinctive associa
 
 <kbd><img width=500 src="https://user-images.githubusercontent.com/63188869/221004810-cfa12431-6795-4f77-b881-67e15d652fc5.png" /></kbd>
 
-7. Click the given URL to display content in your default browser.
-8. Enjoy it! (1st Register, 2nd Login).
+8. Click the given URL to display content in your default browser.
+9. Enjoy it! (1st Register, 2nd Login).
 
 ### Npm installation
 
