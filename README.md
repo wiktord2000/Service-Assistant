@@ -29,6 +29,36 @@ The implemented application offered a simple user interface, instinctive associa
 - SqLite
 - Swagger
 
+## How to run the application?
+1. Ensure you have **npm** installed ( run <code>npm -version</code> ) if not look at the instruction below. 
+2. Ensure you have the **Angular CLI** installed ( run <code>ng version</code> ) if not run <code>npm install -g @angular/cli</code>.
+3. Ensure you have **.NET 6.0** installed ( run <code>dotnet --version</code> ) if not download it from https://dotnet.microsoft.com/en-us/download.
+4. Clone project from GitHub
+5. Open new terminal inside <code>API/</code> folder and run command <code>dotnet run</code>.
+6. Open new terminal inside <code>client/</code> folder and run commands <code>npm install</code> and <code>ng serve</code>
+7. You should see following result in the console: 
+
+<kbd><img width=500 src="https://user-images.githubusercontent.com/63188869/221004810-cfa12431-6795-4f77-b881-67e15d652fc5.png" /></kbd>
+
+7. Click the given URL to display content in your default browser.
+8. Enjoy it! (1st Register, 2nd Login).
+
+### Npm installation
+
+>**Note: npm is installed with Node.js**
+
+This means that you have to install Node.js to get npm installed on your computer.
+<br>
+Download Node.js from the official Node.js web site: https://nodejs.org
+
+## Versions
+
+### Angular project
+<kbd><img width=400 src="https://user-images.githubusercontent.com/63188869/221030446-4890cdb9-8e8e-4aa9-8210-bfaf6f325a35.png" /></kbd>
+
+### .NET Project
+<kbd><img width=400 src="https://user-images.githubusercontent.com/63188869/221031975-102e7b0a-afce-46ff-adc1-0200848f6d90.png" /></kbd>
+
 ## Preview
 
 ### Main views
