@@ -111,4 +111,4 @@ Download Node.js from the official Node.js web site: https://nodejs.org
 <kbd><img width="100%" src="https://user-images.githubusercontent.com/63188869/218579653-734cc9ea-f23c-4a7e-88cc-96de0407f938.png" /></kbd>
 
 ## More
-The complete documentation for this project (PL): https://www.overleaf.com/read/krxypfzqydps
+The complete documentation for this project (PL): https://drive.google.com/file/d/1yNgi6vnYRKNHuwGQwIwctEtKb8OX5P0Q/view?usp=sharing
