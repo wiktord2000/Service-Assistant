@@ -1,15 +1,15 @@
-import { ClientSelectInputComponent } from '../../_forms/_complex-selectors/client-select-input/client-select-input.component';
-import { SnackbarService } from 'src/app/_services/snackbar.service';
+import { ClientSelectInputComponent } from '../../shared/inputs/selectors/client-select-input/client-select-input.component';
+import { SnackbarService } from 'src/app/core/services/ui/snackbar.service';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Vehicle } from '../../_models/Vehicle';
-import { VehiclesService } from '../../_services/vehicles.service';
-import { Order } from 'src/app/_models/Order';
-import { OrdersTableComponent } from 'src/app/_shared/_tables/orders-table/orders-table.component';
+import { Vehicle } from '../../core/models/Vehicle';
+import { VehiclesService } from '../../core/services/http/vehicles.service';
+import { Order } from 'src/app/core/models/Order';
+import { OrdersTableComponent } from 'src/app/shared/tables/orders-table/orders-table.component';
 import { finalize } from 'rxjs';
-import { Client } from 'src/app/_models/Client';
-import { CreateOrderDialogComponent } from 'src/app/_shared/_dialogs/create-order-dialog/create-order-dialog.component';
+import { Client } from 'src/app/core/models/Client';
+import { CreateOrderDialogComponent } from 'src/app/shared/dialogs/create-order-dialog/create-order-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 
 const NUMBER_REGEX = /^\d+$/;

@@ -2,12 +2,12 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs';
-import { Order } from 'src/app/_models/Order';
-import { Product } from 'src/app/_models/product';
-import { OrdersService } from 'src/app/_services/orders.service';
-import { ProductsService } from 'src/app/_services/products.service';
-import { SnackbarService } from 'src/app/_services/snackbar.service';
-import { OrdersTableComponent } from 'src/app/_shared/_tables/orders-table/orders-table.component';
+import { Order } from 'src/app/core/models/Order';
+import { Product } from 'src/app/core/models/product';
+import { OrdersService } from 'src/app/core/services/http/orders.service';
+import { ProductsService } from 'src/app/core/services/http/products.service';
+import { SnackbarService } from 'src/app/core/services/ui/snackbar.service';
+import { OrdersTableComponent } from 'src/app/shared/tables/orders-table/orders-table.component';
 
 const FLOAT_REGEX = /^[0-9]*\.[0-9]{2}$/;
 const INTEGER_REGEX = /^\+?(0|[1-9]\d*)$/;

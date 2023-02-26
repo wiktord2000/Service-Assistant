@@ -1,17 +1,17 @@
-import { VehiclesTableComponent } from './../../_shared/_tables/vehicles-table/vehicles-table.component';
-import { OrdersTableComponent } from '../../_shared/_tables/orders-table/orders-table.component';
-import { SnackbarService } from './../../_services/snackbar.service';
-import { ClientsService } from '../../_services/clients.service';
+import { VehiclesTableComponent } from '../../shared/tables/vehicles-table/vehicles-table.component';
+import { OrdersTableComponent } from '../../shared/tables/orders-table/orders-table.component';
+import { SnackbarService } from '../../core/services/ui/snackbar.service';
+import { ClientsService } from '../../core/services/http/clients.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Client } from '../../_models/Client';
+import { Client } from '../../core/models/Client';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
-import { Order } from 'src/app/_models/Order';
+import { Order } from 'src/app/core/models/Order';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateVehicleDialogComponent } from 'src/app/_shared/_dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
-import { Vehicle } from 'src/app/_models/Vehicle';
-import { CreateOrderDialogComponent } from 'src/app/_shared/_dialogs/create-order-dialog/create-order-dialog.component';
+import { CreateVehicleDialogComponent } from 'src/app/shared/dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
+import { Vehicle } from 'src/app/core/models/Vehicle';
+import { CreateOrderDialogComponent } from 'src/app/shared/dialogs/create-order-dialog/create-order-dialog.component';
 
 @Component({
   selector: 'app-client-profile',

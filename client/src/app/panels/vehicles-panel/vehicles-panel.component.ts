@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Vehicle } from 'src/app/_models/Vehicle';
-import { SnackbarService } from 'src/app/_services/snackbar.service';
-import { VehiclesService } from 'src/app/_services/vehicles.service';
-import { CreateVehicleDialogComponent } from 'src/app/_shared/_dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
-import { VehiclesTableComponent } from 'src/app/_shared/_tables/vehicles-table/vehicles-table.component';
+import { Vehicle } from 'src/app/core/models/Vehicle';
+import { SnackbarService } from 'src/app/core/services/ui/snackbar.service';
+import { VehiclesService } from 'src/app/core/services/http/vehicles.service';
+import { CreateVehicleDialogComponent } from 'src/app/shared/dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
+import { VehiclesTableComponent } from 'src/app/shared/tables/vehicles-table/vehicles-table.component';
 
 @Component({
   selector: 'app-vehicles-panel',

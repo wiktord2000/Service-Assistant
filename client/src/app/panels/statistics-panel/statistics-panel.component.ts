@@ -1,9 +1,9 @@
-import { ClientsService } from './../../_services/clients.service';
-import { ClientOrdersStatistics } from './../../_models/statistics/ClientOrdersStatistics';
-import { StatisticsService } from './../../_services/statistics.service';
+import { ClientsService } from '../../core/services/http/clients.service';
+import { ClientOrdersStatistics } from '../../core/models/ClientOrdersStatistics';
+import { StatisticsService } from '../../core/services/http/statistics.service';
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
-import { Client } from 'src/app/_models/Client';
+import { Client } from 'src/app/core/models/Client';
 import { Router } from '@angular/router';
 
 interface Result {

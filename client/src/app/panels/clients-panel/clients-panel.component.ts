@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Client } from 'src/app/_models/Client';
-import { ClientsService } from 'src/app/_services/clients.service';
-import { SnackbarService } from 'src/app/_services/snackbar.service';
-import { CreateClientDialogComponent } from 'src/app/_shared/_dialogs/create-client-dialog/create-client-dialog.component';
-import { ClientsTableComponent } from 'src/app/_shared/_tables/clients-table/clients-table.component';
+import { Client } from 'src/app/core/models/Client';
+import { ClientsService } from 'src/app/core/services/http/clients.service';
+import { SnackbarService } from 'src/app/core/services/ui/snackbar.service';
+import { CreateClientDialogComponent } from 'src/app/shared/dialogs/create-client-dialog/create-client-dialog.component';
+import { ClientsTableComponent } from 'src/app/shared/tables/clients-table/clients-table.component';
 
 @Component({
   selector: 'app-clients-panel',
@@ -12,13 +12,13 @@ import { ClientsTableComponent } from 'src/app/_shared/_tables/clients-table/cli
   styleUrls: ['./clients-panel.component.css']
 })
 export class ClientsPanelComponent implements OnInit {
-
   @ViewChild(ClientsTableComponent) clientsTable!: ClientsTableComponent;
-  
-  constructor(public snackbarService : SnackbarService, 
-              public dialog: MatDialog,
-              public clientsService: ClientsService) {
-  }
+
+  constructor(
+    public snackbarService: SnackbarService,
+    public dialog: MatDialog,
+    public clientsService: ClientsService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -26,14 +26,13 @@ export class ClientsPanelComponent implements OnInit {
     this.clientsTable.dataSource.loadClients();
   }
 
-  onAddClient(){
+  onAddClient() {
     const dialogRef = this.dialog.open(CreateClientDialogComponent, {
-      width: "900px"
+      width: '900px'
     });
 
     dialogRef.afterClosed().subscribe((client: Client) => {
-      if(client !== undefined) this.clientsTable.dataSource.addClient(client);
+      if (client !== undefined) this.clientsTable.dataSource.addClient(client);
     });
   }
-
 }

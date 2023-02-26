@@ -1,0 +1,20 @@
+.snackbar-btn {
+  border: solid 1px white;
+}
+
+.snackbar-content-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0.5em;
+}
+
+.snackbar-content-container .snackbar-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.snackbar-content-container .snackbar-content .snackbar-message {
+  margin: 0 1em;
+}

@@ -455,6 +455,5 @@ $RECYCLE.BIN/
 
 # My
 appsettings.json
-ssl
 .db-shm
 .db-wal
