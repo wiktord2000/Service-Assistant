@@ -3,19 +3,19 @@ import { ServerErrorComponent } from './core/errors/server-error/server-error.co
 import { NotFoundComponent } from './core/errors/not-found/not-found.component';
 import { TestErrorsComponent } from './core/errors/test-errors/test-errors.component';
 import { AuthGuard } from './core/guards/auth.guard';
-import { OrdersPanelComponent } from './orders-panel/orders-panel.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ServicesPanelComponent } from './panels/services-panel/services-panel.component';
-import { ClientsPanelComponent } from './clients-panel/clients-panel.component';
 import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
 import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
 import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
 import { OrderProfileComponent } from './profiles/order-profile/order-profile.component';
 import { ProductsPanelComponent } from './panels/products-panel/products-panel.component';
 import { ProductProfileComponent } from './profiles/product-profile/product-profile.component';
+import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
+import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },

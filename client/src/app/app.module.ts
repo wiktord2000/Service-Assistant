@@ -9,9 +9,8 @@ import { NavComponent } from './shared/nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { OrdersPanelComponent } from './orders-panel/orders-panel.component';
 import { ServicesPanelComponent } from './panels/services-panel/services-panel.component';
-import { ClientsPanelComponent } from './clients-panel/clients-panel.component';
+import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.component';
 import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
 import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
@@ -56,6 +55,7 @@ import { OrderProductsTableComponent } from './shared/tables/order-products-tabl
 import { ProductSelectInputComponent } from './shared/inputs/selectors/product-select-input/product-select-input.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { CoreModule } from './core/core.module';
+import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
 
 @NgModule({
   declarations: [
