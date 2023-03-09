@@ -38,7 +38,7 @@ The implemented application offered a simple user interface, instinctive associa
 6. Open new terminal inside <code>client/</code> folder and run commands <code>npm install</code> and <code>ng serve</code>
 7. You should see following result in the console: 
 
-<kbd><img width=500 src="https://user-images.githubusercontent.com/63188869/221004810-cfa12431-6795-4f77-b881-67e15d652fc5.png" /></kbd>
+<kbd><img width=600 src="https://user-images.githubusercontent.com/63188869/224010054-94adb8e9-5157-494a-9716-a29049a0928d.png" /></kbd>
 
 8. Click the given URL to display content in your default browser.
 9. Enjoy it!
@@ -55,6 +55,18 @@ The implemented application offered a simple user interface, instinctive associa
 This means that you have to install Node.js to get npm installed on your computer.
 <br>
 Download Node.js from the official Node.js web site: https://nodejs.org
+
+## Swagger UI
+
+If you want make a quick preview of created API and its endpoints you can simply use following URL 
+<br>
+<code>https://localhost:5001/swagger/index.html</code>
+
+You should see following result inside your browser:
+<kbd><img width=700 src="https://user-images.githubusercontent.com/63188869/224013071-426771ef-b844-4c0c-9292-3494ca63b94a.png" /></kbd>
+
+>**Note:** The server have to be running (use <code>dotnet run</code> inside <code>API/</code> directory) </br>
+>**More about Swagger:** <code>https://swagger.io/tools/swagger-ui/</code>
 
 ## Versions
 
