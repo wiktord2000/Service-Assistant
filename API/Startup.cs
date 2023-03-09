@@ -38,7 +38,7 @@ namespace API
         // Here you can configure incoming request (make some operations at them). Configure how the app deal with requests.
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {   
+        {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -47,14 +47,13 @@ namespace API
             }
             app.UseMiddleware<ExceptionMiddleware>();
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
             // Add cors 2.  - allow frontend to retrive data from api
-            app.UseCors( x => x.AllowAnyHeader()
+            app.UseCors(x => x.WithOrigins("http://localhost:4200")
                             .AllowAnyMethod()
-                            .SetIsOriginAllowed(origin => true)
-                            .AllowCredentials());      // The position is important - don't change place
+                            .AllowAnyHeader());      // The position is important - don't change place
 
             app.UseAuthentication();
             app.UseAuthorization();
