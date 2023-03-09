@@ -457,3 +457,6 @@ $RECYCLE.BIN/
 appsettings.json
 .db-shm
 .db-wal
+ssl
+.vscode
+
