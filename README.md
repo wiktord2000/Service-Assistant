@@ -21,7 +21,7 @@ The implemented application offered a simple user interface, instinctive associa
 
 - Angular
 - Angular Material
-- ASP.NET
+- ASP.NET Core
 - MailKit
 - ngx-charts
 - RxJS
