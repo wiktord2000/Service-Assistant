@@ -1,12 +1,12 @@
-<div class="snackbar-content-container">
+<div class="container">
   <!-- Message -->
-  <div class="snackbar-content">
+  <div class="content">
     <mat-icon>{{ iconsMap.get(data.type) }}</mat-icon>
-    <span class="snackbar-message">{{ data.message }}</span>
+    <span class="message">{{ data.message }}</span>
   </div>
 
   <!-- Action button -->
-  <button class="snackbar-btn" mat-button (click)="snackBarRef.closeWithAction()">
+  <button class="action-button" mat-button (click)="onButtonClick()">
     {{ data.buttonName }}
   </button>
 </div>
