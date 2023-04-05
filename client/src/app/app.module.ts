@@ -14,9 +14,6 @@ import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.comp
 import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
 import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
-import { TestErrorsComponent } from './core/errors/test-errors/test-errors.component';
-import { NotFoundComponent } from './core/errors/not-found/not-found.component';
-import { ServerErrorComponent } from './core/errors/server-error/server-error.component';
 import { TextInputComponent } from './shared/inputs/text-input/text-input.component';
 import { PasswordInputComponent } from './shared/inputs/password-input/password-input.component';
 import { DateInputComponent } from './shared/inputs/date-input/date-input.component';
@@ -56,6 +53,7 @@ import { ProductSelectInputComponent } from './shared/inputs/selectors/product-s
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { CoreModule } from './core/core.module';
 import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
+import { ErrorsModule } from './core/errors/errors.module';
 
 @NgModule({
   declarations: [
@@ -69,9 +67,6 @@ import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.compone
     VehiclesPanelComponent,
     StatisticsPanelComponent,
     SnackbarComponent,
-    TestErrorsComponent,
-    NotFoundComponent,
-    ServerErrorComponent,
     TextInputComponent,
     PasswordInputComponent,
     DateInputComponent,
@@ -117,9 +112,10 @@ import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.compone
     ReactiveFormsModule,
     NgxMaterialTimepickerModule,
     NgxChartsModule,
-    CoreModule
+    CoreModule,
+    ErrorsModule
   ],
   providers: [],
-  bootstrap: [AppComponent] // Note: Only this component has bootstrap declaration (includes whole app's components)
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
