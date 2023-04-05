@@ -1,0 +1,26 @@
+$red: rgb(194, 2, 2);
+
+:host {
+  flex: 1;
+}
+
+.red-font {
+  color: $red;
+}
+
+.stack-trace {
+  @extend .red-font;
+  background-color: whitesmoke;
+}
+
+.server-error-container {
+  padding: 10vh 15vw;
+}
+
+.code-area {
+  overflow-x: scroll;
+}
+
+.boldedText {
+  font-weight: 500;
+}
