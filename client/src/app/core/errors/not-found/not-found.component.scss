@@ -1,0 +1,23 @@
+:host {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  text-align: center;
+  padding-bottom: 4em;
+
+  > * {
+    margin-bottom: 0;
+  }
+
+  .error-code {
+    font-weight: 500;
+  }
+
+  .redirect-button {
+    margin: 1em;
+  }
+}
