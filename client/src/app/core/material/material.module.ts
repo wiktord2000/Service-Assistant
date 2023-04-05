@@ -38,7 +38,6 @@ const MATERIAL_MODULES = [
   MatIconModule,
   LayoutModule,
   MatToolbarModule,
-  MatButtonModule,
   MatSidenavModule,
   MatIconModule,
   MatListModule,

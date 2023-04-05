@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../../models/User';
 
 @Injectable({
-  providedIn: 'root' // Singleton convension - service is present until app close
+  providedIn: 'root' // Service is available globally - Singleton (one instance)
 })
 export class AccountService {
   private baseUrl: String = environment.apiUrl;

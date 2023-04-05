@@ -6,9 +6,8 @@ import { map, Observable } from 'rxjs';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  // Guards automaticelly subscribe e.g. accountService.currentUser$ so we don't have to do this ?
   constructor(
-    private accountService: AccountService, // Probably subscribe every created subject in the app ?
+    private accountService: AccountService,
     private snackbarService: SnackbarService,
     private router: Router
   ) {}

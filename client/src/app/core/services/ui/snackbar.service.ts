@@ -28,7 +28,7 @@ export class SnackbarService {
       },
       duration: autoDismiss ? 2000 : undefined,
       horizontalPosition: snackbarHorizontalPosition,
-      panelClass: `${snackbarType}-snackbar-panel`
+      panelClass: `snackbar-${snackbarType}-panel`
     });
 
     return snackbarRef;
