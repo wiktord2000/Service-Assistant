@@ -50,7 +50,7 @@ export class StatusSelectorComponent implements OnInit {
       next: (status: Status) => {
         this.status = status;
         this.previousSelectedPosition = this.selectedPosition;
-        this.snackbarService.showMessage('success', 'Pomyślnie zaktualizowano status');
+        this.snackbarService.showMessage('success', 'Successfully updated status');
         this.onStatusUpdate.emit(status);
       },
       error: () => {

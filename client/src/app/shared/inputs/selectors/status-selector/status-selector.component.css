@@ -21,3 +21,13 @@
 ::ng-deep .white-text .mat-select-value {
   color: white;
 }
+
+@media only screen and (max-width: 1450px) {
+  :host ::ng-deep .mat-select-value {
+    display: none;
+  }
+
+  :host ::ng-deep .mat-form-field-infix {
+    width: inherit;
+  }
+}
