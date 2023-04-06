@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
   @Input() model: any;
@@ -25,9 +25,7 @@ export class NavComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private router: Router,
     public accountService: AccountService
-  ) {
-    // Make public if you want use service from html level !!!!!!!!!!
-  }
+  ) {}
 
   ngOnInit(): void {}
 

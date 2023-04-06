@@ -33,18 +33,12 @@
   <mat-sidenav-content class="bg-gradient">
     <!-- Toolbar (main at top) -->
     <mat-toolbar class="mat-elevation-z1" color="primary">
-      <!-- Logo (when logged) -->
+      <!-- Logo -->
       <img
         id="main-logo"
         routerLink="/orders"
+        [ngClass]="{ 'disable-hover': !(accountService.currentUser$ | async) }"
         *ngIf="accountService.currentUser$ | async"
-        src="../../assets/logo.svg"
-      />
-      <!-- Logo (when not logged) -->
-      <img
-        id="main-logo"
-        class="disable-hover"
-        *ngIf="!(accountService.currentUser$ | async)"
         src="../../assets/logo.svg"
       />
 
