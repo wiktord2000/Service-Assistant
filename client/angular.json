@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/scss"]
+            },
             "outputPath": "dist/client",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -25,7 +28,7 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/sass/app.scss"
+              "src/scss/app.scss"
             ],
             "scripts": []
           },
