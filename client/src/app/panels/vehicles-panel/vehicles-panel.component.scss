@@ -1,9 +1,11 @@
-:host {
+@import "core";
+
+:host  {
   flex: 1;
   display: flex;
 }
 
-.services-panel-container {
+.vehicles-panel-container {
   flex: 1;
   background-color: white;
   display: flex;
@@ -13,6 +15,7 @@
 
 .content-wrapper {
   width: 96%;
+  max-width: $max-content-width;
   height: 90%;
 }
 

@@ -1,3 +1,5 @@
+@import "core";
+
 :host {
   flex: 1;
   display: flex;
@@ -13,6 +15,7 @@
 
 .content-wrapper {
   width: 75%;
+  max-width: $max-content-width;
   height: 90%;
   text-align: center;
   border-radius: 8px;

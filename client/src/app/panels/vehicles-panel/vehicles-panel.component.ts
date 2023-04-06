@@ -9,7 +9,7 @@ import { VehiclesTableComponent } from 'src/app/shared/tables/vehicles-table/veh
 @Component({
   selector: 'app-vehicles-panel',
   templateUrl: './vehicles-panel.component.html',
-  styleUrls: ['./vehicles-panel.component.css']
+  styleUrls: ['./vehicles-panel.component.scss']
 })
 export class VehiclesPanelComponent implements OnInit {
   @ViewChild(VehiclesTableComponent) vehiclesTable!: VehiclesTableComponent;

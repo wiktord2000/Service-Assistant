@@ -12,7 +12,7 @@ import { Order } from 'src/app/core/models/Order';
 @Component({
   selector: 'app-orders-panel',
   templateUrl: './orders-panel.component.html',
-  styleUrls: ['./orders-panel.component.css']
+  styleUrls: ['./orders-panel.component.scss']
 })
 export class OrdersPanelComponent implements OnInit, AfterViewInit {
   @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;

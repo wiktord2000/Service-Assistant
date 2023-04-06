@@ -9,7 +9,7 @@ import { ServicesTableComponent } from 'src/app/shared/tables/services-table/ser
 @Component({
   selector: 'app-services-panel',
   templateUrl: './services-panel.component.html',
-  styleUrls: ['./services-panel.component.css']
+  styleUrls: ['./services-panel.component.scss']
 })
 export class ServicesPanelComponent implements OnInit, AfterViewInit {
   @ViewChild(ServicesTableComponent) servicesTable!: ServicesTableComponent;

@@ -9,7 +9,7 @@ import { ClientsTableComponent } from 'src/app/shared/tables/clients-table/clien
 @Component({
   selector: 'app-clients-panel',
   templateUrl: './clients-panel.component.html',
-  styleUrls: ['./clients-panel.component.css']
+  styleUrls: ['./clients-panel.component.scss']
 })
 export class ClientsPanelComponent implements OnInit {
   @ViewChild(ClientsTableComponent) clientsTable!: ClientsTableComponent;

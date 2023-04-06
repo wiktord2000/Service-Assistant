@@ -9,7 +9,7 @@ import { ProductsTableComponent } from 'src/app/shared/tables/products-table/pro
 @Component({
   selector: 'app-products-panel',
   templateUrl: './products-panel.component.html',
-  styleUrls: ['./products-panel.component.css']
+  styleUrls: ['./products-panel.component.scss']
 })
 export class ProductsPanelComponent implements OnInit {
   @ViewChild(ProductsTableComponent) productsTable!: ProductsTableComponent;

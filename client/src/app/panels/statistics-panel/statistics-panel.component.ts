@@ -17,7 +17,7 @@ interface Result {
 @Component({
   selector: 'app-statistics-panel',
   templateUrl: './statistics-panel.component.html',
-  styleUrls: ['./statistics-panel.component.css']
+  styleUrls: ['./statistics-panel.component.scss']
 })
 export class StatisticsPanelComponent implements OnInit {
   constructor(
