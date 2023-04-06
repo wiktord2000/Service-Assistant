@@ -1,0 +1,102 @@
+.full-width-table {
+  width: 100%;
+  height: 100%;
+}
+
+.table-container {
+  position: relative;
+  min-height: 62vh;
+  max-height: 62vh;
+  overflow: auto;
+  background-color: white;
+}
+
+.no-orders-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 25em;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.delete-text {
+  color: red;
+}
+
+.currency-suffix {
+  font-size: 0.75em;
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: 500;
+}
+
+.big-clock {
+  font-size: 20px;
+}
+
+.disabled-clock {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Align columns */
+
+/* Status column styling */
+::ng-deep .mat-column-status .mat-form-field-wrapper {
+  padding: 0px !important;
+}
+
+::ng-deep .mat-column-status .mat-form-field-appearance-outline .mat-form-field-infix {
+  max-width: 7.5em !important;
+  padding: 0.7em 0 !important;
+}
+
+/* Admission date column styling */
+::ng-deep .mat-column-admissionDate .mat-form-field-wrapper {
+  padding: 0px !important;
+}
+
+::ng-deep .mat-column-admissionDate .mat-form-field-appearance-outline .mat-form-field-infix {
+  max-width: 8.5em !important;
+  padding: 0.75em 0 !important;
+}
+
+/* Deadline date styling */
+::ng-deep .mat-column-deadlineDate .mat-form-field-wrapper {
+  padding: 0px !important;
+}
+
+::ng-deep .mat-column-deadlineDate .mat-form-field-appearance-outline .mat-form-field-infix {
+  max-width: 8.5em !important;
+  padding: 0.75em 0 !important;
+}
+
+/* Make first column's cells little bit left (decrease default padding)*/
+.mat-column-orderNumber.mat-cell {
+  padding-left: 1em;
+}
+
+.mat-column-actions.mat-cell {
+  text-align: center;
+}
+
+.mat-column-totalGross {
+  text-align: center;
+}
+
+.mat-column-totalGross.mat-cell {
+  font-size: 13px;
+}
+
+.mat-column-createDate.mat-cell {
+  font-size: 13px;
+}
+
+.mat-column-finishDate.mat-cell {
+  font-size: 13px;
+}
+
+/* Separate columns */
+td.mat-cell:not(.mat-column-actions) {
+  padding-right: 0.5em;
+}

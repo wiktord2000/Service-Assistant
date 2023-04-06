@@ -3,11 +3,11 @@
     <table *ngIf="dataSource" mat-table class="full-width-table" matSort aria-label="Elements">
       <!-- Order Number Column (string) -->
       <ng-container matColumnDef="orderNumber">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Numer zlecenia</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Order No.</th>
         <td mat-cell *matCellDef="let row">
           <a
             mat-button
-            matTooltip="Szczegóły zlecenia"
+            matTooltip="Order details"
             [matTooltipPosition]="'right'"
             aria-label="Order details"
             routerLink="/orders/{{ row.id }}"
@@ -20,18 +20,17 @@
 
       <!-- Created Date Column -->
       <ng-container matColumnDef="createDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Data utworzenia</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Created date</th>
         <td mat-cell *matCellDef="let row">
-          <!-- Only date as string -->
-          <span *ngIf="row.createdAt">
+          <!-- Date as string -->
+          <span #createdAtDate class="createdAtDate" *ngIf="row.createdAt && !shrinkDates">
             {{ row.createdAt | date : "dd.MM.yyyy" }}
           </span>
-
-          <!-- Time icon with tooltip-->
+          <!-- Icon with tooltip-->
           <mat-icon
             inline
-            *ngIf="row.createdAt"
-            matTooltip="{{ row.createdAt | date : 'HH:mm' }}"
+            [ngClass]="{ 'big-clock': shrinkDates, 'disabled-clock': !row.createdAt }"
+            matTooltip="{{ row.createdAt | date : (shrinkDates ? 'dd.MM.yyyy, HH:mm' : 'HH:mm') }}"
             [matTooltipPosition]="'right'"
             >schedule</mat-icon
           >
@@ -40,18 +39,17 @@
 
       <!-- Status Change Date Column -->
       <ng-container matColumnDef="finishDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Data zmiany statusu</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status changed</th>
         <td mat-cell *matCellDef="let row">
-          <!-- Only date as string -->
-          <span *ngIf="row.finishDate">
+          <!-- Date as string -->
+          <span #statusChangeDate class="statusChangeDate" *ngIf="row.finishDate && !shrinkDates">
             {{ row.finishDate | date : "dd.MM.yyyy" }}
           </span>
-
-          <!-- Time icon with tooltip-->
+          <!-- Icon with tooltip-->
           <mat-icon
             inline
-            *ngIf="row.finishDate"
-            matTooltip="{{ row.finishDate | date : 'HH:mm' }}"
+            [ngClass]="{ 'big-clock': shrinkDates, 'disabled-clock': !row.finishDate }"
+            matTooltip="{{ row.finishDate | date : (shrinkDates ? 'dd.MM.yyyy, HH:mm' : 'HH:mm') }}"
             [matTooltipPosition]="'right'"
             >schedule</mat-icon
           >
@@ -69,7 +67,7 @@
 
       <!-- Client Column -->
       <ng-container matColumnDef="client">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Klient</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Client</th>
         <td mat-cell *matCellDef="let row">
           <!-- Client link -->
           <app-client-profile-link [client]="row.client"></app-client-profile-link>
@@ -78,7 +76,7 @@
 
       <!-- Vehicle Column -->
       <ng-container matColumnDef="vehicle">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Pojazd</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Vehicle</th>
         <td mat-cell *matCellDef="let row">
           <!-- Link to vehicle -->
           <app-vehicle-profile-link *ngIf="row.vehicle" [vehicle]="row.vehicle">
@@ -88,11 +86,11 @@
 
       <!-- Admission Date Column -->
       <ng-container matColumnDef="admissionDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Dostarczenie auta</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Admission date</th>
         <td mat-cell *matCellDef="let row">
           <!-- Date and Time picker -->
           <app-date-and-time-picker
-            (dateChange)="onAdmissionDateChange($event, row.id)"
+            (dateChange)="onDateUpdate($event, row.id, 'admission')"
             [initialDate]="row.admissionDate"
           >
           </app-date-and-time-picker>
@@ -101,11 +99,11 @@
 
       <!-- Deadline Date Column -->
       <ng-container matColumnDef="deadlineDate">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Termin naprawy</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Deadline</th>
         <td mat-cell *matCellDef="let row">
           <!-- Date and Time picker -->
           <app-date-and-time-picker
-            (dateChange)="onDeadlineDateChange($event, row.id)"
+            (dateChange)="onDateUpdate($event, row.id, 'deadline')"
             [initialDate]="row.deadlineDate"
           >
           </app-date-and-time-picker>
@@ -114,37 +112,41 @@
 
       <!-- Total Gross Column -->
       <ng-container matColumnDef="totalGross">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Kwota do zapłaty</th>
-        <td mat-cell *matCellDef="let row">{{ row.totalGross | number : "1.2-2" }} zł</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Cost</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.totalGross | number : "1.2-2" }} <span class="currency-suffix">PLN</span>
+        </td>
       </ng-container>
 
       <!-- Actions Column -->
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>Operacje</th>
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let row">
-          <!-- Invoice -->
+          <!-- Expand button -->
           <button
             mat-icon-button
+            [matMenuTriggerFor]="actions"
             color="primary"
-            [disabled]="!(row.status.position === 3 || row.status.position === 4)"
-            aria-label="Invoice button"
-            matTooltip="Wystaw fakturę"
-            [matTooltipPosition]="'left'"
+            aria-label="Expand acctions"
           >
-            <mat-icon>receipt_long</mat-icon>
+            <mat-icon>expand_more</mat-icon>
           </button>
 
-          <!-- Delete -->
-          <button
-            mat-icon-button
-            color="warn"
-            (click)="onDeleteClick(row)"
-            aria-label="Delete button"
-            matTooltip="Usuń zlecenie"
-            [matTooltipPosition]="'right'"
-          >
-            <mat-icon>delete_forever</mat-icon>
-          </button>
+          <!-- Actions -->
+          <mat-menu #actions="matMenu">
+            <button
+              mat-menu-item
+              [disabled]="!(row.status.position === 3 || row.status.position === 4)"
+              aria-label="Invoice"
+            >
+              <mat-icon>receipt_long</mat-icon><span>Invoice</span>
+            </button>
+
+            <button mat-menu-item (click)="onDeleteClick(row)" aria-label="Delete">
+              <mat-icon color="warn">delete_forever</mat-icon
+              ><span class="delete-text">Delete</span>
+            </button>
+          </mat-menu>
         </td>
       </ng-container>
 

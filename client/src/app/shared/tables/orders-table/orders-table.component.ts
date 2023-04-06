@@ -1,6 +1,6 @@
 import { DateAndTimePickerEvent } from '../../date-and-time-picker/date-and-time-picker.component';
 import { SnackbarService } from 'src/app/core/services/ui/snackbar.service';
-import { Component, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -10,14 +10,38 @@ import { OrdersTableDataSource } from './orders-table-datasource';
 import { Status } from 'src/app/core/models/Status';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../dialogs/confirm-dialog/confirm-dialog.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Subscription } from 'rxjs';
+
+const FULL_SIZE_COLUMNS = [
+  'orderNumber',
+  'createDate',
+  'finishDate',
+  'status',
+  'client',
+  'vehicle',
+  'admissionDate',
+  'deadlineDate',
+  'totalGross',
+  'actions'
+];
+
+const MEDIUM_SIZE_COLUMNS = FULL_SIZE_COLUMNS.filter(
+  (columnName) => !(columnName === 'createDate' || columnName === 'admissionDate')
+);
+
+const SMALL_SIZE_COLUMNS = FULL_SIZE_COLUMNS.filter(
+  (columnName) =>
+    !(columnName === 'createDate' || columnName === 'finishDate' || columnName === 'admissionDate')
+);
 
 @Component({
   selector: 'app-orders-table',
   templateUrl: './orders-table.component.html',
-  styleUrls: ['./orders-table.component.css']
+  styleUrls: ['./orders-table.component.scss']
 })
-export class OrdersTableComponent implements OnInit, AfterViewInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator; // ! - assured that paginator exists
+export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Order>;
   @Input() initialData?: Order[];
@@ -25,30 +49,20 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
   @Input() hideVehicleColumn?: boolean = false;
   @Input() matElevationValue?: number = 8;
   @Input() fixedSize?: boolean = true;
-
   dataSource: OrdersTableDataSource;
-  displayedColumns = [
-    'orderNumber',
-    'createDate',
-    'finishDate',
-    'status',
-    'client',
-    'vehicle',
-    'admissionDate',
-    'deadlineDate',
-    'totalGross',
-    'actions'
-  ];
+  displayedColumns: string[] = FULL_SIZE_COLUMNS;
+  breakpointSubscription: Subscription;
+  shrinkDates: boolean = false;
 
   constructor(
     public ordersService: OrdersService,
     private snackbarService: SnackbarService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver
   ) {}
-
   ngOnInit(): void {
+    this.subscribeBreakpoints();
     this.dataSource = new OrdersTableDataSource(this.ordersService, this.initialData ?? []);
-
     // Hide client or/and vehicle column if needed
     this.displayedColumns = this.displayedColumns.filter(
       (column) =>
@@ -58,45 +72,49 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
         )
     );
   }
-
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
-
-  onAdmissionDateChange(event: DateAndTimePickerEvent, orderId: number) {
-    let orderToUpdate = this.dataSource.getOrders().find((order) => order.id === orderId);
-    if (!orderToUpdate) {
-      this.snackbarService.showMessage('error', 'Niepoprawne id zlecenia');
-    }
-
-    this.ordersService.updateOrderPatch(orderId, { admissionDate: event.date }).subscribe({
-      next: () => {
-        this.snackbarService.showMessage('success', 'Pomyślnie zaktualizowano datę');
-      },
-      error: (error) => {
-        console.log(error);
-        this.snackbarService.showMessage('error', 'Nie udało się zaktualizować daty');
-        // Restore previous date
-        event.restorePreviousDate();
-      }
-    });
+  ngOnDestroy(): void {
+    this.breakpointSubscription.unsubscribe();
   }
 
-  onDeadlineDateChange(event: DateAndTimePickerEvent, orderId: number) {
-    let orderToUpdate = this.dataSource.getOrders().find((order) => order.id === orderId);
-    if (!orderToUpdate) {
-      this.snackbarService.showMessage('error', 'Niepoprawne id zlecenia');
-    }
+  subscribeBreakpoints() {
+    this.breakpointSubscription = this.breakpointObserver
+      .observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium])
+      .subscribe((result) => {
+        if (!result.matches) {
+          this.displayedColumns = FULL_SIZE_COLUMNS;
+          this.shrinkDates = false;
+        } else if (result.breakpoints[Breakpoints.Medium]) {
+          this.displayedColumns = MEDIUM_SIZE_COLUMNS;
+          this.shrinkDates = true;
+        } else if (result.breakpoints[Breakpoints.Small]) {
+          this.displayedColumns = SMALL_SIZE_COLUMNS;
+        } else if (result.breakpoints[Breakpoints.XSmall]) {
+          console.log('Small');
+        }
+      });
+  }
 
-    this.ordersService.updateOrderPatch(orderId, { deadlineDate: event.date }).subscribe({
+  onDateUpdate(event: DateAndTimePickerEvent, orderId: number, dateType: 'admission' | 'deadline') {
+    const orderToUpdate = this.dataSource.getOrders().find((order) => order.id === orderId);
+    if (!orderToUpdate) {
+      this.snackbarService.showMessage('error', 'Incorrect order ID');
+      return;
+    }
+    const payload =
+      dateType === 'admission' ? { admissionDate: event.date } : { deadlineDate: event.date };
+
+    this.ordersService.updateOrderPatch(orderId, payload).subscribe({
       next: () => {
-        this.snackbarService.showMessage('success', 'Pomyślnie zaktualizowano datę');
+        this.snackbarService.showMessage('success', 'Successfully updated the date');
       },
       error: (error) => {
         console.log(error);
-        this.snackbarService.showMessage('error', 'Nie udało się zaktualizować daty');
+        this.snackbarService.showMessage('error', 'Failed to update date');
         // Restore previous date
         event.restorePreviousDate();
       }
@@ -120,10 +138,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
         this.dataSource.setOrders(updatedOrders);
       },
       error: () => {
-        this.snackbarService.showMessage(
-          'error',
-          'Nie udało się zaktualizować daty zmiany statusu'
-        );
+        this.snackbarService.showMessage('error', 'Failed to update status change date');
       }
     });
   }
@@ -131,8 +146,8 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
   onDeleteClick(order: Order) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        headerText: 'Usuwanie zlecenia',
-        bodyText: `<h3>Czy na pewno chcesz usunąć zlecenie <strong>${order.orderNumber}</strong> ?<h3>`
+        headerText: 'Order deletion',
+        bodyText: `<h3>Are you sure you want to remove the order <strong>${order.orderNumber}</strong> ?<h3>`
       }
     });
 
@@ -141,11 +156,11 @@ export class OrdersTableComponent implements OnInit, AfterViewInit {
 
       this.ordersService.deleteOrder(order.id).subscribe({
         next: () => {
-          this.snackbarService.showMessage('success', 'Pomyślnie usunięto zlecenie');
+          this.snackbarService.showMessage('success', 'Successfully removed the order');
           this.dataSource.deleteOrder(order.id);
         },
         error: () => {
-          this.snackbarService.showMessage('error', 'Problem z usunięciem zlecenia');
+          this.snackbarService.showMessage('error', 'Problem with order deletion');
         }
       });
     });

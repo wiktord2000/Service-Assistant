@@ -54,6 +54,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { CoreModule } from './core/core.module';
 import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
 import { ErrorsModule } from './core/errors/errors.module';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -113,7 +114,8 @@ import { ErrorsModule } from './core/errors/errors.module';
     NgxMaterialTimepickerModule,
     NgxChartsModule,
     CoreModule,
-    ErrorsModule
+    ErrorsModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
