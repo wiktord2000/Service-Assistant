@@ -13,26 +13,43 @@ import { ConfirmDialogComponent } from '../../dialogs/confirm-dialog/confirm-dia
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 
-const FULL_SIZE_COLUMNS = [
-  'orderNumber',
-  'createDate',
-  'finishDate',
-  'status',
-  'client',
-  'vehicle',
-  'admissionDate',
-  'deadlineDate',
-  'totalGross',
-  'actions'
-];
+enum OrderTableColumns {
+  orderNumber = 'orderNumber',
+  createDate = 'createDate',
+  finishDate = 'finishDate',
+  status = 'status',
+  client = 'client',
+  vehicle = 'vehicle',
+  admissionDate = 'admissionDate',
+  deadlineDate = 'deadlineDate',
+  totalGross = 'totalGross',
+  actions = 'actions'
+}
 
+const FILTERED_COLUMNS = {
+  MEDIUM: [OrderTableColumns.createDate, OrderTableColumns.admissionDate],
+  SMALL: [
+    OrderTableColumns.createDate,
+    OrderTableColumns.admissionDate,
+    OrderTableColumns.finishDate
+  ],
+  XSMALL: [
+    OrderTableColumns.createDate,
+    OrderTableColumns.finishDate,
+    OrderTableColumns.admissionDate,
+    OrderTableColumns.deadlineDate
+  ]
+};
+
+const FULL_SIZE_COLUMNS = Object.values(OrderTableColumns);
 const MEDIUM_SIZE_COLUMNS = FULL_SIZE_COLUMNS.filter(
-  (columnName) => !(columnName === 'createDate' || columnName === 'admissionDate')
+  (column) => !FILTERED_COLUMNS.MEDIUM.includes(column)
 );
-
 const SMALL_SIZE_COLUMNS = FULL_SIZE_COLUMNS.filter(
-  (columnName) =>
-    !(columnName === 'createDate' || columnName === 'finishDate' || columnName === 'admissionDate')
+  (column) => !FILTERED_COLUMNS.SMALL.includes(column)
+);
+const XSMALL_SIZE_COLUMNS = FULL_SIZE_COLUMNS.filter(
+  (column) => !FILTERED_COLUMNS.XSMALL.includes(column)
 );
 
 @Component({
@@ -50,7 +67,13 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() matElevationValue?: number = 8;
   @Input() fixedSize?: boolean = true;
   dataSource: OrdersTableDataSource;
-  displayedColumns: string[] = FULL_SIZE_COLUMNS;
+  columnsVariant = {
+    fullSize: FULL_SIZE_COLUMNS,
+    medium: MEDIUM_SIZE_COLUMNS,
+    small: SMALL_SIZE_COLUMNS,
+    xsmall: XSMALL_SIZE_COLUMNS
+  };
+  displayedColumns!: OrderTableColumns[];
   breakpointSubscription: Subscription;
   shrinkDates: boolean = false;
 
@@ -63,14 +86,18 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnInit(): void {
     this.subscribeBreakpoints();
     this.dataSource = new OrdersTableDataSource(this.ordersService, this.initialData ?? []);
-    // Hide client or/and vehicle column if needed
-    this.displayedColumns = this.displayedColumns.filter(
-      (column) =>
-        !(
-          (column === 'client' && this.hideClientColumn) ||
-          (column === 'vehicle' && this.hideVehicleColumn)
-        )
+    const columnsToHide = [
+      this.hideClientColumn && OrderTableColumns.client,
+      this.hideVehicleColumn && OrderTableColumns.vehicle
+    ];
+    // Alter columns variants
+    Object.keys(this.columnsVariant).forEach(
+      (key) =>
+        (this.columnsVariant[key] = this.columnsVariant[key].filter(
+          (column) => !columnsToHide.includes(column)
+        ))
     );
+    this.displayedColumns = this.columnsVariant.fullSize;
   }
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
@@ -86,15 +113,15 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
       .observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium])
       .subscribe((result) => {
         if (!result.matches) {
-          this.displayedColumns = FULL_SIZE_COLUMNS;
+          this.displayedColumns = this.columnsVariant.fullSize;
           this.shrinkDates = false;
         } else if (result.breakpoints[Breakpoints.Medium]) {
-          this.displayedColumns = MEDIUM_SIZE_COLUMNS;
+          this.displayedColumns = this.columnsVariant.medium;
           this.shrinkDates = true;
         } else if (result.breakpoints[Breakpoints.Small]) {
-          this.displayedColumns = SMALL_SIZE_COLUMNS;
+          this.displayedColumns = this.columnsVariant.small;
         } else if (result.breakpoints[Breakpoints.XSmall]) {
-          console.log('Small');
+          this.displayedColumns = this.columnsVariant.xsmall;
         }
       });
   }
