@@ -95,7 +95,7 @@
           class="right-bookmark"
           mat-button
           routerLink="/"
-          >Zaloguj</a
+          >Sign in</a
         >
         <a
           *ngIf="!(router.url === '/register')"
@@ -103,7 +103,7 @@
           class="right-bookmark"
           mat-button
           routerLink="/register"
-          >Zarejestruj</a
+          >Sign up</a
         >
       </div>
 
@@ -132,7 +132,7 @@
       <mat-menu #account="matMenu">
         <button mat-menu-item>Dane konta</button>
         <button mat-menu-item>Dane firmy</button>
-        <button mat-menu-item (click)="logout()">Wyloguj</button>
+        <button mat-menu-item (click)="logout()">Sign out</button>
       </mat-menu>
     </mat-toolbar>
 
@@ -143,6 +143,8 @@
     <!-------------------------------------------- Changing content -------------------------------------------->
 
     <!-- Footer (just append the main content)-->
-    <!-- <div class="footer primary-color mat-elevation-z4"><span>ServcieAssistance.pl &copy;Wiktor Danielewski</span></div>  -->
+    <!-- <div class="footer primary-color mat-elevation-z4">
+      <span>ServcieAssistance.pl &copy;Wiktor Danielewski</span>
+    </div> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
