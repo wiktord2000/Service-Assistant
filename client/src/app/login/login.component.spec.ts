@@ -35,6 +35,6 @@ describe('LoginComponent', () => {
   it('should display "Logowanie" title', () => {
     fixture.detectChanges();
     let complied: HTMLElement = fixture.nativeElement;
-    expect(complied.querySelector('h1').textContent).toEqual('Logowanie');
+    expect(complied.querySelector('h1').textContent).toEqual('Sign in');
   });
 });

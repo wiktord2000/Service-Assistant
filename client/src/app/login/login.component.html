@@ -1,40 +1,31 @@
 <div class="form-wrapper">
-    
-    <form [formGroup]="loginForm" class="login-form  mat-elevation-z6">
-    
-        <!-- Login header -->
-        <h1 class="login-header">Logowanie</h1>
-    
-        <!-------------------------------------- Username -------------------------------------->
-        <app-text-input 
-            [label]="'Nazwa użytkownika'" 
-            [formControl]="loginForm.controls['username']">
-        </app-text-input>
-    
-        <!------------------------------------- Password -------------------------------------->
-        <app-password-input 
-            [label]="'Hasło'" 
-            [formControl]="loginForm.controls['password']">
-        </app-password-input>
-    
-        <!------------------------------------ Errors from server ------------------------------------>
-        
-        <ng-container *ngIf="validationErrors.length">
-            <ul class="validation-errors-list">
-                <li *ngFor="let error of validationErrors">{{error}}</li>
-            </ul>
-        </ng-container>
-    
-        <!-------------------------------------- Submit button ---------------------------------------->
-        <button mat-raised-button 
-            color="primary"
-            class="login-button" 
-            [disabled]="isLogging || !loginForm.valid" 
-            (click)="onLogin()">
-            
-            {{isLogging ? "Logowanie..." : "Zaloguj"}}
-        </button>
-    
-    </form>
-    
+  <form [formGroup]="loginForm" class="login-form mat-elevation-z6">
+    <h1 class="login-header">Sign in</h1>
+
+    <!-- Username -->
+    <app-text-input [label]="'User name'" [formControl]="loginForm.controls['username']">
+    </app-text-input>
+
+    <!-- Password -->
+    <app-password-input [label]="'Password'" [formControl]="loginForm.controls['password']">
+    </app-password-input>
+
+    <!-- Potential errors log -->
+    <ng-container *ngIf="validationErrors.length">
+      <ul class="validation-errors-list">
+        <li *ngFor="let error of validationErrors">{{ error }}</li>
+      </ul>
+    </ng-container>
+
+    <!-- Submit button -->
+    <button
+      mat-raised-button
+      color="primary"
+      class="login-button"
+      [disabled]="isLogging || !loginForm.valid"
+      (click)="onLogin()"
+    >
+      {{ isLogging ? "Logging..." : "Submit" }}
+    </button>
+  </form>
 </div>
