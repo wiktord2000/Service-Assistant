@@ -1,3 +1,5 @@
+@import "core";
+
 :host {
   flex: 1;
   display: flex;
@@ -11,32 +13,26 @@
 }
 
 .login-form {
-  border-radius: 5px;
+  border-radius: $default-border-radius;
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 300px;
   background-color: white;
   padding: 50px 70px;
-  margin: 5px 5px !important;
+  margin: 5px;
 }
 
-.login-header {
+.form-header {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.login-button {
+.submit-button {
   margin: 20px 50px;
 }
 
-/* Change height of error message below input */
-::ng-deep .mat-form-field-subscript-wrapper {
-  margin-top: 0.3em !important;
-}
-
-/* ------------------- Validation errors list -------------------*/
-.validation-errors-list {
+.errors-list {
   color: red;
   margin: 0px;
   padding-top: 5px;
@@ -47,5 +43,12 @@
   li {
     margin: 0px;
     font-size: 0.875em;
+  }
+}
+
+@media (max-width: $small-screen-size) {
+  .login-form {
+    padding: 25px 25px;
+    max-width: 250px;
   }
 }

@@ -1,6 +1,6 @@
 <div class="form-wrapper">
   <form [formGroup]="loginForm" class="login-form mat-elevation-z6">
-    <h1 class="login-header">Sign in</h1>
+    <h1 class="form-header">Sign in</h1>
 
     <!-- Username -->
     <app-text-input [label]="'User name'" [formControl]="loginForm.controls['username']">
@@ -12,7 +12,7 @@
 
     <!-- Potential errors log -->
     <ng-container *ngIf="validationErrors.length">
-      <ul class="validation-errors-list">
+      <ul class="errors-list">
         <li *ngFor="let error of validationErrors">{{ error }}</li>
       </ul>
     </ng-container>
@@ -21,7 +21,7 @@
     <button
       mat-raised-button
       color="primary"
-      class="login-button"
+      class="submit-button"
       [disabled]="isLogging || !loginForm.valid"
       (click)="onLogin()"
     >
