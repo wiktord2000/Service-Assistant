@@ -38,12 +38,14 @@ describe('LoginComponent', () => {
     expect(complied.querySelector('h1').textContent).toEqual('Sign in');
   });
 
-  it('should disable button when logging', () => {
+  it('should disable button and change its text when logging', () => {
     component.isLogging = true;
     component.loginForm.controls['username'].setValue('login');
     component.loginForm.controls['password'].setValue('password');
     fixture.detectChanges();
-    let complied: HTMLElement = fixture.nativeElement;
-    expect(complied.querySelector('button').disabled).toBeTrue();
+    const complied: HTMLElement = fixture.nativeElement;
+    const button = complied.querySelector('button');
+    expect(button.disabled).toBeTrue();
+    expect(button.innerText).toEqual('Logging...');
   });
 });
