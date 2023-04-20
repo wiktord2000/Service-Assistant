@@ -32,9 +32,18 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display "Logowanie" title', () => {
+  it('should display "Sign in" title', () => {
     fixture.detectChanges();
     let complied: HTMLElement = fixture.nativeElement;
     expect(complied.querySelector('h1').textContent).toEqual('Sign in');
+  });
+
+  it('should disable button when logging', () => {
+    component.isLogging = true;
+    component.loginForm.controls['username'].setValue('login');
+    component.loginForm.controls['password'].setValue('password');
+    fixture.detectChanges();
+    let complied: HTMLElement = fixture.nativeElement;
+    expect(complied.querySelector('button').disabled).toBeTrue();
   });
 });
