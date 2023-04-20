@@ -1,5 +1,12 @@
+// General
 $max-content-width: 1600px;
 $max-navbar-content-width: 1700px;
+$default-border-radius: 5px;
+// Media queries related
+$small-screen-size: 600px;
+$medium-screen-size: 960px;
+$large-screen-size: 1280px;
+$xlarge-screen-size: 1920px;
 // Snackbar stuff
 $snackbar-success-color: rgb(98, 213, 98);
 $snackbar-info-color: rgb(135, 206, 250);
