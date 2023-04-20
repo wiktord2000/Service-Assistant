@@ -455,6 +455,6 @@ $RECYCLE.BIN/
 
 # My
 appsettings.json
-.db-shm
-.db-wal
+*.db-shm
+*.db-wal
 
