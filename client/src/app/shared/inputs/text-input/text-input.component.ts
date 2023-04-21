@@ -1,10 +1,10 @@
-import { Component, Input, OnInit, Self } from '@angular/core';
+import { Component, Input, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-text-input',
   templateUrl: './text-input.component.html',
-  styleUrls: ['./text-input.component.css']
+  styleUrls: ['./text-input.component.scss']
 })
 export class TextInputComponent implements ControlValueAccessor {
   @Input() label: string;
@@ -19,7 +19,7 @@ export class TextInputComponent implements ControlValueAccessor {
     this.ngControl.valueAccessor = this;
   }
 
-  // We don't have to use it
+  // We don't have to implement it
   writeValue(obj: any): void {}
   registerOnChange(fn: any): void {}
   registerOnTouched(fn: any): void {}

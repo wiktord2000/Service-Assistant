@@ -2,7 +2,7 @@
   <!-- Label -->
   <mat-label>{{ label }}</mat-label>
 
-  <!-- Input (simple input / textArea) -->
+  <!-- Input / Text area -->
   <input
     *ngIf="!isTextArea"
     type="{{ type }}"
@@ -12,7 +12,6 @@
     spellcheck="false"
     matInput
   />
-  <!-- Text area -->
   <textarea
     *ngIf="isTextArea"
     type="{{ type }}"
@@ -21,28 +20,29 @@
     spellcheck="false"
     matInput
   ></textarea>
+
   <!-- Suffix (if needed) -->
   <div class="suffix" *ngIf="suffixText" matSuffix>{{ suffixText }}</div>
 
-  <!------------------------------------------------ Possible errors ---------------------------------------------->
+  <!------------ Handling errors  -->
 
   <!-- Required -->
-  <mat-error *ngIf="ngControl.control.errors?.required"> Pole nie może być puste </mat-error>
+  <mat-error *ngIf="ngControl.control.errors?.required"> The field cannot be empty! </mat-error>
 
   <!-- IsMatching (custom) -->
-  <!-- <mat-error *ngIf="ngControl.control.errors?.isMatching && !(ngControl.control.errors?.required)"> -->
   <mat-error *ngIf="ngControl.control.errors?.isMatching">
-    Pole różni się od poprzedniego
+    The field differs from the previous one!
   </mat-error>
 
   <!-- Minlength -->
   <mat-error *ngIf="ngControl.control.errors?.minlength">
-    <!-- Pole musi zawierać minimum {{registerForm.controls['password'].getError('minlength').requiredLength }} znaków! -->
-    Pole musi zawierać minimum {{ ngControl.control.errors!["minlength"].requiredLength }} znaków!
+    The field must contain at least
+    {{ ngControl.control.errors!["minlength"].requiredLength }} characters!
+    <!-- NOTE: We can also use {{registerForm.controls['password'].getError('minlength').requiredLength }} -->
   </mat-error>
 
-  <!-- Pattern error -->
+  <!-- Pattern -->
   <mat-error *ngIf="ngControl.control.errors?.pattern">
-    Pole zawiera niedozwolone znaki!
+    The field contains forbidden characters!
   </mat-error>
 </mat-form-field>
