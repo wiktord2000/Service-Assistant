@@ -8,11 +8,11 @@ import { AccountService } from '../core/services/http/account.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
   isRegistering: boolean = false;
-  validationErrors: string[] = [];
+  validationErrors: string[] = ['asd', 'asd'];
 
   registerForm: FormGroup = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(6)]],

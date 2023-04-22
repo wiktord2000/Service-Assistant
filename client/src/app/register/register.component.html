@@ -1,50 +1,43 @@
-
 <div class="form-wrapper">
+  <form [formGroup]="registerForm" class="form-paper mat-elevation-z6">
+    <h1 class="form-header">Sign up</h1>
 
-    <form [formGroup]="registerForm" class="register-form  mat-elevation-z6">
+    <!-- Username -->
+    <app-text-input [label]="'User name'" [formControl]="registerForm.controls['username']">
+    </app-text-input>
 
-        <!-- Register header -->
-        <h1 class="register-header">Rejestracja</h1>
-    
-        <!--------------------------------------- Username ----------------------------------------->
-        <app-text-input 
-            [label]="'Nazwa użytkownika'" 
-            [formControl]="registerForm.controls['username']">
-        </app-text-input>
-    
-        <!----------------------------------------- Password ----------------------------------------->
-        <app-password-input 
-            [label]="'Hasło'" 
-            [isTrigger]= "false"
-            [formControl]="registerForm.controls['password']">
-        </app-password-input>
-    
-        <!----------------------------------------- Confirm password ----------------------------------------->
-        <app-password-input 
-            [label]="'Powtórz hasło'" 
-            [isTrigger]= "false"
-            [formControl]="registerForm.controls['confirmPassword']">
-        </app-password-input>
-    
-        <!------------------------------------ Errors from server ------------------------------------>
-    
-        <ng-container *ngIf="validationErrors.length">
-            <ul class="validation-errors-list">
-                <li *ngFor="let error of validationErrors">{{error}}</li>
-            </ul>
-        </ng-container>
-    
-        <!------------------------------------ Register button ------------------------------------>
-        <button mat-raised-button 
-            class="register-button"
-            color="primary" 
-            [disabled]="isRegistering || !registerForm.valid"  
-            (click)="onRegister()">
-    
-                {{isRegistering ? "Rejestracja..." : "Zarejestruj"}} 
-        </button>
-        
-    </form>
-    
+    <!-- Password -->
+    <app-password-input
+      [label]="'Password'"
+      [isTrigger]="false"
+      [formControl]="registerForm.controls['password']"
+    >
+    </app-password-input>
+
+    <!-- Confirm password -->
+    <app-password-input
+      [label]="'Repeat password'"
+      [isTrigger]="false"
+      [formControl]="registerForm.controls['confirmPassword']"
+    >
+    </app-password-input>
+
+    <!-- Potential server errors -->
+    <ng-container *ngIf="validationErrors.length">
+      <ul class="form-errors-list">
+        <li *ngFor="let error of validationErrors">{{ error }}</li>
+      </ul>
+    </ng-container>
+
+    <!-- Submit button -->
+    <button
+      mat-raised-button
+      class="submit-button"
+      color="primary"
+      [disabled]="isRegistering || !registerForm.valid"
+      (click)="onRegister()"
+    >
+      {{ isRegistering ? "Processing..." : "Submit" }}
+    </button>
+  </form>
 </div>
-

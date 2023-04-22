@@ -1,0 +1,22 @@
+@import "core";
+
+:host {
+  flex: 1;
+  display: flex;
+}
+
+.form-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.submit-button {
+  margin: 20px 50px;
+}
