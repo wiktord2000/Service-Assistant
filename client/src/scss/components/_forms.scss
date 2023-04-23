@@ -1,9 +1,3 @@
-// MatTooltip global adjustment
-.mat-tooltip {
-  margin: 0.5em !important;
-}
-
-// Paper styling for forms (Login & Register)
 .form-paper {
   border-radius: $default-border-radius;
   display: flex;
@@ -33,4 +27,15 @@
     margin: 0px;
     font-size: 0.875em;
   }
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-submit-button {
+  align-self: center;
+  margin: 20px 0px !important;
+  width: 75%;
 }

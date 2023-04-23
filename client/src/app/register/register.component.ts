@@ -12,7 +12,7 @@ import { AccountService } from '../core/services/http/account.service';
 })
 export class RegisterComponent implements OnInit {
   isRegistering: boolean = false;
-  validationErrors: string[] = ['asd', 'asd'];
+  validationErrors: string[] = [];
 
   registerForm: FormGroup = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(6)]],
