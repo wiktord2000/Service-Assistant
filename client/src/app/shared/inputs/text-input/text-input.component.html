@@ -30,9 +30,7 @@
   <mat-error *ngIf="ngControl.control.errors?.required"> The field cannot be empty! </mat-error>
 
   <!-- IsMatching (custom) -->
-  <mat-error *ngIf="ngControl.control.errors?.isMatching">
-    The field differs from the previous one!
-  </mat-error>
+  <mat-error *ngIf="ngControl.control.errors?.isMatching"> The fields don't match! </mat-error>
 
   <!-- Minlength -->
   <mat-error *ngIf="ngControl.control.errors?.minlength">

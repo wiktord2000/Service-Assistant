@@ -19,7 +19,7 @@ export class TextInputComponent implements ControlValueAccessor {
     this.ngControl.valueAccessor = this;
   }
 
-  // We don't have to implement it
+  // We don't have to implement them
   writeValue(obj: any): void {}
   registerOnChange(fn: any): void {}
   registerOnTouched(fn: any): void {}

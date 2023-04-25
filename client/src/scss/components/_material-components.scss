@@ -1,3 +1,8 @@
 .mat-tooltip {
   margin: 0.5em !important;
 }
+
+/* Make error label little bit higher (default 0.66em)*/
+.mat-form-field-subscript-wrapper {
+  margin-top: 0.3em;
+}
