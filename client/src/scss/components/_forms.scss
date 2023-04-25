@@ -9,7 +9,7 @@
   margin: 5px;
 }
 
-@media (max-width: $small-screen-size) {
+@media (max-width: $small-breakpoint) {
   .form-paper {
     padding: 25px 25px;
     max-width: 250px;
