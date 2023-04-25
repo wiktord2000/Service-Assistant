@@ -1,0 +1,31 @@
+// * {
+//   box-sizing: border-box;
+// }
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.theme-primary {
+  background-color: $primary;
+  color: white;
+}
+
+.theme-accent {
+  background-color: $accent;
+  color: white;
+}
+
+.theme-warn {
+  background-color: $warn;
+  color: white;
+}
+
+.disable-pointer {
+  pointer-events: none;
+}

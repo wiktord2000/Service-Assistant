@@ -1,17 +1,19 @@
-// Try to reproduce this with mixin or better placeholder class
-@each $type in $snackbar-types {
-  .snackbar-#{$type}-panel {
-    $border-left-color: map-get(
-      (
-        "success": $snackbar-success-color,
-        "info": $snackbar-info-color,
-        "warn": $snackbar-warn-color,
-        "error": $snackbar-error-color
-      ),
-      $type
-    );
-    border-left: solid 5px $border-left-color;
-    background-color: $snackbar-paper-color;
-    color: white;
-  }
+.snackbar-success-panel {
+  border-left: solid 5px $snackbar-success-color;
+  @extend %snackbar-base;
+}
+
+.snackbar-info-panel {
+  border-left: solid 5px $snackbar-info-color;
+  @extend %snackbar-base;
+}
+
+.snackbar-warn-panel {
+  border-left: solid 5px $snackbar-warn-color;
+  @extend %snackbar-base;
+}
+
+.snackbar-error-panel {
+  border-left: solid 5px $snackbar-error-color;
+  @extend %snackbar-base;
 }

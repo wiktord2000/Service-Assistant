@@ -1,3 +1,4 @@
+@import "~@angular/material/theming";
 // General
 $max-content-width: 1600px;
 $max-navbar-content-width: 1700px;
@@ -13,4 +14,10 @@ $snackbar-info-color: rgb(135, 206, 250);
 $snackbar-warn-color: orange;
 $snackbar-error-color: orangered;
 $snackbar-paper-color: rgb(111, 114, 135);
-$snackbar-types: ("success", "info", "warn", "error");
+// Angular Material (Indigo-Pink Theme)
+$app-primary-palette: mat-palette($mat-indigo);
+$app-accent-palette: mat-palette($mat-pink);
+$app-warn-palette: mat-palette($mat-red);
+$primary: mat-color($app-primary-palette);
+$accent: mat-color($app-accent-palette);
+$warn: mat-color($app-warn-palette);
