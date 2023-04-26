@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs';
+import { CanDeactivateComponent } from 'src/app/core/guards/can-deactivate.guard';
 import { Order } from 'src/app/core/models/Order';
 import { Product } from 'src/app/core/models/product';
 import { OrdersService } from 'src/app/core/services/http/orders.service';
@@ -19,7 +20,7 @@ const ONE_TO_TEN_REGEX = /\b([1-9]|10)\b/;
   templateUrl: './product-profile.component.html',
   styleUrls: ['./product-profile.component.css']
 })
-export class ProductProfileComponent implements OnInit {
+export class ProductProfileComponent implements OnInit, CanDeactivateComponent {
   @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;
   product: Product;
   orders: Order[] = null;
@@ -221,5 +222,9 @@ export class ProductProfileComponent implements OnInit {
     this.displayFinished
       ? this.ordersTable.dataSource.setOrders(this.orders)
       : this.ordersTable.dataSource.setOrders(this.filterFinshedOrders(this.orders));
+  }
+
+  canDeactivate() {
+    return !this.productDataForm.dirty || confirm('Are you sure to unsaved the current changes?');
   }
 }

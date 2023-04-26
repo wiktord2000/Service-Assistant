@@ -16,6 +16,7 @@ import { ProductsPanelComponent } from './panels/products-panel/products-panel.c
 import { ProductProfileComponent } from './profiles/product-profile/product-profile.component';
 import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
 import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.component';
+import { CanDeactivateGuard } from './core/guards/can-deactivate.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -31,10 +32,22 @@ const routes: Routes = [
       { path: 'clients', component: ClientsPanelComponent },
       { path: 'vehicles', component: VehiclesPanelComponent },
       { path: 'statistics', component: StatisticsPanelComponent },
-      { path: 'clients/:id', component: ClientProfileComponent },
-      { path: 'vehicles/:id', component: VehicleProfileComponent },
-      { path: 'orders/:id', component: OrderProfileComponent },
-      { path: 'products/:id', component: ProductProfileComponent }
+      {
+        path: 'clients/:id',
+        component: ClientProfileComponent,
+        canDeactivate: [CanDeactivateGuard]
+      },
+      {
+        path: 'vehicles/:id',
+        component: VehicleProfileComponent,
+        canDeactivate: [CanDeactivateGuard]
+      },
+      { path: 'orders/:id', component: OrderProfileComponent, canDeactivate: [CanDeactivateGuard] },
+      {
+        path: 'products/:id',
+        component: ProductProfileComponent,
+        canDeactivate: [CanDeactivateGuard]
+      }
     ]
   },
   { path: 'errors', component: TestErrorsComponent },

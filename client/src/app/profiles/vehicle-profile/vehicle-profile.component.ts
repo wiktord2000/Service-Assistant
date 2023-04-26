@@ -11,6 +11,7 @@ import { finalize } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';
 import { CreateOrderDialogComponent } from 'src/app/shared/dialogs/create-order-dialog/create-order-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CanDeactivateComponent } from 'src/app/core/guards/can-deactivate.guard';
 
 const NUMBER_REGEX = /^\d+$/;
 
@@ -19,7 +20,7 @@ const NUMBER_REGEX = /^\d+$/;
   templateUrl: './vehicle-profile.component.html',
   styleUrls: ['./vehicle-profile.component.css']
 })
-export class VehicleProfileComponent implements OnInit, AfterViewInit {
+export class VehicleProfileComponent implements OnInit, AfterViewInit, CanDeactivateComponent {
   @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;
   @ViewChild(ClientSelectInputComponent) clientSelect!: ClientSelectInputComponent;
   vehicle: Vehicle;
@@ -145,5 +146,9 @@ export class VehicleProfileComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((order: Order) => {
       if (order !== undefined) this.ordersTable.dataSource.addOrder(order);
     });
+  }
+
+  canDeactivate() {
+    return !this.editForm.dirty || confirm('Are you sure to unsaved the current changes?');
   }
 }

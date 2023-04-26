@@ -15,6 +15,7 @@ import { VehiclesService } from 'src/app/core/services/http/vehicles.service';
 import { CreateOrderDialogComponent } from 'src/app/shared/dialogs/create-order-dialog/create-order-dialog.component';
 import { OrderProductsTableComponent } from 'src/app/shared/tables/order-products-table/order-products-table.component';
 import { OrderServicesTableComponent } from 'src/app/shared/tables/order-services-table/order-services-table.component';
+import { CanDeactivateComponent } from 'src/app/core/guards/can-deactivate.guard';
 const INTEGER_REGEX = /^\+?(0|[1-9]\d*)$/;
 
 @Component({
@@ -22,7 +23,7 @@ const INTEGER_REGEX = /^\+?(0|[1-9]\d*)$/;
   templateUrl: './order-profile.component.html',
   styleUrls: ['./order-profile.component.css']
 })
-export class OrderProfileComponent implements OnInit, AfterViewInit {
+export class OrderProfileComponent implements OnInit, AfterViewInit, CanDeactivateComponent {
   @ViewChild(ClientSelectInputComponent) clientSelectInput!: ClientSelectInputComponent;
   @ViewChild(VehicleSelectInputComponent) vehicleSelectInput!: VehicleSelectInputComponent;
   @ViewChild(OrderServicesTableComponent) servicesTable!: OrderServicesTableComponent;
@@ -141,5 +142,9 @@ export class OrderProfileComponent implements OnInit, AfterViewInit {
           this.snackbarService.showMessage('error', error);
         }
       });
+  }
+
+  canDeactivate() {
+    return !this.orderForm.dirty || confirm('Are you sure to unsaved the current changes?');
   }
 }

@@ -12,13 +12,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateVehicleDialogComponent } from 'src/app/shared/dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
 import { Vehicle } from 'src/app/core/models/Vehicle';
 import { CreateOrderDialogComponent } from 'src/app/shared/dialogs/create-order-dialog/create-order-dialog.component';
+import { CanDeactivateComponent } from 'src/app/core/guards/can-deactivate.guard';
 
 @Component({
   selector: 'app-client-profile',
   templateUrl: './client-profile.component.html',
   styleUrls: ['./client-profile.component.css']
 })
-export class ClientProfileComponent implements OnInit {
+export class ClientProfileComponent implements OnInit, CanDeactivateComponent {
   @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;
   @ViewChild(VehiclesTableComponent) vehiclesTable: VehiclesTableComponent;
   client: Client;
@@ -113,5 +114,9 @@ export class ClientProfileComponent implements OnInit {
     dialogRef.afterClosed().subscribe((order: Order) => {
       if (order !== undefined) this.ordersTable.dataSource.addOrder(order);
     });
+  }
+
+  canDeactivate() {
+    return !this.editForm.dirty || confirm('Are you sure to unsaved the current changes?');
   }
 }
