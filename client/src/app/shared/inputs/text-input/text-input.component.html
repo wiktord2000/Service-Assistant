@@ -22,7 +22,7 @@
   ></textarea>
 
   <!-- Suffix (if needed) -->
-  <div class="suffix" *ngIf="suffixText" matSuffix>{{ suffixText }}</div>
+  <div class="suffix" *ngIf="suffixText && !isTextArea" matSuffix>{{ suffixText }}</div>
 
   <!------------ Handling errors  -->
 
