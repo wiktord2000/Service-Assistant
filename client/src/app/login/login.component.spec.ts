@@ -24,7 +24,7 @@ describe('LoginComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
-    // fixture.detectChanges();
+    fixture.detectChanges();
     // myService = TestBed.inject(MyService);
   });
 
@@ -32,9 +32,20 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display "Logowanie" title', () => {
+  it('should display "Sign in" title', () => {
     fixture.detectChanges();
     let complied: HTMLElement = fixture.nativeElement;
-    expect(complied.querySelector('h1').textContent).toEqual('Logowanie');
+    expect(complied.querySelector('h1').textContent).toEqual('Sign in');
+  });
+
+  it('should disable button and change its text when logging', () => {
+    component.isLogging = true;
+    component.loginForm.controls['username'].setValue('login');
+    component.loginForm.controls['password'].setValue('password');
+    fixture.detectChanges();
+    const complied: HTMLElement = fixture.nativeElement;
+    const button = complied.querySelector('button');
+    expect(button.disabled).toBeTrue();
+    expect(button.innerText).toEqual('Logging...');
   });
 });

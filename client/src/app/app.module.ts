@@ -7,15 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NavComponent } from './shared/nav/nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { ServicesPanelComponent } from './panels/services-panel/services-panel.component';
 import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.component';
 import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
 import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
 import { SnackbarComponent } from './shared/snackbar/snackbar.component';
-import { TextInputComponent } from './shared/inputs/text-input/text-input.component';
-import { PasswordInputComponent } from './shared/inputs/password-input/password-input.component';
 import { DateInputComponent } from './shared/inputs/date-input/date-input.component';
 import { ClientProfileComponent } from './profiles/client-profile/client-profile.component';
 import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
@@ -55,21 +51,21 @@ import { CoreModule } from './core/core.module';
 import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
 import { ErrorsModule } from './core/errors/errors.module';
 import { LayoutModule } from '@angular/cdk/layout';
+import { LoginModule } from './login/login.module';
+import { TextInputModule } from './shared/inputs/text-input/text-input.module';
+import { PasswordInputModule } from './shared/inputs/password-input/password-input.module';
+import { RegisterModule } from './register/register.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    LoginComponent,
-    RegisterComponent,
     OrdersPanelComponent,
     ServicesPanelComponent,
     ClientsPanelComponent,
     VehiclesPanelComponent,
     StatisticsPanelComponent,
     SnackbarComponent,
-    TextInputComponent,
-    PasswordInputComponent,
     DateInputComponent,
     OrdersTableComponent,
     StatusSelectorComponent,
@@ -115,7 +111,11 @@ import { LayoutModule } from '@angular/cdk/layout';
     NgxChartsModule,
     CoreModule,
     ErrorsModule,
-    LayoutModule
+    LayoutModule,
+    TextInputModule,
+    PasswordInputModule,
+    RegisterModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

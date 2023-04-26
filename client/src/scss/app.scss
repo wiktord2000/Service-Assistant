@@ -1,4 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-@use "core";
-@use "layout";
-@use "components";
+@import "helpers/helpers-module";
+@import "base/base-module";
+@import "components/components-module";

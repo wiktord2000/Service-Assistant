@@ -1,4 +1,4 @@
-@import "core";
+@import "helpers/constants";
 
 .sidenav-container {
   height: 100%;
@@ -81,10 +81,17 @@ a:hover {
   flex-direction: column;
 }
 
+.toolbar-header {
+  background-color: $primary;
+  color: white;
+}
+
 .footer {
   height: 64px;
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: $primary;
+  color: white;
 }

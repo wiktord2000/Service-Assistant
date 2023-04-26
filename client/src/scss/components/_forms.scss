@@ -1,0 +1,41 @@
+.form-paper {
+  border-radius: $default-border-radius;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 300px;
+  background-color: white;
+  padding: 50px 70px;
+  margin: 5px;
+}
+
+@media (max-width: $small-breakpoint) {
+  .form-paper {
+    padding: 25px 25px;
+    max-width: 250px;
+  }
+}
+
+.form-errors-list {
+  color: red;
+  margin: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  li {
+    margin: 0px;
+    font-size: 0.875em;
+  }
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-submit-button {
+  align-self: center;
+  margin: 20px 0px !important;
+  width: 75%;
+}

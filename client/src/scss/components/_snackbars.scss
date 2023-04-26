@@ -1,0 +1,19 @@
+.snackbar-success-panel {
+  border-left: solid 5px $snackbar-success-color;
+  @extend %snackbar-base;
+}
+
+.snackbar-info-panel {
+  border-left: solid 5px $snackbar-info-color;
+  @extend %snackbar-base;
+}
+
+.snackbar-warn-panel {
+  border-left: solid 5px $snackbar-warn-color;
+  @extend %snackbar-base;
+}
+
+.snackbar-error-panel {
+  border-left: solid 5px $snackbar-error-color;
+  @extend %snackbar-base;
+}
