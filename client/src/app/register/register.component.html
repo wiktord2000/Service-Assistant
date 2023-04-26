@@ -1,43 +1,41 @@
-<div class="flex-1 flex-xy-center">
-  <form [formGroup]="registerForm" class="form-paper mat-elevation-z6">
-    <h1 class="form-header">Sign up</h1>
+<form [formGroup]="registerForm" class="form-paper mat-elevation-z6">
+  <h1 class="form-header">Sign up</h1>
 
-    <!-- Username -->
-    <app-text-input [label]="'User name'" [formControl]="registerForm.controls['username']">
-    </app-text-input>
+  <!-- Username -->
+  <app-text-input [label]="'User name'" [formControl]="registerForm.controls['username']">
+  </app-text-input>
 
-    <!-- Password -->
-    <app-password-input
-      [label]="'Password'"
-      [isTrigger]="false"
-      [formControl]="registerForm.controls['password']"
-    >
-    </app-password-input>
+  <!-- Password -->
+  <app-password-input
+    [label]="'Password'"
+    [isTrigger]="false"
+    [formControl]="registerForm.controls['password']"
+  >
+  </app-password-input>
 
-    <!-- Confirm password -->
-    <app-password-input
-      [label]="'Repeat password'"
-      [isTrigger]="false"
-      [formControl]="registerForm.controls['confirmPassword']"
-    >
-    </app-password-input>
+  <!-- Confirm password -->
+  <app-password-input
+    [label]="'Repeat password'"
+    [isTrigger]="false"
+    [formControl]="registerForm.controls['confirmPassword']"
+  >
+  </app-password-input>
 
-    <!-- Potential server errors -->
-    <ng-container *ngIf="validationErrors.length">
-      <ul class="form-errors-list">
-        <li *ngFor="let error of validationErrors">{{ error }}</li>
-      </ul>
-    </ng-container>
+  <!-- Potential server errors -->
+  <ng-container *ngIf="validationErrors.length">
+    <ul class="form-errors-list">
+      <li *ngFor="let error of validationErrors">{{ error }}</li>
+    </ul>
+  </ng-container>
 
-    <!-- Submit button -->
-    <button
-      mat-raised-button
-      class="form-submit-button"
-      color="primary"
-      [disabled]="isRegistering || !registerForm.valid"
-      (click)="onRegister()"
-    >
-      {{ isRegistering ? "Processing..." : "Submit" }}
-    </button>
-  </form>
-</div>
+  <!-- Submit button -->
+  <button
+    mat-raised-button
+    class="form-submit-button"
+    color="primary"
+    [disabled]="isRegistering || !registerForm.valid"
+    (click)="onRegister()"
+  >
+    {{ isRegistering ? "Processing..." : "Submit" }}
+  </button>
+</form>

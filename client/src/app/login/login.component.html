@@ -1,31 +1,29 @@
-<div class="flex-1 flex-xy-center">
-  <form [formGroup]="loginForm" class="form-paper mat-elevation-z6">
-    <h1 class="form-header">Sign in</h1>
+<form [formGroup]="loginForm" class="form-paper mat-elevation-z6">
+  <h1 class="form-header">Sign in</h1>
 
-    <!-- Username -->
-    <app-text-input [label]="'User name'" [formControl]="loginForm.controls['username']">
-    </app-text-input>
+  <!-- Username -->
+  <app-text-input [label]="'User name'" [formControl]="loginForm.controls['username']">
+  </app-text-input>
 
-    <!-- Password -->
-    <app-password-input [label]="'Password'" [formControl]="loginForm.controls['password']">
-    </app-password-input>
+  <!-- Password -->
+  <app-password-input [label]="'Password'" [formControl]="loginForm.controls['password']">
+  </app-password-input>
 
-    <!-- Potential server errors -->
-    <ng-container *ngIf="validationErrors.length">
-      <ul class="form-errors-list">
-        <li *ngFor="let error of validationErrors">{{ error }}</li>
-      </ul>
-    </ng-container>
+  <!-- Potential server errors -->
+  <ng-container *ngIf="validationErrors.length">
+    <ul class="form-errors-list">
+      <li *ngFor="let error of validationErrors">{{ error }}</li>
+    </ul>
+  </ng-container>
 
-    <!-- Submit button -->
-    <button
-      mat-raised-button
-      color="primary"
-      class="form-submit-button"
-      [disabled]="isLogging || !loginForm.valid"
-      (click)="onLogin()"
-    >
-      {{ isLogging ? "Logging..." : "Submit" }}
-    </button>
-  </form>
-</div>
+  <!-- Submit button -->
+  <button
+    mat-raised-button
+    color="primary"
+    class="form-submit-button"
+    [disabled]="isLogging || !loginForm.valid"
+    (click)="onLogin()"
+  >
+    {{ isLogging ? "Logging..." : "Submit" }}
+  </button>
+</form>
