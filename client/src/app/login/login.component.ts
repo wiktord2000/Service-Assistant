@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onLogin() {
-    // Disable button
     this.isLogging = true;
     // Send request
     this.accountService
@@ -45,14 +44,11 @@ export class LoginComponent implements OnInit {
       )
       .subscribe({
         next: (user: User) => {
-          // Navigate to orders
-          this.router.navigate(['orders']);
-          this.snackbarService.showMessage('success', 'Successfully logged in!');
-          console.log(user);
+          this.router.navigate(['/orders']);
+          this.snackbarService.showMessage('success', 'Successfully signed in!');
         },
         error: (errors) => {
-          // This is the case when interceptor doesn't handle all errors
-          // e.g. creating snackbar (it return the array of errors(strings) to handle)
+          // Handling list of errors provided by interceptor
           if (Array.isArray(errors)) this.validationErrors = errors;
           console.log(errors);
         }
