@@ -1,7 +1,7 @@
-import { VehiclesTableComponent } from '../../shared/tables/vehicles-table/vehicles-table.component';
-import { OrdersTableComponent } from '../../shared/tables/orders-table/orders-table.component';
-import { SnackbarService } from '../../core/services/ui/snackbar.service';
-import { ClientsService } from '../../core/services/http/clients.service';
+import { VehiclesTableComponent } from '../../shared/components/tables/vehicles-table/vehicles-table.component';
+import { OrdersTableComponent } from '../../shared/components/tables/orders-table/orders-table.component';
+import { SnackbarService } from '../../shared/components/snackbar/snackbar.service';
+import { ClientsService } from '../../shared/services/clients.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Client } from '../../core/models/Client';
 import { ActivatedRoute } from '@angular/router';
@@ -9,15 +9,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { Order } from 'src/app/core/models/Order';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateVehicleDialogComponent } from 'src/app/shared/dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
+import { CreateVehicleDialogComponent } from 'src/app/shared/components/dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
 import { Vehicle } from 'src/app/core/models/Vehicle';
-import { CreateOrderDialogComponent } from 'src/app/shared/dialogs/create-order-dialog/create-order-dialog.component';
+import { CreateOrderDialogComponent } from 'src/app/shared/components/dialogs/create-order-dialog/create-order-dialog.component';
 import { CanDeactivateComponent } from 'src/app/core/guards/can-deactivate.guard';
 
 @Component({
   selector: 'app-client-profile',
   templateUrl: './client-profile.component.html',
-  styleUrls: ['./client-profile.component.css']
+  styleUrls: ['./client-profile.component.scss']
 })
 export class ClientProfileComponent implements OnInit, CanDeactivateComponent {
   @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;

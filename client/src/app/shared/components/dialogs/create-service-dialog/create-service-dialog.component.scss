@@ -1,0 +1,12 @@
+.create-service-form {
+  padding-top: 1.5em;
+}
+
+.row {
+  display: flex;
+  gap: 1em;
+}
+
+.row > * {
+  flex: 1 1 auto;
+}

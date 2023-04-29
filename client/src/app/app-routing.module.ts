@@ -1,10 +1,10 @@
 import { ClientProfileComponent } from './profiles/client-profile/client-profile.component';
-import { ServerErrorComponent } from './core/errors/server-error/server-error.component';
-import { NotFoundComponent } from './core/errors/not-found/not-found.component';
-import { TestErrorsComponent } from './core/errors/test-errors/test-errors.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { AuthGuard } from './core/guards/auth.guard';
-import { RegisterComponent } from './register/register.component';
-import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ServicesPanelComponent } from './panels/services-panel/services-panel.component';

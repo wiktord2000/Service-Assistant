@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Service } from 'src/app/core/models/Service';
-import { ServicesService } from 'src/app/core/services/http/services.service';
-import { SnackbarService } from 'src/app/core/services/ui/snackbar.service';
-import { CreateServiceDialogComponent } from 'src/app/shared/dialogs/create-service-dialog/create-service-dialog.component';
-import { ServicesTableComponent } from 'src/app/shared/tables/services-table/services-table.component';
+import { ServicesService } from 'src/app/shared/services/services.service';
+import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { CreateServiceDialogComponent } from 'src/app/shared/components/dialogs/create-service-dialog/create-service-dialog.component';
+import { ServicesTableComponent } from 'src/app/shared/components/tables/services-table/services-table.component';
 
 @Component({
   selector: 'app-services-panel',

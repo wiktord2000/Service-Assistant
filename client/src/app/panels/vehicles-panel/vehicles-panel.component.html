@@ -1,22 +1,18 @@
-<div class="vehicles-panel-container">
-    <div class="content-wrapper">
+<div class="content-wrapper">
+  <!-- Filters section -->
+  <div class="filters-wrapper">
+    <!-- Add order button -->
+    <button
+      mat-raised-button
+      (click)="onAddVehicle()"
+      color="primary"
+      aria-label="Add order button"
+    >
+      Dodaj pojazd
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 
-        <!-- Filters section -->
-        <div class="filters-wrapper">
-          
-            <!-- Add order button -->
-            <button mat-raised-button 
-                    (click)="onAddVehicle()"
-                    color="primary"
-                    aria-label="Add order button"> 
-  
-                Dodaj pojazd
-              <mat-icon>add</mat-icon>
-            </button>
-        </div>
-
-        <!-- Vehicles table -->
-        <app-vehicles-table></app-vehicles-table>
-
-    </div>
+  <!-- Vehicles table -->
+  <app-vehicles-table></app-vehicles-table>
 </div>

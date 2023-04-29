@@ -1,0 +1,42 @@
+<mat-form-field appearance="fill">
+  <mat-label>{{ label }}</mat-label>
+
+  <input
+    type="text"
+    aria-label="Product input"
+    matInput
+    [formControl]="ngControl.control"
+    [matAutocomplete]="auto"
+  />
+
+  <!-- Add button if not found -->
+  <button
+    *ngIf="ngControl.control.invalid"
+    (click)="onAddProduct()"
+    type="button"
+    matSuffix
+    matTooltip="Dodaj usługę"
+    [matTooltipPosition]="'right'"
+    mat-icon-button
+  >
+    <mat-icon color="primary">add</mat-icon>
+  </button>
+
+  <!-- Errors -->
+  <mat-error *ngIf="ngControl.control.hasError('incorrect')"
+    >Wprowadzony {{ label.toLowerCase() }} nie istnieje. Dodaj go, aby zapisać zmiany.</mat-error
+  >
+  <mat-error *ngIf="ngControl.control.hasError('required')">Pole jest wymagane.</mat-error>
+
+  <!-- Autocomplate -->
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option
+      *ngFor="let product of displayingProducts | async"
+      [value]="productToString(product)"
+    >
+      <mat-icon color="primary">sell</mat-icon>
+      {{ productToString(product) }} -
+      <span style="font-weight: 500"> {{ product.salesPriceGross.toFixed(2) }}zł </span>
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

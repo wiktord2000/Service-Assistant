@@ -1,15 +1,15 @@
-import { ClientSelectInputComponent } from '../../shared/inputs/selectors/client-select-input/client-select-input.component';
-import { SnackbarService } from 'src/app/core/services/ui/snackbar.service';
+import { ClientSelectInputComponent } from '../../shared/components/selectors/client-select-input/client-select-input.component';
+import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Vehicle } from '../../core/models/Vehicle';
-import { VehiclesService } from '../../core/services/http/vehicles.service';
+import { VehiclesService } from '../../shared/services/vehicles.service';
 import { Order } from 'src/app/core/models/Order';
-import { OrdersTableComponent } from 'src/app/shared/tables/orders-table/orders-table.component';
+import { OrdersTableComponent } from 'src/app/shared/components/tables/orders-table/orders-table.component';
 import { finalize } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';
-import { CreateOrderDialogComponent } from 'src/app/shared/dialogs/create-order-dialog/create-order-dialog.component';
+import { CreateOrderDialogComponent } from 'src/app/shared/components/dialogs/create-order-dialog/create-order-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CanDeactivateComponent } from 'src/app/core/guards/can-deactivate.guard';
 
@@ -18,7 +18,7 @@ const NUMBER_REGEX = /^\d+$/;
 @Component({
   selector: 'app-vehicle-profile',
   templateUrl: './vehicle-profile.component.html',
-  styleUrls: ['./vehicle-profile.component.css']
+  styleUrls: ['./vehicle-profile.component.scss']
 })
 export class VehicleProfileComponent implements OnInit, AfterViewInit, CanDeactivateComponent {
   @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;

@@ -1,0 +1,83 @@
+<div class="mat-elevation-z{{ matElevationValue }}">
+  <div [ngClass]="fixedSize && 'table-container'" style="overflow: auto">
+    <table *ngIf="dataSource" mat-table class="full-width-table" matSort aria-label="Elements">
+      <!-- Client Column-->
+      <ng-container matColumnDef="client">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Klient</th>
+        <td mat-cell *matCellDef="let row">
+          <!-- Link to client -->
+          <app-client-profile-link [client]="row"></app-client-profile-link>
+        </td>
+      </ng-container>
+
+      <!-- Address Column -->
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Adres</th>
+        <td mat-cell *matCellDef="let row">
+          <div class="address">
+            <div>{{ row.street }}</div>
+            <div class="city">{{ row.postalCode }} {{ row.city }}</div>
+          </div>
+        </td>
+      </ng-container>
+
+      <!-- Phone Number Column -->
+      <ng-container matColumnDef="phone">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Numer telefonu</th>
+        <td mat-cell *matCellDef="let row">
+          {{ row.phone }}
+        </td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>E-mail</th>
+        <td mat-cell *matCellDef="let row">
+          <app-send-email-link [email]="row.email"></app-send-email-link>
+        </td>
+      </ng-container>
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Operacje</th>
+        <td mat-cell *matCellDef="let row">
+          <!-- Delete -->
+          <button
+            mat-icon-button
+            (click)="onDeleteClick(row)"
+            color="warn"
+            aria-label="Delete button"
+            matTooltip="Usuń klienta"
+            [matTooltipPosition]="'right'"
+          >
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <!-- No data row -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" [ngStyle]="{ border: '0px' }" colspan="10">
+          <div class="no-clients-message">
+            <mat-icon>leaderboard</mat-icon>
+            <div>Brak klientów</div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <mat-paginator
+    #paginator
+    [length]="dataSource?.data?.length"
+    [pageIndex]="0"
+    [pageSize]="8"
+    [pageSizeOptions]="[8, 12, 16]"
+    aria-label="Wybierz stronę"
+  >
+  </mat-paginator>
+</div>

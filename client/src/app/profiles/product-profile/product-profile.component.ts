@@ -5,10 +5,10 @@ import { finalize } from 'rxjs';
 import { CanDeactivateComponent } from 'src/app/core/guards/can-deactivate.guard';
 import { Order } from 'src/app/core/models/Order';
 import { Product } from 'src/app/core/models/product';
-import { OrdersService } from 'src/app/core/services/http/orders.service';
-import { ProductsService } from 'src/app/core/services/http/products.service';
-import { SnackbarService } from 'src/app/core/services/ui/snackbar.service';
-import { OrdersTableComponent } from 'src/app/shared/tables/orders-table/orders-table.component';
+import { OrdersService } from 'src/app/shared/services/orders.service';
+import { ProductsService } from 'src/app/shared/services/products.service';
+import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { OrdersTableComponent } from 'src/app/shared/components/tables/orders-table/orders-table.component';
 
 const FLOAT_REGEX = /^[0-9]*\.[0-9]{2}$/;
 const INTEGER_REGEX = /^\+?(0|[1-9]\d*)$/;
@@ -18,7 +18,7 @@ const ONE_TO_TEN_REGEX = /\b([1-9]|10)\b/;
 @Component({
   selector: 'app-product-profile',
   templateUrl: './product-profile.component.html',
-  styleUrls: ['./product-profile.component.css']
+  styleUrls: ['./product-profile.component.scss']
 })
 export class ProductProfileComponent implements OnInit, CanDeactivateComponent {
   @ViewChild(OrdersTableComponent) ordersTable!: OrdersTableComponent;

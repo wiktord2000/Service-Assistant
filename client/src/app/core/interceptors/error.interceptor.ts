@@ -1,4 +1,4 @@
-import { SnackbarService } from 'src/app/core/services/ui/snackbar.service';
+import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';

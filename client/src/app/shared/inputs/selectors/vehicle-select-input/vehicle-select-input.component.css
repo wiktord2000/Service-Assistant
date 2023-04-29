@@ -1,8 +1,0 @@
-.mat-form-field {
-  width: 100%;
-}
-
-/* Make error label little bit higher */
-::ng-deep .mat-form-field-subscript-wrapper {
-  margin-top: 0.3em;
-}

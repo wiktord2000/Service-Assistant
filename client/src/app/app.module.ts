@@ -5,119 +5,62 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { NavComponent } from './shared/nav/nav.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ServicesPanelComponent } from './panels/services-panel/services-panel.component';
-import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.component';
-import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
-import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
-import { SnackbarComponent } from './shared/snackbar/snackbar.component';
-import { DateInputComponent } from './shared/inputs/date-input/date-input.component';
-import { ClientProfileComponent } from './profiles/client-profile/client-profile.component';
-import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
-import { OrderProfileComponent } from './profiles/order-profile/order-profile.component';
-import { ClientProfileLinkComponent } from './shared/links/client-profile-link/client-profile-link.component';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
-import { DateAndTimePickerComponent } from './shared/date-and-time-picker/date-and-time-picker.component';
-import { VehicleProfileLinkComponent } from './shared/links/vehicle-profile-link/vehicle-profile-link.component';
-import { DateAndTimeInputComponent } from './shared/inputs/date-and-time-input/date-and-time-input.component';
-import { StatusSelectorComponent } from './shared/inputs/selectors/status-selector/status-selector.component';
-import { OrdersTableComponent } from './shared/tables/orders-table/orders-table.component';
-import { VehiclesTableComponent } from './shared/tables/vehicles-table/vehicles-table.component';
-import { ClientsTableComponent } from './shared/tables/clients-table/clients-table.component';
-import { SendEmailLinkComponent } from './shared/links/send-email-link/send-email-link.component';
-import { ClientSelectInputComponent } from './shared/inputs/selectors/client-select-input/client-select-input.component';
-import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
-import { CreateClientDialogComponent } from './shared/dialogs/create-client-dialog/create-client-dialog.component';
-import { CreateVehicleDialogComponent } from './shared/dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
-import { MailSendingDialogComponent } from './shared/dialogs/mail-sending-dialog/mail-sending-dialog.component';
-import { ServicesTableComponent } from './shared/tables/services-table/services-table.component';
-import { CreateServiceDialogComponent } from './shared/dialogs/create-service-dialog/create-service-dialog.component';
-import { ProductsPanelComponent } from './panels/products-panel/products-panel.component';
-import { ProductsTableComponent } from './shared/tables/products-table/products-table.component';
-import { CreateProductDialogComponent } from './shared/dialogs/create-product-dialog/create-product-dialog.component';
-import { ProductDeliveryDialogComponent } from './shared/dialogs/product-delivery-dialog/product-delivery-dialog.component';
-import { ProductProfileComponent } from './profiles/product-profile/product-profile.component';
-import { ProductProfileLinkComponent } from './shared/links/product-profile-link/product-profile-link.component';
-import { CustomHeaderComponent } from './shared/custom-header/custom-header.component';
-import { CreateOrderDialogComponent } from './shared/dialogs/create-order-dialog/create-order-dialog.component';
-import { VehicleSelectInputComponent } from './shared/inputs/selectors/vehicle-select-input/vehicle-select-input.component';
-import { ServiceSelectInputComponent } from './shared/inputs/selectors/service-select-input/service-select-input.component';
-import { OrderServicesTableComponent } from './shared/tables/order-services-table/order-services-table.component';
-import { OrderProductsTableComponent } from './shared/tables/order-products-table/order-products-table.component';
-import { ProductSelectInputComponent } from './shared/inputs/selectors/product-select-input/product-select-input.component';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { CoreModule } from './core/core.module';
-import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
-import { ErrorsModule } from './core/errors/errors.module';
 import { LayoutModule } from '@angular/cdk/layout';
-import { LoginModule } from './login/login.module';
-import { TextInputModule } from './shared/inputs/text-input/text-input.module';
-import { PasswordInputModule } from './shared/inputs/password-input/password-input.module';
-import { RegisterModule } from './register/register.module';
+import { LoginModule } from './auth/login/login.module';
+import { RegisterModule } from './auth/register/register.module';
+import { ClientsPanelModule } from './panels/clients-panel/clients-panel.module';
+import { ProductsPanelModule } from './panels/products-panel/products-panel.module';
+import { ServicesPanelModule } from './panels/services-panel/services-panel.module';
+import { VehiclesPanelModule } from './panels/vehicles-panel/vehicles-panel.module';
+import { StatisticsPanelModule } from './panels/statistics-panel/statistics-panel.module';
+import { OrdersPanelModule } from './panels/orders-panel/orders-panel.module';
+import { ClientProfileModule } from './profiles/client-profile/client-profile.module';
+import { OrderProfileModule } from './profiles/order-profile/order-profile.module';
+import { ProductProfileModule } from './profiles/product-profile/product-profile.module';
+import { VehicleProfileModule } from './profiles/vehicle-profile/vehicle-profile.module';
+import { NotFoundModule } from './errors/not-found/not-found.module';
+import { ServerErrorModule } from './errors/server-error/server-error.module';
+import { TestErrorsModule } from './errors/test-errors/test-errors.module';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavComponent,
-    OrdersPanelComponent,
-    ServicesPanelComponent,
-    ClientsPanelComponent,
-    VehiclesPanelComponent,
-    StatisticsPanelComponent,
-    SnackbarComponent,
-    DateInputComponent,
-    OrdersTableComponent,
-    StatusSelectorComponent,
-    ClientProfileComponent,
-    VehicleProfileComponent,
-    OrderProfileComponent,
-    VehiclesTableComponent,
-    ClientProfileLinkComponent,
-    DateAndTimePickerComponent,
-    VehicleProfileLinkComponent,
-    DateAndTimeInputComponent,
-    ClientsTableComponent,
-    SendEmailLinkComponent,
-    ClientSelectInputComponent,
-    ConfirmDialogComponent,
-    CreateClientDialogComponent,
-    CreateVehicleDialogComponent,
-    MailSendingDialogComponent,
-    ServicesTableComponent,
-    CreateServiceDialogComponent,
-    ProductsPanelComponent,
-    ProductsTableComponent,
-    CreateProductDialogComponent,
-    ProductDeliveryDialogComponent,
-    ProductProfileComponent,
-    ProductProfileLinkComponent,
-    CustomHeaderComponent,
-    CreateOrderDialogComponent,
-    VehicleSelectInputComponent,
-    ServiceSelectInputComponent,
-    OrderServicesTableComponent,
-    OrderProductsTableComponent,
-    ProductSelectInputComponent
-  ],
+  declarations: [AppComponent],
   imports: [
+    // General
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgxMaterialTimepickerModule,
-    NgxChartsModule,
-    CoreModule,
-    ErrorsModule,
     LayoutModule,
-    TextInputModule,
-    PasswordInputModule,
+    CoreModule,
+    SharedModule,
+    // Auth
+    LoginModule,
     RegisterModule,
-    LoginModule
+    // Panels
+    OrdersPanelModule,
+    ServicesPanelModule,
+    ProductsPanelModule,
+    ClientsPanelModule,
+    VehiclesPanelModule,
+    StatisticsPanelModule,
+    // Profiles
+    ClientProfileModule,
+    OrderProfileModule,
+    ProductProfileModule,
+    VehicleProfileModule,
+    // Errors
+    NotFoundModule,
+    ServerErrorModule,
+    TestErrorsModule
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
+    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' } // makes local names e.g. DECEMBER - GRUDZIEN (inside calendar)
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
