@@ -1,0 +1,16 @@
+/* Client data */
+.create-client-form {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 1.5em;
+}
+
+.create-client-form > * {
+  flex: 1 1 50%;
+  box-sizing: border-box;
+  padding: 0 1.5em;
+}
+
+::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 2.5em !important;
+}

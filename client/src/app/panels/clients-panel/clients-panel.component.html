@@ -1,25 +1,17 @@
-<div class="clients-panel-container">
-    <div class="content-wrapper">
+<div class="content-wrapper">
+  <!-- Filters section -->
+  <div class="filters-wrapper">
+    <button
+      mat-raised-button
+      (click)="onAddClient()"
+      color="primary"
+      aria-label="Add client button"
+    >
+      Dodaj klienta
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 
-        <!-- Filters section -->
-        <div class="filters-wrapper">
-          
-            <!-- Add client button -->
-            <button mat-raised-button 
-                    (click)="onAddClient()"
-                    color="primary"
-                    aria-label="Add client button"> 
-  
-                Dodaj klienta
-              <mat-icon>add</mat-icon>
-            </button>
-        </div>
-
-        <!-- Clients table -->
-        <app-clients-table></app-clients-table>
-
-    </div>
+  <!-- Clients table -->
+  <app-clients-table></app-clients-table>
 </div>
-
-
-

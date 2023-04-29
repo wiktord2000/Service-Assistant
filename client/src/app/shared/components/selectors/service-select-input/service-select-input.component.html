@@ -1,0 +1,41 @@
+<mat-form-field appearance="fill">
+  <mat-label>{{ label }}</mat-label>
+
+  <input
+    type="text"
+    aria-label="Service input"
+    matInput
+    [formControl]="ngControl.control"
+    [matAutocomplete]="auto"
+  />
+
+  <!-- Add button if not found -->
+  <button
+    *ngIf="ngControl.control.invalid"
+    (click)="onAddService()"
+    type="button"
+    matSuffix
+    matTooltip="Dodaj usługę"
+    [matTooltipPosition]="'right'"
+    mat-icon-button
+  >
+    <mat-icon color="primary">add</mat-icon>
+  </button>
+
+  <!-- Errors -->
+  <mat-error *ngIf="ngControl.control.hasError('incorrect')"
+    >Wprowadzona {{ label.toLowerCase() }} nie istnieje. Dodaj ją, aby zapisać zmiany.</mat-error
+  >
+  <mat-error *ngIf="ngControl.control.hasError('required')">Pole jest wymagane.</mat-error>
+
+  <!-- Autocomplate -->
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+    <mat-option
+      *ngFor="let service of displayingServices | async"
+      [value]="serviceToString(service)"
+    >
+      <mat-icon color="primary">construction</mat-icon>
+      {{ serviceToString(service) }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

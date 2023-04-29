@@ -3,25 +3,25 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { finalize, of } from 'rxjs';
-import { ClientSelectInputComponent } from 'src/app/shared/inputs/selectors/client-select-input/client-select-input.component';
-import { VehicleSelectInputComponent } from 'src/app/shared/inputs/selectors/vehicle-select-input/vehicle-select-input.component';
+import { ClientSelectInputComponent } from 'src/app/shared/components/selectors/client-select-input/client-select-input.component';
+import { VehicleSelectInputComponent } from 'src/app/shared/components/selectors/vehicle-select-input/vehicle-select-input.component';
 import { Client } from 'src/app/core/models/Client';
 import { Order } from 'src/app/core/models/Order';
 import { Vehicle } from 'src/app/core/models/Vehicle';
-import { ClientsService } from 'src/app/core/services/http/clients.service';
-import { OrdersService } from 'src/app/core/services/http/orders.service';
-import { SnackbarService } from 'src/app/core/services/ui/snackbar.service';
-import { VehiclesService } from 'src/app/core/services/http/vehicles.service';
-import { CreateOrderDialogComponent } from 'src/app/shared/dialogs/create-order-dialog/create-order-dialog.component';
-import { OrderProductsTableComponent } from 'src/app/shared/tables/order-products-table/order-products-table.component';
-import { OrderServicesTableComponent } from 'src/app/shared/tables/order-services-table/order-services-table.component';
+import { ClientsService } from 'src/app/shared/services/clients.service';
+import { OrdersService } from 'src/app/shared/services/orders.service';
+import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { VehiclesService } from 'src/app/shared/services/vehicles.service';
+import { CreateOrderDialogComponent } from 'src/app/shared/components/dialogs/create-order-dialog/create-order-dialog.component';
+import { OrderProductsTableComponent } from 'src/app/shared/components/tables/order-products-table/order-products-table.component';
+import { OrderServicesTableComponent } from 'src/app/shared/components/tables/order-services-table/order-services-table.component';
 import { CanDeactivateComponent } from 'src/app/core/guards/can-deactivate.guard';
 const INTEGER_REGEX = /^\+?(0|[1-9]\d*)$/;
 
 @Component({
   selector: 'app-order-profile',
   templateUrl: './order-profile.component.html',
-  styleUrls: ['./order-profile.component.css']
+  styleUrls: ['./order-profile.component.scss']
 })
 export class OrderProfileComponent implements OnInit, AfterViewInit, CanDeactivateComponent {
   @ViewChild(ClientSelectInputComponent) clientSelectInput!: ClientSelectInputComponent;

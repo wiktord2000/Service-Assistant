@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Client } from 'src/app/core/models/Client';
-import { ClientsService } from 'src/app/core/services/http/clients.service';
-import { SnackbarService } from 'src/app/core/services/ui/snackbar.service';
-import { CreateClientDialogComponent } from 'src/app/shared/dialogs/create-client-dialog/create-client-dialog.component';
-import { ClientsTableComponent } from 'src/app/shared/tables/clients-table/clients-table.component';
+import { ClientsService } from 'src/app/shared/services/clients.service';
+import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { CreateClientDialogComponent } from 'src/app/shared/components/dialogs/create-client-dialog/create-client-dialog.component';
+import { ClientsTableComponent } from 'src/app/shared/components/tables/clients-table/clients-table.component';
 
 @Component({
   selector: 'app-clients-panel',

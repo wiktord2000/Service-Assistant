@@ -3,20 +3,15 @@
 :host {
   flex: 1;
   display: flex;
-}
-
-.statistics-panel-container {
-  flex: 1;
-  background-color: white;
-  display: flex;
   justify-content: center;
-  align-items: center;
+  background-color: $default-background-color;
+  margin-top: 2.5em;
 }
 
 .content-wrapper {
   width: 75%;
+  height: calc(100vh - 150px);
   max-width: $max-content-width;
-  height: 90%;
   text-align: center;
   border-radius: 8px;
   padding-top: 0.5em;

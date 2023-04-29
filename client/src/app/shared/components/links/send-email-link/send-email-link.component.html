@@ -1,0 +1,10 @@
+<button
+  *ngIf="email"
+  mat-button
+  (click)="onEmailClick()"
+  [style.color]="customColor"
+  [color]="color"
+>
+  <mat-icon class="icon">forward_to_inbox</mat-icon>
+  {{ email }}
+</button>

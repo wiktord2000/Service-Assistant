@@ -1,0 +1,104 @@
+<!-- Title -->
+<h1 mat-dialog-title>Wprowadź dane nowego klienta</h1>
+<mat-divider></mat-divider>
+
+<!-- Content -->
+<div mat-dialog-content>
+  <!-- Toggle (company/single client) -->
+  <div class="toggle-wrapper">
+    <mat-button-toggle-group
+      appearance="legacy"
+      [(ngModel)]="isCompany"
+      (change)="onToggleChange()"
+      name="clientType"
+      aria-label="Client type"
+    >
+      <!-- Company -->
+      <mat-button-toggle [style.min-width.px]="150" [value]="true">
+        <mat-icon style="padding-right: 8px">groups</mat-icon>
+        Firma
+      </mat-button-toggle>
+
+      <!-- Single person -->
+      <mat-button-toggle [style.min-width.px]="150" [value]="false">
+        Osoba prywatna
+        <mat-icon style="padding-left: 5px; font-size: 21px"> person </mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
+  <!-- Form -->
+  <form
+    id="createClientForm"
+    [formGroup]="createClientForm"
+    (ngSubmit)="createClientForm.valid && onSaveChanges()"
+    class="create-client-form"
+  >
+    <!-- Company name (if company) -->
+    <app-text-input
+      *ngIf="isCompany"
+      required
+      [label]="'Nazwa firmy'"
+      [formControl]="createClientForm.controls['companyName']"
+    >
+    </app-text-input>
+
+    <!-- NIP (if company) -->
+    <app-text-input
+      *ngIf="isCompany"
+      required
+      [label]="'NIP'"
+      [formControl]="createClientForm.controls['nip']"
+    >
+    </app-text-input>
+
+    <!-- First name -->
+    <app-text-input [label]="'Imię'" [formControl]="createClientForm.controls['firstname']">
+    </app-text-input>
+
+    <!-- Last name -->
+    <app-text-input [label]="'Nazwisko'" [formControl]="createClientForm.controls['lastname']">
+    </app-text-input>
+
+    <!-- Street -->
+    <app-text-input [label]="'Ulica'" [formControl]="createClientForm.controls['street']">
+    </app-text-input>
+
+    <!-- City -->
+    <app-text-input [label]="'Miasto'" [formControl]="createClientForm.controls['city']">
+    </app-text-input>
+
+    <!-- Postal code -->
+    <app-text-input
+      [label]="'Kod pocztowy'"
+      [formControl]="createClientForm.controls['postalCode']"
+    >
+    </app-text-input>
+
+    <!-- Country code -->
+    <app-text-input [label]="'Kraj'" [formControl]="createClientForm.controls['countryCode']">
+    </app-text-input>
+
+    <!-- Phone number -->
+    <app-text-input [label]="'Numer telefonu'" [formControl]="createClientForm.controls['phone']">
+    </app-text-input>
+
+    <!-- E-mail -->
+    <app-text-input [label]="'Adres e-mail'" [formControl]="createClientForm.controls['email']">
+    </app-text-input>
+  </form>
+</div>
+
+<!-- Actions -->
+<div [align]="'end'" mat-dialog-actions>
+  <button mat-button [mat-dialog-close]>Porzuć</button>
+  <button
+    form="createClientForm"
+    mat-button
+    color="primary"
+    [disabled]="!createClientForm.valid || isSaving"
+    cdkFocusInitial
+  >
+    {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
+  </button>
+</div>

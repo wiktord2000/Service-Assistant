@@ -1,6 +1,6 @@
-import { ClientsService } from '../../core/services/http/clients.service';
+import { ClientsService } from '../../shared/services/clients.service';
 import { ClientOrdersStatistics } from '../../core/models/ClientOrdersStatistics';
-import { StatisticsService } from '../../core/services/http/statistics.service';
+import { StatisticsService } from '../../shared/services/statistics.service';
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';

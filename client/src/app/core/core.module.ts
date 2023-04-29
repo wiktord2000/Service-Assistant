@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MaterialModule } from './material/material.module';
-import { AuthGuard } from './../core/guards/auth.guard';
 import { interceptorProviders } from './interceptors';
+import { AuthGuard } from './guards/auth.guard';
+import { CanDeactivateGuard } from './guards/can-deactivate.guard';
+import { NavModule } from './nav/nav.module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, MaterialModule],
-  providers: [AuthGuard, interceptorProviders],
-  exports: [MaterialModule]
+  imports: [NavModule],
+  providers: [interceptorProviders, AuthGuard, CanDeactivateGuard],
+  exports: [NavModule]
 })
 export class CoreModule {}
