@@ -1,9 +1,9 @@
-import { VehiclesTableComponent } from '../../shared/components/tables/vehicles-table/vehicles-table.component';
-import { OrdersTableComponent } from '../../shared/components/tables/orders-table/orders-table.component';
-import { SnackbarService } from '../../shared/components/snackbar/snackbar.service';
-import { ClientsService } from '../../shared/services/clients.service';
+import { VehiclesTableComponent } from '../../../shared/components/tables/vehicles-table/vehicles-table.component';
+import { OrdersTableComponent } from '../../../shared/components/tables/orders-table/orders-table.component';
+import { SnackbarService } from '../../../shared/components/snackbar/snackbar.service';
+import { ClientsService } from '../../../shared/services/clients.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Client } from '../../core/models/Client';
+import { Client } from '../../../core/models/Client';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';

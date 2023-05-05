@@ -10,11 +10,13 @@ import { OrdersTableModule } from 'src/app/shared/components/tables/orders-table
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TextInputModule } from 'src/app/shared/components/inputs/text-input/text-input.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ClientProfileRoutingModule } from './client-profile-routing.module';
 
 @NgModule({
   declarations: [ClientProfileComponent],
   imports: [
     CommonModule,
+    ClientProfileRoutingModule,
     MatIconModule,
     SendEmailLinkModule,
     MatTabsModule,

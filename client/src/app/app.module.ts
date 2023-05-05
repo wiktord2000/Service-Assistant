@@ -8,13 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
-import { ClientsPanelModule } from './panels/clients-panel/clients-panel.module';
+import { ClientsPanelModule } from './clients/feature/clients-panel/clients-panel.module';
 import { ProductsPanelModule } from './panels/products-panel/products-panel.module';
 import { ServicesPanelModule } from './panels/services-panel/services-panel.module';
 import { VehiclesPanelModule } from './panels/vehicles-panel/vehicles-panel.module';
 import { StatisticsPanelModule } from './panels/statistics-panel/statistics-panel.module';
 import { OrdersPanelModule } from './panels/orders-panel/orders-panel.module';
-import { ClientProfileModule } from './profiles/client-profile/client-profile.module';
+import { ClientProfileModule } from './clients/feature/client-profile/client-profile.module';
 import { OrderProfileModule } from './profiles/order-profile/order-profile.module';
 import { ProductProfileModule } from './profiles/product-profile/product-profile.module';
 import { VehicleProfileModule } from './profiles/vehicle-profile/vehicle-profile.module';
@@ -25,6 +25,7 @@ import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapte
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+import { ClientsModule } from './clients/clients.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -55,7 +56,8 @@ import { SharedModule } from './shared/shared.module';
     // Errors
     NotFoundModule,
     ServerErrorModule,
-    TestErrorsModule
+    TestErrorsModule,
+    ClientsModule
   ],
   providers: [
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },

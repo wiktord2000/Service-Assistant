@@ -1,4 +1,3 @@
-import { ClientProfileComponent } from './profiles/client-profile/client-profile.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
@@ -15,7 +14,6 @@ import { OrderProfileComponent } from './profiles/order-profile/order-profile.co
 import { ProductsPanelComponent } from './panels/products-panel/products-panel.component';
 import { ProductProfileComponent } from './profiles/product-profile/product-profile.component';
 import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
-import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.component';
 import { CanDeactivateGuard } from './core/guards/can-deactivate.guard';
 
 const routes: Routes = [
@@ -29,14 +27,17 @@ const routes: Routes = [
       { path: 'orders', component: OrdersPanelComponent },
       { path: 'services', component: ServicesPanelComponent },
       { path: 'products', component: ProductsPanelComponent },
-      { path: 'clients', component: ClientsPanelComponent },
+      {
+        path: 'clients',
+        loadChildren: () => import('./clients/clients.module').then((m) => m.ClientsModule)
+      },
       { path: 'vehicles', component: VehiclesPanelComponent },
       { path: 'statistics', component: StatisticsPanelComponent },
-      {
-        path: 'clients/:id',
-        component: ClientProfileComponent,
-        canDeactivate: [CanDeactivateGuard]
-      },
+      // {
+      //   path: 'clients/:id',
+      //   component: ClientProfileComponent,
+      //   canDeactivate: [CanDeactivateGuard]
+      // },
       {
         path: 'vehicles/:id',
         component: VehicleProfileComponent,
