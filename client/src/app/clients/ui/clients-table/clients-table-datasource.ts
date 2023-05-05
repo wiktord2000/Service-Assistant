@@ -1,5 +1,5 @@
-import { ClientsService } from '../../../services/clients.service';
-import { Client } from '../../../../core/models/Client';
+import { ClientsService } from '../../data-access/clients.service';
+import { Client } from '../../../core/models/Client';
 import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';

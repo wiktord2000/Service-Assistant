@@ -10,7 +10,7 @@ import { Client } from 'src/app/core/models/Client';
 import { Order } from 'src/app/core/models/Order';
 import { Service } from 'src/app/core/models/Service';
 import { Vehicle } from 'src/app/core/models/Vehicle';
-import { ClientsService } from 'src/app/shared/services/clients.service';
+import { ClientsService } from 'src/app/clients/data-access/clients.service';
 import { OrdersService } from 'src/app/shared/services/orders.service';
 import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
 import { VehiclesService } from 'src/app/shared/services/vehicles.service';

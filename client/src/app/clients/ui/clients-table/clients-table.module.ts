@@ -6,8 +6,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ClientProfileLinkModule } from '../../links/client-profile-link/client-profile-link.module';
-import { SendEmailLinkModule } from '../../links/send-email-link/send-email-link.module';
+import { ClientProfileLinkModule } from '../../../shared/components/links/client-profile-link/client-profile-link.module';
+import { SendEmailLinkModule } from '../../../shared/components/links/send-email-link/send-email-link.module';
 
 @NgModule({
   declarations: [ClientsTableComponent],

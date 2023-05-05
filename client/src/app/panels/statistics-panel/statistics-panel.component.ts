@@ -1,4 +1,4 @@
-import { ClientsService } from '../../shared/services/clients.service';
+import { ClientsService } from '../../clients/data-access/clients.service';
 import { ClientOrdersStatistics } from '../../core/models/ClientOrdersStatistics';
 import { StatisticsService } from '../../shared/services/statistics.service';
 import { Component, OnInit } from '@angular/core';

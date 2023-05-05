@@ -3,8 +3,8 @@ import { NgControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, startWith, debounceTime, of } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';
-import { ClientsService } from 'src/app/shared/services/clients.service';
-import { CreateClientDialogComponent } from 'src/app/shared/components/dialogs/create-client-dialog/create-client-dialog.component';
+import { ClientsService } from 'src/app/clients/data-access/clients.service';
+import { CreateClientDialogComponent } from 'src/app/clients/ui/create-client-dialog/create-client-dialog.component';
 
 @Component({
   selector: 'app-client-select-input',
