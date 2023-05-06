@@ -9,10 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
-import { StatusSelectorModule } from '../../../shared/components/selectors/status-selector/status-selector.module';
-import { ClientProfileLinkModule } from '../../../shared/components/links/client-profile-link/client-profile-link.module';
-import { VehicleProfileLinkModule } from '../../../shared/components/links/vehicle-profile-link/vehicle-profile-link.module';
-import { DateAndTimePickerModule } from '../../../shared/components/date-and-time-picker/date-and-time-picker.module';
+import { StatusSelectorModule } from '../status-selector/status-selector.module';
+import { ClientProfileLinkModule } from '../../../shared/ui/links/client-profile-link/client-profile-link.module';
+import { VehicleProfileLinkModule } from '../../../shared/ui/links/vehicle-profile-link/vehicle-profile-link.module';
+import { DateAndTimePickerModule } from '../../../shared/ui/date-and-time-picker/date-and-time-picker.module';
 
 @NgModule({
   declarations: [OrdersTableComponent],

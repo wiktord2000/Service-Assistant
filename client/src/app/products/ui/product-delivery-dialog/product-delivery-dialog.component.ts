@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { finalize } from 'rxjs';
 import { Product } from 'src/app/core/models/product';
 import { ProductsService } from 'src/app/products/data-access/products.service';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 
 const FLOAT_REGEX = /^[0-9]*\.[0-9]{2}$/;
 const INTEGER_REGEX = /^\+?(0|[1-9]\d*)$/;

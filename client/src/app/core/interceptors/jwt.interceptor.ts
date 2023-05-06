@@ -1,4 +1,4 @@
-import { AccountService } from '../../shared/services/account.service';
+import { AccountService } from '../../shared/data-access/account.service';
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { first, Observable } from 'rxjs';

@@ -1,5 +1,5 @@
-import { SnackbarService } from '../../snackbar/snackbar.service';
-import { StatusesService } from '../../../services/statuses.service';
+import { SnackbarService } from '../../../shared/ui/snackbar/snackbar.service';
+import { StatusesService } from '../../data-access/statuses.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Status } from 'src/app/core/models/Status';
 import { MatFormFieldAppearance } from '@angular/material/form-field';

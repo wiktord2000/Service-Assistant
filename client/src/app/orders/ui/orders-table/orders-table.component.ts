@@ -1,5 +1,5 @@
-import { DateAndTimePickerEvent } from '../../../shared/components/date-and-time-picker/date-and-time-picker.component';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { DateAndTimePickerEvent } from '../../../shared/ui/date-and-time-picker/date-and-time-picker.component';
+import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -9,7 +9,7 @@ import { OrdersService } from 'src/app/orders/data-access/orders.service';
 import { OrdersTableDataSource } from './orders-table-datasource';
 import { Status } from 'src/app/core/models/Status';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from '../../../shared/components/dialogs/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../shared/ui/dialogs/confirm-dialog/confirm-dialog.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 

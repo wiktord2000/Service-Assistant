@@ -4,15 +4,15 @@ import { Component, Inject, OnInit, ViewChild, AfterViewInit } from '@angular/co
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { finalize, forkJoin, of, take } from 'rxjs';
-import { ClientSelectInputComponent } from 'src/app/shared/components/selectors/client-select-input/client-select-input.component';
-import { VehicleSelectInputComponent } from 'src/app/shared/components/selectors/vehicle-select-input/vehicle-select-input.component';
+import { ClientSelectInputComponent } from 'src/app/shared/ui/selectors/client-select-input/client-select-input.component';
+import { VehicleSelectInputComponent } from 'src/app/shared/ui/selectors/vehicle-select-input/vehicle-select-input.component';
 import { Client } from 'src/app/core/models/Client';
 import { Order } from 'src/app/core/models/Order';
 import { Service } from 'src/app/core/models/Service';
 import { Vehicle } from 'src/app/core/models/Vehicle';
 import { ClientsService } from 'src/app/clients/data-access/clients.service';
 import { OrdersService } from 'src/app/orders/data-access/orders.service';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { VehiclesService } from 'src/app/vehicles/data-access/vehicles.service';
 import { OrderServicesTableComponent } from '../order-services-table/order-services-table.component';
 import { Product } from 'src/app/core/models/product';

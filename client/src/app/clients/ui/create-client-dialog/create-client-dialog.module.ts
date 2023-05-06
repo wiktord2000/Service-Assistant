@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { TextInputModule } from '../../../shared/components/inputs/text-input/text-input.module';
+import { TextInputModule } from '../../../shared/ui/inputs/text-input/text-input.module';
 
 @NgModule({
   declarations: [CreateClientDialogComponent],

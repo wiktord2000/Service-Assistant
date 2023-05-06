@@ -4,7 +4,7 @@ import { SnackbarService } from '../../snackbar/snackbar.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MailService } from 'src/app/shared/services/mail.service';
+import { MailService } from 'src/app/shared/data-access/mail.service';
 
 @Component({
   selector: 'app-mail-sending-dialog',

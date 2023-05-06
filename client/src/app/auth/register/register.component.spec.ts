@@ -1,8 +1,8 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RegisterComponent } from './register.component';
-import { SnackbarService } from '../../shared/components/snackbar/snackbar.service';
-import { AccountService } from '../../shared/services/account.service';
+import { SnackbarService } from '../../shared/ui/snackbar/snackbar.service';
+import { AccountService } from '../../shared/data-access/account.service';
 import { FormBuilder } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';

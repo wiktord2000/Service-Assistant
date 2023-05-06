@@ -2,7 +2,7 @@ import { AfterViewInit } from '@angular/core';
 // import orders from '../../_seed-data/oders.json' and in the class we have to add prop ->  orders: Order[] = orders;      // Seed data from json file
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrdersService } from 'src/app/orders/data-access/orders.service';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { FormControl } from '@angular/forms';
 import { OrdersTableComponent } from 'src/app/orders/ui/orders-table/orders-table.component';
 import { MatDialog } from '@angular/material/dialog';

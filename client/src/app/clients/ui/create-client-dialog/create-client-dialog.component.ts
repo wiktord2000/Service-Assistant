@@ -2,7 +2,7 @@ import { ClientsService } from 'src/app/clients/data-access/clients.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { finalize } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';
 

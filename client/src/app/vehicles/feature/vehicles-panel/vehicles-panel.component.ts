@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Vehicle } from 'src/app/core/models/Vehicle';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { VehiclesService } from 'src/app/vehicles/data-access/vehicles.service';
 import { CreateVehicleDialogComponent } from 'src/app/vehicles/ui/create-vehicle-dialog/create-vehicle-dialog.component';
 import { VehiclesTableComponent } from 'src/app/vehicles/ui/vehicles-table/vehicles-table.component';

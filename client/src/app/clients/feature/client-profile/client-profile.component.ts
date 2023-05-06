@@ -1,6 +1,6 @@
 import { VehiclesTableComponent } from '../../../vehicles/ui/vehicles-table/vehicles-table.component';
 import { OrdersTableComponent } from '../../../orders/ui/orders-table/orders-table.component';
-import { SnackbarService } from '../../../shared/components/snackbar/snackbar.service';
+import { SnackbarService } from '../../../shared/ui/snackbar/snackbar.service';
 import { ClientsService } from '../../data-access/clients.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Client } from '../../../core/models/Client';

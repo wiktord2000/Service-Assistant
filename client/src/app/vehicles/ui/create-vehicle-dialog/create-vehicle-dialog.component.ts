@@ -1,10 +1,10 @@
-import { ClientSelectInputComponent } from '../../../shared/components/selectors/client-select-input/client-select-input.component';
+import { ClientSelectInputComponent } from '../../../shared/ui/selectors/client-select-input/client-select-input.component';
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { finalize } from 'rxjs';
 import { Vehicle } from 'src/app/core/models/Vehicle';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { VehiclesService } from 'src/app/vehicles/data-access/vehicles.service';
 import { Client } from 'src/app/core/models/Client';
 

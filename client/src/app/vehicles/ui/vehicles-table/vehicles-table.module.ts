@@ -7,7 +7,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { VehicleProfileLinkModule } from '../../../shared/components/links/vehicle-profile-link/vehicle-profile-link.module';
+import { VehicleProfileLinkModule } from '../../../shared/ui/links/vehicle-profile-link/vehicle-profile-link.module';
 
 @NgModule({
   declarations: [VehiclesTableComponent],

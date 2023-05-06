@@ -5,8 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { Client } from 'src/app/core/models/Client';
 import { ClientsService } from 'src/app/clients/data-access/clients.service';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
-import { ConfirmDialogComponent } from '../../../shared/components/dialogs/confirm-dialog/confirm-dialog.component';
+import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
+import { ConfirmDialogComponent } from '../../../shared/ui/dialogs/confirm-dialog/confirm-dialog.component';
 import { ClientsTableDataSource } from './clients-table-datasource';
 
 @Component({

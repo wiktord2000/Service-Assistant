@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
-import { SnackbarService } from '../../shared/components/snackbar/snackbar.service';
+import { SnackbarService } from '../../shared/ui/snackbar/snackbar.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { AccountService } from '../../shared/services/account.service';
+import { AccountService } from '../../shared/data-access/account.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormBuilder } from '@angular/forms';

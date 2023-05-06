@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Service } from 'src/app/core/models/Service';
 import { ServicesService } from 'src/app/services/data-access/services.service';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { CreateServiceDialogComponent } from 'src/app/services/ui/create-service-dialog/create-service-dialog.component';
 import { ServicesTableComponent } from 'src/app/services/ui/services-table/services-table.component';
 

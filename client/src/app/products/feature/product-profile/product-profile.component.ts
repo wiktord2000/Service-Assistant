@@ -7,7 +7,7 @@ import { Order } from 'src/app/core/models/Order';
 import { Product } from 'src/app/core/models/product';
 import { OrdersService } from 'src/app/orders/data-access/orders.service';
 import { ProductsService } from 'src/app/products/data-access/products.service';
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { OrdersTableComponent } from 'src/app/orders/ui/orders-table/orders-table.component';
 
 const FLOAT_REGEX = /^[0-9]*\.[0-9]{2}$/;
