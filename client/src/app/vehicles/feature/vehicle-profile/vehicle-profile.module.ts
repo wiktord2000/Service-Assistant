@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VehicleProfileComponent } from './vehicle-profile.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,11 +10,14 @@ import { ClientSelectInputModule } from 'src/app/shared/components/selectors/cli
 import { DateInputModule } from 'src/app/shared/components/inputs/date-input/date-input.module';
 import { OrdersTableModule } from 'src/app/orders/ui/orders-table/orders-table.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { VehicleProfileComponent } from './vehicle-profile.component';
+import { VehicleProfileRoutingModule } from './vehicle-profile-routing.module';
 
 @NgModule({
   declarations: [VehicleProfileComponent],
   imports: [
     CommonModule,
+    VehicleProfileRoutingModule,
     MatIconModule,
     MatTabsModule,
     MatButtonModule,

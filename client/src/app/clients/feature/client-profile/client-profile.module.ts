@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { SendEmailLinkModule } from 'src/app/shared/components/links/send-email-link/send-email-link.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
-import { VehiclesTableModule } from 'src/app/shared/components/tables/vehicles-table/vehicles-table.module';
+import { VehiclesTableModule } from 'src/app/vehicles/ui/vehicles-table/vehicles-table.module';
 import { OrdersTableModule } from 'src/app/orders/ui/orders-table/orders-table.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TextInputModule } from 'src/app/shared/components/inputs/text-input/text-input.module';

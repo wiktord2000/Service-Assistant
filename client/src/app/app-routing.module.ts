@@ -6,10 +6,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
 import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
-import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
-import { CanDeactivateGuard } from './core/guards/can-deactivate.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -35,18 +32,11 @@ const routes: Routes = [
         path: 'clients',
         loadChildren: () => import('./clients/clients.module').then((m) => m.ClientsModule)
       },
-      { path: 'vehicles', component: VehiclesPanelComponent },
-      { path: 'statistics', component: StatisticsPanelComponent },
       {
-        path: 'vehicles/:id',
-        component: VehicleProfileComponent,
-        canDeactivate: [CanDeactivateGuard]
-      }
-      // {
-      //   path: 'products/:id',
-      //   component: ProductProfileComponent,
-      //   canDeactivate: [CanDeactivateGuard]
-      // }
+        path: 'vehicles',
+        loadChildren: () => import('./vehicles/vehicles.module').then((m) => m.VehiclesModule)
+      },
+      { path: 'statistics', component: StatisticsPanelComponent }
     ]
   },
   { path: 'errors', component: TestErrorsComponent },

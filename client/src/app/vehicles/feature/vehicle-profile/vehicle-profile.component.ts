@@ -1,10 +1,10 @@
-import { ClientSelectInputComponent } from '../../shared/components/selectors/client-select-input/client-select-input.component';
+import { ClientSelectInputComponent } from '../../../shared/components/selectors/client-select-input/client-select-input.component';
 import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Vehicle } from '../../core/models/Vehicle';
-import { VehiclesService } from '../../shared/services/vehicles.service';
+import { Vehicle } from '../../../core/models/Vehicle';
+import { VehiclesService } from '../../data-access/vehicles.service';
 import { Order } from 'src/app/core/models/Order';
 import { OrdersTableComponent } from 'src/app/orders/ui/orders-table/orders-table.component';
 import { finalize } from 'rxjs';

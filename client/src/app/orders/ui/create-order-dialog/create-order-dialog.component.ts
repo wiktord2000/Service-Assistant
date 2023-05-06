@@ -13,7 +13,7 @@ import { Vehicle } from 'src/app/core/models/Vehicle';
 import { ClientsService } from 'src/app/clients/data-access/clients.service';
 import { OrdersService } from 'src/app/orders/data-access/orders.service';
 import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
-import { VehiclesService } from 'src/app/shared/services/vehicles.service';
+import { VehiclesService } from 'src/app/vehicles/data-access/vehicles.service';
 import { OrderServicesTableComponent } from '../order-services-table/order-services-table.component';
 import { Product } from 'src/app/core/models/product';
 import { OrderProductsTableComponent } from '../order-products-table/order-products-table.component';

@@ -1,4 +1,4 @@
-import { VehiclesTableComponent } from '../../../shared/components/tables/vehicles-table/vehicles-table.component';
+import { VehiclesTableComponent } from '../../../vehicles/ui/vehicles-table/vehicles-table.component';
 import { OrdersTableComponent } from '../../../orders/ui/orders-table/orders-table.component';
 import { SnackbarService } from '../../../shared/components/snackbar/snackbar.service';
 import { ClientsService } from '../../data-access/clients.service';
@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
 import { Order } from 'src/app/core/models/Order';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateVehicleDialogComponent } from 'src/app/shared/components/dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
+import { CreateVehicleDialogComponent } from 'src/app/vehicles/ui/create-vehicle-dialog/create-vehicle-dialog.component';
 import { Vehicle } from 'src/app/core/models/Vehicle';
 import { CreateOrderDialogComponent } from 'src/app/orders/ui/create-order-dialog/create-order-dialog.component';
 import { CanDeactivateComponent } from 'src/app/core/guards/can-deactivate.guard';

@@ -3,8 +3,8 @@ import { NgControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { debounceTime, Observable, of, startWith } from 'rxjs';
 import { Vehicle } from 'src/app/core/models/Vehicle';
-import { VehiclesService } from 'src/app/shared/services/vehicles.service';
-import { CreateVehicleDialogComponent } from 'src/app/shared/components/dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
+import { VehiclesService } from 'src/app/vehicles/data-access/vehicles.service';
+import { CreateVehicleDialogComponent } from 'src/app/vehicles/ui/create-vehicle-dialog/create-vehicle-dialog.component';
 
 @Component({
   selector: 'app-vehicle-select-input',

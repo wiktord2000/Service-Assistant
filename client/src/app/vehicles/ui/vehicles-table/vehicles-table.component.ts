@@ -1,13 +1,13 @@
-import { Vehicle } from '../../../../core/models/Vehicle';
+import { Vehicle } from '../../../core/models/Vehicle';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
-import { VehiclesService } from 'src/app/shared/services/vehicles.service';
+import { VehiclesService } from 'src/app/vehicles/data-access/vehicles.service';
 import { VehiclesTableDataSource } from './vehicles-table-datasource';
-import { ConfirmDialogComponent } from '../../dialogs/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../shared/components/dialogs/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-vehicles-table',
