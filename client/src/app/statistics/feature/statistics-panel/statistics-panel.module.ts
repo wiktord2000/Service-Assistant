@@ -7,11 +7,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { CustomHeaderModule } from 'src/app/shared/components/custom-header/custom-header.module';
 import { ClientProfileLinkModule } from 'src/app/shared/components/links/client-profile-link/client-profile-link.module';
+import { StatisticsPanelRoutingModule } from './statistics-panel-routing.module';
 
 @NgModule({
   declarations: [StatisticsPanelComponent],
   imports: [
     CommonModule,
+    StatisticsPanelRoutingModule,
     MatFormFieldModule,
     MatIconModule,
     MatSelectModule,

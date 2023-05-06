@@ -6,7 +6,6 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full' },
@@ -36,7 +35,10 @@ const routes: Routes = [
         path: 'vehicles',
         loadChildren: () => import('./vehicles/vehicles.module').then((m) => m.VehiclesModule)
       },
-      { path: 'statistics', component: StatisticsPanelComponent }
+      {
+        path: 'statistics',
+        loadChildren: () => import('./statistics/statistics.module').then((m) => m.StatisticsModule)
+      }
     ]
   },
   { path: 'errors', component: TestErrorsComponent },
