@@ -1,5 +1,5 @@
 import { VehiclesTableComponent } from '../../../shared/components/tables/vehicles-table/vehicles-table.component';
-import { OrdersTableComponent } from '../../../shared/components/tables/orders-table/orders-table.component';
+import { OrdersTableComponent } from '../../../orders/ui/orders-table/orders-table.component';
 import { SnackbarService } from '../../../shared/components/snackbar/snackbar.service';
 import { ClientsService } from '../../data-access/clients.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -11,7 +11,7 @@ import { Order } from 'src/app/core/models/Order';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateVehicleDialogComponent } from 'src/app/shared/components/dialogs/create-vehicle-dialog/create-vehicle-dialog.component';
 import { Vehicle } from 'src/app/core/models/Vehicle';
-import { CreateOrderDialogComponent } from 'src/app/shared/components/dialogs/create-order-dialog/create-order-dialog.component';
+import { CreateOrderDialogComponent } from 'src/app/orders/ui/create-order-dialog/create-order-dialog.component';
 import { CanDeactivateComponent } from 'src/app/core/guards/can-deactivate.guard';
 
 @Component({

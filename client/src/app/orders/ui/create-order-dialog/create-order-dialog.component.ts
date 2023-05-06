@@ -1,5 +1,5 @@
-import { OrderServicesService } from '../../../services/order-services.service';
-import { OrderService } from '../../../../core/models/OrderService';
+import { OrderServicesService } from '../../data-access/order-services.service';
+import { OrderService } from '../../../core/models/OrderService';
 import { Component, Inject, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -11,14 +11,14 @@ import { Order } from 'src/app/core/models/Order';
 import { Service } from 'src/app/core/models/Service';
 import { Vehicle } from 'src/app/core/models/Vehicle';
 import { ClientsService } from 'src/app/clients/data-access/clients.service';
-import { OrdersService } from 'src/app/shared/services/orders.service';
+import { OrdersService } from 'src/app/orders/data-access/orders.service';
 import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
 import { VehiclesService } from 'src/app/shared/services/vehicles.service';
-import { OrderServicesTableComponent } from '../../tables/order-services-table/order-services-table.component';
+import { OrderServicesTableComponent } from '../order-services-table/order-services-table.component';
 import { Product } from 'src/app/core/models/product';
-import { OrderProductsTableComponent } from '../../tables/order-products-table/order-products-table.component';
+import { OrderProductsTableComponent } from '../order-products-table/order-products-table.component';
 import { OrderProduct } from 'src/app/core/models/OrderProduct';
-import { OrderProductsService } from 'src/app/shared/services/order-products.service';
+import { OrderProductsService } from 'src/app/orders/data-access/order-products.service';
 
 const INTEGER_REGEX = /^\+?(0|[1-9]\d*)$/;
 const UNASSIGNED_ID = -1;

@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { BehaviorSubject, map, merge, Observable } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';
 import { Order } from 'src/app/core/models/Order';
-import { OrdersService } from 'src/app/shared/services/orders.service';
+import { OrdersService } from 'src/app/orders/data-access/orders.service';
 
 /**
  * Data source for the TableExample view. This class should

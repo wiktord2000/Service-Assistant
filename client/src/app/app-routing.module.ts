@@ -10,10 +10,8 @@ import { ServicesPanelComponent } from './panels/services-panel/services-panel.c
 import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
 import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
 import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
-import { OrderProfileComponent } from './profiles/order-profile/order-profile.component';
 import { ProductsPanelComponent } from './panels/products-panel/products-panel.component';
 import { ProductProfileComponent } from './profiles/product-profile/product-profile.component';
-import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
 import { CanDeactivateGuard } from './core/guards/can-deactivate.guard';
 
 const routes: Routes = [
@@ -24,7 +22,10 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      { path: 'orders', component: OrdersPanelComponent },
+      {
+        path: 'orders',
+        loadChildren: () => import('./orders/orders.module').then((m) => m.OrdersModule)
+      },
       { path: 'services', component: ServicesPanelComponent },
       { path: 'products', component: ProductsPanelComponent },
       {
@@ -33,17 +34,11 @@ const routes: Routes = [
       },
       { path: 'vehicles', component: VehiclesPanelComponent },
       { path: 'statistics', component: StatisticsPanelComponent },
-      // {
-      //   path: 'clients/:id',
-      //   component: ClientProfileComponent,
-      //   canDeactivate: [CanDeactivateGuard]
-      // },
       {
         path: 'vehicles/:id',
         component: VehicleProfileComponent,
         canDeactivate: [CanDeactivateGuard]
       },
-      { path: 'orders/:id', component: OrderProfileComponent, canDeactivate: [CanDeactivateGuard] },
       {
         path: 'products/:id',
         component: ProductProfileComponent,

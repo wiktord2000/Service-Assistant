@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ConfirmDialogModule } from './components/dialogs/confirm-dialog/confirm-dialog.module';
-import { CreateOrderDialogModule } from './components/dialogs/create-order-dialog/create-order-dialog.module';
+import { CreateOrderDialogModule } from '../orders/ui/create-order-dialog/create-order-dialog.module';
 import { CreateProductDialogModule } from './components/dialogs/create-product-dialog/create-product-dialog.module';
 import { CreateServiceDialogModule } from './components/dialogs/create-service-dialog/create-service-dialog.module';
 import { CreateVehicleDialogModule } from './components/dialogs/create-vehicle-dialog/create-vehicle-dialog.module';

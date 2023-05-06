@@ -5,12 +5,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
-import { OrdersTableModule } from 'src/app/shared/components/tables/orders-table/orders-table.module';
+import { OrdersTableModule } from 'src/app/orders/ui/orders-table/orders-table.module';
+import { OrdersPanelRoutingModule } from './orders-panel-routing.module';
 
 @NgModule({
   declarations: [OrdersPanelComponent],
   imports: [
     CommonModule,
+    OrdersPanelRoutingModule,
     MatIconModule,
     MatButtonModule,
     MatButtonToggleModule,

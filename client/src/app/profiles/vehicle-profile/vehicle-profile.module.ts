@@ -9,7 +9,7 @@ import { ClientProfileLinkModule } from 'src/app/shared/components/links/client-
 import { TextInputModule } from 'src/app/shared/components/inputs/text-input/text-input.module';
 import { ClientSelectInputModule } from 'src/app/shared/components/selectors/client-select-input/client-select-input.module';
 import { DateInputModule } from 'src/app/shared/components/inputs/date-input/date-input.module';
-import { OrdersTableModule } from 'src/app/shared/components/tables/orders-table/orders-table.module';
+import { OrdersTableModule } from 'src/app/orders/ui/orders-table/orders-table.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({

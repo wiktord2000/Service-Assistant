@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { OrderProduct } from 'src/app/core/models/OrderProduct';
-import { OrderProductsService } from 'src/app/shared/services/order-products.service';
+import { OrderProductsService } from 'src/app/orders/data-access/order-products.service';
 import { OrderProductsTableDataSource } from './order-products-table-datasource';
 
 @Component({

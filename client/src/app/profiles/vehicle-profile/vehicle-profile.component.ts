@@ -6,10 +6,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Vehicle } from '../../core/models/Vehicle';
 import { VehiclesService } from '../../shared/services/vehicles.service';
 import { Order } from 'src/app/core/models/Order';
-import { OrdersTableComponent } from 'src/app/shared/components/tables/orders-table/orders-table.component';
+import { OrdersTableComponent } from 'src/app/orders/ui/orders-table/orders-table.component';
 import { finalize } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';
-import { CreateOrderDialogComponent } from 'src/app/shared/components/dialogs/create-order-dialog/create-order-dialog.component';
+import { CreateOrderDialogComponent } from 'src/app/orders/ui/create-order-dialog/create-order-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { CanDeactivateComponent } from 'src/app/core/guards/can-deactivate.guard';
 

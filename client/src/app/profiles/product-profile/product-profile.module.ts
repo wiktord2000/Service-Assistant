@@ -8,7 +8,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TextInputModule } from 'src/app/shared/components/inputs/text-input/text-input.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomHeaderModule } from 'src/app/shared/components/custom-header/custom-header.module';
-import { OrdersTableModule } from 'src/app/shared/components/tables/orders-table/orders-table.module';
+import { OrdersTableModule } from 'src/app/orders/ui/orders-table/orders-table.module';
 
 @NgModule({
   declarations: [ProductProfileComponent],
