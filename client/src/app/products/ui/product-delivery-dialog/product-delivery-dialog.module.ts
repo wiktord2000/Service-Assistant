@@ -4,8 +4,8 @@ import { ProductDeliveryDialogComponent } from './product-delivery-dialog.compon
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DateInputModule } from '../../inputs/date-input/date-input.module';
-import { TextInputModule } from '../../inputs/text-input/text-input.module';
+import { DateInputModule } from '../../../shared/components/inputs/date-input/date-input.module';
+import { TextInputModule } from '../../../shared/components/inputs/text-input/text-input.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 

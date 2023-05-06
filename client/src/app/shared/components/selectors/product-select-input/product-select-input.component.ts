@@ -1,10 +1,10 @@
-import { ProductsService } from '../../../services/products.service';
+import { ProductsService } from '../../../../products/data-access/products.service';
 import { Component, EventEmitter, Input, OnInit, Output, Self } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { debounceTime, Observable, of, startWith } from 'rxjs';
 import { Product } from 'src/app/core/models/product';
-import { CreateProductDialogComponent } from 'src/app/shared/components/dialogs/create-product-dialog/create-product-dialog.component';
+import { CreateProductDialogComponent } from 'src/app/products/ui/create-product-dialog/create-product-dialog.component';
 
 @Component({
   selector: 'app-product-select-input',

@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { ProductsTableComponent } from './products-table.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { ProductProfileLinkModule } from '../../links/product-profile-link/product-profile-link.module';
+import { ProductProfileLinkModule } from '../../../shared/components/links/product-profile-link/product-profile-link.module';
 
 @NgModule({
   declarations: [ProductsTableComponent],

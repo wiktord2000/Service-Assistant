@@ -8,11 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 import { LoginModule } from './auth/login/login.module';
 import { RegisterModule } from './auth/register/register.module';
-import { ProductsPanelModule } from './panels/products-panel/products-panel.module';
-import { ServicesPanelModule } from './panels/services-panel/services-panel.module';
 import { VehiclesPanelModule } from './panels/vehicles-panel/vehicles-panel.module';
 import { StatisticsPanelModule } from './panels/statistics-panel/statistics-panel.module';
-import { ProductProfileModule } from './profiles/product-profile/product-profile.module';
 import { VehicleProfileModule } from './profiles/vehicle-profile/vehicle-profile.module';
 import { NotFoundModule } from './errors/not-found/not-found.module';
 import { ServerErrorModule } from './errors/server-error/server-error.module';
@@ -21,7 +18,6 @@ import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapte
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { OrdersModule } from './orders/orders.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,12 +34,9 @@ import { OrdersModule } from './orders/orders.module';
     LoginModule,
     RegisterModule,
     // Panels
-    ServicesPanelModule,
-    ProductsPanelModule,
     VehiclesPanelModule,
     StatisticsPanelModule,
     // Profiles
-    ProductProfileModule,
     VehicleProfileModule,
     // Errors
     NotFoundModule,

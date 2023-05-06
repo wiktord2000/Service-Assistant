@@ -1,4 +1,4 @@
-import { ProductsService } from '../../../services/products.service';
+import { ProductsService } from '../../data-access/products.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Product } from 'src/app/core/models/product';
 import { ProductsTableDataSource } from './products-table-datasorce';
@@ -7,8 +7,8 @@ import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.ser
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { ConfirmDialogComponent } from '../../dialogs/confirm-dialog/confirm-dialog.component';
-import { ProductDeliveryDialogComponent } from '../../dialogs/product-delivery-dialog/product-delivery-dialog.component';
+import { ConfirmDialogComponent } from '../../../shared/components/dialogs/confirm-dialog/confirm-dialog.component';
+import { ProductDeliveryDialogComponent } from '../product-delivery-dialog/product-delivery-dialog.component';
 
 @Component({
   selector: 'app-products-table',

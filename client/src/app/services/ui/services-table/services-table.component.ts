@@ -4,11 +4,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { Service } from 'src/app/core/models/Service';
-import { ServicesService } from 'src/app/shared/services/services.service';
+import { ServicesService } from 'src/app/services/data-access/services.service';
 import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
-import { ConfirmDialogComponent } from '../../dialogs/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../shared/components/dialogs/confirm-dialog/confirm-dialog.component';
 import { ServicesTableDataSource } from './services-table-datasource';
-import { CreateServiceDialogComponent } from '../../dialogs/create-service-dialog/create-service-dialog.component';
+import { CreateServiceDialogComponent } from '../create-service-dialog/create-service-dialog.component';
 
 @Component({
   selector: 'app-services-table',

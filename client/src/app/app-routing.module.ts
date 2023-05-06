@@ -6,12 +6,9 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ServicesPanelComponent } from './panels/services-panel/services-panel.component';
 import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
 import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
 import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
-import { ProductsPanelComponent } from './panels/products-panel/products-panel.component';
-import { ProductProfileComponent } from './profiles/product-profile/product-profile.component';
 import { CanDeactivateGuard } from './core/guards/can-deactivate.guard';
 
 const routes: Routes = [
@@ -26,8 +23,14 @@ const routes: Routes = [
         path: 'orders',
         loadChildren: () => import('./orders/orders.module').then((m) => m.OrdersModule)
       },
-      { path: 'services', component: ServicesPanelComponent },
-      { path: 'products', component: ProductsPanelComponent },
+      {
+        path: 'services',
+        loadChildren: () => import('./services/services.module').then((m) => m.ServicesModule)
+      },
+      {
+        path: 'products',
+        loadChildren: () => import('./products/products.module').then((m) => m.ProductsModule)
+      },
       {
         path: 'clients',
         loadChildren: () => import('./clients/clients.module').then((m) => m.ClientsModule)
@@ -38,12 +41,12 @@ const routes: Routes = [
         path: 'vehicles/:id',
         component: VehicleProfileComponent,
         canDeactivate: [CanDeactivateGuard]
-      },
-      {
-        path: 'products/:id',
-        component: ProductProfileComponent,
-        canDeactivate: [CanDeactivateGuard]
       }
+      // {
+      //   path: 'products/:id',
+      //   component: ProductProfileComponent,
+      //   canDeactivate: [CanDeactivateGuard]
+      // }
     ]
   },
   { path: 'errors', component: TestErrorsComponent },

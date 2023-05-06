@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { BehaviorSubject, map, merge, Observable } from 'rxjs';
 import { Product } from 'src/app/core/models/product';
-import { ProductsService } from 'src/app/shared/services/products.service';
+import { ProductsService } from 'src/app/products/data-access/products.service';
 
 /**
  * Data source for the TableExample view. This class should

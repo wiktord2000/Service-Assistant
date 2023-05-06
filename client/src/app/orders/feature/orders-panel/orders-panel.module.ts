@@ -7,6 +7,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdersTableModule } from 'src/app/orders/ui/orders-table/orders-table.module';
 import { OrdersPanelRoutingModule } from './orders-panel-routing.module';
+import { CreateOrderDialogModule } from '../../ui/create-order-dialog/create-order-dialog.module';
 
 @NgModule({
   declarations: [OrdersPanelComponent],
@@ -17,7 +18,8 @@ import { OrdersPanelRoutingModule } from './orders-panel-routing.module';
     MatButtonModule,
     MatButtonToggleModule,
     OrdersTableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CreateOrderDialogModule
   ],
   exports: [OrdersPanelComponent]
 })

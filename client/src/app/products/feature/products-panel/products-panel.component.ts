@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Product } from 'src/app/core/models/product';
-import { ProductsService } from 'src/app/shared/services/products.service';
+import { ProductsService } from 'src/app/products/data-access/products.service';
 import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
-import { CreateProductDialogComponent } from 'src/app/shared/components/dialogs/create-product-dialog/create-product-dialog.component';
-import { ProductsTableComponent } from 'src/app/shared/components/tables/products-table/products-table.component';
+import { CreateProductDialogComponent } from 'src/app/products/ui/create-product-dialog/create-product-dialog.component';
+import { ProductsTableComponent } from 'src/app/products/ui/products-table/products-table.component';
 
 @Component({
   selector: 'app-products-panel',
