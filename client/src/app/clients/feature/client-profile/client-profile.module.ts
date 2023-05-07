@@ -11,21 +11,25 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { TextInputModule } from 'src/app/shared/ui/inputs/text-input/text-input.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ClientProfileRoutingModule } from './client-profile-routing.module';
+import { CreateVehicleDialogModule } from 'src/app/vehicles/ui/create-vehicle-dialog/create-vehicle-dialog.module';
+import { CreateOrderDialogModule } from 'src/app/orders/ui/create-order-dialog/create-order-dialog.module';
 
 @NgModule({
   declarations: [ClientProfileComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ClientProfileRoutingModule,
     MatIconModule,
-    SendEmailLinkModule,
     MatTabsModule,
     MatButtonModule,
-    VehiclesTableModule,
-    OrdersTableModule,
     MatSlideToggleModule,
     TextInputModule,
-    ReactiveFormsModule
+    SendEmailLinkModule,
+    VehiclesTableModule,
+    OrdersTableModule,
+    CreateVehicleDialogModule,
+    CreateOrderDialogModule
   ]
 })
 export class ClientProfileModule {}

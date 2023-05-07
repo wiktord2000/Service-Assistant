@@ -12,6 +12,7 @@ import { OrdersTableModule } from 'src/app/orders/ui/orders-table/orders-table.m
 import { ReactiveFormsModule } from '@angular/forms';
 import { VehicleProfileComponent } from './vehicle-profile.component';
 import { VehicleProfileRoutingModule } from './vehicle-profile-routing.module';
+import { CreateOrderDialogModule } from 'src/app/orders/ui/create-order-dialog/create-order-dialog.module';
 
 @NgModule({
   declarations: [VehicleProfileComponent],
@@ -27,7 +28,8 @@ import { VehicleProfileRoutingModule } from './vehicle-profile-routing.module';
     ClientSelectInputModule,
     DateInputModule,
     OrdersTableModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CreateOrderDialogModule
   ]
 })
 export class VehicleProfileModule {}
