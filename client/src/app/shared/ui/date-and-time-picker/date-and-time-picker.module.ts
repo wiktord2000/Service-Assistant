@@ -8,7 +8,6 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatButtonModule } from '@angular/material/button';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 @NgModule({
   declarations: [DateAndTimePickerComponent],
@@ -20,8 +19,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
     MatDatepickerModule,
     MatInputModule,
     NgxMaterialTimepickerModule,
-    MatButtonModule,
-    MatMomentDateModule // or MatNativeDateModule (to check whether this prompt to errors)
+    MatButtonModule
   ],
   exports: [DateAndTimePickerComponent]
 })
