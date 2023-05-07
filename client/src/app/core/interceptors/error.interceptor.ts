@@ -1,4 +1,4 @@
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
+import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
@@ -40,14 +40,14 @@ export class ErrorInterceptor implements HttpInterceptor {
 
           // Not found
           case 404:
-            this.router.navigateByUrl('/not-found');
+            this.router.navigateByUrl('/errors/not-found');
             break;
 
           // Server error
           case 500:
             // Attach data to navigation route & redirect
             const navigationExtras: NavigationExtras = { state: { error: error?.error } };
-            this.router.navigateByUrl('/server-error', navigationExtras);
+            this.router.navigateByUrl('/errors/server-error', navigationExtras);
             break;
 
           default:

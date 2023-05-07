@@ -1,5 +1,5 @@
-import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
-import { AccountService } from '../../shared/services/account.service';
+import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
+import { AccountService } from '../../auth/data-access/account.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
@@ -18,10 +18,10 @@ export class AuthGuard implements CanActivate {
         if (user) {
           return true;
         }
-        this.router.navigate(['/not-found']);
+        this.router.navigate(['/auth']);
         this.snackbarService.showMessage(
           'warn',
-          'Nie masz uprawnień, aby odwiedzić tą stronę!',
+          'You are not authorized to visit this page!',
           undefined,
           false
         );

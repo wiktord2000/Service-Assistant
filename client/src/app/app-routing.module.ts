@@ -1,63 +1,51 @@
-import { ClientProfileComponent } from './profiles/client-profile/client-profile.component';
-import { ServerErrorComponent } from './errors/server-error/server-error.component';
-import { NotFoundComponent } from './errors/not-found/not-found.component';
-import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import { NotFoundComponent } from './errors/pages/not-found/not-found.component';
 import { AuthGuard } from './core/guards/auth.guard';
-import { RegisterComponent } from './auth/register/register.component';
-import { LoginComponent } from './auth/login/login.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ServicesPanelComponent } from './panels/services-panel/services-panel.component';
-import { VehiclesPanelComponent } from './panels/vehicles-panel/vehicles-panel.component';
-import { StatisticsPanelComponent } from './panels/statistics-panel/statistics-panel.component';
-import { VehicleProfileComponent } from './profiles/vehicle-profile/vehicle-profile.component';
-import { OrderProfileComponent } from './profiles/order-profile/order-profile.component';
-import { ProductsPanelComponent } from './panels/products-panel/products-panel.component';
-import { ProductProfileComponent } from './profiles/product-profile/product-profile.component';
-import { OrdersPanelComponent } from './panels/orders-panel/orders-panel.component';
-import { ClientsPanelComponent } from './panels/clients-panel/clients-panel.component';
-import { CanDeactivateGuard } from './core/guards/can-deactivate.guard';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent, pathMatch: 'full' },
-  { path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: '/orders', pathMatch: 'full' },
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule) },
   {
     path: '',
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      { path: 'orders', component: OrdersPanelComponent },
-      { path: 'services', component: ServicesPanelComponent },
-      { path: 'products', component: ProductsPanelComponent },
-      { path: 'clients', component: ClientsPanelComponent },
-      { path: 'vehicles', component: VehiclesPanelComponent },
-      { path: 'statistics', component: StatisticsPanelComponent },
       {
-        path: 'clients/:id',
-        component: ClientProfileComponent,
-        canDeactivate: [CanDeactivateGuard]
+        path: 'orders',
+        loadChildren: () => import('./orders/orders.module').then((m) => m.OrdersModule)
       },
       {
-        path: 'vehicles/:id',
-        component: VehicleProfileComponent,
-        canDeactivate: [CanDeactivateGuard]
+        path: 'services',
+        loadChildren: () => import('./services/services.module').then((m) => m.ServicesModule)
       },
-      { path: 'orders/:id', component: OrderProfileComponent, canDeactivate: [CanDeactivateGuard] },
       {
-        path: 'products/:id',
-        component: ProductProfileComponent,
-        canDeactivate: [CanDeactivateGuard]
+        path: 'products',
+        loadChildren: () => import('./products/products.module').then((m) => m.ProductsModule)
+      },
+      {
+        path: 'clients',
+        loadChildren: () => import('./clients/clients.module').then((m) => m.ClientsModule)
+      },
+      {
+        path: 'vehicles',
+        loadChildren: () => import('./vehicles/vehicles.module').then((m) => m.VehiclesModule)
+      },
+      {
+        path: 'statistics',
+        loadChildren: () => import('./statistics/statistics.module').then((m) => m.StatisticsModule)
       }
     ]
   },
-  { path: 'errors', component: TestErrorsComponent },
-  { path: 'server-error', component: ServerErrorComponent },
-  { path: 'not-found', component: NotFoundComponent },
+  {
+    path: 'errors',
+    loadChildren: () => import('./errors/errors.module').then((m) => m.ErrorsModule)
+  },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' } //when path doesn't match (Wildcard)
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

@@ -1,4 +1,4 @@
-import { AccountService } from './shared/services/account.service';
+import { AccountService } from './auth/data-access/account.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from './core/models/User';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   setCurrentUser() {
     const user: User = JSON.parse(localStorage.getItem('user'));
-    if (user) this.router.navigate(['/orders']);
     this.accountService.setCurrentUser(user);
+    if (!user) this.router.navigate(['/auth']);
   }
 }
