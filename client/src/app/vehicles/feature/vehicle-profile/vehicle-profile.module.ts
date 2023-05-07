@@ -28,7 +28,6 @@ import { VehicleProfileRoutingModule } from './vehicle-profile-routing.module';
     DateInputModule,
     OrdersTableModule,
     ReactiveFormsModule
-  ],
-  exports: [VehicleProfileComponent]
+  ]
 })
 export class VehicleProfileModule {}

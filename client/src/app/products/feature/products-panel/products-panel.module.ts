@@ -22,7 +22,6 @@ import { ProductDeliveryDialogModule } from '../../ui/product-delivery-dialog/pr
     ProductsTableModule,
     CreateProductDialogModule,
     ProductDeliveryDialogModule
-  ],
-  exports: [ProductsPanelComponent]
+  ]
 })
 export class ProductsPanelModule {}

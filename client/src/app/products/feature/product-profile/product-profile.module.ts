@@ -24,7 +24,6 @@ import { ProductProfileComponent } from './product-profile.component';
     ReactiveFormsModule,
     CustomHeaderModule,
     OrdersTableModule
-  ],
-  exports: [ProductProfileComponent]
+  ]
 })
 export class ProductProfileModule {}

@@ -44,7 +44,6 @@ import { CreateOrderDialogModule } from '../../ui/create-order-dialog/create-ord
     ClientSelectInputModule,
     VehicleSelectInputModule,
     CreateOrderDialogModule
-  ],
-  exports: [OrderProfileComponent]
+  ]
 })
 export class OrderProfileModule {}

@@ -2,7 +2,7 @@ import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from '../../../shared/data-access/account.service';
+import { AccountService } from '../../data-access/account.service';
 import { User } from '../../../core/models/User';
 import { finalize } from 'rxjs';
 

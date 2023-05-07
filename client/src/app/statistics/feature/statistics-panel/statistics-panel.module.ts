@@ -20,7 +20,6 @@ import { StatisticsPanelRoutingModule } from './statistics-panel-routing.module'
     NgxChartsModule,
     CustomHeaderModule,
     ClientProfileLinkModule
-  ],
-  exports: [StatisticsPanelComponent]
+  ]
 })
 export class StatisticsPanelModule {}

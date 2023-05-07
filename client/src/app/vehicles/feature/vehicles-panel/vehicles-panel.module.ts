@@ -16,7 +16,6 @@ import { CreateVehicleDialogModule } from '../../ui/create-vehicle-dialog/create
     MatButtonModule,
     VehiclesTableModule,
     CreateVehicleDialogModule
-  ],
-  exports: [VehiclesPanelComponent]
+  ]
 })
 export class VehiclesPanelModule {}

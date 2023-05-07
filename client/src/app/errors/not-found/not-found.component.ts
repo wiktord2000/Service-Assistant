@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from 'src/app/shared/data-access/account.service';
+import { AccountService } from 'src/app/auth/data-access/account.service';
 import { firstValueFrom } from 'rxjs';
 
 @Component({

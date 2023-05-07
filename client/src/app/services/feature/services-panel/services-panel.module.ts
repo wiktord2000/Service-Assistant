@@ -19,8 +19,7 @@ import { CreateServiceDialogModule } from '../../ui/create-service-dialog/create
     MatSlideToggleModule,
     FormsModule,
     ServicesTableModule,
-    CreateServiceDialogModule // Consider extraction to another path
-  ],
-  exports: [ServicesPanelComponent]
+    CreateServiceDialogModule
+  ]
 })
 export class ServicesPanelModule {}

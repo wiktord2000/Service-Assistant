@@ -26,7 +26,6 @@ import { ClientProfileRoutingModule } from './client-profile-routing.module';
     MatSlideToggleModule,
     TextInputModule,
     ReactiveFormsModule
-  ],
-  exports: [ClientProfileComponent]
+  ]
 })
 export class ClientProfileModule {}

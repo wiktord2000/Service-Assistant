@@ -20,7 +20,6 @@ import { CreateOrderDialogModule } from '../../ui/create-order-dialog/create-ord
     OrdersTableModule,
     ReactiveFormsModule,
     CreateOrderDialogModule
-  ],
-  exports: [OrdersPanelComponent]
+  ]
 })
 export class OrdersPanelModule {}

@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../../core/models/User';
 
 @Injectable({
-  providedIn: 'root' // Service is available globally - Singleton (one instance)
+  providedIn: 'root'
 })
 export class AccountService {
   private baseUrl: String = environment.apiUrl;
