@@ -5,12 +5,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./feature/clients-panel/clients-panel.module').then((m) => m.ClientsPanelModule)
+      import('./pages/clients-panel/clients-panel.module').then((m) => m.ClientsPanelModule)
   },
   {
     path: ':id',
     loadChildren: () =>
-      import('./feature/client-profile/client-profile.module').then((m) => m.ClientProfileModule)
+      import('./pages/client-profile/client-profile.module').then((m) => m.ClientProfileModule)
   }
 ];
 

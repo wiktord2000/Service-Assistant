@@ -1,4 +1,4 @@
-import { NotFoundComponent } from './errors/feature/not-found/not-found.component';
+import { NotFoundComponent } from './errors/pages/not-found/not-found.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';

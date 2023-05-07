@@ -5,12 +5,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./feature/vehicles-panel/vehicles-panel.module').then((m) => m.VehiclesPanelModule)
+      import('./pages/vehicles-panel/vehicles-panel.module').then((m) => m.VehiclesPanelModule)
   },
   {
     path: ':id',
     loadChildren: () =>
-      import('./feature/vehicle-profile/vehicle-profile.module').then((m) => m.VehicleProfileModule)
+      import('./pages/vehicle-profile/vehicle-profile.module').then((m) => m.VehicleProfileModule)
   }
 ];
 

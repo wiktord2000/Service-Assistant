@@ -5,12 +5,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./feature/orders-panel/orders-panel.module').then((m) => m.OrdersPanelModule)
+      import('./pages/orders-panel/orders-panel.module').then((m) => m.OrdersPanelModule)
   },
   {
     path: ':id',
     loadChildren: () =>
-      import('./feature/order-profile/order-profile.module').then((m) => m.OrderProfileModule)
+      import('./pages/order-profile/order-profile.module').then((m) => m.OrderProfileModule)
   }
 ];
 

@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./feature/services-panel/services-panel.module').then((m) => m.ServicesPanelModule)
+      import('./pages/services-panel/services-panel.module').then((m) => m.ServicesPanelModule)
   }
 ];
 

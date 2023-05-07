@@ -9,16 +9,16 @@ const routes: Routes = [
   {
     path: 'test-errors',
     loadChildren: () =>
-      import('./feature/test-errors/test-errors.module').then((m) => m.TestErrorsModule)
+      import('./pages/test-errors/test-errors.module').then((m) => m.TestErrorsModule)
   },
   {
     path: 'not-found',
-    loadChildren: () => import('./feature/not-found/not-found.module').then((m) => m.NotFoundModule)
+    loadChildren: () => import('./pages/not-found/not-found.module').then((m) => m.NotFoundModule)
   },
   {
     path: 'server-error',
     loadChildren: () =>
-      import('./feature/server-error/server-error.module').then((m) => m.ServerErrorModule)
+      import('./pages/server-error/server-error.module').then((m) => m.ServerErrorModule)
   }
 ];
 

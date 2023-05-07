@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./feature/statistics-panel/statistics-panel.module').then(
+      import('./pages/statistics-panel/statistics-panel.module').then(
         (m) => m.StatisticsPanelModule
       )
   }
