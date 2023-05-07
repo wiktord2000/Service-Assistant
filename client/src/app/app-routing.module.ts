@@ -2,14 +2,12 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { AuthGuard } from './core/guards/auth.guard';
-import { RegisterComponent } from './auth/register/register.component';
-import { LoginComponent } from './auth/login/login.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent, pathMatch: 'full' },
-  { path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: '/orders', pathMatch: 'full' },
+  { path: 'auth', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule) },
   {
     path: '',
     runGuardsAndResolvers: 'always',
@@ -48,7 +46,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

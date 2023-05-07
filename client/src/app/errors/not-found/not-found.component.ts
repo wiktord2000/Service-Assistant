@@ -15,6 +15,6 @@ export class NotFoundComponent implements OnInit {
 
   async onRedirect() {
     const currentUser = await firstValueFrom(this.accountService.currentUser$);
-    currentUser ? this.router.navigate(['/orders']) : this.router.navigate(['/']);
+    currentUser ? this.router.navigate(['/orders']) : this.router.navigate(['/auth']);
   }
 }

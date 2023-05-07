@@ -87,19 +87,19 @@
       <!-- Bookmarks right-->
       <div *ngIf="!(accountService.currentUser$ | async)">
         <a
-          *ngIf="router.url === '/register'"
+          *ngIf="router.url === '/auth/register'"
           (click)="togglePanel()"
           class="right-bookmark"
           mat-button
-          routerLink="/"
+          routerLink="/auth"
           >Sign in</a
         >
         <a
-          *ngIf="!(router.url === '/register')"
+          *ngIf="!(router.url === '/auth/register')"
           (click)="togglePanel()"
           class="right-bookmark"
           mat-button
-          routerLink="/register"
+          routerLink="/auth/register"
           >Sign up</a
         >
       </div>

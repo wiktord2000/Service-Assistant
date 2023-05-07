@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
-import { LoginModule } from './auth/login/login.module';
-import { RegisterModule } from './auth/register/register.module';
 import { NotFoundModule } from './errors/not-found/not-found.module';
 import { ServerErrorModule } from './errors/server-error/server-error.module';
 import { TestErrorsModule } from './errors/test-errors/test-errors.module';
@@ -27,9 +25,6 @@ import { SharedModule } from './shared/shared.module';
     LayoutModule,
     CoreModule,
     SharedModule,
-    // Auth
-    LoginModule,
-    RegisterModule,
     // Errors
     NotFoundModule,
     ServerErrorModule,

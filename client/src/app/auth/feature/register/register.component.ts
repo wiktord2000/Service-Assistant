@@ -1,10 +1,10 @@
-import { SnackbarService } from '../../shared/ui/snackbar/snackbar.service';
+import { SnackbarService } from '../../../shared/ui/snackbar/snackbar.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../../core/models/User';
-import { AccountService } from '../../shared/data-access/account.service';
-import { matchValues } from '../../core/helpers/form-validators';
+import { User } from '../../../core/models/User';
+import { AccountService } from '../../../shared/data-access/account.service';
+import { matchValues } from '../../../core/helpers/form-validators';
 import { finalize } from 'rxjs';
 
 @Component({
