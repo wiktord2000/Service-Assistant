@@ -1,6 +1,4 @@
-import { ServerErrorComponent } from './errors/server-error/server-error.component';
-import { NotFoundComponent } from './errors/not-found/not-found.component';
-import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import { NotFoundComponent } from './errors/feature/not-found/not-found.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
@@ -39,9 +37,10 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'errors', component: TestErrorsComponent },
-  { path: 'server-error', component: ServerErrorComponent },
-  { path: 'not-found', component: NotFoundComponent },
+  {
+    path: 'errors',
+    loadChildren: () => import('./errors/errors.module').then((m) => m.ErrorsModule)
+  },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' } //when path doesn't match (Wildcard)
 ];
 
