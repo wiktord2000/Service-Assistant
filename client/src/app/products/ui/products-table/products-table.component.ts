@@ -7,7 +7,7 @@ import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { ConfirmDialogComponent } from '../../../shared/ui/dialogs/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { ProductDeliveryDialogComponent } from '../product-delivery-dialog/product-delivery-dialog.component';
 
 @Component({

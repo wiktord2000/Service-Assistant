@@ -6,7 +6,7 @@ import { MatTable } from '@angular/material/table';
 import { Service } from 'src/app/core/models/Service';
 import { ServicesService } from 'src/app/services/data-access/services.service';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
-import { ConfirmDialogComponent } from '../../../shared/ui/dialogs/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { ServicesTableDataSource } from './services-table-datasource';
 import { CreateServiceDialogComponent } from '../create-service-dialog/create-service-dialog.component';
 

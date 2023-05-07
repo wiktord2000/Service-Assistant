@@ -7,7 +7,7 @@ import { MatTable } from '@angular/material/table';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { VehiclesService } from 'src/app/vehicles/data-access/vehicles.service';
 import { VehiclesTableDataSource } from './vehicles-table-datasource';
-import { ConfirmDialogComponent } from '../../../shared/ui/dialogs/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../shared/ui/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-vehicles-table',

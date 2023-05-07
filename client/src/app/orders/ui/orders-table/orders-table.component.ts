@@ -9,7 +9,7 @@ import { OrdersService } from 'src/app/orders/data-access/orders.service';
 import { OrdersTableDataSource } from './orders-table-datasource';
 import { Status } from 'src/app/core/models/Status';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from '../../../shared/ui/dialogs/confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from '../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 
