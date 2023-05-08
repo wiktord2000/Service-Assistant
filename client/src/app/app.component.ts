@@ -1,4 +1,4 @@
-import { AccountService } from './auth/data-access/account.service';
+import { AccountService } from './features/auth/data-access/account.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from './core/models/User';
 import { Router } from '@angular/router';

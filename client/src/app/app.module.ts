@@ -13,7 +13,7 @@ import {
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { NavModule } from './nav/nav.module';
+import { NavModule } from './features/nav/nav.module';
 
 @NgModule({
   declarations: [AppComponent],
