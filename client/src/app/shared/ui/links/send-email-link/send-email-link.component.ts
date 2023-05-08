@@ -1,4 +1,4 @@
-import { MailSendingDialogComponent } from '../../../../clients/ui/mail-sending-dialog/mail-sending-dialog.component';
+import { MailSendingDialogComponent } from '../../../../features/clients/ui/mail-sending-dialog/mail-sending-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';

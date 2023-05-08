@@ -1,11 +1,14 @@
-import { NotFoundComponent } from './errors/pages/not-found/not-found.component';
+import { NotFoundComponent } from './features/errors/pages/not-found/not-found.component';
 import { AuthGuard } from './core/guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: '/orders', pathMatch: 'full' },
-  { path: 'auth', loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule) },
+  {
+    path: 'auth',
+    loadChildren: () => import('./features/auth/auth.module').then((m) => m.AuthModule)
+  },
   {
     path: '',
     runGuardsAndResolvers: 'always',
@@ -13,33 +16,37 @@ const routes: Routes = [
     children: [
       {
         path: 'orders',
-        loadChildren: () => import('./orders/orders.module').then((m) => m.OrdersModule)
+        loadChildren: () => import('./features/orders/orders.module').then((m) => m.OrdersModule)
       },
       {
         path: 'services',
-        loadChildren: () => import('./services/services.module').then((m) => m.ServicesModule)
+        loadChildren: () =>
+          import('./features/services/services.module').then((m) => m.ServicesModule)
       },
       {
         path: 'products',
-        loadChildren: () => import('./products/products.module').then((m) => m.ProductsModule)
+        loadChildren: () =>
+          import('./features/products/products.module').then((m) => m.ProductsModule)
       },
       {
         path: 'clients',
-        loadChildren: () => import('./clients/clients.module').then((m) => m.ClientsModule)
+        loadChildren: () => import('./features/clients/clients.module').then((m) => m.ClientsModule)
       },
       {
         path: 'vehicles',
-        loadChildren: () => import('./vehicles/vehicles.module').then((m) => m.VehiclesModule)
+        loadChildren: () =>
+          import('./features/vehicles/vehicles.module').then((m) => m.VehiclesModule)
       },
       {
         path: 'statistics',
-        loadChildren: () => import('./statistics/statistics.module').then((m) => m.StatisticsModule)
+        loadChildren: () =>
+          import('./features/statistics/statistics.module').then((m) => m.StatisticsModule)
       }
     ]
   },
   {
     path: 'errors',
-    loadChildren: () => import('./errors/errors.module').then((m) => m.ErrorsModule)
+    loadChildren: () => import('./features/errors/errors.module').then((m) => m.ErrorsModule)
   },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' } //when path doesn't match (Wildcard)
 ];

@@ -3,8 +3,8 @@ import { NgControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { debounceTime, Observable, of, startWith } from 'rxjs';
 import { Service } from 'src/app/core/models/Service';
-import { ServicesService } from 'src/app/services/data-access/services.service';
-import { CreateServiceDialogComponent } from 'src/app/services/ui/create-service-dialog/create-service-dialog.component';
+import { ServicesService } from 'src/app/features/services/data-access/services.service';
+import { CreateServiceDialogComponent } from 'src/app/features/services/ui/create-service-dialog/create-service-dialog.component';
 
 @Component({
   selector: 'app-service-select-input',

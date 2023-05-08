@@ -1,5 +1,5 @@
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
-import { AccountService } from '../../auth/data-access/account.service';
+import { AccountService } from '../../features/auth/data-access/account.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
