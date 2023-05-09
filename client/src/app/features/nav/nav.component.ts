@@ -21,7 +21,7 @@ export class NavComponent implements OnInit {
     );
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private router: Router,
+    public router: Router,
     public accountService: AccountService
   ) {}
 

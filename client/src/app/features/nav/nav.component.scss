@@ -20,10 +20,17 @@
   transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.mat-toolbar.mat-primary {
+.mat-toolbar {
   position: sticky;
   top: 0;
   z-index: 3;
+}
+
+.mat-toolbar.transparent {
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  color: white;
 }
 
 a:hover {

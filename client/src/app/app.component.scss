@@ -6,7 +6,7 @@
   flex-direction: column;
 }
 
-@media (max-width: $medium-breakpoint) {
+@media (max-width: $small-breakpoint) {
   .main-content-wrapper {
     min-height: calc(100% - $navbar-shrink-height);
   }

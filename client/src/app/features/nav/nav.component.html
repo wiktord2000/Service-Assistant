@@ -30,8 +30,11 @@
   </mat-sidenav>
 
   <!-- Main Content (with toolbar at the top) -->
-  <mat-sidenav-content class="bg-gradient">
-    <mat-toolbar class="mat-elevation-z1" color="primary">
+  <mat-sidenav-content>
+    <mat-toolbar
+      [class]="{ 'mat-elevation-z3': true, transparent: router.url.includes('/auth') }"
+      color="primary"
+    >
       <img
         id="main-logo"
         routerLink="/orders"
