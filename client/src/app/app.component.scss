@@ -1,0 +1,7 @@
+@import "helpers/constants";
+
+.main-content-wrapper {
+  min-height: calc(100% - $navbar-height);
+  display: flex;
+  flex-direction: column;
+}

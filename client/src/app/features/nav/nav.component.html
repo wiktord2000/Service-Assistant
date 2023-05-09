@@ -127,17 +127,14 @@
       </button>
       <!-- Options -->
       <mat-menu #account="matMenu">
-        <button mat-menu-item>Dane konta</button>
-        <button mat-menu-item>Dane firmy</button>
+        <button disabled mat-menu-item>Dane konta</button>
+        <button disabled mat-menu-item>Dane firmy</button>
         <button mat-menu-item (click)="logout()">Sign out</button>
       </mat-menu>
     </mat-toolbar>
 
-    <!-------------------------------------------- Changing content -------------------------------------------->
-    <div class="main-content-wrapper">
-      <router-outlet></router-outlet>
-    </div>
-    <!-------------------------------------------- Changing content -------------------------------------------->
+    <!-- Changing content (projection) -->
+    <ng-content></ng-content>
 
     <!-- Footer (just append the main content)-->
     <!-- <div class="footer mat-elevation-z4">

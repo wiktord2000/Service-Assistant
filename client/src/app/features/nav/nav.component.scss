@@ -71,20 +71,13 @@ a:hover {
   background: rgba(0, 0, 0, 0.2);
 }
 
-.main-content-wrapper {
-  /* Avoid unnecessery scrolling */
-  min-height: calc(100% - 64px);
-  display: flex;
-  flex-direction: column;
-}
-
 .toolbar-header {
   background-color: $primary;
   color: white;
 }
 
 .footer {
-  height: 64px;
+  height: $navbar-height;
   z-index: 1;
   display: flex;
   justify-content: center;
