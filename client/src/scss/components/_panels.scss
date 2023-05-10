@@ -1,0 +1,11 @@
+.content-wrapper {
+  width: 96%;
+  max-width: $max-content-width;
+}
+
+.filters-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 1em;
+}

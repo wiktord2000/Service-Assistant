@@ -4,19 +4,3 @@
 :host {
   @extend %panel-base;
 }
-
-.content-wrapper {
-  width: 96%;
-  max-width: $max-content-width;
-}
-
-.filters-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 1em;
-}
-
-::ng-deep .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
-  line-height: 2.5em !important;
-}
