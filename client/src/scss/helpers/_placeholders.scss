@@ -2,3 +2,11 @@
   background-color: $snackbar-paper-color;
   color: white;
 }
+
+%panel-base {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-color: $default-background-color;
+  padding-top: 2.5em;
+}
