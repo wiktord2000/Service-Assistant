@@ -1,21 +1,6 @@
 @import "helpers/constants";
+@import "helpers/placeholders";
 
 :host {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  background-color: $default-background-color;
-  margin-top: 2.5em;
-}
-
-.content-wrapper {
-  width: 96%;
-  max-width: $max-content-width;
-}
-
-.filters-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 1em;
+  @extend %panel-base;
 }

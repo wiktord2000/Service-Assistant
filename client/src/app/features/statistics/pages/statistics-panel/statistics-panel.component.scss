@@ -1,14 +1,11 @@
 @import "helpers/constants";
+@import "helpers/placeholders";
 
 :host {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  background-color: $default-background-color;
-  margin-top: 2.5em;
+  @extend %panel-base;
 }
 
-.content-wrapper {
+.statistics-wrapper {
   width: 75%;
   height: calc(100vh - 150px);
   max-width: $max-content-width;
