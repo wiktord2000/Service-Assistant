@@ -1,4 +1,4 @@
-import { AccountService } from '../auth/data-access/account.service';
+import { AccountService } from '../../../features/auth/data-access/account.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
