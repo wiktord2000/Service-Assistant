@@ -13,7 +13,6 @@ import {
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { NavModule } from './core/layout/nav/nav.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +23,6 @@ import { NavModule } from './core/layout/nav/nav.module';
     HttpClientModule,
     LayoutModule,
     MatMomentDateModule, // or MatNativeDateModule
-    NavModule,
     CoreModule,
     SharedModule
   ],
