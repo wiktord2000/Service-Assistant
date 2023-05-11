@@ -1,12 +1,8 @@
-<div class="container">
-  <!-- Message -->
-  <div class="content">
-    <mat-icon>{{ iconsMap.get(data.type) }}</mat-icon>
-    <span class="message">{{ data.message }}</span>
-  </div>
-
-  <!-- Action button -->
-  <button class="action-button" mat-button (click)="onButtonClick()">
-    {{ data.buttonName }}
-  </button>
+<div class="content">
+  <mat-icon>{{ iconsMap.get(data.type) }}</mat-icon>
+  <span class="message">{{ data.message }}</span>
 </div>
+
+<button class="action-button" mat-button (click)="onButtonClick()">
+  {{ data.buttonName }}
+</button>
