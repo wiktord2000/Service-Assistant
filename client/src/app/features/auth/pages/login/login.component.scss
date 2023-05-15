@@ -13,3 +13,20 @@
 .form-paper {
   margin-top: $navbar-height;
 }
+
+.banner {
+  background-color: $banner-color;
+  padding: $inputs-content-padding;
+  position: relative;
+  border-top-left-radius: $inputs-border-radius;
+  border-top-right-radius: $inputs-border-radius;
+  border-bottom: 1px solid $primary;
+}
+
+.banner > strong {
+  color: $primary;
+}
+
+.btn-wrapper {
+  text-align: end;
+}
