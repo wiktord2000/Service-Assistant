@@ -6,6 +6,9 @@ $default-border-radius: 5px;
 $default-background-color: white;
 $navbar-height: 64px;
 $navbar-shrink-height: 56px;
+// Inputs
+$inputs-border-radius: 4px;
+$inputs-content-padding: 0.75em;
 // Media queries related
 $small-breakpoint: 600px;
 $medium-breakpoint: 960px;
@@ -17,6 +20,8 @@ $snackbar-info-color: rgb(135, 206, 250);
 $snackbar-warn-color: orange;
 $snackbar-error-color: orangered;
 $snackbar-paper-color: rgb(111, 114, 135);
+//Banner
+$banner-color: #f0edff;
 // Angular Material (Indigo-Pink Theme)
 $app-primary-palette: mat-palette($mat-indigo);
 $app-accent-palette: mat-palette($mat-pink);
