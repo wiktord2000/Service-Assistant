@@ -6,6 +6,9 @@ import { AccountService } from '../../data-access/account.service';
 import { User } from '../../../../core/models/User';
 import { finalize } from 'rxjs';
 
+const TESTING_USERNAME = 'wiktor';
+const TESTING_PASSWORD = 'qweqweqwe';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -57,5 +60,11 @@ export class LoginComponent implements OnInit {
 
   togglePasswordVisibility(): void {
     this.isPasswordVisible = !this.isPasswordVisible;
+  }
+
+  onRecommendationClick() {
+    this.loginForm.controls['username'].setValue(TESTING_USERNAME);
+    this.loginForm.controls['password'].setValue(TESTING_PASSWORD);
+    this.onLogin();
   }
 }
