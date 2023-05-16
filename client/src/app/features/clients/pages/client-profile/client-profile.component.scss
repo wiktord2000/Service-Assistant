@@ -1,51 +1,75 @@
+@import "helpers/constants";
+@import "helpers/placeholders";
+
+$tabs-main: hsl(207, 42%, 47%);
+$tabs-primary: hsl(207, 42%, 40%);
+$tabs-secondary: #ffffffbb;
+$primary-border-radius: 1rem;
+
 :host {
   flex: 1;
   display: flex;
   flex-direction: column;
-  --tabs-main: hsl(207, 42%, 47%);
-  --tabs-primary: hsl(207, 42%, 40%);
-  --tabs-secondary: #ffffffbb;
-  --main-border-radius: 1rem;
 }
 
-.content-wrapper {
+.profile-wrapper {
   flex: 1;
   margin: 5vh 10vw;
   display: flex;
 }
 
-.content {
+.profile-paper {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  border-top-left-radius: $primary-border-radius;
+  border-top-right-radius: $primary-border-radius;
+  overflow: hidden;
   width: 100%;
 }
 
-.header {
+.profile-intro {
   min-height: 4em;
   padding: 3em;
   padding-bottom: 1em;
-  background-color: var(--tabs-main);
+  background-color: $tabs-main;
   position: relative;
   color: white;
 }
 
-.header-border-radius {
-  border-top-left-radius: var(--main-border-radius);
-  border-top-right-radius: var(--main-border-radius);
+.primary-name {
+  font-size: 28px;
+  line-height: 30px;
+  font-weight: 500;
 }
 
-.right-corner-label {
+.secondary-name {
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0.6;
+  margin-top: 0.25em;
+}
+
+.client-address {
+  font-size: 14px;
+  margin-top: 0.5em;
+}
+
+.panel-label {
   position: absolute;
   top: 0;
   right: 0;
   padding: 1em 2em;
   font-size: 1.25em;
-  border-bottom-left-radius: var(--main-border-radius);
-  border-top-right-radius: var(--main-border-radius);
+  border-bottom-left-radius: $primary-border-radius;
+  border-top-right-radius: $primary-border-radius;
   color: white;
   font-weight: 500;
-  background-color: var(--tabs-primary);
+  background-color: $tabs-primary;
+}
+
+.panel-label > .mat-icon {
+  vertical-align: text-bottom;
 }
 
 .right-bottom-data {
@@ -56,9 +80,13 @@
   z-index: 2;
 }
 
-.tabs {
+.right-bottom-data > div {
+  padding-right: 1em;
+}
+
+.profile-content-wrapper {
   flex: 1 1 auto;
-  border-bottom: 1em solid var(--tabs-main);
+  border-bottom: 1em solid $tabs-main;
 }
 
 /* Client Tabs Common*/
@@ -96,23 +124,20 @@
 }
 
 /* Styling angular material tabs */
-::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  background-color: var(--tabs-secondary);
-  margin-left: 5px;
-}
+:host ::ng-deep {
+  .mat-tab-list .mat-tab-labels {
+    background-color: $tabs-main;
 
-::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
-  color: white;
-  background-color: var(--tabs-primary);
-}
-
-::ng-deep .mat-tab-list .mat-tab-labels {
-  background-color: var(--tabs-main);
-  /* padding-left: 0.25em; */
-}
-
-::ng-deep .mat-ink-bar {
-  display: none;
+    .mat-tab-label {
+      background-color: $tabs-secondary;
+      @extend %mat-tab-label-adjustment;
+    }
+    .mat-tab-label-active {
+      color: white;
+      background-color: $tabs-primary;
+    }
+  }
+  .mat-ink-bar {
+    display: none;
+  }
 }

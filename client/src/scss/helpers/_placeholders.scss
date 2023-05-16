@@ -10,3 +10,10 @@
   background-color: $default-background-color;
   padding-top: 2.5em;
 }
+
+%mat-tab-label-adjustment {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  margin-left: 5px;
+  user-select: none;
+}

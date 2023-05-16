@@ -1,26 +1,25 @@
-<div *ngIf="client" class="content-wrapper">
-  <!-- <p *ngIf="client">{{client | json}}</p> -->
-  <div class="content header-border-radius mat-elevation-z10">
-    <div class="header header-border-radius">
-      <!-- Client name/ Company name -->
-      <div style="font-size: 28px; font-weight: '500'">
+<div *ngIf="client" class="profile-wrapper">
+  <div class="profile-paper mat-elevation-z10">
+    <div class="profile-intro">
+      <!-- Client name / Company name -->
+      <div class="primary-name">
         {{ isCompany ? client.companyName : client.firstname + " " + client.lastname }}
       </div>
 
       <!-- Client name (if company) -->
-      <div *ngIf="isCompany" style="font-size: 16px; font-weight: 500; margin-top: 0.25em">
+      <div *ngIf="isCompany" class="secondary-name">
         {{ client.firstname + " " + client.lastname }}
       </div>
 
       <!-- Client address -->
-      <div style="font-size: 14px; margin-top: 0.5em">
+      <div class="client-address">
         <div>{{ client.street }}</div>
         <div>{{ client.postalCode }} {{ client.city }}</div>
       </div>
 
-      <!-- Client type -->
-      <div class="right-corner-label">
-        <mat-icon style="vertical-align: text-bottom">
+      <!-- Right corner label -->
+      <div class="panel-label">
+        <mat-icon>
           {{ isCompany ? "groups" : "person" }}
         </mat-icon>
         {{ isCompany ? "Firma" : "Klient indywidualny" }}
@@ -28,24 +27,13 @@
 
       <!-- Right bottom data -->
       <div class="right-bottom-data">
-        <!-- Phone number -->
-        <div style="padding-right: 1em">
-          {{ client.phone }}
-        </div>
-
-        <!-- NIP if comapny -->
-        <div *ngIf="isCompany" style="padding-right: 1em">
-          <div>NIP: {{ client.nip }}</div>
-        </div>
-
-        <!-- E-mail link-->
-        <div>
-          <app-send-email-link [customColor]="'white'" [email]="client.email"></app-send-email-link>
-        </div>
+        <div>{{ client.phone }}</div>
+        <div *ngIf="isCompany">NIP: {{ client.nip }}</div>
+        <app-send-email-link [customColor]="'white'" [email]="client.email"></app-send-email-link>
       </div>
     </div>
 
-    <div class="tabs">
+    <div class="profile-content-wrapper">
       <mat-tab-group animationDuration="0ms" mat-align-tabs="start">
         <mat-tab label="Dane klienta">
           <ng-template [ngTemplateOutlet]="clientData"></ng-template>
