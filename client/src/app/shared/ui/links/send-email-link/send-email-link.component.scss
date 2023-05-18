@@ -1,3 +1,11 @@
+@import "helpers/constants";
+
 .icon {
-  margin-right: 2px;
+  margin-right: 4px;
+}
+
+@media (max-width: $medium-breakpoint) {
+  .email {
+    display: none;
+  }
 }
