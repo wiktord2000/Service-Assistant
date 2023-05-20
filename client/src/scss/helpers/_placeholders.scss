@@ -17,3 +17,9 @@
   margin-left: 5px;
   user-select: none;
 }
+
+%text-overflow-ellipses {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
