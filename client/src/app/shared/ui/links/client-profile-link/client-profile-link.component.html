@@ -10,8 +10,10 @@
 >
   <mat-icon>{{ this.client.type === "company" ? "groups" : "person" }}</mat-icon>
   <!-- TODO - Custom pipe -->
-  {{
-    this.client.type === "company" ? client.companyName : client.firstname + " " + client.lastname
-  }}
+  <span class="client-name">
+    {{
+      this.client.type === "company" ? client.companyName : client.firstname + " " + client.lastname
+    }}
+  </span>
   <div *ngIf="containLabel" class="links-label">Właściciel</div>
 </a>
