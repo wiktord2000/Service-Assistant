@@ -20,8 +20,10 @@ export class VehiclesTableComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<Vehicle>;
   @Input() initialData?: Vehicle[];
   @Input() hideCurrentOwnerColumn?: boolean = false;
-  @Input() matElevationValue?: number = 8;
-  @Input() fixedSize?: boolean = true;
+  @Input() matElevationValue?: number = 6;
+  @Input() heightInRows?: number = 8;
+  rowHeight: number = 48;
+  headerHeight: number = 56;
 
   dataSource: VehiclesTableDataSource;
   displayedColumns = [
@@ -78,5 +80,9 @@ export class VehiclesTableComponent implements OnInit {
         }
       });
     });
+  }
+
+  calculateMinHeight() {
+    return this.headerHeight + this.heightInRows * this.rowHeight;
   }
 }
