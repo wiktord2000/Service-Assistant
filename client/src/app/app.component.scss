@@ -4,6 +4,7 @@
   min-height: calc(100% - $navbar-height);
   display: flex;
   flex-direction: column;
+  padding: max(2.5%, 24px) max(2.5%, 16px);
 }
 
 @media (max-width: $small-breakpoint) {
