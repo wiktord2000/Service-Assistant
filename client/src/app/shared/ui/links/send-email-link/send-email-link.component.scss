@@ -1,17 +1,10 @@
 @import "helpers/constants";
 
-:host {
-  margin-right: -16px;
-}
-
 .icon {
   margin-right: 4px;
 }
 
 @media (max-width: $medium-breakpoint) {
-  :host {
-    margin-right: -6px;
-  }
   .email {
     display: none;
   }
