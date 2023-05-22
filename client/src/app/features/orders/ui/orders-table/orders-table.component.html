@@ -1,5 +1,8 @@
 <div *ngIf="dataSource" class="table-wrapper mat-elevation-z{{ matElevationValue }}">
-  <div class="table-internal-wrapper" [ngStyle]="{ 'min-height.px': calculateMinHeight() }">
+  <div
+    class="table-internal-wrapper"
+    [ngStyle]="{ 'max-height.px': tableHeight, 'min-height.px': tableHeight }"
+  >
     <table class="table-full-width" mat-table matSort aria-label="Elements">
       <!-- Order No. column -->
       <ng-container matColumnDef="orderNumber">
@@ -133,11 +136,11 @@
           <mat-menu #actions="matMenu">
             <!-- Invoice -->
             <button mat-menu-item [disabled]="true" aria-label="Invoice">
-              <mat-icon>receipt_long</mat-icon><span>Faktura</span>
+              <mat-icon color="primary">receipt_long</mat-icon>Faktura
             </button>
             <!-- Delete -->
             <button mat-menu-item (click)="onDeleteClick(row)" aria-label="Delete">
-              <mat-icon color="warn">delete_forever</mat-icon><span class="delete-text">Usuń</span>
+              <mat-icon color="warn">delete_forever</mat-icon>Usuń
             </button>
           </mat-menu>
         </td>

@@ -41,6 +41,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() hideVehicleColumn?: boolean = false;
   @Input() matElevationValue?: number = 8;
   @Input() heightInRows: number = 8;
+  tableHeight!: number;
   dataSource: OrdersTableDataSource;
   displayedColumns = COMPLETE_COLUMN_LIST;
   shrinkDates: boolean = false;
@@ -70,6 +71,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
           (column === 'vehicle' && this.hideVehicleColumn)
         )
     );
+    this.tableHeight = this.utils.calculateTableHeight(this.heightInRows);
   }
 
   ngAfterViewInit(): void {
@@ -143,10 +145,6 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
     });
-  }
-
-  calculateMinHeight() {
-    return this.utils.calculateMinHeight(this.heightInRows);
   }
 
   ngOnDestroy(): void {
