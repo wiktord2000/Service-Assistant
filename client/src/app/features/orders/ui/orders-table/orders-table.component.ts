@@ -11,46 +11,21 @@ import { Status } from 'src/app/core/models/Status';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Subscription } from 'rxjs';
+import { Subscription, distinctUntilChanged, map } from 'rxjs';
+import { TableHelpersService } from 'src/app/core/helpers/table-helpers/table-helpers.service';
 
-enum OrderTableColumns {
-  orderNumber = 'orderNumber',
-  createDate = 'createDate',
-  finishDate = 'finishDate',
-  status = 'status',
-  client = 'client',
-  vehicle = 'vehicle',
-  admissionDate = 'admissionDate',
-  deadlineDate = 'deadlineDate',
-  totalGross = 'totalGross',
-  actions = 'actions'
-}
-
-const FILTERED_COLUMNS = {
-  MEDIUM: [OrderTableColumns.createDate, OrderTableColumns.admissionDate],
-  SMALL: [
-    OrderTableColumns.createDate,
-    OrderTableColumns.admissionDate,
-    OrderTableColumns.finishDate
-  ],
-  XSMALL: [
-    OrderTableColumns.createDate,
-    OrderTableColumns.finishDate,
-    OrderTableColumns.admissionDate,
-    OrderTableColumns.deadlineDate
-  ]
-};
-
-const FULL_SIZE_COLUMNS = Object.values(OrderTableColumns);
-const MEDIUM_SIZE_COLUMNS = FULL_SIZE_COLUMNS.filter(
-  (column) => !FILTERED_COLUMNS.MEDIUM.includes(column)
-);
-const SMALL_SIZE_COLUMNS = FULL_SIZE_COLUMNS.filter(
-  (column) => !FILTERED_COLUMNS.SMALL.includes(column)
-);
-const XSMALL_SIZE_COLUMNS = FULL_SIZE_COLUMNS.filter(
-  (column) => !FILTERED_COLUMNS.XSMALL.includes(column)
-);
+const COMPLETE_COLUMN_LIST = [
+  'orderNumber',
+  'createDate',
+  'finishDate',
+  'status',
+  'client',
+  'vehicle',
+  'admissionDate',
+  'deadlineDate',
+  'totalGross',
+  'actions'
+];
 
 @Component({
   selector: 'app-orders-table',
@@ -65,65 +40,42 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() hideClientColumn?: boolean = false;
   @Input() hideVehicleColumn?: boolean = false;
   @Input() matElevationValue?: number = 8;
-  @Input() fixedSize?: boolean = true;
+  @Input() heightInRows: number = 8;
   dataSource: OrdersTableDataSource;
-  columnsVariant = {
-    fullSize: FULL_SIZE_COLUMNS,
-    medium: MEDIUM_SIZE_COLUMNS,
-    small: SMALL_SIZE_COLUMNS,
-    xsmall: XSMALL_SIZE_COLUMNS
-  };
-  displayedColumns!: OrderTableColumns[];
-  breakpointSubscription: Subscription;
+  displayedColumns = COMPLETE_COLUMN_LIST;
   shrinkDates: boolean = false;
+  subscription: Subscription;
+  isLargeScreen$ = this.breakpointObserver.observe([Breakpoints.Large, Breakpoints.XLarge]).pipe(
+    map((event) => event.matches),
+    distinctUntilChanged()
+  );
 
   constructor(
     public ordersService: OrdersService,
     private snackbarService: SnackbarService,
-    public dialog: MatDialog,
-    private breakpointObserver: BreakpointObserver
+    private dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver,
+    private helpers: TableHelpersService
   ) {}
+
   ngOnInit(): void {
-    this.subscribeBreakpoints();
+    this.subscription = this.isLargeScreen$.subscribe((value) => {
+      this.shrinkDates = !value;
+    });
     this.dataSource = new OrdersTableDataSource(this.ordersService, this.initialData ?? []);
-    const columnsToHide = [
-      this.hideClientColumn && OrderTableColumns.client,
-      this.hideVehicleColumn && OrderTableColumns.vehicle
-    ];
-    // Alter columns variants
-    Object.keys(this.columnsVariant).forEach(
-      (key) =>
-        (this.columnsVariant[key] = this.columnsVariant[key].filter(
-          (column) => !columnsToHide.includes(column)
-        ))
+    this.displayedColumns = this.displayedColumns.filter(
+      (column) =>
+        !(
+          (column === 'client' && this.hideClientColumn) ||
+          (column === 'vehicle' && this.hideVehicleColumn)
+        )
     );
-    this.displayedColumns = this.columnsVariant.fullSize;
   }
+
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
-  }
-  ngOnDestroy(): void {
-    this.breakpointSubscription.unsubscribe();
-  }
-
-  subscribeBreakpoints() {
-    this.breakpointSubscription = this.breakpointObserver
-      .observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium])
-      .subscribe((result) => {
-        if (!result.matches) {
-          this.displayedColumns = this.columnsVariant.fullSize;
-          this.shrinkDates = false;
-        } else if (result.breakpoints[Breakpoints.Medium]) {
-          this.displayedColumns = this.columnsVariant.medium;
-          this.shrinkDates = true;
-        } else if (result.breakpoints[Breakpoints.Small]) {
-          this.displayedColumns = this.columnsVariant.small;
-        } else if (result.breakpoints[Breakpoints.XSmall]) {
-          this.displayedColumns = this.columnsVariant.xsmall;
-        }
-      });
   }
 
   onDateUpdate(event: DateAndTimePickerEvent, orderId: number, dateType: 'admission' | 'deadline') {
@@ -191,5 +143,13 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
         }
       });
     });
+  }
+
+  calculateMinHeight() {
+    return this.helpers.calculateMinHeight(this.heightInRows);
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
