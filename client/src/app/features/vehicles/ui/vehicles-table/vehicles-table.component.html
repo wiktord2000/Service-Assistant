@@ -1,6 +1,6 @@
 <div *ngIf="dataSource" class="table-wrapper mat-elevation-z{{ matElevationValue }}">
   <div class="table-internal-wrapper" [ngStyle]="{ 'min-height.px': calculateMinHeight() }">
-    <table class="table" mat-table matSort aria-label="Elements">
+    <table class="table-full-width" mat-table matSort aria-label="Elements">
       <!-- Vehicle Name Column (brand + model) -->
       <ng-container matColumnDef="vehicleName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Marka/Model</th>
@@ -90,7 +90,7 @@
 
       <!-- No data row -->
       <tr *matNoDataRow>
-        <div class="no-vehicles-message">
+        <div class="table-no-data-message">
           <mat-icon>leaderboard</mat-icon>
           <div>Brak pojazdów</div>
         </div>
@@ -100,7 +100,7 @@
 
   <!-- Pagination -->
   <mat-paginator
-    class="paginator"
+    class="table-paginator"
     #paginator
     [length]="dataSource?.data?.length"
     [pageIndex]="0"

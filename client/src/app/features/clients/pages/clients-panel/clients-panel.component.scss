@@ -3,5 +3,5 @@
 @import "helpers/placeholders";
 
 :host {
-  @extend %panel-base;
+  @extend %panel-host;
 }

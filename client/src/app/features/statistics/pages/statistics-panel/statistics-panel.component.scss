@@ -2,13 +2,13 @@
 @import "helpers/placeholders";
 
 :host {
-  @extend %panel-base;
+  @extend %panel-host;
 }
 
 .statistics-wrapper {
   width: 75%;
   height: calc(100vh - 150px);
-  max-width: $max-content-width;
+  max-width: $max-panel-content-width;
   text-align: center;
   border-radius: 8px;
   padding-top: 0.5em;

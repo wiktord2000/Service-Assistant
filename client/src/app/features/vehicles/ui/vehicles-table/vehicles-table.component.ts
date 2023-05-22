@@ -8,6 +8,7 @@ import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { VehiclesService } from 'src/app/features/vehicles/data-access/vehicles.service';
 import { VehiclesTableDataSource } from './vehicles-table-datasource';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
+import { TableHelpersService } from 'src/app/core/helpers/table-helpers/table-helpers.service';
 
 @Component({
   selector: 'app-vehicles-table',
@@ -22,8 +23,6 @@ export class VehiclesTableComponent implements OnInit {
   @Input() hideCurrentOwnerColumn?: boolean = false;
   @Input() matElevationValue?: number = 6;
   @Input() heightInRows?: number = 8;
-  rowHeight: number = 48;
-  headerHeight: number = 56;
 
   dataSource: VehiclesTableDataSource;
   displayedColumns = [
@@ -41,7 +40,8 @@ export class VehiclesTableComponent implements OnInit {
   constructor(
     public vehiclesService: VehiclesService,
     public dialog: MatDialog,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    private helpers: TableHelpersService
   ) {}
 
   ngOnInit(): void {
@@ -83,6 +83,6 @@ export class VehiclesTableComponent implements OnInit {
   }
 
   calculateMinHeight() {
-    return this.headerHeight + this.heightInRows * this.rowHeight;
+    return this.helpers.calculateMinHeight(this.heightInRows);
   }
 }

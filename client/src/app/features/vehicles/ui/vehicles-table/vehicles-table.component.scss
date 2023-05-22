@@ -1,55 +1,11 @@
 @import "helpers/constants";
+@import "helpers/placeholders";
 
 $table-border-radius: 4px;
 $headerHeight: 56px;
 
 :host {
-  width: 100%;
-  height: 100%;
-}
-
-.table-wrapper {
-  border-radius: $table-border-radius;
-  overflow: hidden;
-}
-
-// To make slider over the paginator in case of overflow (default below)
-.table-internal-wrapper {
-  overflow: auto;
-  position: relative;
-  background-color: white;
-}
-
-.table {
-  width: 100%;
-}
-
-// Table theme
-.mat-header-row {
-  // background-color: lighten(rgba(0, 0, 0, 0.54), 96%);
-}
-.mat-row:nth-of-type(1) .mat-cell {
-  // border-top: 1px solid rgba(0, 0, 0, 0.12);
-}
-.mat-header-cell {
-  // border-bottom: 4px solid lighten(rgba(0, 0, 0, 0.54), 95%);
-}
-.paginator {
-  background-color: lighten(rgba(0, 0, 0, 0.54), 96%);
-}
-
-.no-vehicles-message {
-  position: absolute;
-  top: $headerHeight;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-weight: 500;
-  color: lighten($primary, 15%);
+  @extend %table-host;
 }
 
 @media (max-width: $medium-breakpoint) {
