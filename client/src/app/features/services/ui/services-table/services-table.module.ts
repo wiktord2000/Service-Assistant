@@ -6,7 +6,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatMenuModule } from '@angular/material/menu';
+import { TruncateTextPipeModule } from 'src/app/shared/ui/pipes/truncate-text-pipe/truncate-text-pipe.module';
 
 @NgModule({
   declarations: [ServicesTableComponent],
@@ -17,7 +18,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSortModule,
     MatButtonModule,
     MatIconModule,
-    MatTooltipModule
+    MatMenuModule,
+    TruncateTextPipeModule
   ],
   exports: [ServicesTableComponent]
 })

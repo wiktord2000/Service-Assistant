@@ -1,17 +1,20 @@
-<div class="mat-elevation-z{{ matElevationValue }}">
-  <div [ngClass]="fixedSize && 'table-container'" style="overflow: auto">
-    <table *ngIf="dataSource" mat-table class="full-width-table" matSort aria-label="Elements">
+<div *ngIf="dataSource" class="table-wrapper mat-elevation-z{{ matElevationValue }}">
+  <div
+    class="table-internal-wrapper"
+    [ngStyle]="{ 'max-height.px': tableHeight, 'min-height.px': tableHeight }"
+  >
+    <table class="table-full-width" mat-table matSort aria-label="Elements">
       <!-- Service name -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Nazwa usługi</th>
         <td mat-cell *matCellDef="let row">
-          <span style="font-weight: 500; opacity: 0.8">{{ row.name }}</span>
+          <span class="service-name">{{ row.name | truncateText : 80 }}</span>
         </td>
       </ng-container>
 
       <!-- Cost per hour Column -->
       <ng-container matColumnDef="cost">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Koszt godziny pracy</th>
+        <th mat-header-cell *matHeaderCellDef>Koszt godzinny</th>
         <td mat-cell *matCellDef="let row">
           {{ isGross ? row.costGross.toFixed(2) : row.costNet.toFixed(2) }} zł
         </td>
@@ -19,13 +22,13 @@
 
       <!-- Estimated time Column -->
       <ng-container matColumnDef="estimatedTime">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Szacowany czas</th>
+        <th mat-header-cell *matHeaderCellDef>Szacowany czas</th>
         <td mat-cell *matCellDef="let row">{{ row.estimatedTime.toFixed(2) }} h</td>
       </ng-container>
 
-      <!-- Total Cost Column -->
+      <!-- Total cost Column -->
       <ng-container matColumnDef="total">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Szacowana kwota</th>
+        <th mat-header-cell *matHeaderCellDef>Szacowana kwota</th>
         <td mat-cell *matCellDef="let row">
           {{ isGross ? row.totalGross.toFixed(2) : row.totalNet.toFixed(2) }} zł
         </td>
@@ -35,43 +38,40 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Operacje</th>
         <td mat-cell *matCellDef="let row">
-          <!-- Edit -->
+          <!-- Expand button -->
           <button
             mat-icon-button
+            [matMenuTriggerFor]="actions"
             color="primary"
-            (click)="onEditClick(row)"
-            aria-label="Edit button"
-            matTooltip="Edytuj usługę"
-            [matTooltipPosition]="'left'"
+            aria-label="Expand acctions"
           >
-            <mat-icon>edit</mat-icon>
+            <mat-icon>expand_more</mat-icon>
           </button>
 
-          <!-- Delete -->
-          <button
-            mat-icon-button
-            color="warn"
-            (click)="onDeleteClick(row)"
-            aria-label="Delete button"
-            matTooltip="Usuń usługę"
-            [matTooltipPosition]="'right'"
-          >
-            <mat-icon>delete_forever</mat-icon>
-          </button>
+          <!-- Actions -->
+          <mat-menu #actions="matMenu">
+            <!-- Edit -->
+            <button mat-menu-item (click)="onEditClick(row)" aria-label="Edit button">
+              <mat-icon color="primary">edit</mat-icon>Edytuj
+            </button>
+
+            <!-- Delete -->
+            <button mat-menu-item (click)="onDeleteClick(row)" aria-label="Delete button">
+              <mat-icon color="warn">delete_forever</mat-icon>Usuń
+            </button>
+          </mat-menu>
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
-      <!-- Row shown when there is no data -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" [ngStyle]="{ border: '0px' }" colspan="10">
-          <div class="no-services-message">
-            <mat-icon>leaderboard</mat-icon>
-            <div>Brak usług</div>
-          </div>
-        </td>
+      <!-- No data row -->
+      <tr *matNoDataRow>
+        <div class="table-no-data-message">
+          <mat-icon>leaderboard</mat-icon>
+          <div>Brak usług</div>
+        </div>
       </tr>
     </table>
   </div>
@@ -79,6 +79,7 @@
   <!-- Pagination -->
   <mat-paginator
     #paginator
+    class="table-paginator"
     [length]="dataSource?.data?.length"
     [pageIndex]="0"
     [pageSize]="8"

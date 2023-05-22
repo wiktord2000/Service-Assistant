@@ -1,0 +1,31 @@
+@import "helpers/constants";
+
+.service-name {
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* Separate the columns content*/
+td.mat-cell:first-of-type {
+  padding-right: 1em;
+}
+
+@media (max-width: $small-breakpoint) {
+  .mat-column-cost {
+    display: none;
+  }
+
+  td.mat-cell {
+    font-size: 12px;
+  }
+
+  th.mat-header-cell:last-of-type,
+  td.mat-cell:last-of-type {
+    padding-right: 1em;
+  }
+
+  th.mat-header-cell:first-of-type,
+  td.mat-cell:first-of-type {
+    padding-left: 1em;
+  }
+}
