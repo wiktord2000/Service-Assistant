@@ -1,5 +1,8 @@
 <div *ngIf="dataSource" class="table-wrapper mat-elevation-z{{ matElevationValue }}">
-  <div class="table-internal-wrapper" [ngStyle]="{ 'min-height.px': calculateMinHeight() }">
+  <div
+    class="table-internal-wrapper"
+    [ngStyle]="{ 'max-height.px': tableHeight, 'min-height.px': tableHeight }"
+  >
     <table class="table-full-width" mat-table matSort aria-label="Elements">
       <!-- Vehicle Name Column (brand + model) -->
       <ng-container matColumnDef="vehicleName">

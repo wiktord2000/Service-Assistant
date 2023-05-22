@@ -10,32 +10,34 @@ import { VehiclesTableDataSource } from './vehicles-table-datasource';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { UtilsService } from 'src/app/shared/utils/utils.service';
 
+const COMPLETE_COLUMN_LIST = [
+  'vehicleName',
+  'registrationNumber',
+  'vin',
+  'currentOwner',
+  'productionDate',
+  'capacity',
+  'engineFuel',
+  'enginePower',
+  'actions'
+];
+
 @Component({
   selector: 'app-vehicles-table',
   templateUrl: './vehicles-table.component.html',
   styleUrls: ['./vehicles-table.component.scss']
 })
 export class VehiclesTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator; // ! - assured that paginator exists
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Vehicle>;
   @Input() initialData?: Vehicle[];
   @Input() hideCurrentOwnerColumn?: boolean = false;
-  @Input() matElevationValue?: number = 6;
+  @Input() matElevationValue?: number = 8;
   @Input() heightInRows?: number = 8;
-
+  tableHeight!: number;
   dataSource: VehiclesTableDataSource;
-  displayedColumns = [
-    'vehicleName',
-    'registrationNumber',
-    'vin',
-    'currentOwner',
-    'productionDate',
-    'capacity',
-    'engineFuel',
-    'enginePower',
-    'actions'
-  ];
+  displayedColumns = COMPLETE_COLUMN_LIST;
 
   constructor(
     public vehiclesService: VehiclesService,
@@ -45,12 +47,11 @@ export class VehiclesTableComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Create DataSource (with initialData if needed)
     this.dataSource = new VehiclesTableDataSource(this.vehiclesService, this.initialData);
-    // Hide client column (if needed)
     this.displayedColumns = this.displayedColumns.filter(
       (column) => !(column === 'currentOwner' && this.hideCurrentOwnerColumn)
     );
+    this.tableHeight = this.utils.calculateTableHeight(this.heightInRows);
   }
 
   ngAfterViewInit(): void {
@@ -80,9 +81,5 @@ export class VehiclesTableComponent implements OnInit {
         }
       });
     });
-  }
-
-  calculateMinHeight() {
-    return this.utils.calculateMinHeight(this.heightInRows);
   }
 }

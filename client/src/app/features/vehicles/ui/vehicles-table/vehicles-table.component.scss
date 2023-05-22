@@ -1,9 +1,6 @@
 @import "helpers/constants";
 @import "helpers/placeholders";
 
-$table-border-radius: 4px;
-$headerHeight: 56px;
-
 :host {
   @extend %table-host;
 }
