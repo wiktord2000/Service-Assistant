@@ -1,6 +1,8 @@
+@import "helpers/constants";
+
 .panel-wrapper {
   width: 100%;
-  max-width: $max-content-width;
+  max-width: $max-panel-content-width;
 }
 
 .panel-filters-wrapper {

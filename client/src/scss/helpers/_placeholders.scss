@@ -8,6 +8,15 @@
   display: flex;
   justify-content: center;
   background-color: $default-background-color;
+  padding: max(2.5%, 24px) max(2.5%, 16px);
+}
+
+%profile-base {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  padding: max(2.5%, 24px) max(2.5%, 16px);
 }
 
 %mat-tab-label-adjustment {
