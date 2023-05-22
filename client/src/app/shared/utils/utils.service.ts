@@ -10,7 +10,7 @@ import {
 export class UtilsService {
   constructor() {}
 
-  calculateMinHeight(heightInRows: number) {
+  calculateTableHeight(heightInRows: number) {
     return DEFAULT_TABLE_HEADER_HEIGHT + heightInRows * DEFAULT_TABLE_ROW_HEIGHT;
   }
 }
