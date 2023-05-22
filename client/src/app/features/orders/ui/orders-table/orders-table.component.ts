@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subscription, distinctUntilChanged, map } from 'rxjs';
-import { TableHelpersService } from 'src/app/core/helpers/table-helpers/table-helpers.service';
+import { UtilsService } from 'src/app/shared/utils/utils.service';
 
 const COMPLETE_COLUMN_LIST = [
   'orderNumber',
@@ -55,7 +55,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
     private snackbarService: SnackbarService,
     private dialog: MatDialog,
     private breakpointObserver: BreakpointObserver,
-    private helpers: TableHelpersService
+    private utils: UtilsService
   ) {}
 
   ngOnInit(): void {
@@ -146,7 +146,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   calculateMinHeight() {
-    return this.helpers.calculateMinHeight(this.heightInRows);
+    return this.utils.calculateMinHeight(this.heightInRows);
   }
 
   ngOnDestroy(): void {

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientProfileComponent } from './client-profile.component';
-import { ClientResolver } from '../../utils/client.resolver';
+import { ClientResolver } from '../../data-access/client.resolver';
 
 const routes: Routes = [
   {

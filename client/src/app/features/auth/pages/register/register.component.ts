@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../../../../core/models/User';
 import { AccountService } from '../../data-access/account.service';
-import { matchValues } from '../../../../core/helpers/form-validators';
+import { matchValues } from '../../../../shared/utils/form-validators';
 import { finalize } from 'rxjs';
 
 @Component({

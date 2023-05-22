@@ -8,7 +8,7 @@ import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { VehiclesService } from 'src/app/features/vehicles/data-access/vehicles.service';
 import { VehiclesTableDataSource } from './vehicles-table-datasource';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
-import { TableHelpersService } from 'src/app/core/helpers/table-helpers/table-helpers.service';
+import { UtilsService } from 'src/app/shared/utils/utils.service';
 
 @Component({
   selector: 'app-vehicles-table',
@@ -41,7 +41,7 @@ export class VehiclesTableComponent implements OnInit {
     public vehiclesService: VehiclesService,
     public dialog: MatDialog,
     private snackbarService: SnackbarService,
-    private helpers: TableHelpersService
+    private utils: UtilsService
   ) {}
 
   ngOnInit(): void {
@@ -83,6 +83,6 @@ export class VehiclesTableComponent implements OnInit {
   }
 
   calculateMinHeight() {
-    return this.helpers.calculateMinHeight(this.heightInRows);
+    return this.utils.calculateMinHeight(this.heightInRows);
   }
 }
