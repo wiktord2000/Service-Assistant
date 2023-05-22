@@ -1,143 +1,192 @@
+@use "@angular/material" as mat;
 @import "helpers/constants";
 @import "helpers/placeholders";
 
-$tabs-main: hsl(207, 42%, 47%);
-$tabs-primary: hsl(207, 42%, 40%);
-$tabs-secondary: #ffffffbb;
-$primary-border-radius: 1rem;
+$intro-primary: hsl(207, 42%, 47%);
+$intro-primary-dark: hsl(207, 42%, 40%);
+$intro-horizontal-padding: 2.5rem;
+$intro-vertical-padding: 2rem;
+$intro-horizontal-padding-small: 2rem;
+$intro-vertical-padding-small: 2rem;
+$label-horizontal-padding: 1.5em;
+$label-vertical-padding: 1em;
+$tabs-color: #fafafa;
+$paper-border-radius: 1rem;
+$primary-text-opacity: 0.6;
+$secondary-text-opacity: 0.9;
 
 :host {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.profile-wrapper {
-  flex: 1;
-  margin: 5vh 10vw;
-  display: flex;
+  @extend %profile-host;
 }
 
 .profile-paper {
+  width: 100%;
+  max-width: $max-profile-paper-width;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border-top-left-radius: $primary-border-radius;
-  border-top-right-radius: $primary-border-radius;
+  border-top-left-radius: $paper-border-radius;
+  border-top-right-radius: $paper-border-radius;
+  border-bottom: 1em solid $intro-primary;
+  @include mat.elevation(10);
   overflow: hidden;
-  width: 100%;
 }
 
 .profile-intro {
-  min-height: 4em;
-  padding: 3em;
-  padding-bottom: 1em;
-  background-color: $tabs-main;
+  font-size: 1rem;
+  padding: $intro-vertical-padding $intro-horizontal-padding;
+  background-color: $intro-primary;
   position: relative;
   color: white;
 }
 
 .primary-name {
-  font-size: 28px;
-  line-height: 30px;
+  font-size: 1.5em;
+  line-height: 1.25em;
   font-weight: 500;
+  width: 70%;
+  @extend %text-overflow-ellipses;
 }
 
 .secondary-name {
-  font-size: 16px;
+  font-size: 1em;
+  width: 70%;
+  opacity: $primary-text-opacity;
   font-weight: 500;
-  opacity: 0.6;
-  margin-top: 0.25em;
+  @extend %text-overflow-ellipses;
 }
 
 .client-address {
-  font-size: 14px;
-  margin-top: 0.5em;
+  font-size: 0.875em;
+  margin-top: 0.75em;
+  opacity: $secondary-text-opacity;
 }
 
-.panel-label {
+.postalcode-and-city,
+.street {
+  width: 60%;
+  @extend %text-overflow-ellipses;
+}
+
+.profile-label {
   position: absolute;
-  top: 0;
-  right: 0;
-  padding: 1em 2em;
-  font-size: 1.25em;
-  border-bottom-left-radius: $primary-border-radius;
-  border-top-right-radius: $primary-border-radius;
+  top: 0px;
+  right: 0px;
   color: white;
+  font-size: 1.125em;
   font-weight: 500;
-  background-color: $tabs-primary;
+  padding: $label-vertical-padding $label-horizontal-padding;
+  background-color: $intro-primary-dark;
+  border-bottom-left-radius: $paper-border-radius;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+  z-index: 2; // At the top when the second label appear
 }
 
-.panel-label > .mat-icon {
-  vertical-align: text-bottom;
+.profile-label-mail {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: calc($label-vertical-padding - 6px) calc($label-horizontal-padding - 6px);
+  padding-top: $label-vertical-padding;
+  top: calc($label-vertical-padding * 3);
+  display: none;
+  z-index: 1;
 }
 
-.right-bottom-data {
+.contact-data {
   position: absolute;
-  right: 1.5em;
+  font-size: 0.875em;
+  right: $intro-horizontal-padding;
   text-align: right;
-  bottom: -30px;
+  bottom: -28px;
   z-index: 2;
 }
 
-.right-bottom-data > div {
-  padding-right: 1em;
+.nip > span {
+  opacity: $primary-text-opacity;
+  font-weight: 500;
 }
 
-.profile-content-wrapper {
-  flex: 1 1 auto;
-  border-bottom: 1em solid $tabs-main;
+.email-link {
+  margin-right: -16px;
 }
 
-/* Client Tabs Common*/
-.tab-wrapper {
-  padding: 3em;
-}
-
-.filters-wrapper {
+.tab-content {
+  flex: 1;
   display: flex;
-  justify-content: space-between;
-  align-items: centers;
-  padding-bottom: 1em;
+  flex-direction: column;
+  padding: max(3.5%, 24px) max(4%, 12px);
+  background-color: $tabs-color;
 }
 
-/* Client data */
-.edit-form {
-  display: flex;
-  flex-wrap: wrap;
+.active-tab-link {
+  opacity: 1;
 }
 
-.edit-form > * {
-  flex: 1 1 50%;
-  box-sizing: border-box;
-  padding: 0 1.5em;
+// Override MatTab
+.mat-tab-nav-bar,
+.mat-tab-header {
+  border-bottom: 0px;
+  background-color: $intro-primary;
+}
+.mat-tab-link {
+  background-color: $tabs-color;
+  color: $intro-primary-dark;
+  @extend %mat-tab-label-adjustment;
 }
 
-.save-button-area {
-  text-align: end;
-  margin-top: 1em;
+@media (max-width: $medium-breakpoint) {
+  .profile-label {
+    font-size: 1em;
+  }
+  .primary-name {
+    width: 56%;
+  }
+  .contact-data {
+    bottom: 0px;
+  }
+  .email-link {
+    margin-right: -7px;
+  }
+  .mat-tab-link {
+    height: 40px;
+    padding: 0 20px;
+    min-width: 140px;
+  }
 }
 
-.save-button {
-  width: 100%;
-  max-width: 12em;
-}
-
-/* Styling angular material tabs */
-:host ::ng-deep {
-  .mat-tab-list .mat-tab-labels {
-    background-color: $tabs-main;
-
-    .mat-tab-label {
-      background-color: $tabs-secondary;
-      @extend %mat-tab-label-adjustment;
-    }
-    .mat-tab-label-active {
-      color: white;
-      background-color: $tabs-primary;
+@media (max-width: $small-breakpoint) {
+  .profile-intro {
+    padding: $intro-vertical-padding-small $intro-horizontal-padding-small;
+  }
+  .profile-label {
+    font-size: 0.75em;
+    // Hide text
+    > span {
+      display: none;
     }
   }
-  .mat-ink-bar {
+  .profile-label-mail {
+    display: inline-block;
+  }
+  .email-link {
+    margin-right: 0px;
+  }
+  .primary-name,
+  .secondary-name,
+  .street {
+    width: 80%;
+  }
+  .postalcode-and-city {
+    width: 90%;
+  }
+  .contact-data {
     display: none;
+  }
+  .mat-tab-link {
+    height: 32px;
+    padding: 0 16px;
+    min-width: 0px;
   }
 }
