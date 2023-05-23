@@ -6,9 +6,9 @@
 }
 
 .statistics-wrapper {
-  width: 75%;
-  height: calc(100vh - 150px);
-  max-width: $max-panel-content-width;
+  width: 95%;
+  min-width: 340px;
+  max-width: calc($max-profile-paper-width - 100px);
   text-align: center;
   border-radius: 8px;
   padding-top: 0.5em;
@@ -16,7 +16,6 @@
 
 .chart-wrapper {
   display: inline-block;
-  margin-top: 2em;
   height: 70%;
   width: 90%;
 }
@@ -24,4 +23,10 @@
 .top-selector-wrapper {
   text-align: start;
   margin-left: 5em;
+}
+
+@media (max-width: $medium-breakpoint) {
+  :host ::ng-deep .x.axis g.tick {
+    visibility: hidden;
+  }
 }
