@@ -1,6 +1,6 @@
-<div class="mat-elevation-z{{ matElevationValue }}">
-  <div [ngClass]="fixedSize && 'table-container'" style="overflow: auto">
-    <table *ngIf="dataSource" mat-table class="full-width-table" matSort aria-label="Elements">
+<div *ngIf="dataSource" class="table-wrapper">
+  <div class="table-internal-wrapper">
+    <table class="table-full-width" mat-table matSort aria-label="Elements">
       <!-- Approved Product Name -->
       <ng-container matColumnDef="approvedProductName">
         <th mat-header-cell *matHeaderCellDef>Nazwa towaru</th>
@@ -66,10 +66,11 @@
       <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
 
       <!-- Row shown when there is no data -->
-      <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" style="text-align: center" colspan="4">
-          <span class="no-products-text">Brak towarów</span>
-        </td>
+      <tr *matNoDataRow>
+        <div class="table-no-data-message">
+          <mat-icon>leaderboard</mat-icon>
+          <div>Brak towarów</div>
+        </div>
       </tr>
     </table>
   </div>

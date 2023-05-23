@@ -181,9 +181,10 @@
 
       <!-- OrderServices Table -->
       <app-order-services-table
+        appTableBase
+        [heightInRows]="'auto'"
         [hideActions]="true"
         [initialData]="order.orderServices"
-        [fixedSize]="false"
         [matElevationValue]="2"
       ></app-order-services-table>
     </div>
@@ -194,6 +195,8 @@
 
       <!-- OrderProducts Table -->
       <app-order-products-table
+        appTableBase
+        [heightInRows]="'auto'"
         [hideActions]="true"
         [initialData]="order.orderProducts"
         [matElevationValue]="2"
