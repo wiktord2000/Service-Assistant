@@ -1,3 +1,5 @@
+@import "helpers/constants";
+
 .address {
   padding: 0.25em 0;
 }
@@ -10,4 +12,10 @@
 /* Separate the columns content*/
 td.mat-cell {
   padding-right: 0.5em;
+}
+
+@media (max-width: $medium-breakpoint) {
+  .mat-column-address {
+    display: none;
+  }
 }
