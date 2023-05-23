@@ -1,6 +1,6 @@
 <a
   *ngIf="vehicle"
-  matTooltip="Profil pojazdu"
+  [matTooltip]="vehicleName"
   [matTooltipPosition]="tooltipPosition"
   mat-button
   aria-label="Vehicle profile"
@@ -8,8 +8,7 @@
   [style.color]="customColor"
   [color]="color"
 >
-  <mat-icon class="icon" *ngIf="includeIcon && iconPosition === 'left'">directions_car</mat-icon>
-  {{ vehicle.brand }} {{ vehicle.model }}
-  <div *ngIf="containLabel" class="links-label">Pojazd</div>
-  <mat-icon class="icon" *ngIf="includeIcon && iconPosition === 'right'">directions_car</mat-icon>
+  <div *ngIf="containLabel" class="link-label">Pojazd</div>
+  <mat-icon *ngIf="includeIcon" class="link-icon">directions_car</mat-icon>
+  <span class="link-text">{{ vehicleName }}</span>
 </a>

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { TooltipPosition } from '@angular/material/tooltip';
 import { Vehicle } from 'src/app/core/models/Vehicle';
+import { UtilsService } from 'src/app/shared/utils/utils.service';
 
 @Component({
   selector: 'app-vehicle-profile-link',
@@ -15,7 +16,10 @@ export class VehicleProfileLinkComponent implements OnInit {
   @Input() customColor?: string;
   @Input() containLabel: boolean = false;
   @Input() includeIcon: boolean = false;
-  @Input() iconPosition: 'left' | 'right' = 'right';
+  vehicleName!: string;
+  constructor(private utils: UtilsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.vehicleName = this.utils.vehicleToString(this.vehicle);
+  }
 }
