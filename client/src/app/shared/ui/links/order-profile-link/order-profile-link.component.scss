@@ -3,7 +3,7 @@
 // Override default media
 @media (max-width: $medium-breakpoint) {
   .link-text {
-    max-width: 160px;
+    max-width: $link-max-width-default;
   }
   .mat-button {
     padding: 0px;

@@ -11,14 +11,14 @@ import { Order } from 'src/app/core/models/Order';
 export class OrderProfileLinkComponent implements OnInit {
   @Input() order: Order;
   subscription: Subscription;
-  isXSmall$: Observable<boolean> = this.breakpointObserver
-    .observe([Breakpoints.XSmall, Breakpoints.Small])
-    .pipe(
-      map((value) => value.matches),
-      distinctUntilChanged()
-    );
+  isXSmall$: Observable<boolean>;
 
   constructor(private breakpointObserver: BreakpointObserver) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isXSmall$ = this.breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small]).pipe(
+      map((value) => value.matches),
+      distinctUntilChanged()
+    );
+  }
 }
