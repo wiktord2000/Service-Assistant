@@ -1,0 +1,36 @@
+$table-border-radius: 4px;
+$header-height: 56px;
+
+.table-wrapper {
+  border-radius: $table-border-radius;
+  overflow: hidden;
+}
+
+// To make slider over the paginator in case of overflow (default below)
+.table-internal-wrapper {
+  overflow: auto;
+  position: relative;
+  background-color: white;
+}
+
+.table-full-width {
+  width: 100%;
+}
+
+.table-paginator {
+  background-color: lighten(rgba(0, 0, 0, 0.54), 95%);
+}
+
+.table-no-data-message {
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: 500;
+  color: lighten($primary, 15%);
+}

@@ -1,0 +1,20 @@
+<div class="profile-filters-wrapper">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onAddVehicle()"
+    aria-label="Add vehicle button"
+  >
+    Dodaj pojazd
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<app-vehicles-table
+  appTableBase
+  [heightInRows]="3"
+  [matElevationValue]="2"
+  [initialData]="client.vehicles"
+  [hideCurrentOwnerColumn]="true"
+>
+</app-vehicles-table>

@@ -20,6 +20,7 @@ import { VehicleSelectInputModule } from 'src/app/shared/ui/selectors/vehicle-se
 import { DateAndTimeInputModule } from 'src/app/shared/ui/inputs/date-and-time-input/date-and-time-input.module';
 import { OrderProfileRoutingModule } from './order-profile-routing.module';
 import { CreateOrderDialogModule } from '../../ui/create-order-dialog/create-order-dialog.module';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
 
 @NgModule({
   declarations: [OrderProfileComponent],
@@ -43,7 +44,8 @@ import { CreateOrderDialogModule } from '../../ui/create-order-dialog/create-ord
     OrderServicesTableModule,
     ClientSelectInputModule,
     VehicleSelectInputModule,
-    CreateOrderDialogModule
+    CreateOrderDialogModule,
+    TableBaseDirectiveModule
   ]
 })
 export class OrderProfileModule {}

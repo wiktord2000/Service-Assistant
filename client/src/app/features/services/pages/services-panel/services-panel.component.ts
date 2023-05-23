@@ -4,7 +4,7 @@ import { Service } from 'src/app/core/models/Service';
 import { ServicesService } from 'src/app/features/services/data-access/services.service';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { CreateServiceDialogComponent } from 'src/app/features/services/ui/create-service-dialog/create-service-dialog.component';
-import { ServicesTableComponent } from 'src/app/features/services/pages/services-table/services-table.component';
+import { ServicesTableComponent } from 'src/app/features/services/ui/services-table/services-table.component';
 
 @Component({
   selector: 'app-services-panel',

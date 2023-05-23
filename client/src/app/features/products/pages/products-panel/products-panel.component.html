@@ -1,7 +1,7 @@
 <div class="panel-wrapper">
   <!-- Filters section -->
   <div class="panel-filters-wrapper">
-    <!-- Add order button -->
+    <!-- Add button -->
     <button
       mat-raised-button
       (click)="onAddProduct()"
@@ -19,5 +19,5 @@
   </div>
 
   <!-- Products table -->
-  <app-products-table [isGross]="isGross"></app-products-table>
+  <app-products-table appTableBase [isGross]="isGross"></app-products-table>
 </div>

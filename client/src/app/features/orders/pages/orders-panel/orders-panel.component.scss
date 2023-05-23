@@ -2,5 +2,11 @@
 @import "helpers/placeholders";
 
 :host {
-  @extend %panel-base;
+  @extend %panel-host;
+}
+
+@media (max-width: $small-breakpoint) {
+  .button-text {
+    display: none;
+  }
 }

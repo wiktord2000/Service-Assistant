@@ -1,12 +1,14 @@
 @import "~@angular/material/theming";
 // General
 $default-fonts-set: Roboto, "Helvetica Neue", sans-serif;
-$max-content-width: 1600px;
+$max-panel-content-width: 1600px;
 $max-navbar-content-width: 1700px;
 $default-border-radius: 5px;
 $default-background-color: white;
 $navbar-height: 64px;
 $navbar-shrink-height: 56px;
+// Profiles
+$max-profile-paper-width: 1200px;
 // Inputs
 $inputs-border-radius: 4px;
 $inputs-content-padding: 0.75em;
@@ -15,6 +17,10 @@ $small-breakpoint: 600px;
 $medium-breakpoint: 960px;
 $large-breakpoint: 1280px;
 $xlarge-breakpoint: 1920px;
+// Links
+$link-max-width-default: 160px;
+$link-max-width-medium: 80px;
+$link-max-width-small: 40px;
 // Snackbar stuff
 $snackbar-success-color: rgb(98, 213, 98);
 $snackbar-info-color: rgb(135, 206, 250);

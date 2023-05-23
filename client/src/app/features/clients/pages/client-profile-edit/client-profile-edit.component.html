@@ -1,0 +1,59 @@
+<form
+  *ngIf="editForm"
+  [formGroup]="editForm"
+  (ngSubmit)="editForm.valid && onSaveChanges()"
+  class="edit-form"
+>
+  <!-- Company name (if company) -->
+  <app-text-input
+    *ngIf="isCompany"
+    [label]="'Nazwa firmy'"
+    [formControl]="editForm.controls['companyName']"
+  >
+  </app-text-input>
+
+  <!-- NIP (if company) -->
+  <app-text-input *ngIf="isCompany" [label]="'NIP'" [formControl]="editForm.controls['nip']">
+  </app-text-input>
+
+  <!-- First name -->
+  <app-text-input [label]="'Imię'" [formControl]="editForm.controls['firstname']"> </app-text-input>
+
+  <!-- Last name -->
+  <app-text-input [label]="'Nazwisko'" [formControl]="editForm.controls['lastname']">
+  </app-text-input>
+
+  <!-- Street -->
+  <app-text-input [label]="'Ulica'" [formControl]="editForm.controls['street']"> </app-text-input>
+
+  <!-- City -->
+  <app-text-input [label]="'Miasto'" [formControl]="editForm.controls['city']"> </app-text-input>
+
+  <!-- Postal code -->
+  <app-text-input [label]="'Kod pocztowy'" [formControl]="editForm.controls['postalCode']">
+  </app-text-input>
+
+  <!-- Country code -->
+  <app-text-input [label]="'Kraj'" [formControl]="editForm.controls['countryCode']">
+  </app-text-input>
+
+  <!-- Phone number -->
+  <app-text-input [label]="'Numer telefonu'" [formControl]="editForm.controls['phone']">
+  </app-text-input>
+
+  <!-- E-mail -->
+  <app-text-input [label]="'Adres e-mail'" [formControl]="editForm.controls['email']">
+  </app-text-input>
+
+  <div class="save-button-area">
+    <button
+      mat-raised-button
+      type="submit"
+      class="save-button"
+      color="primary"
+      [disabled]="!editForm.dirty || !editForm.valid || this.isSaving"
+    >
+      {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
+    </button>
+  </div>
+</form>

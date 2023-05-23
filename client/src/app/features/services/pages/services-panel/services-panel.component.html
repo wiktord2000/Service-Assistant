@@ -1,7 +1,6 @@
 <div class="panel-wrapper">
-  <!-- Filters section -->
   <div class="panel-filters-wrapper">
-    <!-- Add order button -->
+    <!-- Add button -->
     <button
       mat-raised-button
       (click)="onAddService()"
@@ -19,5 +18,5 @@
   </div>
 
   <!-- Services table -->
-  <app-services-table [isGross]="isGross"></app-services-table>
+  <app-services-table appTableBase [isGross]="isGross"></app-services-table>
 </div>

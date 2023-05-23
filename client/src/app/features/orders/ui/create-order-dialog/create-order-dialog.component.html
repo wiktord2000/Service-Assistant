@@ -111,7 +111,8 @@
 
         <!-- Order's services table -->
         <app-order-services-table
-          [fixedSize]="false"
+          appTableBase
+          [heightInRows]="'auto'"
           [matElevationValue]="2"
         ></app-order-services-table>
       </div>
@@ -153,7 +154,8 @@
 
         <!-- Order's products table -->
         <app-order-products-table
-          [fixedSize]="false"
+          appTableBase
+          [heightInRows]="'auto'"
           [matElevationValue]="2"
         ></app-order-products-table>
       </div>

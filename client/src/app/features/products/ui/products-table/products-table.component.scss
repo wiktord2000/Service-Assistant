@@ -1,27 +1,32 @@
-.full-width-table {
-  width: 100%;
-  height: 100%;
-}
-
-.table-container {
-  position: relative;
-  min-height: 62vh;
-  max-height: 62vh;
-  overflow: auto;
-  background-color: white;
-}
-
-.no-products-message {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 25em;
-  font-weight: 500;
-  color: rgba(0, 0, 0, 0.54);
-}
+@import "helpers/constants";
 
 /* Separate the columns content*/
 td.mat-cell {
-  padding-right: 0.5em !important;
+  padding-right: 0.5em;
+}
+
+.manufacturer {
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+@media (max-width: $large-breakpoint) {
+  .mat-column-code,
+  .mat-column-unit {
+    display: none;
+  }
+}
+
+@media (max-width: $medium-breakpoint) {
+  .mat-column-lastDeliveryDate,
+  .mat-column-salesPrice {
+    display: none;
+  }
+}
+
+@media (max-width: $small-breakpoint) {
+  .mat-column-buyPrice,
+  .mat-column-availability {
+    display: none;
+  }
 }

@@ -8,7 +8,9 @@ import { ServicesService } from 'src/app/features/services/data-access/services.
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { ServicesTableDataSource } from './services-table-datasource';
-import { CreateServiceDialogComponent } from '../../ui/create-service-dialog/create-service-dialog.component';
+import { CreateServiceDialogComponent } from '../create-service-dialog/create-service-dialog.component';
+
+const COMPLETE_COLUMN_LIST = ['name', 'cost', 'estimatedTime', 'total', 'actions'];
 
 @Component({
   selector: 'app-services-table',
@@ -16,25 +18,21 @@ import { CreateServiceDialogComponent } from '../../ui/create-service-dialog/cre
   styleUrls: ['./services-table.component.scss']
 })
 export class ServicesTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator; // ! - assured that paginator exists
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Service>;
   @Input() initialData?: Service[];
-  @Input() matElevationValue?: number = 8;
-  @Input() fixedSize?: boolean = true;
   @Input() isGross: boolean;
-
   dataSource: ServicesTableDataSource;
-  displayedColumns = ['name', 'cost', 'estimatedTime', 'total', 'actions'];
+  displayedColumns = COMPLETE_COLUMN_LIST;
 
   constructor(
     public servicesService: ServicesService,
-    public dialog: MatDialog,
+    private dialog: MatDialog,
     private snackbarService: SnackbarService
   ) {}
 
   ngOnInit(): void {
-    // Create DataSource (with initialData if needed)
     this.dataSource = new ServicesTableDataSource(this.servicesService, this.initialData);
   }
 

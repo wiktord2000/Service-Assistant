@@ -1,6 +1,7 @@
+// Note: panel-* classes come from _panels.scss
 @import "helpers/constants";
 @import "helpers/placeholders";
 
 :host {
-  @extend %panel-base;
+  @extend %panel-host;
 }

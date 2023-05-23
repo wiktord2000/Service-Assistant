@@ -12,7 +12,7 @@ import { OrderProductsTableDataSource } from './order-products-table-datasource'
 export class OrderProductsTableComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<OrderProduct>;
   @Input() initialData?: OrderProduct[];
-  @Input() matElevationValue?: number = 8;
+  @Input() matElevationValue: number = 8;
   @Input() fixedSize?: boolean = true;
   @Input() hideActions: boolean = false;
 

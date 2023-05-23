@@ -1,6 +1,6 @@
 <a
   *ngIf="product"
-  matTooltip="Profil towaru"
+  [matTooltip]="product.name"
   [matTooltipPosition]="tooltipPosition"
   mat-button
   aria-label="Product profile"
@@ -8,6 +8,6 @@
   [style.color]="customColor"
   [color]="color"
 >
-  {{ product.name }}
-  <div *ngIf="containLabel" class="links-label">Towar</div>
+  <div *ngIf="containLabel" class="link-label">Towar</div>
+  <span class="link-text">{{ product.name }}</span>
 </a>
