@@ -12,7 +12,7 @@ import { OrderServicesTableDataSource } from './order-services-table-datasource'
 export class OrderServicesTableComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<OrderService>;
   @Input() initialData?: OrderService[];
-  @Input() matElevationValue?: number = 8;
+  @Input() matElevationValue: number = 8;
   @Input() fixedSize?: boolean = true;
   @Input() hideActions: boolean = false;
 

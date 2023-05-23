@@ -33,7 +33,7 @@ export class VehiclesTableComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<Vehicle>;
   @Input() initialData?: Vehicle[];
   @Input() hideCurrentOwnerColumn?: boolean = false;
-  @Input() matElevationValue?: number = 8;
+  @Input() matElevationValue: number = 8;
   @Input() heightInRows?: number = 8;
   tableHeight!: number;
   dataSource: VehiclesTableDataSource;

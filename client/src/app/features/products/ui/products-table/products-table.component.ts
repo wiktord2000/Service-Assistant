@@ -33,7 +33,7 @@ export class ProductsTableComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Product>;
   @Input() initialData?: Product[];
-  @Input() matElevationValue?: number = 8;
+  @Input() matElevationValue: number = 8;
   @Input() isGross: boolean;
   @Input() heightInRows: number = 8;
   tableHeight!: number;

@@ -39,7 +39,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() initialData?: Order[];
   @Input() hideClientColumn?: boolean = false;
   @Input() hideVehicleColumn?: boolean = false;
-  @Input() matElevationValue?: number = 8;
+  @Input() matElevationValue: number = 8;
   @Input() heightInRows: number = 8;
   tableHeight!: number;
   dataSource: OrdersTableDataSource;

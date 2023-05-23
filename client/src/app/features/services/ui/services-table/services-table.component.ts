@@ -23,7 +23,7 @@ export class ServicesTableComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Service>;
   @Input() initialData?: Service[];
-  @Input() matElevationValue?: number = 8;
+  @Input() matElevationValue: number = 8;
   @Input() isGross: boolean;
   @Input() heightInRows: number = 8;
   tableHeight!: number;
