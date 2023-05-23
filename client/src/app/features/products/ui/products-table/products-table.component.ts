@@ -9,6 +9,19 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { ProductDeliveryDialogComponent } from '../product-delivery-dialog/product-delivery-dialog.component';
+import { UtilsService } from 'src/app/shared/utils/utils.service';
+
+const COMPLETE_COLUMN_LIST = [
+  'name',
+  'code',
+  'unit',
+  'availability',
+  'buyPrice',
+  'salesPrice',
+  'manufacturer',
+  'lastDeliveryDate',
+  'actions'
+];
 
 @Component({
   selector: 'app-products-table',
@@ -16,36 +29,27 @@ import { ProductDeliveryDialogComponent } from '../product-delivery-dialog/produ
   styleUrls: ['./products-table.component.scss']
 })
 export class ProductsTableComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator; // ! - assured that paginator exists
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Product>;
   @Input() initialData?: Product[];
   @Input() matElevationValue?: number = 8;
-  @Input() fixedSize?: boolean = true;
   @Input() isGross: boolean;
-
+  @Input() heightInRows: number = 8;
+  tableHeight!: number;
   dataSource: ProductsTableDataSource;
-  displayedColumns = [
-    'name',
-    'code',
-    'unit',
-    'availability',
-    'buyPrice',
-    'salesPrice',
-    'manufacturer',
-    'lastDeliveryDate',
-    'actions'
-  ];
+  displayedColumns = COMPLETE_COLUMN_LIST;
 
   constructor(
     public productsService: ProductsService,
-    public dialog: MatDialog,
-    private snackbarService: SnackbarService
+    private dialog: MatDialog,
+    private snackbarService: SnackbarService,
+    private utils: UtilsService
   ) {}
 
   ngOnInit(): void {
-    // Create DataSource (with initialData if needed)
     this.dataSource = new ProductsTableDataSource(this.productsService, this.initialData);
+    this.tableHeight = this.utils.calculateTableHeight(this.heightInRows);
   }
 
   ngAfterViewInit(): void {
@@ -53,6 +57,7 @@ export class ProductsTableComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.table.dataSource = this.dataSource;
   }
+
   onDeleteClick(product: Product) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {

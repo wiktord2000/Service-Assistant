@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProductsTableComponent } from './products-table.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ProductProfileLinkModule } from '../../../../shared/ui/links/product-profile-link/product-profile-link.module';
+import { MatMenuModule } from '@angular/material/menu';
+import { TruncateTextPipeModule } from 'src/app/shared/ui/pipes/truncate-text-pipe/truncate-text-pipe.module';
 
 @NgModule({
   declarations: [ProductsTableComponent],
@@ -19,7 +21,9 @@ import { ProductProfileLinkModule } from '../../../../shared/ui/links/product-pr
     MatButtonModule,
     MatIconModule,
     MatTooltipModule,
-    ProductProfileLinkModule
+    ProductProfileLinkModule,
+    MatMenuModule,
+    TruncateTextPipeModule
   ],
   exports: [ProductsTableComponent]
 })
