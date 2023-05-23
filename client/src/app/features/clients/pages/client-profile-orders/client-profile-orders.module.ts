@@ -7,6 +7,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { OrdersTableModule } from 'src/app/features/orders/ui/orders-table/orders-table.module';
 import { MatButtonModule } from '@angular/material/button';
 import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
+import { CreateOrderDialogModule } from 'src/app/features/orders/ui/create-order-dialog/create-order-dialog.module';
 
 @NgModule({
   declarations: [ClientProfileOrdersComponent],
@@ -17,7 +18,8 @@ import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-bas
     MatButtonModule,
     MatSlideToggleModule,
     OrdersTableModule,
-    TableBaseDirectiveModule
+    TableBaseDirectiveModule,
+    CreateOrderDialogModule
   ]
 })
 export class ClientProfileOrdersModule {}
