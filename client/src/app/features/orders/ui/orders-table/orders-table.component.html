@@ -5,16 +5,7 @@
       <ng-container matColumnDef="orderNumber">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Nr.</th>
         <td mat-cell *matCellDef="let row">
-          <a
-            mat-button
-            matTooltip="Szczegóły zlecenia"
-            [matTooltipPosition]="'right'"
-            aria-label="Szczegóły zlecenia"
-            routerLink="/orders/{{ row.id }}"
-            color="primary"
-          >
-            {{ row.orderNumber }}
-          </a>
+          <app-order-profile-link [order]="row"></app-order-profile-link>
         </td>
       </ng-container>
 

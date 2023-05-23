@@ -13,6 +13,7 @@ import { StatusSelectorModule } from '../status-selector/status-selector.module'
 import { ClientProfileLinkModule } from '../../../../shared/ui/links/client-profile-link/client-profile-link.module';
 import { VehicleProfileLinkModule } from '../../../../shared/ui/links/vehicle-profile-link/vehicle-profile-link.module';
 import { DateAndTimePickerModule } from '../../../../shared/ui/date-and-time-picker/date-and-time-picker.module';
+import { OrderProfileLinkModule } from 'src/app/shared/ui/links/order-profile-link/order-profile-link.module';
 
 @NgModule({
   declarations: [OrdersTableComponent],
@@ -29,7 +30,8 @@ import { DateAndTimePickerModule } from '../../../../shared/ui/date-and-time-pic
     StatusSelectorModule,
     ClientProfileLinkModule,
     VehicleProfileLinkModule,
-    DateAndTimePickerModule
+    DateAndTimePickerModule,
+    OrderProfileLinkModule
   ],
   exports: [OrdersTableComponent]
 })

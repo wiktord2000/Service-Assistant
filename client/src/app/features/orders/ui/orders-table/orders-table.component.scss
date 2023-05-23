@@ -79,13 +79,14 @@ td.mat-cell:not(.mat-column-actions) {
 }
 
 @media (max-width: $medium-breakpoint) {
-  .mat-column-finishDate {
+  .mat-column-finishDate,
+  .mat-column-deadlineDate {
     display: none;
   }
 }
 
 @media (max-width: $small-breakpoint) {
-  .mat-column-deadlineDate {
+  .mat-column-totalGross {
     display: none;
   }
 }
