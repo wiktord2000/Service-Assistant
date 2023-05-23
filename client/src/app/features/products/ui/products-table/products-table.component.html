@@ -35,7 +35,7 @@
 
       <!-- Buy Price Column -->
       <ng-container matColumnDef="buyPrice">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Cena zakupu</th>
+        <th mat-header-cell *matHeaderCellDef>Cena zakupu</th>
         <td mat-cell *matCellDef="let row">
           {{ isGross ? row.buyPriceGross.toFixed(2) : row.buyPriceNet.toFixed(2) }} zł
         </td>
@@ -43,7 +43,7 @@
 
       <!-- Sales Price Column -->
       <ng-container matColumnDef="salesPrice">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Cena sprzedaży</th>
+        <th mat-header-cell *matHeaderCellDef>Cena sprzedaży</th>
         <td mat-cell *matCellDef="let row">
           {{ isGross ? row.salesPriceGross.toFixed(2) : row.salesPriceNet.toFixed(2) }} zł
         </td>

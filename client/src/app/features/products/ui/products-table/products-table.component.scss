@@ -18,13 +18,15 @@ td.mat-cell {
 }
 
 @media (max-width: $medium-breakpoint) {
-  .mat-column-lastDeliveryDate {
+  .mat-column-lastDeliveryDate,
+  .mat-column-salesPrice {
     display: none;
   }
 }
 
 @media (max-width: $small-breakpoint) {
-  .mat-column-buyPrice {
+  .mat-column-buyPrice,
+  .mat-column-availability {
     display: none;
   }
 }
