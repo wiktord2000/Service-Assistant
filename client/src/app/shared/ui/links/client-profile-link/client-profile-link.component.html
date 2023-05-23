@@ -1,19 +1,16 @@
 <a
   *ngIf="client"
-  matTooltip="Profil klienta"
-  [matTooltipPosition]="tooltipPosition"
   mat-button
+  [matTooltip]="clientName"
+  [matTooltipPosition]="tooltipPosition"
   aria-label="Client profile"
   routerLink="/clients/{{ client.id }}"
   [style.color]="customColor"
   [color]="color"
 >
-  <mat-icon>{{ this.client.type === "company" ? "groups" : "person" }}</mat-icon>
-  <!-- TODO - Custom pipe -->
-  <span class="client-name">
-    {{
-      this.client.type === "company" ? client.companyName : client.firstname + " " + client.lastname
-    }}
+  <div *ngIf="containLabel" class="link-label">Właściciel</div>
+  <mat-icon class="link-icon">{{ this.client.type === "company" ? "groups" : "person" }}</mat-icon>
+  <span class="link-text">
+    {{ clientName }}
   </span>
-  <div *ngIf="containLabel" class="links-label">Właściciel</div>
 </a>
