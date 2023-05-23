@@ -5,15 +5,8 @@
   width: 100%;
   max-width: 440px;
   background-color: white;
-  padding: 50px 70px;
-  margin: 5px;
-}
-
-@media (max-width: $small-breakpoint) {
-  .form-paper {
-    padding: 25px 25px;
-    max-width: 300px;
-  }
+  padding: max(3%, 25px);
+  margin: 12px;
 }
 
 .form-errors-list {
