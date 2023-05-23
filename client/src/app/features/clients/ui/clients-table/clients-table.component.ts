@@ -8,6 +8,9 @@ import { ClientsService } from 'src/app/features/clients/data-access/clients.ser
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { ClientsTableDataSource } from './clients-table-datasource';
+import { UtilsService } from 'src/app/shared/utils/utils.service';
+
+const COMPLETE_COLUMN_LIST = ['client', 'address', 'phone', 'email', 'actions'];
 
 @Component({
   selector: 'app-clients-table',
@@ -19,21 +22,22 @@ export class ClientsTableComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Client>;
   @Input() initialData?: Client[];
-  @Input() matElevationValue?: number = 8;
-  @Input() fixedSize?: boolean = true;
-
+  @Input() matElevationValue: number = 8;
+  @Input() heightInRows: number = 8;
+  tableHeight!: number;
   dataSource: ClientsTableDataSource;
-  displayedColumns = ['client', 'address', 'phone', 'email', 'actions'];
+  displayedColumns = COMPLETE_COLUMN_LIST;
 
   constructor(
     public clientsService: ClientsService,
-    public dialog: MatDialog,
-    private snackbarService: SnackbarService
+    private dialog: MatDialog,
+    private snackbarService: SnackbarService,
+    private utils: UtilsService
   ) {}
 
   ngOnInit(): void {
-    // Create DataSource (with initialData if needed)
     this.dataSource = new ClientsTableDataSource(this.clientsService, this.initialData);
+    this.tableHeight = this.utils.calculateTableHeight(this.heightInRows);
   }
 
   ngAfterViewInit(): void {
@@ -46,7 +50,7 @@ export class ClientsTableComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
         headerText: 'Usuwanie klienta',
-        bodyText: `<h3>Czy na pewno chcesz usunąć klienta <strong>${this.clientToString(
+        bodyText: `<h3>Czy na pewno chcesz usunąć klienta <strong>${this.utils.clientToString(
           client
         )}</strong> ?<h3>`
       }
@@ -65,11 +69,5 @@ export class ClientsTableComponent implements OnInit {
         }
       });
     });
-  }
-
-  clientToString(client: Client): string {
-    return client.type === 'company'
-      ? client.companyName
-      : client.firstname + ' ' + client.lastname;
   }
 }
