@@ -18,12 +18,14 @@ export class UtilsService {
 
   // Consider pipes
   clientToString(client: Client): string {
+    if (!client) return '';
     return client.type === 'company'
       ? client.companyName
       : client.firstname + ' ' + client.lastname;
   }
 
   vehicleToString(vehicle: Vehicle): string {
+    if (!vehicle) return '';
     return vehicle.brand + ' ' + vehicle.model;
   }
 }
