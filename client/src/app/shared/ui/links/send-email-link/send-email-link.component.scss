@@ -1,18 +1,15 @@
 @import "helpers/constants";
 
-.icon {
-  margin-right: 4px;
-}
-
+// Override default media
 @media (max-width: $medium-breakpoint) {
-  .email {
+  .link-text {
     display: none;
   }
   .mat-button {
     padding: 0px;
     min-width: 36px;
   }
-  .icon {
+  .link-icon {
     margin-right: 0px;
   }
 }

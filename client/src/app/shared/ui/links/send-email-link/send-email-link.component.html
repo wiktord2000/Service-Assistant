@@ -1,10 +1,11 @@
 <button
-  *ngIf="email"
   mat-button
+  *ngIf="email"
   (click)="onEmailClick()"
+  matTooltip="Wyślij wiadomość"
   [style.color]="customColor"
   [color]="color"
 >
-  <mat-icon class="icon">forward_to_inbox</mat-icon>
-  <span class="email">{{ email }}</span>
+  <mat-icon class="link-icon">forward_to_inbox</mat-icon>
+  <span class="link-text">{{ email }}</span>
 </button>
