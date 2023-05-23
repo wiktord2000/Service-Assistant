@@ -12,7 +12,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subscription, distinctUntilChanged, map } from 'rxjs';
-import { UtilsService } from 'src/app/shared/utils/utils.service';
 
 const COMPLETE_COLUMN_LIST = [
   'orderNumber',
@@ -39,9 +38,6 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() initialData?: Order[];
   @Input() hideClientColumn?: boolean = false;
   @Input() hideVehicleColumn?: boolean = false;
-  @Input() matElevationValue: number = 8;
-  @Input() heightInRows: number = 8;
-  tableHeight!: number;
   dataSource: OrdersTableDataSource;
   displayedColumns = COMPLETE_COLUMN_LIST;
   shrinkDates: boolean = false;
@@ -55,8 +51,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
     public ordersService: OrdersService,
     private snackbarService: SnackbarService,
     private dialog: MatDialog,
-    private breakpointObserver: BreakpointObserver,
-    private utils: UtilsService
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit(): void {
@@ -71,7 +66,6 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
           (column === 'vehicle' && this.hideVehicleColumn)
         )
     );
-    this.tableHeight = this.utils.calculateTableHeight(this.heightInRows);
   }
 
   ngAfterViewInit(): void {

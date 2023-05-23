@@ -10,6 +10,7 @@ import { CustomHeaderModule } from 'src/app/shared/ui/custom-header/custom-heade
 import { OrdersTableModule } from 'src/app/features/orders/ui/orders-table/orders-table.module';
 import { ProductProfileRoutingModule } from './product-profile-routing.module';
 import { ProductProfileComponent } from './product-profile.component';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
 
 @NgModule({
   declarations: [ProductProfileComponent],
@@ -23,7 +24,8 @@ import { ProductProfileComponent } from './product-profile.component';
     TextInputModule,
     ReactiveFormsModule,
     CustomHeaderModule,
-    OrdersTableModule
+    OrdersTableModule,
+    TableBaseDirectiveModule
   ]
 })
 export class ProductProfileModule {}

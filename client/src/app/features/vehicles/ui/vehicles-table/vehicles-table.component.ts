@@ -8,7 +8,6 @@ import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { VehiclesService } from 'src/app/features/vehicles/data-access/vehicles.service';
 import { VehiclesTableDataSource } from './vehicles-table-datasource';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
-import { UtilsService } from 'src/app/shared/utils/utils.service';
 
 const COMPLETE_COLUMN_LIST = [
   'vehicleName',
@@ -33,17 +32,13 @@ export class VehiclesTableComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<Vehicle>;
   @Input() initialData?: Vehicle[];
   @Input() hideCurrentOwnerColumn?: boolean = false;
-  @Input() matElevationValue: number = 8;
-  @Input() heightInRows?: number = 8;
-  tableHeight!: number;
   dataSource: VehiclesTableDataSource;
   displayedColumns = COMPLETE_COLUMN_LIST;
 
   constructor(
     public vehiclesService: VehiclesService,
     public dialog: MatDialog,
-    private snackbarService: SnackbarService,
-    private utils: UtilsService
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +46,6 @@ export class VehiclesTableComponent implements OnInit {
     this.displayedColumns = this.displayedColumns.filter(
       (column) => !(column === 'currentOwner' && this.hideCurrentOwnerColumn)
     );
-    this.tableHeight = this.utils.calculateTableHeight(this.heightInRows);
   }
 
   ngAfterViewInit(): void {

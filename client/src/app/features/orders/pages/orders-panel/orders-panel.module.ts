@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OrdersTableModule } from 'src/app/features/orders/ui/orders-table/orders-table.module';
 import { OrdersPanelRoutingModule } from './orders-panel-routing.module';
 import { CreateOrderDialogModule } from '../../ui/create-order-dialog/create-order-dialog.module';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
 
 @NgModule({
   declarations: [OrdersPanelComponent],
@@ -19,7 +20,8 @@ import { CreateOrderDialogModule } from '../../ui/create-order-dialog/create-ord
     MatButtonToggleModule,
     OrdersTableModule,
     ReactiveFormsModule,
-    CreateOrderDialogModule
+    CreateOrderDialogModule,
+    TableBaseDirectiveModule
   ]
 })
 export class OrdersPanelModule {}

@@ -22,9 +22,6 @@ export class ClientsTableComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Client>;
   @Input() initialData?: Client[];
-  @Input() matElevationValue: number = 8;
-  @Input() heightInRows: number = 8;
-  tableHeight!: number;
   dataSource: ClientsTableDataSource;
   displayedColumns = COMPLETE_COLUMN_LIST;
 
@@ -37,7 +34,6 @@ export class ClientsTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource = new ClientsTableDataSource(this.clientsService, this.initialData);
-    this.tableHeight = this.utils.calculateTableHeight(this.heightInRows);
   }
 
   ngAfterViewInit(): void {

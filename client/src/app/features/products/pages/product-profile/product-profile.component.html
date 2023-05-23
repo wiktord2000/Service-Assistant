@@ -253,8 +253,9 @@
     <!-- Table -->
     <app-orders-table
       *ngIf="this.orders"
-      [fixedSize]="false"
-      [matElevationValue]="1"
+      appTableBase
+      [heightInRows]="3"
+      [matElevationValue]="2"
       [initialData]="filterFinshedOrders(this.orders)"
       [hideClientColumn]="true"
     >

@@ -8,6 +8,7 @@ import { ServicesTableModule } from 'src/app/features/services/ui/services-table
 import { MatButtonModule } from '@angular/material/button';
 import { ServicesPanelRoutingModule } from './services-panel-routing.module';
 import { CreateServiceDialogModule } from '../../ui/create-service-dialog/create-service-dialog.module';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
 
 @NgModule({
   declarations: [ServicesPanelComponent],
@@ -19,7 +20,8 @@ import { CreateServiceDialogModule } from '../../ui/create-service-dialog/create
     MatSlideToggleModule,
     FormsModule,
     ServicesTableModule,
-    CreateServiceDialogModule
+    CreateServiceDialogModule,
+    TableBaseDirectiveModule
   ]
 })
 export class ServicesPanelModule {}

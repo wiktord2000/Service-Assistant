@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ClientProfileLinkModule } from '../../../../shared/ui/links/client-profile-link/client-profile-link.module';
 import { SendEmailLinkModule } from '../../../../shared/ui/links/send-email-link/send-email-link.module';
 import { TruncateTextPipeModule } from 'src/app/shared/ui/pipes/truncate-text-pipe/truncate-text-pipe.module';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
 
 @NgModule({
   declarations: [ClientsTableComponent],
@@ -21,7 +22,8 @@ import { TruncateTextPipeModule } from 'src/app/shared/ui/pipes/truncate-text-pi
     MatIconModule,
     ClientProfileLinkModule,
     SendEmailLinkModule,
-    TruncateTextPipeModule
+    TruncateTextPipeModule,
+    TableBaseDirectiveModule
   ],
   exports: [ClientsTableComponent]
 })

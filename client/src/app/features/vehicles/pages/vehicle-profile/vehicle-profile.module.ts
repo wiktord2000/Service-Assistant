@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { VehicleProfileComponent } from './vehicle-profile.component';
 import { VehicleProfileRoutingModule } from './vehicle-profile-routing.module';
 import { CreateOrderDialogModule } from 'src/app/features/orders/ui/create-order-dialog/create-order-dialog.module';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
 
 @NgModule({
   declarations: [VehicleProfileComponent],
@@ -29,7 +30,8 @@ import { CreateOrderDialogModule } from 'src/app/features/orders/ui/create-order
     DateInputModule,
     OrdersTableModule,
     ReactiveFormsModule,
-    CreateOrderDialogModule
+    CreateOrderDialogModule,
+    TableBaseDirectiveModule
   ]
 })
 export class VehicleProfileModule {}

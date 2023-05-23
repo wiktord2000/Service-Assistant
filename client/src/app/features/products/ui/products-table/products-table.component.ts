@@ -9,7 +9,6 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { ProductDeliveryDialogComponent } from '../product-delivery-dialog/product-delivery-dialog.component';
-import { UtilsService } from 'src/app/shared/utils/utils.service';
 
 const COMPLETE_COLUMN_LIST = [
   'name',
@@ -33,23 +32,18 @@ export class ProductsTableComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Product>;
   @Input() initialData?: Product[];
-  @Input() matElevationValue: number = 8;
   @Input() isGross: boolean;
-  @Input() heightInRows: number = 8;
-  tableHeight!: number;
   dataSource: ProductsTableDataSource;
   displayedColumns = COMPLETE_COLUMN_LIST;
 
   constructor(
     public productsService: ProductsService,
     private dialog: MatDialog,
-    private snackbarService: SnackbarService,
-    private utils: UtilsService
+    private snackbarService: SnackbarService
   ) {}
 
   ngOnInit(): void {
     this.dataSource = new ProductsTableDataSource(this.productsService, this.initialData);
-    this.tableHeight = this.utils.calculateTableHeight(this.heightInRows);
   }
 
   ngAfterViewInit(): void {

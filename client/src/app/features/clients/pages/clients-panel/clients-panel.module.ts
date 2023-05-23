@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ClientsTableModule } from 'src/app/features/clients/ui/clients-table/clients-table.module';
 import { NgModule } from '@angular/core';
 import { CreateClientDialogModule } from '../../ui/create-client-dialog/create-client-dialog.module';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
 
 @NgModule({
   declarations: [ClientsPanelComponent],
@@ -15,7 +16,8 @@ import { CreateClientDialogModule } from '../../ui/create-client-dialog/create-c
     MatButtonModule,
     MatIconModule,
     ClientsTableModule,
-    CreateClientDialogModule
+    CreateClientDialogModule,
+    TableBaseDirectiveModule
   ]
 })
 export class ClientsPanelModule {}

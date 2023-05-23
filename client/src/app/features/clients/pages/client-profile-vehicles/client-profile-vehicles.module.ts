@@ -6,6 +6,7 @@ import { VehiclesTableModule } from 'src/app/features/vehicles/ui/vehicles-table
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CreateVehicleDialogModule } from 'src/app/features/vehicles/ui/create-vehicle-dialog/create-vehicle-dialog.module';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
 
 @NgModule({
   declarations: [ClientProfileVehiclesComponent],
@@ -15,7 +16,8 @@ import { CreateVehicleDialogModule } from 'src/app/features/vehicles/ui/create-v
     VehiclesTableModule,
     CreateVehicleDialogModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    TableBaseDirectiveModule
   ]
 })
 export class ClientProfileVehiclesModule {}
