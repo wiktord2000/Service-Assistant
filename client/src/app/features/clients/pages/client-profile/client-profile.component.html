@@ -1,12 +1,12 @@
 <div *ngIf="client" class="profile-paper">
   <div class="profile-intro">
     <!-- Client name / Company name -->
-    <div class="primary-name">
+    <div class="profile-primary-name">
       {{ isCompany ? client.companyName : client.firstname + " " + client.lastname }}
     </div>
 
     <!-- Company owner (if company) -->
-    <div *ngIf="isCompany" class="secondary-name">
+    <div *ngIf="isCompany" class="profile-secondary-name">
       {{ client.firstname + " " + client.lastname }}
     </div>
 
@@ -63,7 +63,7 @@
     <a mat-tab-link routerLinkActive="active-tab-link" [routerLink]="['./orders']"> Zlecenia </a>
   </nav>
   <!-- Tabs-content -->
-  <mat-tab-nav-panel class="tab-content" #tabPanel
+  <mat-tab-nav-panel class="profile-tab-content" #tabPanel
     ><router-outlet></router-outlet
   ></mat-tab-nav-panel>
 </div>

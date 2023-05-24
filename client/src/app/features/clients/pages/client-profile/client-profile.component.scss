@@ -1,59 +1,24 @@
 @use "@angular/material" as mat;
 @import "helpers/constants";
 @import "helpers/placeholders";
+@import "components/profiles";
 
 $intro-primary: hsl(207, 42%, 47%);
 $intro-primary-dark: hsl(207, 42%, 40%);
-$intro-horizontal-padding: 2.5rem;
-$intro-vertical-padding: 2rem;
-$intro-horizontal-padding-small: 2rem;
-$intro-vertical-padding-small: 2rem;
-$label-horizontal-padding: 1.5em;
-$label-vertical-padding: 1em;
-$tabs-color: #fafafa;
-$paper-border-radius: 1rem;
-$primary-text-opacity: 0.6;
-$secondary-text-opacity: 0.9;
 
 :host {
   @extend %profile-host;
 }
 
+// Override defaults (consider another approach)
 .profile-paper {
-  width: 100%;
-  max-width: $max-profile-paper-width;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  border-top-left-radius: $paper-border-radius;
-  border-top-right-radius: $paper-border-radius;
   border-bottom: 1em solid $intro-primary;
-  @include mat.elevation(10);
-  overflow: hidden;
 }
-
 .profile-intro {
-  font-size: 1rem;
-  padding: $intro-vertical-padding $intro-horizontal-padding;
   background-color: $intro-primary;
-  position: relative;
-  color: white;
 }
-
-.primary-name {
-  font-size: 1.5em;
-  line-height: 1.25em;
-  font-weight: 500;
-  width: 70%;
-  @extend %text-overflow-ellipses;
-}
-
-.secondary-name {
-  font-size: 1em;
-  width: 70%;
-  opacity: $primary-text-opacity;
-  font-weight: 500;
-  @extend %text-overflow-ellipses;
+.profile-label {
+  background-color: $intro-primary-dark;
 }
 
 .client-address {
@@ -66,23 +31,6 @@ $secondary-text-opacity: 0.9;
 .street {
   width: 60%;
   @extend %text-overflow-ellipses;
-}
-
-.profile-label {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  color: white;
-  font-size: 1.125em;
-  font-weight: 500;
-  padding: $label-vertical-padding $label-horizontal-padding;
-  background-color: $intro-primary-dark;
-  border-bottom-left-radius: $paper-border-radius;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  justify-content: center;
-  z-index: 2; // At the top when the second label appear
 }
 
 .profile-label-mail {
@@ -110,18 +58,6 @@ $secondary-text-opacity: 0.9;
 
 .email-link {
   margin-right: -16px;
-}
-
-.tab-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: max(3.5%, 24px) max(4%, 12px);
-  background-color: $tabs-color;
-}
-
-.active-tab-link {
-  opacity: 1;
 }
 
 // Override MatTab
