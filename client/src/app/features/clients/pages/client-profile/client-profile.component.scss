@@ -10,29 +10,13 @@ $intro-primary-dark: hsl(207, 42%, 40%);
   @extend %profile-host;
 }
 
-// Override defaults (consider another approach)
-.profile-paper {
-  border-bottom: 1em solid $intro-primary;
-}
-.profile-intro {
-  background-color: $intro-primary;
-}
-.profile-label {
-  background-color: $intro-primary-dark;
-}
-
-.client-address {
-  font-size: 0.875em;
-  margin-top: 0.75em;
-  opacity: $secondary-text-opacity;
-}
-
 .postalcode-and-city,
 .street {
   width: 60%;
   @extend %text-overflow-ellipses;
 }
 
+// Override the .profile-label
 .profile-label-mail {
   background-color: rgba(255, 255, 255, 0.3);
   padding: calc($label-vertical-padding - 6px) calc($label-horizontal-padding - 6px);
@@ -42,87 +26,47 @@ $intro-primary-dark: hsl(207, 42%, 40%);
   z-index: 1;
 }
 
-.contact-data {
-  position: absolute;
-  font-size: 0.875em;
-  right: $intro-horizontal-padding;
-  text-align: right;
-  bottom: -28px;
-  z-index: 2;
-}
-
-.nip > span {
-  opacity: $primary-text-opacity;
-  font-weight: 500;
-}
-
 .email-link {
   margin-right: -16px;
 }
 
-// Override MatTab
-.mat-tab-nav-bar,
-.mat-tab-header {
-  border-bottom: 0px;
+// Override colors
+.profile-paper {
+  border-color: $intro-primary;
+}
+.profile-intro {
   background-color: $intro-primary;
 }
-.mat-tab-link {
-  background-color: $tabs-color;
-  color: $intro-primary-dark;
-  @extend %mat-tab-label-adjustment;
+.profile-label {
+  background-color: $intro-primary-dark;
+}
+.profile-paper {
+  .mat-tab-nav-bar,
+  .mat-tab-header {
+    background-color: $intro-primary;
+  }
+  .mat-tab-link {
+    color: $intro-primary-dark;
+  }
 }
 
 @media (max-width: $medium-breakpoint) {
-  .profile-label {
-    font-size: 1em;
-  }
-  .primary-name {
-    width: 56%;
-  }
-  .contact-data {
-    bottom: 0px;
-  }
   .email-link {
     margin-right: -7px;
-  }
-  .mat-tab-link {
-    height: 40px;
-    padding: 0 20px;
-    min-width: 140px;
   }
 }
 
 @media (max-width: $small-breakpoint) {
-  .profile-intro {
-    padding: $intro-vertical-padding-small $intro-horizontal-padding-small;
-  }
-  .profile-label {
-    font-size: 0.75em;
-    // Hide text
-    > span {
-      display: none;
-    }
-  }
   .profile-label-mail {
     display: inline-block;
   }
   .email-link {
     margin-right: 0px;
   }
-  .primary-name,
-  .secondary-name,
   .street {
     width: 80%;
   }
   .postalcode-and-city {
     width: 90%;
-  }
-  .contact-data {
-    display: none;
-  }
-  .mat-tab-link {
-    height: 32px;
-    padding: 0 16px;
-    min-width: 0px;
   }
 }
