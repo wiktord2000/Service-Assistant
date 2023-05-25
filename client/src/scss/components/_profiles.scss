@@ -4,22 +4,21 @@ $intro-horizontal-padding: 2.5rem;
 $intro-vertical-padding: 2rem;
 $intro-horizontal-padding-small: 2rem;
 $intro-vertical-padding-small: 2rem;
+$intro-primary-default: hsl(207, 42%, 47%);
+$intro-primary-dark-default: hsl(207, 42%, 40%);
+$profile-tabs-color: #fafafa;
 $label-horizontal-padding: 1.5em;
 $label-vertical-padding: 1em;
-$tabs-color: #fafafa;
-$paper-border-radius: 1rem;
-$primary-text-opacity: 0.6;
-$secondary-text-opacity: 0.9;
 
 .profile-paper {
   width: 100%;
-  max-width: $max-profile-paper-width;
+  max-width: $profile-max-paper-width;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  border-top-left-radius: $paper-border-radius;
-  border-top-right-radius: $paper-border-radius;
-  // border-bottom: 1em solid $intro-primary;
+  border-top-left-radius: $profile-paper-border-radius;
+  border-top-right-radius: $profile-paper-border-radius;
+  border-bottom: 1em solid $intro-primary-default;
   @include mat.elevation(10);
   overflow: hidden;
 }
@@ -27,24 +26,14 @@ $secondary-text-opacity: 0.9;
 .profile-intro {
   font-size: 1rem;
   padding: $intro-vertical-padding $intro-horizontal-padding;
-  // background-color: $intro-primary;
+  background-color: $intro-primary-default;
   position: relative;
   color: white;
 }
 
-.profile-primary-name {
-  font-size: 1.5em;
-  line-height: 1.25em;
-  font-weight: 500;
+.profile-title,
+.profile-subtitle {
   width: 70%;
-  @extend %text-overflow-ellipses;
-}
-
-.profile-secondary-name {
-  font-size: 1em;
-  width: 70%;
-  opacity: $primary-text-opacity;
-  font-weight: 500;
   @extend %text-overflow-ellipses;
 }
 
@@ -56,13 +45,21 @@ $secondary-text-opacity: 0.9;
   font-size: 1.125em;
   font-weight: 500;
   padding: $label-vertical-padding $label-horizontal-padding;
-  // background-color: $intro-primary-dark;
-  border-bottom-left-radius: $paper-border-radius;
+  background-color: $intro-primary-dark-default;
+  border-bottom-left-radius: $profile-paper-border-radius;
   display: flex;
   align-items: center;
   gap: 5px;
   justify-content: center;
   z-index: 2; // At the top when the second label appear
+}
+
+.profile-right-corner-data {
+  position: absolute;
+  right: $intro-horizontal-padding;
+  text-align: right;
+  bottom: -28px;
+  z-index: 2;
 }
 
 .profile-tab-filters {
@@ -77,9 +74,66 @@ $secondary-text-opacity: 0.9;
   display: flex;
   flex-direction: column;
   padding: max(3.5%, 24px) max(4%, 12px);
-  background-color: $tabs-color;
+  background-color: $profile-tabs-color;
 }
 
-.active-tab-link {
+.profile-active-tab-link {
   opacity: 1;
+}
+
+// Override MatTab
+.profile-paper {
+  .mat-tab-nav-bar,
+  .mat-tab-header {
+    border-bottom: 0px;
+    background-color: $intro-primary-default;
+  }
+  .mat-tab-link {
+    background-color: $profile-tabs-color;
+    color: $intro-primary-dark-default;
+    border-top-left-radius: calc($profile-paper-border-radius/2);
+    border-top-right-radius: calc($profile-paper-border-radius/2);
+    margin-left: 5px;
+    user-select: none;
+  }
+}
+
+@media (max-width: $medium-breakpoint) {
+  .profile-label {
+    font-size: 1em;
+  }
+  .profile-title {
+    width: 56%;
+  }
+  .profile-right-corner-data {
+    bottom: 0px;
+  }
+  .profile-paper .mat-tab-link {
+    height: 40px;
+    padding: 0 20px;
+    min-width: 140px;
+  }
+}
+
+@media (max-width: $small-breakpoint) {
+  .profile-intro {
+    padding: $intro-vertical-padding-small $intro-horizontal-padding-small;
+  }
+  .profile-label {
+    font-size: 0.75em;
+    // Hide text
+    > span {
+      display: none;
+    }
+  }
+  .profile-title,
+  .profile-subtitle {
+    width: 80%;
+  }
+  .profile-right-corner-data {
+    display: none;
+  }
+  .profile-paper .mat-tab-link {
+    min-width: 0px;
+  }
 }
