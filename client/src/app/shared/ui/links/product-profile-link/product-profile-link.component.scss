@@ -1,8 +1,8 @@
 @import "helpers/constants";
 
 // Override default media
-@media (max-width: $medium-breakpoint) {
+@media (max-width: $large-breakpoint) {
   .link-text {
-    max-width: $link-max-width-default;
+    max-width: $link-max-width-xlarge;
   }
 }
