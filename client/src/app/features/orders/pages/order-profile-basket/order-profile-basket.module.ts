@@ -11,6 +11,7 @@ import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-bas
 import { TextInputModule } from 'src/app/shared/ui/inputs/text-input/text-input.module';
 import { OrderProductsTableModule } from '../../ui/order-products-table/order-products-table.module';
 import { OrderServicesTableModule } from '../../ui/order-services-table/order-services-table.module';
+import { CreateOrderDialogModule } from '../../ui/create-order-dialog/create-order-dialog.module';
 
 @NgModule({
   declarations: [OrderProfileBasketComponent],
@@ -24,7 +25,8 @@ import { OrderServicesTableModule } from '../../ui/order-services-table/order-se
     MatIconModule,
     OrderProductsTableModule,
     OrderServicesTableModule,
-    TableBaseDirectiveModule
+    TableBaseDirectiveModule,
+    CreateOrderDialogModule
   ]
 })
 export class OrderProfileBasketModule {}

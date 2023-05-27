@@ -2,50 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderProfileComponent } from './order-profile.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatSelectModule } from '@angular/material/select';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { VehicleProfileLinkModule } from 'src/app/shared/ui/links/vehicle-profile-link/vehicle-profile-link.module';
-import { StatusSelectorModule } from 'src/app/features/orders/ui/status-selector/status-selector.module';
 import { ClientProfileLinkModule } from 'src/app/shared/ui/links/client-profile-link/client-profile-link.module';
-import { CustomHeaderModule } from 'src/app/shared/ui/custom-header/custom-header.module';
-import { ClientSelectInputModule } from 'src/app/shared/ui/selectors/client-select-input/client-select-input.module';
-import { TextInputModule } from 'src/app/shared/ui/inputs/text-input/text-input.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { OrderServicesTableModule } from 'src/app/features/orders/ui/order-services-table/order-services-table.module';
-import { OrderProductsTableModule } from 'src/app/features/orders/ui/order-products-table/order-products-table.module';
-import { VehicleSelectInputModule } from 'src/app/shared/ui/selectors/vehicle-select-input/vehicle-select-input.module';
-import { DateAndTimeInputModule } from 'src/app/shared/ui/inputs/date-and-time-input/date-and-time-input.module';
+import { VehicleProfileLinkModule } from 'src/app/shared/ui/links/vehicle-profile-link/vehicle-profile-link.module';
+import { StatusSelectorModule } from '../../ui/status-selector/status-selector.module';
 import { OrderProfileRoutingModule } from './order-profile-routing.module';
-import { CreateOrderDialogModule } from '../../ui/create-order-dialog/create-order-dialog.module';
-import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
 
 @NgModule({
   declarations: [OrderProfileComponent],
   imports: [
     CommonModule,
     OrderProfileRoutingModule,
-    ReactiveFormsModule,
     MatTabsModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatButtonModule,
-    VehicleProfileLinkModule,
     StatusSelectorModule,
     ClientProfileLinkModule,
-    CustomHeaderModule,
-    TextInputModule,
-    DateAndTimeInputModule,
-    MatIconModule,
-    OrderProductsTableModule,
-    OrderServicesTableModule,
-    ClientSelectInputModule,
-    VehicleSelectInputModule,
-    CreateOrderDialogModule,
-    TableBaseDirectiveModule
+    VehicleProfileLinkModule
   ]
 })
 export class OrderProfileModule {}

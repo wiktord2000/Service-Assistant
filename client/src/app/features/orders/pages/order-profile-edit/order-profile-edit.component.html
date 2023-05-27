@@ -1,1 +1,89 @@
-<p>order-profile-edit works!</p>
+<form
+  [formGroup]="orderForm"
+  (ngSubmit)="orderForm.valid && onSaveChanges()"
+  class="grid-container"
+>
+  <!-- Client data -->
+  <div class="client-container">
+    <app-custom-header [headerText]="'Klient'"></app-custom-header>
+    <!-- Client -->
+    <app-client-select-input
+      (clientChange)="onClientChange($event)"
+      [selectedClient]="selectedClient"
+      [label]="'Klient'"
+      [formControl]="orderForm.controls['client']"
+    ></app-client-select-input>
+    <!-- Description -->
+    <app-text-input
+      [isTextArea]="true"
+      [rowsNumber]="4"
+      [label]="'Opis klienta'"
+      [formControl]="orderForm.controls['clientDescription']"
+    >
+    </app-text-input>
+  </div>
+
+  <!-- Vehicle data -->
+  <div class="vehicle-container">
+    <app-custom-header [headerText]="'Pojazd'"></app-custom-header>
+    <!-- Vehicle -->
+    <app-vehicle-select-input
+      (vehicleChange)="onVehicleChange($event)"
+      [selectedVehicle]="selectedVehicle"
+      [formControl]="orderForm.controls['vehicle']"
+    ></app-vehicle-select-input>
+    <!-- Mealage -->
+    <app-text-input
+      [suffixText]="'km'"
+      [label]="'Przebieg'"
+      [formControl]="orderForm.controls['mileage']"
+    >
+    </app-text-input>
+    <!-- Fuel level -->
+    <app-select-input
+      [label]="'Poziom paliwa'"
+      [options]="fuelLevels"
+      [formControl]="orderForm.controls['fuelLevel']"
+    ></app-select-input>
+  </div>
+
+  <!-- Additional informations -->
+  <div class="additional-header-container">
+    <app-custom-header [headerText]="'Dodatkowe informacje'"></app-custom-header>
+  </div>
+  <!-- Notes -->
+  <div class="additional-notes">
+    <app-text-input
+      [label]="'Uwagi po wykonaniu zlecenia'"
+      [isTextArea]="true"
+      [rowsNumber]="4"
+      [formControl]="orderForm.controls['repairDescription']"
+    ></app-text-input>
+  </div>
+  <!-- Dates -->
+  <div class="additional-dates">
+    <!-- Admission -->
+    <app-date-and-time-input
+      [label]="'Dostarczenie auta'"
+      [formControl]="orderForm.controls['admissionDate']"
+    ></app-date-and-time-input>
+    <!-- Deadline -->
+    <app-date-and-time-input
+      [label]="'Termin naprawy'"
+      [formControl]="orderForm.controls['deadlineDate']"
+    ></app-date-and-time-input>
+  </div>
+
+  <!-- Submit -->
+  <div class="profile-submit-button-container">
+    <button
+      class="profile-submit-button"
+      mat-raised-button
+      type="submit"
+      color="primary"
+      [disabled]="!orderForm.dirty || !orderForm.valid || this.isSaving"
+    >
+      {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
+    </button>
+  </div>
+</form>

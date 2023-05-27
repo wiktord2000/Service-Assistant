@@ -12,8 +12,10 @@ import { Order } from 'src/app/core/models/Order';
   styleUrls: ['./order-profile-basket.component.scss']
 })
 export class OrderProfileBasketComponent implements OnInit, AfterViewInit {
-  @ViewChild(OrderServicesTableComponent) servicesTable!: OrderServicesTableComponent;
-  @ViewChild(OrderProductsTableComponent) productsTable!: OrderProductsTableComponent;
+  @ViewChild(OrderServicesTableComponent)
+  servicesTable: OrderServicesTableComponent;
+  @ViewChild(OrderProductsTableComponent)
+  productsTable: OrderProductsTableComponent;
   order: Order;
   constructor(@SkipSelf() private orderProfile: OrderProfileComponent, private dialog: MatDialog) {}
 
@@ -22,7 +24,8 @@ export class OrderProfileBasketComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // this.servicesTable?.dataSource.loadOrderServices(this.order.id);
+    this.servicesTable.dataSource.loadOrderServices(this.order.id);
+    this.productsTable.dataSource.loadOrderProducts(this.order.id);
   }
 
   onEditClick() {

@@ -1,174 +1,55 @@
+@import "helpers/constants";
+@import "helpers/placeholders";
+@import "components/profiles";
+
+$intro-primary: hsl(198, 52%, 45%);
+$intro-primary-dark: hsl(198, 52%, 38%);
+
 :host {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  --tabs-main: hsl(198, 52%, 45%);
-  --tabs-primary: hsl(198, 52%, 38%);
-  --tabs-secondary: #ffffffaa;
-  --main-border-radius: 1rem;
-  --wrappers-padding: 2em;
+  @extend %profile-host;
 }
 
-.content-wrapper {
-  flex: 1;
-  margin: 5vh 10vw;
-  display: flex;
+.profile-right-corner-data {
+  right: calc($intro-horizontal-padding - $link-default-horizontal-padding);
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
+.profile-intro {
+  min-height: 130px;
 }
 
-.header {
-  min-height: 4em;
-  padding: 3em;
-  padding-bottom: 1em;
-  background-color: var(--tabs-main);
-  position: relative;
-  color: white;
+// Override colors
+.profile-paper {
+  border-color: $intro-primary;
+  .mat-tab-nav-bar,
+  .mat-tab-header {
+    background-color: $intro-primary;
+  }
+  .mat-tab-link {
+    color: $intro-primary-dark;
+  }
+}
+.profile-intro {
+  background-color: $intro-primary;
+}
+.profile-label {
+  background-color: $intro-primary-dark;
 }
 
-.header-border-radius {
-  border-top-left-radius: var(--main-border-radius);
-  border-top-right-radius: var(--main-border-radius);
+// Override default media (_profiles.scss)
+@media (max-width: $medium-breakpoint) {
+  .profile-right-corner-data {
+    bottom: -24px;
+  }
 }
 
-.order-number {
-  font-size: 28px;
-  font-weight: 500;
-}
-
-.vehicle-link-wrapper {
-  margin-left: -1em;
-}
-
-.right-corner-label {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0em 1em;
-  padding-top: 1.5em;
-  padding-right: 1.5em;
-  /* padding: 1em 2em; */
-  /* font-size: 1.25em; */
-  border-bottom-left-radius: var(--main-border-radius);
-  border-top-right-radius: var(--main-border-radius);
-  color: white;
-  font-weight: 500;
-  /* background-color: var(--tabs-primary); */
-}
-
-.right-bottom-data {
-  position: absolute;
-  right: 1.5em;
-  text-align: right;
-  bottom: -30px;
-  z-index: 2;
-}
-
-.tabs {
-  flex: 1 1 auto;
-  border-bottom: 1em solid var(--tabs-main);
-}
-
-.tab-wrapper {
-  padding: 3em 6em;
-}
-
-.save-button-area {
-  text-align: end;
-}
-
-.save-button {
-  width: 100%;
-  max-width: 12em;
-}
-
-/* Styling angular material tabs */
-::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  background-color: var(--tabs-secondary);
-  margin-left: 5px;
-}
-
-::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
-  color: white;
-  background-color: var(--tabs-primary);
-}
-
-::ng-deep .mat-tab-list .mat-tab-labels {
-  background-color: var(--tabs-main);
-  /* padding-left: 0.25em; */
-}
-
-::ng-deep .mat-ink-bar {
-  display: none;
-}
-
-/* Styling tabs content*/
-.vehicle-and-client-wrapper {
-  display: flex;
-}
-
-.vehicle-wrapper {
-  flex: 1 1 50%;
-  padding: var(--wrappers-padding);
-  padding-top: 1em;
-  padding-bottom: 0em;
-}
-
-.client-wrapper {
-  flex: 1 1 50%;
-  padding: var(--wrappers-padding);
-  padding-top: 1em;
-  padding-bottom: 0em;
-}
-
-.services-wrapper {
-  padding: var(--wrappers-padding);
-  padding-top: 1em;
-}
-
-.section-wrapper {
-  padding: var(--wrappers-padding);
-  padding-top: 0px;
-}
-
-.w-100 {
-  width: 100%;
-}
-
-.summary-wrapper {
-  margin-top: 2em;
-}
-
-.summary-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1em;
-}
-
-.summary-text {
-  margin-left: 1em;
-  font-weight: 500;
-  font-size: 1.5em;
-  color: #3f51b5;
-}
-
-.summary-price {
-  font-weight: 600;
-}
-
-.row {
-  display: flex;
-  gap: 1em;
-}
-
-.row > * {
-  flex: 1 1 50%;
+@media (max-width: $small-breakpoint) {
+  :host ::ng-deep .profile-right-corner-data {
+    display: flex;
+    right: 4px;
+    bottom: 8px;
+    .link-text,
+    .link-label {
+      display: none;
+    }
+  }
 }

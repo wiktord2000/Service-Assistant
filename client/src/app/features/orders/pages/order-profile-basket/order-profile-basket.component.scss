@@ -1,33 +1,35 @@
-$wrappers-padding: 2em;
+@import "helpers/constants";
 
-.services-wrapper {
-  padding: $wrappers-padding;
-  padding-top: 1em;
+:host {
+  flex: 1;
+  padding: 1em;
 }
 
-.section-wrapper {
-  padding: $wrappers-padding;
-  padding-top: 0px;
-}
-
-.summary-wrapper {
-  margin-top: 2em;
+.summary-container {
+  margin-top: 2.5em;
 }
 
 .summary-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1em;
+  margin-top: 1.5em;
+  padding-left: 1.5em;
+  gap: 1em;
 }
 
 .summary-text {
-  margin-left: 1em;
   font-weight: 500;
   font-size: 1.5em;
-  color: #3f51b5;
+  line-height: 1.25em;
+  color: $primary;
 }
 
-.summary-price {
-  font-weight: 600;
+@media (max-width: $small-breakpoint) {
+  .profile-submit-button {
+    width: auto;
+    span {
+      display: none;
+    }
+  }
 }
