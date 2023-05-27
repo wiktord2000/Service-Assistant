@@ -71,6 +71,12 @@ td.mat-cell:not(.mat-column-actions) {
   padding-right: 0.5em;
 }
 
+@media (max-width: $xlarge-breakpoint) {
+  .mat-column-finishDate {
+    display: none;
+  }
+}
+
 @media (max-width: $large-breakpoint) {
   .mat-column-createDate,
   .mat-column-admissionDate {
@@ -79,7 +85,6 @@ td.mat-cell:not(.mat-column-actions) {
 }
 
 @media (max-width: $medium-breakpoint) {
-  .mat-column-finishDate,
   .mat-column-deadlineDate {
     display: none;
   }

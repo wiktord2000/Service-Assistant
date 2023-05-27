@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import '@angular/common/locales/global/pl';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +29,8 @@ import { SharedModule } from './shared/shared.module';
   ],
   providers: [
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
-    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' } // makes local names e.g. DECEMBER - GRUDZIEN (inside calendar)
+    { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }, // makes local names e.g. DECEMBER - GRUDZIEN (inside calendar)
+    { provide: LOCALE_ID, useValue: 'pl-PL' }
   ],
   bootstrap: [AppComponent]
 })

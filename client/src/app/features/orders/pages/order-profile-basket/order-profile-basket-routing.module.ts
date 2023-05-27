@@ -8,4 +8,4 @@ const routes: Routes = [{ path: '', component: OrderProfileBasketComponent }];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class OrderProfileBasketRoutingModule { }
+export class OrderProfileBasketRoutingModule {}
