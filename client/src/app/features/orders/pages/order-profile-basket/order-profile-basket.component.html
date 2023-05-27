@@ -1,0 +1,54 @@
+<div class="tab-wrapper">
+  <!-- Services -->
+  <div class="section-wrapper">
+    <!-- Services header-->
+    <app-custom-header [headerText]="'Usługi'"></app-custom-header>
+
+    <!-- OrderServices Table -->
+    <app-order-services-table
+      appTableBase
+      [heightInRows]="'auto'"
+      [hideActions]="true"
+      [initialData]="order.orderServices"
+      [matElevationValue]="2"
+    ></app-order-services-table>
+  </div>
+  <!-- Products -->
+  <div class="section-wrapper">
+    <!-- Products header -->
+    <app-custom-header [headerText]="'Towary'"></app-custom-header>
+
+    <!-- OrderProducts Table -->
+    <app-order-products-table
+      appTableBase
+      [heightInRows]="'auto'"
+      [hideActions]="true"
+      [initialData]="order.orderProducts"
+      [matElevationValue]="2"
+    ></app-order-products-table>
+
+    <!-- Summary -->
+    <div class="summary-wrapper">
+      <mat-divider></mat-divider>
+      <!-- Summary-wrapper -->
+      <div class="summary-content">
+        <!-- Summary -->
+        <div class="summary-text">
+          Razem: <span class="summary-price">{{ order.totalGross.toFixed(2) }} zł</span>
+        </div>
+
+        <!-- Edit Button -->
+        <button
+          mat-raised-button
+          type="button"
+          class="save-button"
+          (click)="onEditClick()"
+          color="primary"
+        >
+          <mat-icon style="margin-right: 4px">edit</mat-icon>
+          <span>Edytuj</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

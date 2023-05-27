@@ -1,0 +1,33 @@
+$wrappers-padding: 2em;
+
+.services-wrapper {
+  padding: $wrappers-padding;
+  padding-top: 1em;
+}
+
+.section-wrapper {
+  padding: $wrappers-padding;
+  padding-top: 0px;
+}
+
+.summary-wrapper {
+  margin-top: 2em;
+}
+
+.summary-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.summary-text {
+  margin-left: 1em;
+  font-weight: 500;
+  font-size: 1.5em;
+  color: #3f51b5;
+}
+
+.summary-price {
+  font-weight: 600;
+}
