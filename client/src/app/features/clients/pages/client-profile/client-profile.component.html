@@ -1,17 +1,17 @@
 <div *ngIf="client" class="profile-paper">
   <div class="profile-intro">
     <!-- Client name / Company name -->
-    <div class="primary-name">
+    <div class="profile-title">
       {{ isCompany ? client.companyName : client.firstname + " " + client.lastname }}
     </div>
 
     <!-- Company owner (if company) -->
-    <div *ngIf="isCompany" class="secondary-name">
+    <div *ngIf="isCompany" class="profile-subtitle">
       {{ client.firstname + " " + client.lastname }}
     </div>
 
     <!-- Client address -->
-    <div class="client-address">
+    <div class="profile-text">
       <div class="street">{{ client.street || "&nbsp;" }}</div>
       <div class="postalcode-and-city">
         <span>{{ client.postalCode || "&nbsp;" }}</span>
@@ -37,9 +37,15 @@
     </div>
 
     <!-- Contact -->
-    <div class="contact-data">
-      <div>{{ client.phone || "&nbsp;" }}</div>
-      <div *ngIf="isCompany && client.nip" class="nip"><span>NIP </span>{{ client.nip }}</div>
+    <div class="profile-right-corner-data">
+      <div class="profile-text">
+        <div *ngIf="isCompany && client.nip" class="nip">
+          <span class="profile-bold-text">NIP </span>{{ client.nip }}
+        </div>
+        <div *ngIf="client.phone">
+          <span class="profile-bold-text">TEL </span>{{ client.phone }}
+        </div>
+      </div>
       <app-send-email-link
         *ngIf="client.email"
         class="email-link"
@@ -53,17 +59,21 @@
   <nav mat-tab-nav-bar animationDuration="0ms" mat-align-tabs="start" [tabPanel]="tabPanel">
     <a
       mat-tab-link
-      routerLinkActive="active-tab-link"
+      routerLinkActive="profile-active-tab-link"
       [routerLink]="['./']"
       [routerLinkActiveOptions]="{ exact: true }"
     >
       Dane klienta
     </a>
-    <a mat-tab-link routerLinkActive="active-tab-link" [routerLink]="['./vehicles']"> Pojazdy </a>
-    <a mat-tab-link routerLinkActive="active-tab-link" [routerLink]="['./orders']"> Zlecenia </a>
+    <a mat-tab-link routerLinkActive="profile-active-tab-link" [routerLink]="['./vehicles']">
+      Pojazdy
+    </a>
+    <a mat-tab-link routerLinkActive="profile-active-tab-link" [routerLink]="['./orders']">
+      Zlecenia
+    </a>
   </nav>
   <!-- Tabs-content -->
-  <mat-tab-nav-panel class="tab-content" #tabPanel
+  <mat-tab-nav-panel class="profile-tab-content" #tabPanel
     ><router-outlet></router-outlet
   ></mat-tab-nav-panel>
 </div>

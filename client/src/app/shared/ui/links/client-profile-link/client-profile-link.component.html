@@ -8,7 +8,7 @@
   [style.color]="customColor"
   [color]="color"
 >
-  <div *ngIf="containLabel" class="link-label">Właściciel</div>
+  <div *ngIf="label" class="link-label">{{ label }}</div>
   <mat-icon class="link-icon">{{ this.client.type === "company" ? "groups" : "person" }}</mat-icon>
   <span class="link-text">
     {{ clientName }}

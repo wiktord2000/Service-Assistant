@@ -1,9 +1,10 @@
 @import "helpers/constants";
 
-$form-fields-gap: 2.5%;
+$form-fields-gap: 1.5em;
 
 :host {
   flex: 1;
+  padding: 1em;
 }
 
 .edit-form {
@@ -14,14 +15,5 @@ $form-fields-gap: 2.5%;
 
 .edit-form > * {
   flex: 1 1 calc(50% - $form-fields-gap/2);
-}
-
-.save-button-area {
-  text-align: end;
-  margin-top: 1em;
-}
-
-.save-button {
-  width: 100%;
-  max-width: 160px;
+  min-width: 180px;
 }

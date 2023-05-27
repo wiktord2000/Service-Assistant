@@ -1,65 +1,13 @@
 @use "@angular/material" as mat;
 @import "helpers/constants";
 @import "helpers/placeholders";
+@import "components/profiles";
 
 $intro-primary: hsl(207, 42%, 47%);
 $intro-primary-dark: hsl(207, 42%, 40%);
-$intro-horizontal-padding: 2.5rem;
-$intro-vertical-padding: 2rem;
-$intro-horizontal-padding-small: 2rem;
-$intro-vertical-padding-small: 2rem;
-$label-horizontal-padding: 1.5em;
-$label-vertical-padding: 1em;
-$tabs-color: #fafafa;
-$paper-border-radius: 1rem;
-$primary-text-opacity: 0.6;
-$secondary-text-opacity: 0.9;
 
 :host {
   @extend %profile-host;
-}
-
-.profile-paper {
-  width: 100%;
-  max-width: $max-profile-paper-width;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  border-top-left-radius: $paper-border-radius;
-  border-top-right-radius: $paper-border-radius;
-  border-bottom: 1em solid $intro-primary;
-  @include mat.elevation(10);
-  overflow: hidden;
-}
-
-.profile-intro {
-  font-size: 1rem;
-  padding: $intro-vertical-padding $intro-horizontal-padding;
-  background-color: $intro-primary;
-  position: relative;
-  color: white;
-}
-
-.primary-name {
-  font-size: 1.5em;
-  line-height: 1.25em;
-  font-weight: 500;
-  width: 70%;
-  @extend %text-overflow-ellipses;
-}
-
-.secondary-name {
-  font-size: 1em;
-  width: 70%;
-  opacity: $primary-text-opacity;
-  font-weight: 500;
-  @extend %text-overflow-ellipses;
-}
-
-.client-address {
-  font-size: 0.875em;
-  margin-top: 0.75em;
-  opacity: $secondary-text-opacity;
 }
 
 .postalcode-and-city,
@@ -68,23 +16,7 @@ $secondary-text-opacity: 0.9;
   @extend %text-overflow-ellipses;
 }
 
-.profile-label {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  color: white;
-  font-size: 1.125em;
-  font-weight: 500;
-  padding: $label-vertical-padding $label-horizontal-padding;
-  background-color: $intro-primary-dark;
-  border-bottom-left-radius: $paper-border-radius;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  justify-content: center;
-  z-index: 2; // At the top when the second label appear
-}
-
+// Override the .profile-label
 .profile-label-mail {
   background-color: rgba(255, 255, 255, 0.3);
   padding: calc($label-vertical-padding - 6px) calc($label-horizontal-padding - 6px);
@@ -94,99 +26,46 @@ $secondary-text-opacity: 0.9;
   z-index: 1;
 }
 
-.contact-data {
-  position: absolute;
-  font-size: 0.875em;
-  right: $intro-horizontal-padding;
-  text-align: right;
-  bottom: -28px;
-  z-index: 2;
-}
-
-.nip > span {
-  opacity: $primary-text-opacity;
-  font-weight: 500;
-}
-
 .email-link {
   margin-right: -16px;
 }
 
-.tab-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: max(3.5%, 24px) max(4%, 12px);
-  background-color: $tabs-color;
+// Override colors
+.profile-paper {
+  border-color: $intro-primary;
+  .mat-tab-nav-bar,
+  .mat-tab-header {
+    background-color: $intro-primary;
+  }
+  .mat-tab-link {
+    color: $intro-primary-dark;
+  }
 }
-
-.active-tab-link {
-  opacity: 1;
-}
-
-// Override MatTab
-.mat-tab-nav-bar,
-.mat-tab-header {
-  border-bottom: 0px;
+.profile-intro {
   background-color: $intro-primary;
 }
-.mat-tab-link {
-  background-color: $tabs-color;
-  color: $intro-primary-dark;
-  @extend %mat-tab-label-adjustment;
+.profile-label {
+  background-color: $intro-primary-dark;
 }
 
 @media (max-width: $medium-breakpoint) {
-  .profile-label {
-    font-size: 1em;
-  }
-  .primary-name {
-    width: 56%;
-  }
-  .contact-data {
-    bottom: 0px;
-  }
   .email-link {
     margin-right: -7px;
-  }
-  .mat-tab-link {
-    height: 40px;
-    padding: 0 20px;
-    min-width: 140px;
   }
 }
 
 @media (max-width: $small-breakpoint) {
-  .profile-intro {
-    padding: $intro-vertical-padding-small $intro-horizontal-padding-small;
-  }
-  .profile-label {
-    font-size: 0.75em;
-    // Hide text
-    > span {
-      display: none;
-    }
-  }
   .profile-label-mail {
     display: inline-block;
+    background-color: rgba(255, 255, 255, 0.3);
   }
   .email-link {
     margin-right: 0px;
   }
-  .primary-name,
-  .secondary-name,
   .street {
     width: 80%;
   }
   .postalcode-and-city {
     width: 90%;
-  }
-  .contact-data {
-    display: none;
-  }
-  .mat-tab-link {
-    height: 32px;
-    padding: 0 16px;
-    min-width: 0px;
   }
 }

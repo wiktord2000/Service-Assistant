@@ -8,7 +8,10 @@ $default-background-color: white;
 $navbar-height: 64px;
 $navbar-shrink-height: 56px;
 // Profiles
-$max-profile-paper-width: 1200px;
+$profile-max-paper-width: 1200px;
+$profile-paper-border-radius: 1rem;
+$profile-primary-opacity: 0.6;
+$profile-secondary-opacity: 0.9;
 // Inputs
 $inputs-border-radius: 4px;
 $inputs-content-padding: 0.75em;
@@ -18,9 +21,11 @@ $medium-breakpoint: 960px;
 $large-breakpoint: 1280px;
 $xlarge-breakpoint: 1920px;
 // Links
-$link-max-width-default: 160px;
+$link-max-width-xlarge: 120px;
+$link-max-width-large: 100px;
 $link-max-width-medium: 80px;
 $link-max-width-small: 40px;
+$link-default-horizontal-padding: 16px;
 // Snackbar stuff
 $snackbar-success-color: rgb(98, 213, 98);
 $snackbar-info-color: rgb(135, 206, 250);

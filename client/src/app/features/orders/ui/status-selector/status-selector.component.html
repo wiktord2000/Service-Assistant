@@ -1,17 +1,16 @@
 <mat-form-field
-  [ngClass]="darkMode && 'white-text'"
-  [appearance]="appearance"
-  [style.fontSize.px]="12"
+  [ngClass]="profileMode && 'profile-mode'"
+  [appearance]="profileMode ? 'none' : appearance"
 >
-  <!-- Prefix of input (circle) -->
+  <!-- Prefix (circle) -->
   <div
-    [ngClass]="darkMode && 'white-border'"
     style.backgroundColor="{{ getStatusColor(selectedPosition) }}"
     class="status-circle"
+    [attr.data-one-sign]="status.name[0]"
     matPrefix
   ></div>
 
-  <!-- Select input -->
+  <!-- Select status -->
   <mat-select [(value)]="selectedPosition" (selectionChange)="onSelectionChange()">
     <!-- Options -->
     <mat-option *ngFor="let status of possibleStatuses" value="{{ status.position }}">

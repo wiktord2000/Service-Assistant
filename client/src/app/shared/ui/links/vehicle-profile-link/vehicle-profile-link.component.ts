@@ -14,7 +14,7 @@ export class VehicleProfileLinkComponent implements OnInit {
   @Input() tooltipPosition: TooltipPosition = 'right';
   @Input() color: ThemePalette = 'primary';
   @Input() customColor?: string;
-  @Input() containLabel: boolean = false;
+  @Input() label!: string;
   @Input() includeIcon: boolean = false;
   vehicleName!: string;
   constructor(private utils: UtilsService) {}

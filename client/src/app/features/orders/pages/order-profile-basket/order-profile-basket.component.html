@@ -1,0 +1,44 @@
+<!-- Services -->
+<app-custom-header [headerText]="'Usługi'"></app-custom-header>
+<!-- OrderServices Table -->
+<app-order-services-table
+  appTableBase
+  [heightInRows]="'auto'"
+  [hideActions]="true"
+  [initialData]="order.orderServices"
+  [matElevationValue]="2"
+></app-order-services-table>
+
+<!-- Products -->
+<app-custom-header [disableTopMargin]="false" [headerText]="'Towary'"></app-custom-header>
+<!-- OrderProducts Table -->
+<app-order-products-table
+  appTableBase
+  [heightInRows]="'auto'"
+  [hideActions]="true"
+  [initialData]="order.orderProducts"
+  [matElevationValue]="2"
+></app-order-products-table>
+
+<!-- Summary -->
+<div class="summary-container">
+  <mat-divider></mat-divider>
+  <div class="summary-content">
+    <!-- Total cost -->
+    <div class="summary-text">
+      Razem: <strong>{{ order.totalGross.toFixed(2) }}&nbsp;zł</strong>
+    </div>
+
+    <!-- Edit Button -->
+    <button
+      mat-raised-button
+      class="profile-submit-button"
+      type="button"
+      (click)="onEditClick()"
+      color="primary"
+    >
+      <mat-icon>edit</mat-icon>
+      <span>Edytuj</span>
+    </button>
+  </div>
+</div>

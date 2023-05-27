@@ -1,3 +1,6 @@
-<mat-divider *ngIf="!disableTopDivider"></mat-divider>
+<mat-divider
+  *ngIf="!disableTopDivider"
+  [ngClass]="{ 'top-margin': !disableTopMargin }"
+></mat-divider>
 <h2 class="header-text">{{ headerText }}</h2>
-<mat-divider class="divider"></mat-divider>
+<mat-divider [ngClass]="{ 'bottom-margin': !disableBottomMargin }" class="divider"></mat-divider>

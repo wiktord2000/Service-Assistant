@@ -1,0 +1,61 @@
+@import "helpers/constants";
+
+$column-gap: 1.5em;
+$form-padding: 1em;
+
+:host {
+  flex: 1;
+}
+
+:host ::ng-deep textarea {
+  height: 86px;
+}
+
+.grid-container {
+  display: grid;
+  padding: $form-padding;
+  grid-template-columns: 1fr 1fr;
+  gap: 0em $column-gap;
+  grid-template-areas:
+    "client-container vehicle-container"
+    "additional-header-container additional-header-container"
+    "additional-notes additional-dates"
+    "submit-button-container submit-button-container";
+}
+
+.client-container {
+  grid-area: client-container;
+}
+.vehicle-container {
+  grid-area: vehicle-container;
+}
+.additional-header-container {
+  margin-top: $column-gap;
+  grid-area: additional-header-container;
+}
+.additional-dates {
+  grid-area: additional-dates;
+}
+.additional-notes {
+  grid-area: additional-notes;
+}
+.profile-submit-button-container {
+  grid-area: submit-button-container;
+}
+
+@media (max-width: $small-breakpoint) {
+  .grid-container {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "client-container"
+      "vehicle-container"
+      "additional-header-container"
+      "additional-dates"
+      "additional-notes"
+      "submit-button-container";
+  }
+
+  .grid-container > *:not(.additional-dates, .additional-notes, .client-container) {
+    margin-top: $form-padding;
+  }
+}

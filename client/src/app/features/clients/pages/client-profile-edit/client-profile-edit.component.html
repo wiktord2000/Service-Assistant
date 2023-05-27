@@ -45,11 +45,11 @@
   <app-text-input [label]="'Adres e-mail'" [formControl]="editForm.controls['email']">
   </app-text-input>
 
-  <div class="save-button-area">
+  <div class="profile-submit-button-container">
     <button
       mat-raised-button
       type="submit"
-      class="save-button"
+      class="profile-submit-button"
       color="primary"
       [disabled]="!editForm.dirty || !editForm.valid || this.isSaving"
     >

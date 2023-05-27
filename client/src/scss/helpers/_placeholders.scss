@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   background-color: white;
-  padding: max(2.5%, 24px) max(5%, 16px);
+  padding: max(2.5%, 24px) max(3.5%, 12px);
 }
 
 %table-host {
@@ -22,13 +22,6 @@
 %snackbar-base {
   background-color: $snackbar-paper-color;
   color: white;
-}
-
-%mat-tab-label-adjustment {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  margin-left: 5px;
-  user-select: none;
 }
 
 %text-overflow-ellipses {

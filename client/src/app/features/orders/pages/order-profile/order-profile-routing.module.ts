@@ -1,10 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OrderProfileComponent } from './order-profile.component';
-import { CanDeactivateGuard } from 'src/app/core/guards/can-deactivate.guard';
+import { OrderResolver } from '../../data-access/order.resolver';
 
 const routes: Routes = [
-  { path: '', canDeactivate: [CanDeactivateGuard], component: OrderProfileComponent }
+  {
+    path: '',
+    resolve: { order: OrderResolver },
+    component: OrderProfileComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('../order-profile-edit/order-profile-edit.module').then(
+            (m) => m.OrderProfileEditModule
+          )
+      },
+      {
+        path: 'basket',
+        loadChildren: () =>
+          import('../order-profile-basket/order-profile-basket.module').then(
+            (m) => m.OrderProfileBasketModule
+          )
+      }
+    ]
+  }
 ];
 
 @NgModule({

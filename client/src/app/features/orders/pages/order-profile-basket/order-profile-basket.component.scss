@@ -1,0 +1,35 @@
+@import "helpers/constants";
+
+:host {
+  flex: 1;
+  padding: 1em;
+}
+
+.summary-container {
+  margin-top: 2.5em;
+}
+
+.summary-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5em;
+  padding-left: 1.5em;
+  gap: 1em;
+}
+
+.summary-text {
+  font-weight: 500;
+  font-size: 1.5em;
+  line-height: 1.25em;
+  color: $primary;
+}
+
+@media (max-width: $small-breakpoint) {
+  .profile-submit-button {
+    width: auto;
+    span {
+      display: none;
+    }
+  }
+}

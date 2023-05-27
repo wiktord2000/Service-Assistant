@@ -11,7 +11,7 @@ import { MatFormFieldAppearance } from '@angular/material/form-field';
 })
 export class StatusSelectorComponent implements OnInit {
   @Input() status: Status;
-  @Input() darkMode: boolean = false;
+  @Input() profileMode: boolean = false;
   @Input() appearance: MatFormFieldAppearance = 'outline';
   @Output() onStatusUpdate = new EventEmitter<Status>();
   selectedPosition: string;

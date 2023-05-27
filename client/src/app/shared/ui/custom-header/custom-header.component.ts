@@ -8,6 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CustomHeaderComponent implements OnInit {
   @Input() headerText: string;
   @Input() disableTopDivider: boolean = false;
+  @Input() disableBottomMargin: boolean = false;
+  @Input() disableTopMargin: boolean = true;
 
   constructor() {}
 
