@@ -1,15 +1,15 @@
 .link-label {
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   position: absolute;
   top: -1.25em;
   right: 1rem;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .link-text {
   display: inline-block;
-  max-width: $link-max-width-default;
+  max-width: $link-max-width-xlarge;
   width: 100%;
   text-align: left;
   @extend %text-overflow-ellipses;
@@ -17,6 +17,12 @@
 
 .link-icon {
   margin-right: 4px;
+}
+
+@media (max-width: $large-breakpoint) {
+  .link-text {
+    max-width: $link-max-width-large;
+  }
 }
 
 @media (max-width: $medium-breakpoint) {

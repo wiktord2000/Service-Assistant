@@ -106,9 +106,12 @@ $profile-submit-button-width: 160px;
   margin-top: 1em;
 }
 
-.profile-submit-button-container > .profile-submit-button {
+.profile-submit-button {
   width: 100%;
   max-width: $profile-submit-button-width;
+  .mat-icon {
+    margin: 0px 4px;
+  }
 }
 
 @media (max-width: $medium-breakpoint) {
