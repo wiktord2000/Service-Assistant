@@ -33,14 +33,6 @@ $intro-primary-dark: hsl(207, 42%, 40%);
 // Override colors
 .profile-paper {
   border-color: $intro-primary;
-}
-.profile-intro {
-  background-color: $intro-primary;
-}
-.profile-label {
-  background-color: $intro-primary-dark;
-}
-.profile-paper {
   .mat-tab-nav-bar,
   .mat-tab-header {
     background-color: $intro-primary;
@@ -48,6 +40,12 @@ $intro-primary-dark: hsl(207, 42%, 40%);
   .mat-tab-link {
     color: $intro-primary-dark;
   }
+}
+.profile-intro {
+  background-color: $intro-primary;
+}
+.profile-label {
+  background-color: $intro-primary-dark;
 }
 
 @media (max-width: $medium-breakpoint) {
@@ -59,6 +57,7 @@ $intro-primary-dark: hsl(207, 42%, 40%);
 @media (max-width: $small-breakpoint) {
   .profile-label-mail {
     display: inline-block;
+    background-color: rgba(255, 255, 255, 0.3);
   }
   .email-link {
     margin-right: 0px;
