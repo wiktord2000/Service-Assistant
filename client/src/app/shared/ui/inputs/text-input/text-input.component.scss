@@ -7,3 +7,7 @@
   font-size: 1.125em;
   opacity: 0.6;
 }
+
+:host ::ng-deep .mat-form-field-infix {
+  width: auto;
+}
