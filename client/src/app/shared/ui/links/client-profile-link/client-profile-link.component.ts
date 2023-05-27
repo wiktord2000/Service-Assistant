@@ -14,7 +14,7 @@ export class ClientProfileLinkComponent implements OnInit {
   @Input() tooltipPosition: TooltipPosition = 'right';
   @Input() color: ThemePalette = 'primary';
   @Input() customColor?: string;
-  @Input() containLabel: boolean = false;
+  @Input() label!: string;
   clientName!: string;
   constructor(private utils: UtilsService) {}
 
