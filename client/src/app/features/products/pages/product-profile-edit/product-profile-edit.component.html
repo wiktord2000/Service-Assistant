@@ -1,0 +1,107 @@
+<form
+  [formGroup]="productDataForm"
+  (ngSubmit)="productDataForm.valid && onProductDataSave()"
+  class="edit-form"
+>
+  <!-- Product name -->
+  <app-text-input [label]="'Nazwa produktu'" [formControl]="productDataForm.controls['name']">
+  </app-text-input>
+
+  <!-- Manufacturer -->
+  <app-text-input
+    class="manufacturer-input"
+    [label]="'Producent'"
+    [formControl]="productDataForm.controls['manufacturer']"
+  >
+  </app-text-input>
+
+  <div class="combine-two">
+    <!-- Unit -->
+    <app-text-input [label]="'Jednostka'" [formControl]="productDataForm.controls['unit']">
+    </app-text-input>
+
+    <!-- Availability -->
+    <app-text-input [label]="'Dostępność'" [formControl]="productDataForm.controls['availability']">
+    </app-text-input>
+  </div>
+
+  <div class="combine-two">
+    <!-- EAN -->
+    <app-text-input [label]="'EAN (kod kresowy)'" [formControl]="productDataForm.controls['ean']">
+    </app-text-input>
+
+    <!-- Code -->
+    <app-text-input
+      class="code-input"
+      [label]="'Kod produktu'"
+      [formControl]="productDataForm.controls['code']"
+    >
+    </app-text-input>
+  </div>
+
+  <!-- Buy Price Section -->
+  <app-custom-header class="header" [headerText]="'Zakup'"></app-custom-header>
+
+  <!-- Buy Price Net -->
+  <app-text-input
+    [suffixText]="'zł'"
+    [label]="'Cena zakupu (netto)'"
+    [formControl]="productDataForm.controls['buyPriceNet']"
+  >
+  </app-text-input>
+
+  <!-- Buy Price Gross -->
+  <app-text-input
+    [suffixText]="'zł'"
+    [label]="'Cena zakupu (brutto)'"
+    [formControl]="productDataForm.controls['buyPriceGross']"
+  >
+  </app-text-input>
+
+  <!-- Sales Price Section -->
+  <app-custom-header class="header" [headerText]="'Sprzedaż'"></app-custom-header>
+
+  <div class="margin-and-sales-price">
+    <!-- Margin -->
+    <app-text-input
+      class="margin"
+      [type]="'number'"
+      [minNumber]="'0'"
+      [maxNumber]="'99'"
+      [suffixText]="'%'"
+      [label]="'Marża'"
+      [formControl]="productDataForm.controls['margin']"
+    >
+    </app-text-input>
+
+    <!-- Sales Price Net -->
+    <app-text-input
+      class="sales-price"
+      [suffixText]="'zł'"
+      [label]="'Cena sprzedaży (netto)'"
+      [formControl]="productDataForm.controls['salesPriceNet']"
+    >
+    </app-text-input>
+  </div>
+
+  <!-- Sales Price Gross -->
+  <app-text-input
+    [suffixText]="'zł'"
+    [label]="'Cena sprzedaży (brutto)'"
+    [formControl]="productDataForm.controls['salesPriceGross']"
+  >
+  </app-text-input>
+
+  <!-- Save button -->
+  <div class="profile-submit-button-container">
+    <button
+      mat-raised-button
+      class="profile-submit-button"
+      type="submit"
+      color="primary"
+      [disabled]="!productDataForm.dirty || !productDataForm.valid || this.isSaving"
+    >
+      {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
+    </button>
+  </div>
+</form>
