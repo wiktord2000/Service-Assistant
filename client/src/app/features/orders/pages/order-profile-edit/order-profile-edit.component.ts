@@ -83,6 +83,7 @@ export class OrderProfileEditComponent implements OnInit, CanDeactivateGuard {
           this.order.client = this.selectedClient;
           this.order.vehicle = this.selectedVehicle;
           this.order = { ...this.order, ...updateData };
+          this.orderProfile.order = this.order;
           this.snackbarService.showMessage('success', 'Pomyślnie zaktualizowano dane zlecenia');
           this.orderForm.reset(this.order);
         },
