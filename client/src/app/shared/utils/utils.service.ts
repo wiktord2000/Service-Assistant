@@ -28,4 +28,8 @@ export class UtilsService {
     if (!vehicle) return '';
     return vehicle.brand + ' ' + vehicle.model;
   }
+
+  getCurrentDate() {
+    return new Date();
+  }
 }
