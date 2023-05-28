@@ -3,8 +3,8 @@
 @import "helpers/placeholders";
 @import "components/profiles";
 
-$intro-primary: hsl(207, 42%, 47%);
-$intro-primary-dark: hsl(207, 42%, 40%);
+$intro-primary: hsl(199, 60%, 41%);
+$intro-primary-dark: hsl(199, 60%, 36%);
 
 :host {
   @extend %profile-host;

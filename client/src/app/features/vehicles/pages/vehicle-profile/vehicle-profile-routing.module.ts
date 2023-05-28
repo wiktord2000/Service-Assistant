@@ -1,10 +1,30 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VehicleProfileComponent } from './vehicle-profile.component';
-import { CanDeactivateGuard } from 'src/app/core/guards/can-deactivate.guard';
+import { VehicleResolver } from '../../data-access/vehicle.resolver';
 
 const routes: Routes = [
-  { path: '', canDeactivate: [CanDeactivateGuard], component: VehicleProfileComponent }
+  {
+    path: '',
+    resolve: { vehicle: VehicleResolver },
+    component: VehicleProfileComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('../vehicle-profile-edit/vehicle-profile-edit.module').then(
+            (m) => m.VehicleProfileEditModule
+          )
+      },
+      {
+        path: 'orders',
+        loadChildren: () =>
+          import('../vehicle-profile-orders/vehicle-profile-orders.module').then(
+            (m) => m.VehicleProfileOrdersModule
+          )
+      }
+    ]
+  }
 ];
 
 @NgModule({

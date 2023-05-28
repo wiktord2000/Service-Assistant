@@ -1,0 +1,22 @@
+<div class="profile-tab-filters">
+  <!-- Add button -->
+  <button mat-raised-button color="primary" (click)="onAddOrder()" aria-label="Add order button">
+    Dodaj zlecenie
+    <mat-icon>add</mat-icon>
+  </button>
+  <!-- Toggle -->
+  <mat-slide-toggle (toggleChange)="onToggleChange()" color="primary" checked="displayFinished">
+    Ukryj zakończone
+  </mat-slide-toggle>
+</div>
+
+<!-- Table -->
+<app-orders-table
+  appTableBase
+  [hideVehicleColumn]="true"
+  [heightInRows]="3"
+  [matElevationValue]="2"
+  [initialData]="filterFinshedOrders(vehicle.orders)"
+  [hideClientColumn]="true"
+>
+</app-orders-table>
