@@ -1,0 +1,54 @@
+<form
+  [formGroup]="productDescriptionForm"
+  (ngSubmit)="productDescriptionForm.valid && onProductDescriptionSave()"
+  class="form"
+>
+  <div class="section-container">
+    <!-- Description -->
+    <div class="section">
+      <app-custom-header [headerText]="'Opis'"></app-custom-header>
+      <app-text-input
+        class="description-textarea"
+        [isTextArea]="true"
+        [rowsNumber]="10"
+        [formControl]="productDescriptionForm.controls['description']"
+      >
+      </app-text-input>
+    </div>
+
+    <!-- Notices and Grade -->
+    <div class="section">
+      <!-- Notices -->
+      <app-custom-header [headerText]="'Uwagi'"></app-custom-header>
+      <app-text-input
+        [rowsNumber]="2"
+        [isTextArea]="true"
+        [formControl]="productDescriptionForm.controls['notice']"
+      >
+      </app-text-input>
+      <!-- Grade -->
+      <app-custom-header [headerText]="'Ocena'"></app-custom-header>
+      <app-text-input
+        [type]="'number'"
+        [minNumber]="'1'"
+        [maxNumber]="'10'"
+        [suffixText]="'/10'"
+        [formControl]="productDescriptionForm.controls['grade']"
+      >
+      </app-text-input>
+    </div>
+  </div>
+
+  <!-- Save button -->
+  <div class="profile-submit-button-container">
+    <button
+      class="profile-submit-button"
+      mat-raised-button
+      type="submit"
+      color="primary"
+      [disabled]="!productDescriptionForm.dirty || !productDescriptionForm.valid || this.isSaving"
+    >
+      {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
+    </button>
+  </div>
+</form>

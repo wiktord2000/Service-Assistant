@@ -1,0 +1,17 @@
+<div class="profile-tab-filters">
+  <!-- Toggle -->
+  <mat-slide-toggle (toggleChange)="onToggleChange()" color="primary" checked="displayFinished">
+    Ukryj zakończone
+  </mat-slide-toggle>
+</div>
+
+<!-- Table -->
+<app-orders-table
+  appTableBase
+  *ngIf="this.orders"
+  [heightInRows]="3"
+  [matElevationValue]="2"
+  [initialData]="filterFinshedOrders(this.orders)"
+  [hideClientColumn]="true"
+>
+</app-orders-table>

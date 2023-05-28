@@ -1,0 +1,28 @@
+@import "helpers/constants";
+
+$form-column-gap: 1.25em;
+
+.form {
+  padding: 1em;
+}
+
+.section-container {
+  display: flex;
+  gap: $form-column-gap;
+}
+
+.section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .description-textarea textarea {
+  height: 184px;
+}
+
+@media (max-width: $small-breakpoint) {
+  .section-container {
+    flex-direction: column;
+  }
+}
