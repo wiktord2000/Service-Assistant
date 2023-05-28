@@ -1,130 +1,44 @@
+@import "helpers/constants";
+@import "helpers/placeholders";
+@import "components/profiles";
+
+$intro-primary: hsl(174, 41%, 35%);
+$intro-primary-dark: hsl(174, 41%, 30%);
+
 :host {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  --tabs-main: hsl(174, 41%, 35%);
-  --tabs-primary: hsl(174, 41%, 30%);
-  --tabs-secondary: #ffffffcc;
-  --main-border-radius: 1rem;
+  @extend %profile-host;
 }
 
-.content-wrapper {
-  flex: 1;
-  margin: 5vh 10vw;
-  display: flex;
+.profile-right-corner-data {
+  right: calc($intro-horizontal-padding - $link-default-horizontal-padding);
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
+// Override colors
+.profile-paper {
+  border-color: $intro-primary;
+  .mat-tab-nav-bar,
+  .mat-tab-header {
+    background-color: $intro-primary;
+  }
+  .mat-tab-link {
+    color: $intro-primary-dark;
+  }
+}
+.profile-intro {
+  background-color: $intro-primary;
+}
+.profile-label {
+  background-color: $intro-primary-dark;
 }
 
-.header {
-  min-height: 4em;
-  padding: 3em;
-  padding-bottom: 1em;
-  background-color: var(--tabs-main);
-  position: relative;
-  color: white;
-}
-
-.header-border-radius {
-  border-top-left-radius: var(--main-border-radius);
-  border-top-right-radius: var(--main-border-radius);
-}
-
-.vehicle-brand-and-model {
-  font-size: 28px;
-  font-weight: 500;
-}
-
-.vehicle-production-date {
-  font-size: 16px;
-  font-weight: 500;
-  margin-top: 0.25em;
-}
-
-.right-corner-label {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 1em 2em;
-  font-size: 1.25em;
-  border-bottom-left-radius: var(--main-border-radius);
-  border-top-right-radius: var(--main-border-radius);
-  color: white;
-  font-weight: 500;
-  background-color: var(--tabs-primary);
-}
-
-.right-bottom-data {
-  position: absolute;
-  right: 1.5em;
-  text-align: right;
-  bottom: -30px;
-  z-index: 2;
-}
-
-.tabs {
-  flex: 1 1 auto;
-  border-bottom: 1em solid var(--tabs-main);
-}
-
-/* Client Tabs Common*/
-.tab-wrapper {
-  padding: 3em;
-}
-
-.filters-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: centers;
-  padding-bottom: 1em;
-}
-
-/* Client data */
-.edit-form {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.edit-form > * {
-  flex: 1 1 50%;
-  box-sizing: border-box;
-  padding: 0 1.5em;
-}
-
-.save-button-area {
-  text-align: end;
-  margin-top: 2em;
-}
-
-.save-button {
-  width: 100%;
-  max-width: 12em;
-}
-
-/* Styling angular material tabs */
-
-::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label {
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  background-color: var(--tabs-secondary);
-  margin-left: 5px;
-}
-
-::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
-  color: white;
-  background-color: var(--tabs-primary);
-}
-
-::ng-deep .mat-tab-list .mat-tab-labels {
-  background-color: var(--tabs-main);
-  /* padding-left: 0.25em; */
-}
-
-::ng-deep .mat-ink-bar {
-  display: none;
+@media (max-width: $small-breakpoint) {
+  .profile-right-corner-data {
+    display: flex;
+    right: 1em;
+  }
+  .profile-label {
+    span {
+      display: none;
+    }
+  }
 }
