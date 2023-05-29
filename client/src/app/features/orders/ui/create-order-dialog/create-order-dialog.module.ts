@@ -17,7 +17,7 @@ import { OrderServicesTableModule } from '../order-services-table/order-services
 import { MatSelectModule } from '@angular/material/select';
 import { ClientSelectInputModule } from '../../../../shared/ui/selectors/client-select-input/client-select-input.module';
 import { VehicleSelectInputModule } from '../../../../shared/ui/selectors/vehicle-select-input/vehicle-select-input.module';
-import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base/table-base-directive.module';
 
 @NgModule({
   declarations: [CreateOrderDialogComponent],

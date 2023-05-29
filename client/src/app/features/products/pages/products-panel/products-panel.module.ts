@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProductsPanelRoutingModule } from './products-panel-routing.module';
 import { CreateProductDialogModule } from '../../ui/create-product-dialog/create-product-dialog.module';
 import { ProductDeliveryDialogModule } from '../../ui/product-delivery-dialog/product-delivery-dialog.module';
-import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base/table-base-directive.module';
 
 @NgModule({
   declarations: [ProductsPanelComponent],

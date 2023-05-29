@@ -5,7 +5,7 @@ import { ProductProfileOrdersRoutingModule } from './product-profile-orders-rout
 import { ProductProfileOrdersComponent } from './product-profile-orders.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { OrdersTableModule } from 'src/app/features/orders/ui/orders-table/orders-table.module';
-import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base/table-base-directive.module';
 
 @NgModule({
   declarations: [ProductProfileOrdersComponent],

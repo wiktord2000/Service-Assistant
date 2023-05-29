@@ -6,7 +6,7 @@ import { VehiclesTableModule } from 'src/app/features/vehicles/ui/vehicles-table
 import { MatButtonModule } from '@angular/material/button';
 import { VehiclesPanelRoutingModule } from './vehicles-panel-routing.module';
 import { CreateVehicleDialogModule } from '../../ui/create-vehicle-dialog/create-vehicle-dialog.module';
-import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base/table-base-directive.module';
 
 @NgModule({
   declarations: [VehiclesPanelComponent],

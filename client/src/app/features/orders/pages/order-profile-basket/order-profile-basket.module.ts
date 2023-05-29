@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { CustomHeaderModule } from 'src/app/shared/ui/custom-header/custom-header.module';
-import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base-directive/table-base-directive.module';
+import { TableBaseDirectiveModule } from 'src/app/shared/ui/directives/table-base/table-base-directive.module';
 import { TextInputModule } from 'src/app/shared/ui/inputs/text-input/text-input.module';
 import { OrderProductsTableModule } from '../../ui/order-products-table/order-products-table.module';
 import { OrderServicesTableModule } from '../../ui/order-services-table/order-services-table.module';
