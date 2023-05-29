@@ -5,6 +5,12 @@
   @extend %panel-host;
 }
 
+.mat-button-toggle-standalone,
+.mat-button-toggle-group {
+  // Allow scrolling the toggle group
+  overflow: auto;
+}
+
 @media (max-width: $small-breakpoint) {
   .button-text {
     display: none;

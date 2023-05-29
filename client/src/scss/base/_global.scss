@@ -39,3 +39,12 @@ body {
 .flex-1 {
   flex: 1;
 }
+
+.hide-scrollbar {
+  // WebKit-based browsers (e.g. Chrome, Safari, Opera)
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none; // IE & Edge
+  scrollbar-width: none; // Firefox
+}
