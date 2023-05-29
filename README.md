@@ -18,7 +18,7 @@ The implemented application offered a simple user interface, instinctive associa
 - Maintaining a vehicle profile (e.g. repair history, owner information, and basic vehicle information)
 
 > **Note**<br/> 
-> The main purpose was to create application **only for desktops / large screens** because of amount of data presented but progressively I'm working on responsiveness. I've recently provided better scalable tables and split the client profile to the desired form (I'm going to make the same with other profiles). Sometimes you may encounter leftover css because I didn't use scss/sass from the beginning (also working on it).<br/> 
+> The main purpose was to create application only for desktops / large screens because of amount of data presented but progressively I'm working on responsiveness. I've recently provided better scalable tables and split the client profile to the desired form (I'm going to make the same with other profiles). Sometimes you may encounter leftover css because I didn't use scss/sass from the beginning (also working on it).<br/> 
 
 ## Technologies 
 
