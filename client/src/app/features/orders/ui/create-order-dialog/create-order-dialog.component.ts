@@ -19,9 +19,13 @@ import { Product } from 'src/app/core/models/product';
 import { OrderProductsTableComponent } from '../order-products-table/order-products-table.component';
 import { OrderProduct } from 'src/app/core/models/OrderProduct';
 import { OrderProductsService } from 'src/app/features/orders/data-access/order-products.service';
+import { INTEGER_REGEX, UNASSIGNED_ID } from 'src/app/core/constants/constants';
 
-const INTEGER_REGEX = /^\+?(0|[1-9]\d*)$/;
-const UNASSIGNED_ID = -1;
+export const CREATE_ORDER_DIALOG_DEFAULT_CONFIG = {
+  maxWidth: 800,
+  width: '94vw',
+  minHeight: '80vh'
+};
 
 @Component({
   selector: 'app-create-order-dialog',

@@ -1,82 +1,92 @@
-:host {
-  --wrappers-padding: 2em;
-}
+@import "helpers/constants";
 
-.header {
+$dialog-default-padding: 24px;
+$header-horizontal-margin: 16px;
+
+.dialog-header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin: 0 1em;
+  margin: 0 $header-horizontal-margin;
+
+  .toggle {
+    color: rgba(0, 0, 0, 0.6);
+  }
 }
 
-.create-order-form {
-  padding-top: 1.5em;
+.vehicle-and-client-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  .vehicle-container,
+  .client-container {
+    flex: 1;
+    flex-direction: column;
+    min-width: 249.5px;
+    padding: $dialog-default-padding;
+    padding-bottom: calc($dialog-default-padding/2);
+  }
 }
 
-.vehicle-and-client-wrapper {
-  display: flex;
+.table-container {
+  padding: $dialog-default-padding;
+  .add-strip {
+    display: flex;
+    align-items: flex-start;
+    gap: 1em;
+    .mat-mini-fab {
+      margin-top: 9px;
+    }
+    .count-input {
+      width: 70px;
+      min-width: 70px;
+    }
+  }
 }
 
-.vehicle-wrapper {
-  flex: 1 1 50%;
-  padding: var(--wrappers-padding);
-  padding-bottom: 0.5em;
-}
-
-.client-wrapper {
-  flex: 1 1 50%;
-  padding: var(--wrappers-padding);
-  padding-bottom: 0.5em;
-}
-
-.services-wrapper {
-  padding: var(--wrappers-padding);
-  padding-top: 0.5em;
-}
-.products-wrapper {
-  padding: var(--wrappers-padding);
-  padding-top: 0.5em;
+.summary-text {
+  flex: 1;
+  margin-left: $header-horizontal-margin;
+  font-weight: 500;
+  font-size: 1.25em;
+  line-height: 1.25em;
+  color: $primary;
 }
 
 .w-100 {
   width: 100%;
 }
 
-/* Adding strip */
-.add-wrapper {
-  display: flex;
-  align-items: flex-start;
-}
+@media (max-width: $small-breakpoint) {
+  .dialog-header {
+    margin: 0;
+    flex-direction: column;
+    > h1 {
+      margin-bottom: calc($dialog-default-padding/2);
+    }
 
-.add-wrapper > app-service-select-input,
-.add-wrapper > app-product-select-input {
-  flex: 1 1 auto;
-  margin-right: 1em;
-}
+    .toggle {
+      margin-bottom: $dialog-default-padding;
+      align-self: flex-end;
+    }
+  }
 
-.add-button {
-  margin-top: 0.4em;
-  min-width: 90px;
-  width: 10%;
-  height: 3em;
-}
+  .client-vehicle-divider {
+    display: none;
+  }
 
-.count-input {
-  min-width: 80px;
-  width: 8%;
-  margin-right: 1em;
-}
+  .vehicle-and-client-container {
+    .vehicle-container,
+    .client-container {
+      padding-left: calc($dialog-default-padding/4);
+      padding-right: 0px;
+    }
 
-.summary-text {
-  flex: 1;
-  margin-left: 2.5em;
-  font-weight: 500;
-  font-size: 1.25em;
-  color: #3f51b5;
-}
-
-.summary-price {
-  font-weight: 600;
+    .vehicle-container {
+      padding-top: 0px;
+    }
+  }
+  .table-container {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
