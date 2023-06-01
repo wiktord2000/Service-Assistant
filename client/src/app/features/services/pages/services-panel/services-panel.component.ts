@@ -3,7 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { Service } from 'src/app/core/models/Service';
 import { ServicesService } from 'src/app/features/services/data-access/services.service';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
-import { CreateServiceDialogComponent } from 'src/app/features/services/ui/create-service-dialog/create-service-dialog.component';
+import {
+  CREATE_SERVICE_DIALOG_DEFAULT_CONFIG,
+  CreateServiceDialogComponent
+} from 'src/app/features/services/ui/create-service-dialog/create-service-dialog.component';
 import { ServicesTableComponent } from 'src/app/features/services/ui/services-table/services-table.component';
 
 @Component({
@@ -28,7 +31,7 @@ export class ServicesPanelComponent implements OnInit, AfterViewInit {
 
   onAddService() {
     const dialogRef = this.dialog.open(CreateServiceDialogComponent, {
-      width: '600px'
+      ...CREATE_SERVICE_DIALOG_DEFAULT_CONFIG
     });
 
     dialogRef.afterClosed().subscribe((service: Service) => {

@@ -4,7 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { debounceTime, Observable, of, startWith } from 'rxjs';
 import { Service } from 'src/app/core/models/Service';
 import { ServicesService } from 'src/app/features/services/data-access/services.service';
-import { CreateServiceDialogComponent } from 'src/app/features/services/ui/create-service-dialog/create-service-dialog.component';
+import {
+  CREATE_SERVICE_DIALOG_DEFAULT_CONFIG,
+  CreateServiceDialogComponent
+} from 'src/app/features/services/ui/create-service-dialog/create-service-dialog.component';
 
 @Component({
   selector: 'app-service-select-input',
@@ -112,7 +115,7 @@ export class ServiceSelectInputComponent implements OnInit {
 
   onAddService() {
     const dialogRef = this.dialog.open(CreateServiceDialogComponent, {
-      width: '900px',
+      ...CREATE_SERVICE_DIALOG_DEFAULT_CONFIG,
       data: { name: this.ngControl.value }
     });
 

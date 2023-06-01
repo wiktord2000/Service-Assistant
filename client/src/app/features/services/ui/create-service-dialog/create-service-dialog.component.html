@@ -7,15 +7,15 @@
   <!-- Form -->
   <form
     id="serviceForm"
+    class="form"
     [formGroup]="serviceForm"
     (ngSubmit)="serviceForm.valid && onSaveChanges()"
-    class="create-service-form"
   >
     <!-- Service name -->
     <app-text-input [label]="'Nazwa usługi'" [formControl]="serviceForm.controls['name']">
     </app-text-input>
 
-    <div class="row">
+    <div class="combine-two">
       <!-- Cost Net -->
       <app-text-input
         [suffixText]="'zł/h'"
@@ -41,7 +41,7 @@
     >
     </app-text-input>
 
-    <div class="row">
+    <div class="combine-two">
       <!-- Total Net -->
       <app-text-input
         [suffixText]="'zł'"

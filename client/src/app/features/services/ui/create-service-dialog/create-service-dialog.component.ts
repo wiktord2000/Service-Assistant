@@ -2,11 +2,15 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { finalize } from 'rxjs';
+import { FLOAT_REGEX } from 'src/app/core/constants/constants';
 import { Service } from 'src/app/core/models/Service';
 import { ServicesService } from 'src/app/features/services/data-access/services.service';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 
-const FLOAT_REGEX = /^[0-9]*\.[0-9]{2}$/;
+export const CREATE_SERVICE_DIALOG_DEFAULT_CONFIG = {
+  maxWidth: 600,
+  width: '94vw'
+};
 
 @Component({
   selector: 'app-create-service-dialog',

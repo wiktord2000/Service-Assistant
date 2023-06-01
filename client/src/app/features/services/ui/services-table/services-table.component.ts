@@ -8,7 +8,10 @@ import { ServicesService } from 'src/app/features/services/data-access/services.
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { ServicesTableDataSource } from './services-table-datasource';
-import { CreateServiceDialogComponent } from '../create-service-dialog/create-service-dialog.component';
+import {
+  CREATE_SERVICE_DIALOG_DEFAULT_CONFIG,
+  CreateServiceDialogComponent
+} from '../create-service-dialog/create-service-dialog.component';
 
 const COMPLETE_COLUMN_LIST = ['name', 'cost', 'estimatedTime', 'total', 'actions'];
 
@@ -44,6 +47,7 @@ export class ServicesTableComponent implements OnInit {
 
   onEditClick(service: Service) {
     const dialogRef = this.dialog.open(CreateServiceDialogComponent, {
+      ...CREATE_SERVICE_DIALOG_DEFAULT_CONFIG,
       data: {
         service: service
       }
