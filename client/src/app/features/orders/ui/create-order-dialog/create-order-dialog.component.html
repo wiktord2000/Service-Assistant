@@ -1,8 +1,9 @@
 <!-- Title -->
-<div mat-dialog-title class="header">
+<div mat-dialog-title class="dialog-header">
   <h1>Uzupełnij dane zlecenia</h1>
   <mat-slide-toggle
-    [ngStyle]="{ display: this?.data?.order ? 'none' : '' }"
+    class="toggle"
+    [ngStyle]="{ display: this.data?.order ? 'none' : '' }"
     [labelPosition]="'before'"
     [(ngModel)]="isPricing"
     color="primary"
@@ -10,32 +11,22 @@
     Wycena
   </mat-slide-toggle>
 </div>
-<mat-divider *ngIf="!isPricing"></mat-divider>
+<mat-divider class="header-divider" *ngIf="!isPricing"></mat-divider>
 
 <!-- Content -->
-<div mat-dialog-content [style.max-height.vh]="80">
-  <form
-    id="order-form"
-    [formGroup]="orderForm"
-    (ngSubmit)="onSaveChanges()"
-    class="create-product-form"
-  >
-    <!-- Vehicle and Client (possible hidden) -->
-    <div *ngIf="!isPricing" class="vehicle-and-client-wrapper">
+<div mat-dialog-content>
+  <form [formGroup]="orderForm" (ngSubmit)="onSaveChanges()">
+    <!-- Vehicle and Client -->
+    <div *ngIf="!isPricing" class="vehicle-and-client-container">
       <!-- Client -->
-      <div class="client-wrapper">
-        <!-- Header -->
+      <div class="client-container">
         <app-custom-header [headerText]="'Klient'"></app-custom-header>
-
-        <!-- Client Selector -->
         <app-client-select-input
           (clientChange)="onClientChange($event)"
           [selectedClient]="selectedClient"
           [label]="'Klient'"
           [formControl]="orderForm.controls['client']"
         ></app-client-select-input>
-
-        <!-- Client Description -->
         <app-text-input
           [isTextArea]="true"
           [rowsNumber]="4"
@@ -44,31 +35,22 @@
         >
         </app-text-input>
       </div>
-
-      <!-- Vertical Divider -->
-      <mat-divider [vertical]="true"></mat-divider>
-
+      <!-- Divider -->
+      <mat-divider class="client-vehicle-divider" [vertical]="true"></mat-divider>
       <!-- Vehicle -->
-      <div class="vehicle-wrapper">
-        <!-- Header -->
+      <div class="vehicle-container">
         <app-custom-header [headerText]="'Pojazd'"></app-custom-header>
-
-        <!-- Vehicle selector -->
         <app-vehicle-select-input
           (vehicleChange)="onVehicleChange($event)"
           [selectedVehicle]="selectedVehicle"
           [formControl]="orderForm.controls['vehicle']"
         ></app-vehicle-select-input>
-
-        <!-- Mealage -->
         <app-text-input
           [suffixText]="'km'"
           [label]="'Przebieg'"
           [formControl]="orderForm.controls['mileage']"
         >
         </app-text-input>
-
-        <!-- Fuel level -->
         <mat-form-field class="w-100" appearance="fill">
           <mat-label>Poziom paliwa</mat-label>
           <mat-select formControlName="fuelLevel">
@@ -81,84 +63,76 @@
       </div>
     </div>
 
-    <!-- Services and Products -->
-    <div class="services-and-products-wrapper">
-      <!-- Services -->
-      <app-custom-header [headerText]="'Usługi'"></app-custom-header>
-      <div class="services-wrapper">
-        <div class="add-wrapper">
-          <!-- Service selector -->
-          <app-service-select-input
-            (serviceChange)="onServiceChange($event)"
-            [formControl]="serviceForm.controls['service']"
-            [label]="'Usługa'"
-          ></app-service-select-input>
-
-          <!-- Add service button -->
-          <button
-            class="add-button"
-            mat-raised-button
-            [disabled]="!selectedService"
-            (click)="onAddService()"
-            color="primary"
-            type="button"
-            aria-label="Add service button"
-          >
-            Dodaj
-            <mat-icon>add</mat-icon>
-          </button>
-        </div>
-
-        <!-- Order's services table -->
-        <app-order-services-table
-          appTableBase
-          [heightInRows]="'auto'"
-          [matElevationValue]="2"
-        ></app-order-services-table>
+    <!-- Services -->
+    <app-custom-header [disableBottomMargin]="true" [headerText]="'Usługi'"></app-custom-header>
+    <div class="table-container">
+      <div class="add-strip">
+        <!-- Input -->
+        <app-service-select-input
+          (serviceChange)="onServiceChange($event)"
+          [formControl]="serviceForm.controls['service']"
+          [label]="'Usługa'"
+        ></app-service-select-input>
+        <!-- Add -->
+        <button
+          mat-mini-fab
+          [disabled]="!selectedService"
+          (click)="onAddService()"
+          color="primary"
+          type="button"
+          aria-label="Add service"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
       </div>
 
-      <!-- Products -->
-      <app-custom-header [headerText]="'Towary'"></app-custom-header>
-      <div class="products-wrapper">
-        <div class="add-wrapper">
-          <!-- Product Select Input -->
-          <app-product-select-input
-            (productChange)="onProductChange($event)"
-            [formControl]="productForm.controls['product']"
-            [label]="'Towar'"
-          ></app-product-select-input>
+      <!-- Services table -->
+      <app-order-services-table
+        appTableBase
+        [heightInRows]="'auto'"
+        [matElevationValue]="2"
+      ></app-order-services-table>
+    </div>
 
-          <!-- Count -->
-          <app-text-input
-            class="count-input"
-            [label]="'Liczba'"
-            [type]="'number'"
-            [formControl]="productForm.controls['count']"
-          >
-          </app-text-input>
+    <!-- Products -->
+    <app-custom-header [disableBottomMargin]="true" [headerText]="'Towary'"></app-custom-header>
 
-          <!-- Add product button -->
-          <button
-            class="add-button"
-            mat-raised-button
-            [disabled]="!selectedProduct"
-            (click)="onAddProduct()"
-            color="primary"
-            type="button"
-            aria-label="Add product button"
-          >
-            Dodaj
-            <mat-icon>add</mat-icon>
-          </button>
-        </div>
-
-        <!-- Order's products table -->
-        <app-order-products-table
-          appTableBase
-          [heightInRows]="'auto'"
-          [matElevationValue]="2"
-        ></app-order-products-table>
+    <div class="table-container">
+      <div class="add-strip">
+        <!-- Count -->
+        <app-text-input
+          class="count-input"
+          [label]="'Liczba'"
+          [type]="'number'"
+          [minNumber]="0"
+          [formControl]="productForm.controls['count']"
+        >
+        </app-text-input>
+        <!-- Product Select Input -->
+        <app-product-select-input
+          (productChange)="onProductChange($event)"
+          [formControl]="productForm.controls['product']"
+          [label]="'Towar'"
+        ></app-product-select-input>
+        <!-- Add product button -->
+        <button
+          mat-mini-fab
+          [disabled]="!selectedProduct"
+          (click)="onAddProduct()"
+          color="primary"
+          type="button"
+          aria-label="Add product"
+        >
+          <mat-icon>add</mat-icon>
+        </button>
       </div>
+
+      <!-- Products table -->
+      <app-order-products-table
+        appTableBase
+        [heightInRows]="'auto'"
+        [matElevationValue]="2"
+      ></app-order-products-table>
     </div>
   </form>
 </div>
@@ -166,13 +140,13 @@
 <!-- Actions -->
 <mat-divider></mat-divider>
 <div [align]="'end'" mat-dialog-actions>
-  <div class="summary-text">
-    Razem: <span class="summary-price">{{ getTotalGross().toFixed(2) }} zł</span>
-  </div>
+  <span class="summary-text">
+    Razem: <strong>{{ getTotalGross().toFixed(2) }}&nbsp;zł</strong>
+  </span>
   <button mat-button [mat-dialog-close]>Porzuć</button>
   <button
-    form="order-form"
     mat-button
+    form="order-form"
     color="primary"
     [disabled]="
       !(

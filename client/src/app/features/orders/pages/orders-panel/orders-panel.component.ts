@@ -6,7 +6,10 @@ import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { FormControl } from '@angular/forms';
 import { OrdersTableComponent } from 'src/app/features/orders/ui/orders-table/orders-table.component';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateOrderDialogComponent } from 'src/app/features/orders/ui/create-order-dialog/create-order-dialog.component';
+import {
+  CREATE_ORDER_DIALOG_DEFAULT_CONFIG,
+  CreateOrderDialogComponent
+} from 'src/app/features/orders/ui/create-order-dialog/create-order-dialog.component';
 import { Order } from 'src/app/core/models/Order';
 
 @Component({
@@ -37,7 +40,7 @@ export class OrdersPanelComponent implements OnInit, AfterViewInit {
 
   onAddOrder() {
     const dialogRef = this.dialog.open(CreateOrderDialogComponent, {
-      width: '800px'
+      ...CREATE_ORDER_DIALOG_DEFAULT_CONFIG
     });
     dialogRef.afterClosed().subscribe((order: Order) => {
       if (order !== undefined) this.ordersTable.dataSource.addOrder(order);
