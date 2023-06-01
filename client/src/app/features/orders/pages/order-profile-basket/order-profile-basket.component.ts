@@ -1,6 +1,9 @@
 import { AfterViewInit, Component, OnInit, SkipSelf, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateOrderDialogComponent } from '../../ui/create-order-dialog/create-order-dialog.component';
+import {
+  CREATE_ORDER_DIALOG_DEFAULT_CONFIG,
+  CreateOrderDialogComponent
+} from '../../ui/create-order-dialog/create-order-dialog.component';
 import { OrderServicesTableComponent } from '../../ui/order-services-table/order-services-table.component';
 import { OrderProductsTableComponent } from '../../ui/order-products-table/order-products-table.component';
 import { OrderProfileComponent } from '../order-profile/order-profile.component';
@@ -30,7 +33,7 @@ export class OrderProfileBasketComponent implements OnInit, AfterViewInit {
 
   onEditClick() {
     const dialogRef = this.dialog.open(CreateOrderDialogComponent, {
-      width: '800px',
+      ...CREATE_ORDER_DIALOG_DEFAULT_CONFIG,
       data: { order: this.order }
     });
     dialogRef.afterClosed().subscribe((order: Order) => {

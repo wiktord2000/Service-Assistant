@@ -1,9 +1,9 @@
 import { OrderServicesService } from '../../data-access/order-services.service';
 import { OrderService } from '../../../../core/models/OrderService';
-import { Component, Inject, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Inject, ViewChild, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { finalize, forkJoin, of, take } from 'rxjs';
+import { finalize, forkJoin, of } from 'rxjs';
 import { ClientSelectInputComponent } from 'src/app/shared/ui/selectors/client-select-input/client-select-input.component';
 import { VehicleSelectInputComponent } from 'src/app/shared/ui/selectors/vehicle-select-input/vehicle-select-input.component';
 import { Client } from 'src/app/core/models/Client';
@@ -32,7 +32,7 @@ export const CREATE_ORDER_DIALOG_DEFAULT_CONFIG = {
   templateUrl: './create-order-dialog.component.html',
   styleUrls: ['./create-order-dialog.component.scss']
 })
-export class CreateOrderDialogComponent implements OnInit, AfterViewInit {
+export class CreateOrderDialogComponent implements AfterViewInit {
   @ViewChild(ClientSelectInputComponent) clientSelectInput!: ClientSelectInputComponent;
   @ViewChild(VehicleSelectInputComponent) vehicleSelectInput!: VehicleSelectInputComponent;
   @ViewChild(OrderServicesTableComponent) servicesTable!: OrderServicesTableComponent;
@@ -45,16 +45,13 @@ export class CreateOrderDialogComponent implements OnInit, AfterViewInit {
   selectedProduct: Product = null;
   initialServices: OrderService[] = [];
   initialProducts: OrderProduct[] = [];
-
   serviceForm: FormGroup = this.formBuilder.group({
     service: ['']
   });
-
   productForm: FormGroup = this.formBuilder.group({
     product: [''],
     count: ['1', [Validators.pattern(INTEGER_REGEX)]]
   });
-
   orderForm: FormGroup = this.formBuilder.group({
     client: ['', [Validators.required]],
     vehicle: ['', [Validators.required]],
@@ -77,6 +74,7 @@ export class CreateOrderDialogComponent implements OnInit, AfterViewInit {
     // Set pricing mode if gets orderId (it means it wll be update dialog)
     if (this?.data?.order?.id) this.isPricing = true;
   }
+
   ngAfterViewInit(): void {
     if (this?.data?.order?.id) {
       // Load data to tables
@@ -90,8 +88,6 @@ export class CreateOrderDialogComponent implements OnInit, AfterViewInit {
       });
     }
   }
-
-  ngOnInit(): void {}
 
   onClientChange(client: Client) {
     this.selectedClient = client;

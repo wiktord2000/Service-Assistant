@@ -3,7 +3,7 @@
   <h1>Uzupełnij dane zlecenia</h1>
   <mat-slide-toggle
     class="toggle"
-    [ngStyle]="{ display: this?.data?.order ? 'none' : '' }"
+    [ngStyle]="{ display: this.data?.order ? 'none' : '' }"
     [labelPosition]="'before'"
     [(ngModel)]="isPricing"
     color="primary"
@@ -11,12 +11,12 @@
     Wycena
   </mat-slide-toggle>
 </div>
-<mat-divider *ngIf="!isPricing"></mat-divider>
+<mat-divider class="header-divider" *ngIf="!isPricing"></mat-divider>
 
 <!-- Content -->
 <div mat-dialog-content>
   <form [formGroup]="orderForm" (ngSubmit)="onSaveChanges()">
-    <!-- Vehicle and Client (can be hidden) -->
+    <!-- Vehicle and Client -->
     <div *ngIf="!isPricing" class="vehicle-and-client-container">
       <!-- Client -->
       <div class="client-container">
@@ -35,10 +35,8 @@
         >
         </app-text-input>
       </div>
-
-      <!-- Vertical Divider -->
+      <!-- Divider -->
       <mat-divider class="client-vehicle-divider" [vertical]="true"></mat-divider>
-
       <!-- Vehicle -->
       <div class="vehicle-container">
         <app-custom-header [headerText]="'Pojazd'"></app-custom-header>
@@ -67,7 +65,6 @@
 
     <!-- Services -->
     <app-custom-header [disableBottomMargin]="true" [headerText]="'Usługi'"></app-custom-header>
-
     <div class="table-container">
       <div class="add-strip">
         <!-- Input -->
@@ -88,7 +85,8 @@
           <mat-icon>add</mat-icon>
         </button>
       </div>
-      <!-- Table -->
+
+      <!-- Services table -->
       <app-order-services-table
         appTableBase
         [heightInRows]="'auto'"
@@ -110,14 +108,12 @@
           [formControl]="productForm.controls['count']"
         >
         </app-text-input>
-
         <!-- Product Select Input -->
         <app-product-select-input
           (productChange)="onProductChange($event)"
           [formControl]="productForm.controls['product']"
           [label]="'Towar'"
         ></app-product-select-input>
-
         <!-- Add product button -->
         <button
           mat-mini-fab
@@ -131,7 +127,7 @@
         </button>
       </div>
 
-      <!-- Order's products table -->
+      <!-- Products table -->
       <app-order-products-table
         appTableBase
         [heightInRows]="'auto'"
