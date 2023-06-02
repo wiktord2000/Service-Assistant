@@ -15,7 +15,7 @@
 
 <!-- Content -->
 <div mat-dialog-content>
-  <form [formGroup]="orderForm" (ngSubmit)="onSaveChanges()">
+  <form id="order-form" [formGroup]="orderForm" (ngSubmit)="onSaveChanges()">
     <!-- Vehicle and Client -->
     <div *ngIf="!isPricing" class="vehicle-and-client-container">
       <!-- Client -->
@@ -146,6 +146,7 @@
   <button mat-button [mat-dialog-close]>Porzuć</button>
   <button
     mat-button
+    type="submit"
     form="order-form"
     color="primary"
     [disabled]="
