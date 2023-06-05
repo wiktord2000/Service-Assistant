@@ -3,7 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { Client } from 'src/app/core/models/Client';
 import { ClientsService } from 'src/app/features/clients/data-access/clients.service';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
-import { CreateClientDialogComponent } from 'src/app/features/clients/ui/create-client-dialog/create-client-dialog.component';
+import {
+  CREATE_CLIENT_DIALOG_DEFAULT_SETUP,
+  CreateClientDialogComponent
+} from 'src/app/features/clients/ui/create-client-dialog/create-client-dialog.component';
 import { ClientsTableComponent } from 'src/app/features/clients/ui/clients-table/clients-table.component';
 
 @Component({
@@ -28,7 +31,7 @@ export class ClientsPanelComponent implements OnInit {
 
   onAddClient() {
     const dialogRef = this.dialog.open(CreateClientDialogComponent, {
-      width: '900px'
+      ...CREATE_CLIENT_DIALOG_DEFAULT_SETUP
     });
 
     dialogRef.afterClosed().subscribe((client: Client) => {

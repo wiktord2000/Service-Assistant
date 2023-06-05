@@ -6,6 +6,11 @@ import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { finalize } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';
 
+export const CREATE_CLIENT_DIALOG_DEFAULT_SETUP = {
+  maxWidth: 800,
+  width: '94vw'
+};
+
 @Component({
   selector: 'app-create-client-dialog',
   templateUrl: './create-client-dialog.component.html',

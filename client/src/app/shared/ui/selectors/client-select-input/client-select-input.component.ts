@@ -4,7 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable, startWith, debounceTime, of } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';
 import { ClientsService } from 'src/app/features/clients/data-access/clients.service';
-import { CreateClientDialogComponent } from 'src/app/features/clients/ui/create-client-dialog/create-client-dialog.component';
+import {
+  CREATE_CLIENT_DIALOG_DEFAULT_SETUP,
+  CreateClientDialogComponent
+} from 'src/app/features/clients/ui/create-client-dialog/create-client-dialog.component';
 
 @Component({
   selector: 'app-client-select-input',
@@ -114,7 +117,7 @@ export class ClientSelectInputComponent implements OnInit {
 
   onAddClient() {
     const dialogRef = this.dialog.open(CreateClientDialogComponent, {
-      width: '900px',
+      ...CREATE_CLIENT_DIALOG_DEFAULT_SETUP,
       data: { name: this.ngControl.value }
     });
 

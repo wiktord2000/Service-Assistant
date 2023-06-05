@@ -4,8 +4,8 @@
 
 <!-- Content -->
 <div mat-dialog-content>
-  <!-- Toggle (company/single client) -->
-  <div class="toggle-wrapper">
+  <!-- Toggle -->
+  <div class="toggle-container">
     <mat-button-toggle-group
       appearance="legacy"
       [(ngModel)]="isCompany"
@@ -14,25 +14,24 @@
       aria-label="Client type"
     >
       <!-- Company -->
-      <mat-button-toggle [style.min-width.px]="150" [value]="true">
-        <mat-icon style="padding-right: 8px">groups</mat-icon>
-        Firma
+      <mat-button-toggle [value]="true">
+        <mat-icon class="groups-icon">groups</mat-icon>
+        <span class="toggle-text">Firma</span>
       </mat-button-toggle>
 
       <!-- Single person -->
-      <mat-button-toggle [style.min-width.px]="150" [value]="false">
-        Osoba prywatna
-        <mat-icon style="padding-left: 5px; font-size: 21px"> person </mat-icon>
+      <mat-button-toggle [value]="false">
+        <span class="toggle-text">Osoba prywatna</span>
+        <mat-icon class="person-icon"> person </mat-icon>
       </mat-button-toggle>
     </mat-button-toggle-group>
   </div>
 
   <!-- Form -->
   <form
-    id="createClientForm"
+    id="client-form"
     [formGroup]="createClientForm"
     (ngSubmit)="createClientForm.valid && onSaveChanges()"
-    class="create-client-form"
   >
     <!-- Company name (if company) -->
     <app-text-input
@@ -93,7 +92,7 @@
 <div [align]="'end'" mat-dialog-actions>
   <button mat-button [mat-dialog-close]>Porzuć</button>
   <button
-    form="createClientForm"
+    form="client-form"
     mat-button
     color="primary"
     [disabled]="!createClientForm.valid || isSaving"
