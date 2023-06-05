@@ -28,7 +28,8 @@ namespace API.Extensions
             // Attach our database
             services.AddDbContext<DataContext>(options =>
             {
-                options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+                // options.UseSqlite(config.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(config.GetConnectionString("DefaultConnection"));
                 options.EnableSensitiveDataLogging();
             });
 
