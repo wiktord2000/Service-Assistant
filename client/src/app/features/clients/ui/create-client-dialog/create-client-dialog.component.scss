@@ -1,19 +1,53 @@
-.create-client-form {
+@import "helpers/constants";
+
+$form-gap: 1em;
+
+.mat-dialog-content {
+  margin-top: 1.5em;
+}
+
+.toggle-container {
+  text-align: center;
+}
+
+.mat-button-toggle {
+  width: 160px;
+
+  .groups-icon {
+    margin-right: 8px;
+  }
+  .person-icon {
+    margin-left: 5px;
+    font-size: 21px;
+  }
+}
+
+#client-form {
   display: flex;
   flex-wrap: wrap;
-  padding-top: 1.5em;
+  column-gap: $form-gap;
+  padding: 2em 1em 0em 1em;
+
+  > * {
+    flex: 1 1 calc(50% - $form-gap/2);
+    min-width: 160px;
+  }
 }
 
-.create-client-form > * {
-  flex: 1 1 50%;
-  box-sizing: border-box;
-  padding: 0 1.5em;
-}
+@media (max-width: $small-breakpoint) {
+  #client-form {
+    padding: 2em 0em 0em 0em;
+  }
 
-.toggle-wrapper {
-  margin-top: 1.5em;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .mat-button-toggle {
+    width: 80px;
+    .groups-icon,
+    .person-icon {
+      margin: 0px;
+    }
+  }
+
+  .toggle-text {
+    display: none;
+  }
 }
