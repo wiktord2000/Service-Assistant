@@ -2,13 +2,19 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { finalize } from 'rxjs';
+import {
+  FLOAT_REGEX,
+  INTEGER_REGEX,
+  ZERO_TO_HUNDRED_REGEX
+} from 'src/app/core/constants/constants';
 import { Product } from 'src/app/core/models/product';
 import { ProductsService } from 'src/app/features/products/data-access/products.service';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 
-const FLOAT_REGEX = /^[0-9]*\.[0-9]{2}$/;
-const INTEGER_REGEX = /^\+?(0|[1-9]\d*)$/;
-const ZERO_TO_HUNDRED_REGEX = /\b([0-9]|[1-9][0-9])\b/; // without 100
+export const CREATE_PRODUCT_DIALOG_DEFAULT_CONFIG = {
+  maxWidth: 700,
+  width: '94vw'
+};
 
 @Component({
   selector: 'app-create-product-dialog',

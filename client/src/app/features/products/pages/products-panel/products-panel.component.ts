@@ -3,7 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { Product } from 'src/app/core/models/product';
 import { ProductsService } from 'src/app/features/products/data-access/products.service';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
-import { CreateProductDialogComponent } from 'src/app/features/products/ui/create-product-dialog/create-product-dialog.component';
+import {
+  CREATE_PRODUCT_DIALOG_DEFAULT_CONFIG,
+  CreateProductDialogComponent
+} from 'src/app/features/products/ui/create-product-dialog/create-product-dialog.component';
 import { ProductsTableComponent } from 'src/app/features/products/ui/products-table/products-table.component';
 
 @Component({
@@ -28,7 +31,7 @@ export class ProductsPanelComponent implements OnInit {
 
   onAddProduct() {
     const dialogRef = this.dialog.open(CreateProductDialogComponent, {
-      width: '700px'
+      ...CREATE_PRODUCT_DIALOG_DEFAULT_CONFIG
     });
     dialogRef.afterClosed().subscribe((product: Product) => {
       if (product !== undefined) this.productsTable.dataSource.addProduct(product);

@@ -3,13 +3,13 @@
 <mat-divider></mat-divider>
 
 <!-- Content -->
-<div mat-dialog-content [style.max-height.vh]="72">
+<div mat-dialog-content>
   <!-- Form -->
   <form
     id="product-form"
     [formGroup]="productForm"
     (ngSubmit)="productForm.valid && onSaveChanges()"
-    class="create-product-form"
+    class="form"
   >
     <!-- Product name -->
     <app-text-input [label]="'Nazwa produktu'" [formControl]="productForm.controls['name']">
