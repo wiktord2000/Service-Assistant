@@ -4,7 +4,10 @@ import { NgControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { debounceTime, Observable, of, startWith } from 'rxjs';
 import { Product } from 'src/app/core/models/product';
-import { CreateProductDialogComponent } from 'src/app/features/products/ui/create-product-dialog/create-product-dialog.component';
+import {
+  CREATE_PRODUCT_DIALOG_DEFAULT_CONFIG,
+  CreateProductDialogComponent
+} from 'src/app/features/products/ui/create-product-dialog/create-product-dialog.component';
 
 @Component({
   selector: 'app-product-select-input',
@@ -112,7 +115,7 @@ export class ProductSelectInputComponent implements OnInit {
 
   onAddProduct() {
     const dialogRef = this.dialog.open(CreateProductDialogComponent, {
-      width: '900px',
+      ...CREATE_PRODUCT_DIALOG_DEFAULT_CONFIG,
       data: { name: this.ngControl.value }
     });
 
