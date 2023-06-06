@@ -19,20 +19,26 @@
   margin-right: 4px;
 }
 
-@media (max-width: $large-breakpoint) {
+@media (max-width: $xlarge-breakpoint) {
   .link-text {
     max-width: $link-max-width-large;
   }
 }
 
-@media (max-width: $medium-breakpoint) {
+@media (max-width: $large-breakpoint) {
   .link-text {
     max-width: $link-max-width-medium;
   }
 }
 
-@media (max-width: $small-breakpoint) {
+@media (max-width: $medium-breakpoint) {
   .link-text {
     max-width: $link-max-width-small;
+  }
+}
+
+@media (max-width: $small-breakpoint) {
+  .link-text {
+    max-width: $link-max-width-xsmall;
   }
 }

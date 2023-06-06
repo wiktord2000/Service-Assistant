@@ -9,3 +9,6 @@ export const ZERO_TO_HUNDRED_REGEX = /\b([0-9]|[1-9][0-9])\b/; // without 100
 export const ONE_TO_TEN_REGEX = /\b([1-9]|10)\b/;
 // Models
 export const UNASSIGNED_ID = -1;
+// Auth
+export const TESTING_USERNAME = 'wiktor';
+export const TESTING_PASSWORD = 'qweqweqwe';

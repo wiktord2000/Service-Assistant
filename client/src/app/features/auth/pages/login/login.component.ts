@@ -5,9 +5,7 @@ import { Router } from '@angular/router';
 import { AccountService } from '../../data-access/account.service';
 import { User } from '../../../../core/models/User';
 import { finalize } from 'rxjs';
-
-const TESTING_USERNAME = 'wiktor';
-const TESTING_PASSWORD = 'qweqweqwe';
+import { TESTING_PASSWORD, TESTING_USERNAME } from 'src/app/core/constants/constants';
 
 @Component({
   selector: 'app-login',
@@ -48,7 +46,7 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (user: User) => {
           this.router.navigate(['/orders']);
-          this.snackbarService.showMessage('success', 'Successfully signed in!');
+          this.snackbarService.showMessage('success', 'Pomyślnie zalogowano!');
         },
         error: (errors) => {
           // Handling list of errors provided by interceptor

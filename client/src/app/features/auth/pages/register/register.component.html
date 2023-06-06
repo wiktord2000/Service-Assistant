@@ -1,13 +1,13 @@
 <form [formGroup]="registerForm" class="form-paper mat-elevation-z12">
-  <h1 class="form-header">Sign up</h1>
+  <h1 class="form-header">Zarejestruj się</h1>
 
   <!-- Username -->
-  <app-text-input [label]="'User name'" [formControl]="registerForm.controls['username']">
+  <app-text-input [label]="'Nazwa użytkownika'" [formControl]="registerForm.controls['username']">
   </app-text-input>
 
   <!-- Password -->
   <app-password-input
-    [label]="'Password'"
+    [label]="'Hasło'"
     [isTrigger]="false"
     [formControl]="registerForm.controls['password']"
   >
@@ -15,7 +15,7 @@
 
   <!-- Confirm password -->
   <app-password-input
-    [label]="'Repeat password'"
+    [label]="'Powtórz hasło'"
     [isTrigger]="false"
     [formControl]="registerForm.controls['confirmPassword']"
   >
@@ -36,6 +36,6 @@
     [disabled]="isRegistering || !registerForm.valid"
     (click)="onRegister()"
   >
-    {{ isRegistering ? "Processing..." : "Submit" }}
+    {{ isRegistering ? "Przetwarzanie..." : "Zatwierdź" }}
   </button>
 </form>
