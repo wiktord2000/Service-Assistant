@@ -27,20 +27,20 @@
   <!------------ Handling errors  -->
 
   <!-- Required -->
-  <mat-error *ngIf="ngControl.control.errors?.required"> The field cannot be empty! </mat-error>
+  <mat-error *ngIf="ngControl.control.errors?.required"> Pole nie może być puste! </mat-error>
 
   <!-- IsMatching (custom) -->
-  <mat-error *ngIf="ngControl.control.errors?.isMatching"> The fields don't match! </mat-error>
+  <mat-error *ngIf="ngControl.control.errors?.isMatching"> Pola nie pokrywają się! </mat-error>
 
   <!-- Minlength -->
   <mat-error *ngIf="ngControl.control.errors?.minlength">
-    The field must contain at least
-    {{ ngControl.control.errors!["minlength"].requiredLength }} characters!
+    Pole musi zawierać minimum
+    {{ ngControl.control.errors!["minlength"].requiredLength }} znaków!
     <!-- NOTE: We can also use {{registerForm.controls['password'].getError('minlength').requiredLength }} -->
   </mat-error>
 
   <!-- Pattern -->
   <mat-error *ngIf="ngControl.control.errors?.pattern">
-    The field contains forbidden characters!
+    Pole zawiera niedozwolone znaki!
   </mat-error>
 </mat-form-field>

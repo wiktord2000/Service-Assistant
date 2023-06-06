@@ -95,7 +95,7 @@
           class="right-bookmark"
           mat-button
           routerLink="/auth"
-          >Sign in</a
+          >Logowanie</a
         >
         <a
           *ngIf="!(router.url === '/auth/register')"
@@ -103,7 +103,7 @@
           class="right-bookmark"
           mat-button
           routerLink="/auth/register"
-          >Sign up</a
+          >Rejestracja</a
         >
       </div>
 
@@ -132,7 +132,7 @@
       <mat-menu #account="matMenu">
         <button disabled mat-menu-item>Dane konta</button>
         <button disabled mat-menu-item>Dane firmy</button>
-        <button mat-menu-item (click)="logout()">Sign out</button>
+        <button mat-menu-item (click)="logout()">Wyloguj się</button>
       </mat-menu>
     </mat-toolbar>
 

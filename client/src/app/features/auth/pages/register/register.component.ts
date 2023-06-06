@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
       .subscribe({
         next: (user: User) => {
           this.router.navigate(['/orders']);
-          this.snackbarService.showMessage('success', 'Successfully signed up!');
+          this.snackbarService.showMessage('success', 'Pomyślnie zarejestrowano konto!');
         },
         error: (errors) => {
           // Handling list of errors provided by interceptor
