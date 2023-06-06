@@ -34,34 +34,26 @@ The implemented application offered a simple user interface, instinctive associa
 
 ## Preview
 
-### Orders panel
+### Panels
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/7200211c-15b0-42b9-b519-bfe9c9139260
 
-### Services panel
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/974686b4-f1e6-445e-b7b3-5923e6f01c03
 
-### Products panel
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/e121641a-666f-486e-8f96-d717c85cf9e2
 
-### Clients panel
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/23889142-1403-4c18-80ea-1a9bddf17978
 
-### Vehicles panel
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/1842ee8a-3541-4828-baa8-b69de0a666f0
 
-### Statistics panel
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/60244694-4f5d-40f4-9d12-1e26cb2cfb5f
 
-### Order's profile
+### Profiles
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/03be7f14-3329-4ed5-a9fd-fd5153ccb6d5
 
-### Product's profile
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/9e93a1dc-8d15-46b2-8e1d-26b33363c71f
 
-### Vehicle's profile
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/73903d36-d87c-4b52-b864-146059ac61a9
 
-### Client's profile
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/3461ad96-397a-4034-b1bc-f74644fde6e2
 
 
