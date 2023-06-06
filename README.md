@@ -34,6 +34,9 @@ The implemented application offered a simple user interface, instinctive associa
 
 ## Preview
 
+### Sign In & Sign Up
+https://github.com/wiktord2000/Service-Assistant/assets/63188869/c0fde31b-916a-4f2d-9a92-418873d9167b
+
 ### Panels
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/f9c0f1e6-ff24-4388-968c-d628a4cb03f8
 
