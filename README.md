@@ -34,49 +34,36 @@ The implemented application offered a simple user interface, instinctive associa
 
 ## Preview
 
-### Main views
-<kbd><img width="100%" src="https://user-images.githubusercontent.com/63188869/218577462-26212b4b-ebb9-4e87-bc5e-6f3bd62f7307.png" /></kbd>
+### Orders panel
+https://github.com/wiktord2000/Service-Assistant/assets/63188869/7200211c-15b0-42b9-b519-bfe9c9139260
 
-<kbd><img width="100%" src="https://user-images.githubusercontent.com/63188869/218578298-444c5774-9c7f-4aa0-938f-e72a1ba5422a.png" /></kbd>
+### Services panel
+https://github.com/wiktord2000/Service-Assistant/assets/63188869/974686b4-f1e6-445e-b7b3-5923e6f01c03
 
-<kbd><img width="100%" src="https://user-images.githubusercontent.com/63188869/218578320-bc42ec95-90e8-4f4a-9e70-9dd5bd1373d5.png" /></kbd>
+### Products panel
+https://github.com/wiktord2000/Service-Assistant/assets/63188869/e121641a-666f-486e-8f96-d717c85cf9e2
 
-<kbd><img width="100%" src="https://user-images.githubusercontent.com/63188869/218578332-77ccc7b7-e811-4e82-bbef-a26d10f3a98f.png" /></kbd>
+### Clients panel
+https://github.com/wiktord2000/Service-Assistant/assets/63188869/23889142-1403-4c18-80ea-1a9bddf17978
 
-<kbd><img width="100%" src="https://user-images.githubusercontent.com/63188869/218578363-2984c44d-26fb-40fb-b10b-d3a9bdb82618.png" /></kbd>
+### Vehicles panel
+https://github.com/wiktord2000/Service-Assistant/assets/63188869/1842ee8a-3541-4828-baa8-b69de0a666f0
 
-<kbd><img width="100%" src="https://user-images.githubusercontent.com/63188869/218578371-fd877fac-4f2a-43c8-98f8-9889fc597600.png" /></kbd>
-
-### Adding order
-
-<kbd><img width=700 src="https://user-images.githubusercontent.com/63188869/218578058-d9d3306a-cf97-4217-88b2-ecadc48640cd.png" /></kbd>
-
-### Adding client
-
-<kbd><img width=700 src="https://user-images.githubusercontent.com/63188869/218578352-41b9c924-2a5e-4250-a266-31b896eac846.png" /></kbd>
-
+### Statistics panel
+https://github.com/wiktord2000/Service-Assistant/assets/63188869/60244694-4f5d-40f4-9d12-1e26cb2cfb5f
 
 ### Order's profile
-<kbd><img width=700 src="https://user-images.githubusercontent.com/63188869/218579577-c4e96662-d989-4b0f-bbdc-579326cd1858.png" /></kbd>
+https://github.com/wiktord2000/Service-Assistant/assets/63188869/03be7f14-3329-4ed5-a9fd-fd5153ccb6d5
 
-<kbd><img width=700 src="https://user-images.githubusercontent.com/63188869/218579585-e3aaf065-cdbd-4d4d-b649-96e1b1947d9d.png" /></kbd>
-
-### Part's profile
-
-<kbd><img width=700 src="https://user-images.githubusercontent.com/63188869/218579606-b712d75f-6ae8-411e-b19b-bae76bfa39c7.png" /></kbd>
+### Product's profile
+https://github.com/wiktord2000/Service-Assistant/assets/63188869/9e93a1dc-8d15-46b2-8e1d-26b33363c71f
 
 ### Vehicle's profile
-
-<kbd><img width=700 src="https://user-images.githubusercontent.com/63188869/218579620-52ef3e7d-6923-44fa-b5f2-4a13a4194ca7.png" /></kbd>
+https://github.com/wiktord2000/Service-Assistant/assets/63188869/73903d36-d87c-4b52-b864-146059ac61a9
 
 ### Client's profile
+https://github.com/wiktord2000/Service-Assistant/assets/63188869/3461ad96-397a-4034-b1bc-f74644fde6e2
 
-<kbd><img width=700 src="https://user-images.githubusercontent.com/63188869/218579626-1c266a1a-c860-430e-913a-3c13b3020bfe.png" /></kbd>
-
-<kbd><img width=700 src="https://user-images.githubusercontent.com/63188869/218579637-56105c2f-e037-4ccb-824a-9c3e3efa2153.png" /></kbd>
-
-### Mail sending
-<kbd><img width="100%" src="https://user-images.githubusercontent.com/63188869/218579653-734cc9ea-f23c-4a7e-88cc-96de0407f938.png" /></kbd>
 
 ## How to run the application?
 1. Ensure you have **npm** installed ( run <code>npm -version</code> ) if not look at the instruction below. 
