@@ -121,7 +121,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
   onDeleteClick(order: Order) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        headerText: 'Order deletion',
+        headerText: 'Usuwanie zlecenia',
         bodyText: `<h3>Jesteś pewny, że chcesz usunąć zlecenie o numerze <strong>${order.orderNumber}</strong> ?<h3>`
       }
     });
