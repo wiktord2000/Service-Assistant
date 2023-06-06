@@ -35,7 +35,7 @@ The implemented application offered a simple user interface, instinctive associa
 ## Preview
 
 ### Panels
-https://github.com/wiktord2000/Service-Assistant/assets/63188869/7200211c-15b0-42b9-b519-bfe9c9139260
+https://github.com/wiktord2000/Service-Assistant/assets/63188869/f9c0f1e6-ff24-4388-968c-d628a4cb03f8
 
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/974686b4-f1e6-445e-b7b3-5923e6f01c03
 
