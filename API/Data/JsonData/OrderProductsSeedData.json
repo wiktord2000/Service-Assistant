@@ -1,0 +1,211 @@
+[
+  {
+    "id": 95,
+    "approvedProductName": "Klocki hamulcowe tył",
+    "approvedSalesPriceGross": 73.3399963378906,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80610,
+    "productId": 6
+  },
+  {
+    "id": 96,
+    "approvedProductName": "Pióro wycieraczki przód (60cm)",
+    "approvedSalesPriceGross": 18.6599998474121,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80610,
+    "productId": 15
+  },
+  {
+    "id": 97,
+    "approvedProductName": "Żarówka (halogenowa) H7 Pure Light",
+    "approvedSalesPriceGross": 18,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80611,
+    "productId": 30
+  },
+  {
+    "id": 98,
+    "approvedProductName": "Plak do konserwacji części plastikowych 400ml",
+    "approvedSalesPriceGross": 16.0100002288818,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80611,
+    "productId": 16
+  },
+  {
+    "id": 99,
+    "approvedProductName": "Akumulator PREMIUM 77Ah 760A P+",
+    "approvedSalesPriceGross": 450,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80611,
+    "productId": 28
+  },
+  {
+    "id": 100,
+    "approvedProductName": "Opony 4szt. UltraGrip 9+ 205/55R16  (zimowe)",
+    "approvedSalesPriceGross": 1600,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80612,
+    "productId": 18
+  },
+  {
+    "id": 101,
+    "approvedProductName": "Filtr paliwa PE 973/3",
+    "approvedSalesPriceGross": 30,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80613,
+    "productId": 32
+  },
+  {
+    "id": 102,
+    "approvedProductName": "Filtr powietrza AP 189/1",
+    "approvedSalesPriceGross": 30,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80613,
+    "productId": 31
+  },
+  {
+    "id": 103,
+    "approvedProductName": "Olej Mobil 1 ESP 5W30 4L",
+    "approvedSalesPriceGross": 230,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80616,
+    "productId": 29
+  },
+  {
+    "id": 104,
+    "approvedProductName": "Żarówka (halogenowa) H7 Pure Light",
+    "approvedSalesPriceGross": 18,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80616,
+    "productId": 30
+  },
+  {
+    "id": 105,
+    "approvedProductName": "Filtr paliwa PE 973/3",
+    "approvedSalesPriceGross": 30,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80618,
+    "productId": 32
+  },
+  {
+    "id": 106,
+    "approvedProductName": "Filtr powietrza AP 189/1",
+    "approvedSalesPriceGross": 30,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80618,
+    "productId": 31
+  },
+  {
+    "id": 107,
+    "approvedProductName": "Filtr powietrza AP 189/1",
+    "approvedSalesPriceGross": 30,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80620,
+    "productId": 31
+  },
+  {
+    "id": 108,
+    "approvedProductName": "Opony 4szt. UltraGrip 9+ 205/55R16  (zimowe)",
+    "approvedSalesPriceGross": 1600,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80621,
+    "productId": 18
+  },
+  {
+    "id": 109,
+    "approvedProductName": "Plak do konserwacji części plastikowych 400ml",
+    "approvedSalesPriceGross": 16.0100002288818,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80622,
+    "productId": 16
+  },
+  {
+    "id": 110,
+    "approvedProductName": "Olej Mobil 1 ESP 5W30 4L",
+    "approvedSalesPriceGross": 230,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80622,
+    "productId": 29
+  },
+  {
+    "id": 111,
+    "approvedProductName": "Klocki hamulcowe tył",
+    "approvedSalesPriceGross": 73.3399963378906,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80623,
+    "productId": 6
+  },
+  {
+    "id": 112,
+    "approvedProductName": "Pióro wycieraczki przód (60cm)",
+    "approvedSalesPriceGross": 18.6599998474121,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80624,
+    "productId": 15
+  },
+  {
+    "id": 113,
+    "approvedProductName": "Filtr powietrza AP 189/1",
+    "approvedSalesPriceGross": 30,
+    "count": 1,
+    "isProvided": false,
+    "isReserved": false,
+    "deliveryTime": null,
+    "orderId": 80626,
+    "productId": 31
+  }
+]
