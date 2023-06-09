@@ -1,0 +1,90 @@
+[
+  {
+    "id": 15,
+    "appUserId": 1,
+    "name": "Wymiana klocków hamulcowych (przód/tył)",
+    "costNet": 61.5999984741211,
+    "costGross": 80.0,
+    "unit": "rbh",
+    "estimatedTime": 2.0,
+    "totalNet": 123.199996948242,
+    "totalGross": 160.0
+  },
+  {
+    "id": 24,
+    "appUserId": 1,
+    "name": "Wymiana sprężyny zaw. przedniej 1 szt",
+    "costNet": 61.5999984741211,
+    "costGross": 80.0,
+    "unit": "rbh",
+    "estimatedTime": 1.20000004768372,
+    "totalNet": 73.9199981689453,
+    "totalGross": 96.0
+  },
+  {
+    "id": 25,
+    "appUserId": 1,
+    "name": "Wymiana sprężyny zaw. tył 1 szt.",
+    "costNet": 61.5999984741211,
+    "costGross": 80.0,
+    "unit": "rbh",
+    "estimatedTime": 1.5,
+    "totalNet": 92.4000015258789,
+    "totalGross": 120.0
+  },
+  {
+    "id": 26,
+    "appUserId": 1,
+    "name": "Przegląd okresowy duży (60-120 tyś.)",
+    "costNet": 92.4000015258789,
+    "costGross": 120.0,
+    "unit": "rbh",
+    "estimatedTime": 3.0,
+    "totalNet": 277.200012207031,
+    "totalGross": 360.0
+  },
+  {
+    "id": 27,
+    "appUserId": 1,
+    "name": "Przegląd okresowy zwykły (30-90 tyś.)",
+    "costNet": 92.4000015258789,
+    "costGross": 120.0,
+    "unit": "rbh",
+    "estimatedTime": 2.0,
+    "totalNet": 184.800003051758,
+    "totalGross": 240.0
+  },
+  {
+    "id": 28,
+    "appUserId": 1,
+    "name": "Uzupełnienie czynnika klimatyzacji (cena bez produktu)",
+    "costNet": 77.0,
+    "costGross": 100.0,
+    "unit": "rbh",
+    "estimatedTime": 0.5,
+    "totalNet": 38.5,
+    "totalGross": 50.0
+  },
+  {
+    "id": 36,
+    "appUserId": 1,
+    "name": "Wymiana filtra powietrza",
+    "costNet": 92.4,
+    "costGross": 120.0,
+    "unit": "rbh",
+    "estimatedTime": 0.25,
+    "totalNet": 23.1,
+    "totalGross": 30.0
+  },
+  {
+    "id": 37,
+    "appUserId": 1,
+    "name": "Wymiana filtra paliwa",
+    "costNet": 92.4,
+    "costGross": 120.0,
+    "unit": "rbh",
+    "estimatedTime": 0.5,
+    "totalNet": 46.2,
+    "totalGross": 60.0
+  }
+]

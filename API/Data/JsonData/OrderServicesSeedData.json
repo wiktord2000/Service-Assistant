@@ -1,0 +1,262 @@
+[
+  {
+    "id": 125,
+    "approvedCostGross": 80,
+    "approvedEstimatedTime": 2,
+    "approvedServiceName": "Wymiana klocków hamulcowych (przód/tył)",
+    "isCompleted": false,
+    "orderId": 80610,
+    "serviceId": 15,
+    "workedTime": 0
+  },
+  {
+    "id": 126,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 2,
+    "approvedServiceName": "Przegląd okresowy zwykły (30-90 tyś.)",
+    "isCompleted": false,
+    "orderId": 80611,
+    "serviceId": 27,
+    "workedTime": 0
+  },
+  {
+    "id": 127,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 0.25,
+    "approvedServiceName": "Wymiana filtra powietrza",
+    "isCompleted": false,
+    "orderId": 80612,
+    "serviceId": 36,
+    "workedTime": 0
+  },
+  {
+    "id": 128,
+    "approvedCostGross": 80,
+    "approvedEstimatedTime": 2,
+    "approvedServiceName": "Wymiana klocków hamulcowych (przód/tył)",
+    "isCompleted": false,
+    "orderId": 80612,
+    "serviceId": 15,
+    "workedTime": 0
+  },
+  {
+    "id": 129,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 2,
+    "approvedServiceName": "Przegląd okresowy zwykły (30-90 tyś.)",
+    "isCompleted": false,
+    "orderId": 80612,
+    "serviceId": 27,
+    "workedTime": 0
+  },
+  {
+    "id": 130,
+    "approvedCostGross": 80,
+    "approvedEstimatedTime": 1.20000004768372,
+    "approvedServiceName": "Wymiana sprężyny zaw. przedniej 1 szt",
+    "isCompleted": false,
+    "orderId": 80612,
+    "serviceId": 24,
+    "workedTime": 0
+  },
+  {
+    "id": 131,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 0.5,
+    "approvedServiceName": "Wymiana filtra paliwa",
+    "isCompleted": false,
+    "orderId": 80613,
+    "serviceId": 37,
+    "workedTime": 0
+  },
+  {
+    "id": 132,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 0.25,
+    "approvedServiceName": "Wymiana filtra powietrza",
+    "isCompleted": false,
+    "orderId": 80613,
+    "serviceId": 36,
+    "workedTime": 0
+  },
+  {
+    "id": 133,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 2,
+    "approvedServiceName": "Przegląd okresowy zwykły (30-90 tyś.)",
+    "isCompleted": false,
+    "orderId": 80615,
+    "serviceId": 27,
+    "workedTime": 0
+  },
+  {
+    "id": 134,
+    "approvedCostGross": 100,
+    "approvedEstimatedTime": 0.5,
+    "approvedServiceName": "Uzupełnienie czynnika klimatyzacji (cena bez produktu)",
+    "isCompleted": false,
+    "orderId": 80616,
+    "serviceId": 28,
+    "workedTime": 0
+  },
+  {
+    "id": 135,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 3,
+    "approvedServiceName": "Przegląd okresowy duży (60-120 tyś.)",
+    "isCompleted": false,
+    "orderId": 80617,
+    "serviceId": 26,
+    "workedTime": 0
+  },
+  {
+    "id": 136,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 0.5,
+    "approvedServiceName": "Wymiana filtra paliwa",
+    "isCompleted": false,
+    "orderId": 80618,
+    "serviceId": 37,
+    "workedTime": 0
+  },
+  {
+    "id": 137,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 0.25,
+    "approvedServiceName": "Wymiana filtra powietrza",
+    "isCompleted": false,
+    "orderId": 80618,
+    "serviceId": 36,
+    "workedTime": 0
+  },
+  {
+    "id": 138,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 2,
+    "approvedServiceName": "Przegląd okresowy zwykły (30-90 tyś.)",
+    "isCompleted": false,
+    "orderId": 80619,
+    "serviceId": 27,
+    "workedTime": 0
+  },
+  {
+    "id": 139,
+    "approvedCostGross": 80,
+    "approvedEstimatedTime": 1.20000004768372,
+    "approvedServiceName": "Wymiana sprężyny zaw. przedniej 1 szt",
+    "isCompleted": false,
+    "orderId": 80620,
+    "serviceId": 24,
+    "workedTime": 0
+  },
+  {
+    "id": 140,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 0.25,
+    "approvedServiceName": "Wymiana filtra powietrza",
+    "isCompleted": false,
+    "orderId": 80620,
+    "serviceId": 36,
+    "workedTime": 0
+  },
+  {
+    "id": 141,
+    "approvedCostGross": 100,
+    "approvedEstimatedTime": 0.5,
+    "approvedServiceName": "Uzupełnienie czynnika klimatyzacji (cena bez produktu)",
+    "isCompleted": false,
+    "orderId": 80621,
+    "serviceId": 28,
+    "workedTime": 0
+  },
+  {
+    "id": 142,
+    "approvedCostGross": 80,
+    "approvedEstimatedTime": 1.20000004768372,
+    "approvedServiceName": "Wymiana sprężyny zaw. przedniej 1 szt",
+    "isCompleted": false,
+    "orderId": 80622,
+    "serviceId": 24,
+    "workedTime": 0
+  },
+  {
+    "id": 143,
+    "approvedCostGross": 80,
+    "approvedEstimatedTime": 2,
+    "approvedServiceName": "Wymiana klocków hamulcowych (przód/tył)",
+    "isCompleted": false,
+    "orderId": 80623,
+    "serviceId": 15,
+    "workedTime": 0
+  },
+  {
+    "id": 144,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 0.5,
+    "approvedServiceName": "Wymiana filtra paliwa",
+    "isCompleted": false,
+    "orderId": 80624,
+    "serviceId": 37,
+    "workedTime": 0
+  },
+  {
+    "id": 145,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 0.25,
+    "approvedServiceName": "Wymiana filtra powietrza",
+    "isCompleted": false,
+    "orderId": 80624,
+    "serviceId": 36,
+    "workedTime": 0
+  },
+  {
+    "id": 146,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 2,
+    "approvedServiceName": "Przegląd okresowy zwykły (30-90 tyś.)",
+    "isCompleted": false,
+    "orderId": 80625,
+    "serviceId": 27,
+    "workedTime": 0
+  },
+  {
+    "id": 147,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 0.25,
+    "approvedServiceName": "Wymiana filtra powietrza",
+    "isCompleted": false,
+    "orderId": 80626,
+    "serviceId": 36,
+    "workedTime": 0
+  },
+  {
+    "id": 148,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 3,
+    "approvedServiceName": "Przegląd okresowy duży (60-120 tyś.)",
+    "isCompleted": false,
+    "orderId": 80627,
+    "serviceId": 26,
+    "workedTime": 0
+  },
+  {
+    "id": 149,
+    "approvedCostGross": 80,
+    "approvedEstimatedTime": 1.20000004768372,
+    "approvedServiceName": "Wymiana sprężyny zaw. przedniej 1 szt",
+    "isCompleted": false,
+    "orderId": 80628,
+    "serviceId": 24,
+    "workedTime": 0
+  },
+  {
+    "id": 150,
+    "approvedCostGross": 120,
+    "approvedEstimatedTime": 2,
+    "approvedServiceName": "Przegląd okresowy zwykły (30-90 tyś.)",
+    "isCompleted": false,
+    "orderId": 80629,
+    "serviceId": 27,
+    "workedTime": 0
+  }
+]

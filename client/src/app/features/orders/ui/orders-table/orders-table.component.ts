@@ -77,7 +77,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
   onDateUpdate(event: DateAndTimePickerEvent, orderId: number, dateType: 'admission' | 'deadline') {
     const orderToUpdate = this.dataSource.getOrders().find((order) => order.id === orderId);
     if (!orderToUpdate) {
-      this.snackbarService.showMessage('error', 'Incorrect order ID');
+      this.snackbarService.showMessage('error', 'Niepoprawne ID zlecenia!');
       return;
     }
     const payload =
@@ -85,11 +85,11 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.ordersService.updateOrderPatch(orderId, payload).subscribe({
       next: () => {
-        this.snackbarService.showMessage('success', 'Successfully updated the date');
+        this.snackbarService.showMessage('success', 'Pomyślnie zaktualizowano dane!');
       },
       error: (error) => {
         console.log(error);
-        this.snackbarService.showMessage('error', 'Failed to update date');
+        this.snackbarService.showMessage('error', 'Problem z aktualizacją daty!');
         // Restore previous date
         event.restorePreviousDate();
       }
@@ -113,7 +113,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
         this.dataSource.setOrders(updatedOrders);
       },
       error: () => {
-        this.snackbarService.showMessage('error', 'Failed to update status change date');
+        this.snackbarService.showMessage('error', 'Problem z aktualizacją daty!');
       }
     });
   }
@@ -121,8 +121,8 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
   onDeleteClick(order: Order) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        headerText: 'Order deletion',
-        bodyText: `<h3>Are you sure you want to remove the order <strong>${order.orderNumber}</strong> ?<h3>`
+        headerText: 'Usuwanie zlecenia',
+        bodyText: `<h3>Jesteś pewny, że chcesz usunąć zlecenie o numerze <strong>${order.orderNumber}</strong> ?<h3>`
       }
     });
 
@@ -131,11 +131,11 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
       this.ordersService.deleteOrder(order.id).subscribe({
         next: () => {
-          this.snackbarService.showMessage('success', 'Successfully removed the order');
+          this.snackbarService.showMessage('success', 'Pomyślnie usunięto zlecenie');
           this.dataSource.deleteOrder(order.id);
         },
         error: () => {
-          this.snackbarService.showMessage('error', 'Problem with order deletion');
+          this.snackbarService.showMessage('error', 'Problem z usunięciem zlecenia');
         }
       });
     });

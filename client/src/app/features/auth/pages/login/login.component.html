@@ -1,12 +1,12 @@
 <form [formGroup]="loginForm" class="form-paper mat-elevation-z12">
-  <h1 class="form-header">Sign in</h1>
+  <h1 class="form-header">Zaloguj się</h1>
 
   <!-- Username -->
-  <app-text-input [label]="'User name'" [formControl]="loginForm.controls['username']">
+  <app-text-input [label]="'Nazwa użytkownika'" [formControl]="loginForm.controls['username']">
   </app-text-input>
 
   <!-- Password -->
-  <app-password-input [label]="'Password'" [formControl]="loginForm.controls['password']">
+  <app-password-input [label]="'Hasło'" [formControl]="loginForm.controls['password']">
   </app-password-input>
 
   <!-- Potential server errors -->
@@ -18,10 +18,12 @@
 
   <!-- Banner -->
   <div class="banner">
-    <strong>Recommendation</strong>
-    <div>For testing purposes you can simply use provided account.</div>
+    <strong>Rekomendacja</strong>
+    <div>
+      Jeśli chcesz szybko przetestować aplikację możesz użyć przygotowanego do tego celu konta.
+    </div>
     <div (click)="onRecommendationClick()" class="btn-wrapper">
-      <button mat-button color="primary">Let's use it!</button>
+      <button mat-button color="primary">Przejdź do konta!</button>
     </div>
   </div>
 
@@ -33,6 +35,6 @@
     [disabled]="isLogging || !loginForm.valid"
     (click)="onLogin()"
   >
-    {{ isLogging ? "Logging..." : "Submit" }}
+    {{ isLogging ? "Przetwarzanie..." : "Zatwierdź" }}
   </button>
 </form>
