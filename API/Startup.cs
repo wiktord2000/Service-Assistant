@@ -1,12 +1,7 @@
-using System.Text;
 using API.Data;
 using API.Extensions;
-using API.Interfaces;
 using API.Middleware;
-using API.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace API
@@ -14,9 +9,11 @@ namespace API
     public class Startup
     {
         private readonly IConfiguration _config;
-        public Startup(IConfiguration config)
+        private IWebHostEnvironment CurrentEnvironment{ get; set; } 
+        public Startup(IConfiguration config, IWebHostEnvironment env)
         {
             _config = config;
+            CurrentEnvironment = env;
         }
 
 
@@ -25,6 +22,30 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationServices(_config);  // -> ApplicationServiceExtensions (TokenService, DataContext)
+            // Hosting purposes
+            var connectionString = "";
+            if (CurrentEnvironment.IsDevelopment()){
+                connectionString = _config.GetConnectionString("DefaultConnection");
+            }
+            else{
+                // Parse connection URL to connection string for Npgsql
+                var connectionURL = Environment.GetEnvironmentVariable("DATABASE_URL");
+                connectionURL = connectionURL.Replace("postgres://", string.Empty);
+                var pgUserPass = connectionURL.Split("@")[0];
+                var pgHostPortDb = connectionURL.Split("@")[1];
+                var pgHostPort = pgHostPortDb.Split("/")[0];
+                var pgDb = pgHostPortDb.Split("/")[1];
+                var pgUser = pgUserPass.Split(":")[0];
+                var pgPass = pgUserPass.Split(":")[1];
+                var pgHost = pgHostPort.Split(":")[0];
+                var pgPort = pgHostPort.Split(":")[1];
+                var updatedHost = pgHost.Replace("flycast", "internal");
+                connectionString = $"Server={updatedHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};";
+            }
+            services.AddDbContext<DataContext>(options => {
+                options.UseNpgsql(connectionString);
+                // options.EnableSensitiveDataLogging();
+            });
             services.AddControllers().AddNewtonsoftJson();      // .AddNewtonsoftJson(); added to PATCH perpose
             services.AddCors(); // Add cors 1.
             services.AddSwaggerGen(c =>
@@ -37,14 +58,15 @@ namespace API
 
         // Here you can configure incoming request (make some operations at them). Configure how the app deal with requests.
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
+            if (CurrentEnvironment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));
             }
+
             app.UseMiddleware<ExceptionMiddleware>();
 
             // app.UseHttpsRedirection();
