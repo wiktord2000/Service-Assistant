@@ -13,7 +13,7 @@ namespace API.Data
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             // return DateTime.ParseExact(reader.GetString(), "yyyy-MM-dd H:mm:ss", null);  // only specific case
-            return DateTime.Parse(reader.GetString());
+            return DateTime.SpecifyKind(DateTime.Parse(reader.GetString()), DateTimeKind.Utc);
         }
 
         public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)

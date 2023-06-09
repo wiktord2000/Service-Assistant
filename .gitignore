@@ -458,4 +458,5 @@ appsettings.json
 *.db-shm
 *.db-wal
 todo.txt
+API/wwwroot
 

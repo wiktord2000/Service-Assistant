@@ -1,0 +1,21 @@
+# fly.toml app configuration file generated for serviceassistant on 2023-06-09T19:42:28+02:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "serviceassistant"
+primary_region = "waw"
+
+# Place for not secret variables
+[env]
+  ASPNETCORE_URLS="http://+:8080" # This port have to match the Dockerfile EXPOSE port 
+
+[build]
+  image = "wiktord2000/serviceassistant:latest"
+
+[http_service]
+  internal_port = 8080    # This port have to match the Dockerfile EXPOSE port 
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0

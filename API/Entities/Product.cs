@@ -32,8 +32,8 @@ namespace API.Entities
         public float Markup { get; set; }
         public float Margin { get; set; }
         public DateTime? LastDeliveryDate { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
         // Foreign keys
         public AppUser AppUser { get; set; }

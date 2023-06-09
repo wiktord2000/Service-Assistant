@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace API.Entities
 {
@@ -17,8 +13,8 @@ namespace API.Entities
         public byte[] PasswordSalt { get; set; }
         public string CompanyName { get; set; }
         public int? Nip { get; set; }
-        public string Voivodeship { get; set; }     // województwo
-        public string Township { get; set; }        // powiat
+        public string Voivodeship { get; set; }     
+        public string Township { get; set; }        
         public string Borough { get; set; }         // gmina
         public int? PostalCode { get; set; }
         public string Town { get; set; }
@@ -29,8 +25,8 @@ namespace API.Entities
         public string Email { get; set; }
         public int? AccountNumber { get; set; }
         public string BankName { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime LastActive { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime LastActive { get; set; } = DateTime.UtcNow;
         public ICollection<Order> Orders { get; set; }
         public ICollection<Vehicle> Vehicles { get; set; }
         public ICollection<Client> Clients { get; set; }

@@ -18,8 +18,8 @@ namespace API.Entities
         public float EstimatedTime { get; set; }
         public float TotalNet { get; set; }
         public float TotalGross { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
         // Foreign keys
         public AppUser AppUser { get; set; }
