@@ -1,4 +1,4 @@
-import { Product } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/Product';
 import { Component, Input, OnInit } from '@angular/core';
 import { TooltipPosition } from '@angular/material/tooltip';
 import { ThemePalette } from '@angular/material/core';

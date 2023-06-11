@@ -1,6 +1,6 @@
 import { ProductsService } from '../../data-access/products.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Product } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/Product';
 import { ProductsTableDataSource } from './products-table-datasorce';
 import { MatDialog } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';

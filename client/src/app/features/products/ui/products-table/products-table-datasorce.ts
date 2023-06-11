@@ -2,7 +2,7 @@ import { DataSource } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { BehaviorSubject, map, merge, Observable } from 'rxjs';
-import { Product } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/Product';
 import { ProductsService } from 'src/app/features/products/data-access/products.service';
 
 /**

@@ -1,6 +1,6 @@
 import { Component, OnInit, SkipSelf, ViewChild } from '@angular/core';
 import { Order } from 'src/app/core/models/Order';
-import { Product } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/Product';
 import { OrdersService } from 'src/app/features/orders/data-access/orders.service';
 import { OrdersTableComponent } from 'src/app/features/orders/ui/orders-table/orders-table.component';
 import { ProductProfileComponent } from '../product-profile/product-profile.component';

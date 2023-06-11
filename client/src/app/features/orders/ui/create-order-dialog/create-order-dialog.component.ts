@@ -15,7 +15,7 @@ import { OrdersService } from 'src/app/features/orders/data-access/orders.servic
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { VehiclesService } from 'src/app/features/vehicles/data-access/vehicles.service';
 import { OrderServicesTableComponent } from '../order-services-table/order-services-table.component';
-import { Product } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/Product';
 import { OrderProductsTableComponent } from '../order-products-table/order-products-table.component';
 import { OrderProduct } from 'src/app/core/models/OrderProduct';
 import { OrderProductsService } from 'src/app/features/orders/data-access/order-products.service';

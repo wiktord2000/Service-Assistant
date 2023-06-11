@@ -6,7 +6,7 @@ import {
   ZERO_TO_HUNDRED_REGEX
 } from 'src/app/core/constants/constants';
 import { ProductsService } from '../../data-access/products.service';
-import { Product } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/Product';
 import { finalize } from 'rxjs';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { ProductProfileComponent } from '../product-profile/product-profile.component';

@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output, Self } from '@angular/c
 import { NgControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { debounceTime, Observable, of, startWith } from 'rxjs';
-import { Product } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/Product';
 import {
   CREATE_PRODUCT_DIALOG_DEFAULT_CONFIG,
   CreateProductDialogComponent

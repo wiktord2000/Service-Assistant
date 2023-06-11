@@ -1,25 +1,56 @@
-name: docker-push
+# Note: Until we specify the 'needs' property all jobs will run in parallel
+
+name: deploy-app
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - "main"
+  push:
+    branches:
+      - "main"
+
+env:
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
 jobs:
   docker:
+    name: Build and Push Docker Image
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci --prefix client
+
+      - name: Build Angular app
+        run: npm run build --prefix client
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Build and push
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v2
         with:
-          context: "{{defaultContext}}:API" # Looking for Dockerfile and build and push the image to the Dockerhub
+          context: ./API
+          file: ./API/Dockerfile
           push: true
           tags: wiktord2000/serviceassistant:latest
+  deploy:
+    needs: docker
+    name: Deploy App
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - run: flyctl deploy --remote-only

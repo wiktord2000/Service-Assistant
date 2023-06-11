@@ -2,7 +2,7 @@ import { Component, OnInit, SkipSelf } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { INTEGER_REGEX, ONE_TO_TEN_REGEX } from 'src/app/core/constants/constants';
 import { ProductProfileComponent } from '../product-profile/product-profile.component';
-import { Product } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/Product';
 import { ProductsService } from '../../data-access/products.service';
 import { finalize } from 'rxjs';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';

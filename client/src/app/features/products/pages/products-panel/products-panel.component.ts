@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Product } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/Product';
 import { ProductsService } from 'src/app/features/products/data-access/products.service';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import {

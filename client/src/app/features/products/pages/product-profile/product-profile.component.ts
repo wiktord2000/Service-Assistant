@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Data } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Product } from 'src/app/core/models/product';
+import { Product } from 'src/app/core/models/Product';
 
 @Component({
   selector: 'app-product-profile',
