@@ -5,6 +5,10 @@ The implemented application offered a simple user interface, instinctive associa
 
 <img width=180 src="https://user-images.githubusercontent.com/63188869/218562492-2779f525-26c4-4e8f-9455-e91a034a6242.png" />
 
+## How to run the application?
+The application is hosted so you can just follow the given link:
+https://serviceassistant.fly.dev
+
 ## Use cases
 
 - Company login and registration
@@ -18,7 +22,7 @@ The implemented application offered a simple user interface, instinctive associa
 - Maintaining a vehicle profile (e.g. repair history, owner information, and basic vehicle information)
 
 > **Note**<br/> 
-> The main purpose was to create application mostly for desktops / large screens because of amount of data presented but progressively I'm working on responsiveness. I've recently provided better scalable tables and split the client profile to the desired form (I'm going to make the same with other profiles). Sometimes you may encounter leftover css because I didn't use scss/sass from the beginning (also working on it).<br/> 
+> The main purpose was to create application mostly for desktops / large screens because of amount of data presented but progressively I'm working on responsiveness. I've recently provided better scalable tables and split the profiles to the desired form.<br/> 
 
 ## Technologies 
 
@@ -58,46 +62,6 @@ https://github.com/wiktord2000/Service-Assistant/assets/63188869/9e93a1dc-8d15-4
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/73903d36-d87c-4b52-b864-146059ac61a9
 
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/3461ad96-397a-4034-b1bc-f74644fde6e2
-
-
-## How to run the application?
-1. Ensure you have **npm** installed ( run <code>npm -version</code> ) if not look at the instruction below. 
-2. Ensure you have the **Angular CLI** installed ( run <code>ng version</code> ) if not run <code>npm install -g @angular/cli</code>.
-3. Ensure you have **.NET 6.0** installed ( run <code>dotnet --version</code> ) if not download it from https://dotnet.microsoft.com/en-us/download.
-4. Clone project from GitHub
-5. Open new terminal inside <code>API/</code> folder and run command <code>dotnet run</code>.
-6. Open new terminal inside <code>client/</code> folder and run commands <code>npm install</code> and <code>ng serve</code>
-7. You should see following result in the console: 
-
-<kbd><img width=600 src="https://user-images.githubusercontent.com/63188869/224010054-94adb8e9-5157-494a-9716-a29049a0928d.png" /></kbd>
-
-8. Click the given URL to display content in your default browser.
-9. Enjoy it!
-
-> **:exclamation: Note: You don't have to create new account :exclamation:**<br/> 
-> I recommend you to use the account with mocked data using following credentials:<br/> 
-> **Login:** <code>wiktor</code><br/> 
-> **Password:** <code>qweqweqwe</code>
-
-### Npm installation
-
->**Note: npm is installed with Node.js**
-
-This means that you have to install Node.js to get npm installed on your computer.
-<br>
-Download Node.js from the official Node.js web site: https://nodejs.org
-
-## Swagger UI
-
-If you want make a quick preview of created API and its endpoints you can simply use following URL 
-<br>
-<code>https://localhost:5001/swagger/index.html</code>
-
-You should see following result inside your browser:
-<kbd><img width=700 src="https://user-images.githubusercontent.com/63188869/224013071-426771ef-b844-4c0c-9292-3494ca63b94a.png" /></kbd>
-
->**Note:** The server have to be running (use <code>dotnet run</code> inside <code>API/</code> directory) </br>
->**More about Swagger:** <code>https://swagger.io/tools/swagger-ui/</code>
 
 ## Versions
 
