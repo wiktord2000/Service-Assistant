@@ -70,7 +70,7 @@ namespace API.Controllers
             if(vehicleToUpdate == null) return NotFound($"Pojazd o Id {id} nie istnieje!");
 
             // Change UpdateAt date
-            vehicle.UpdatedAt = DateTime.Now;
+            vehicle.UpdatedAt = DateTime.UtcNow;
 
             _mapper.Map(vehicle, vehicleToUpdate);
             _context.Vehicles.Update(vehicleToUpdate);

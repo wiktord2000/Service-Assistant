@@ -20,7 +20,7 @@ namespace API.DTOs.OrderDtos
         public float TotalPartsGross { get; set; }
         public float TotalNet { get; set; }
         public float TotalGross { get; set; }
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? FinishDate { get; set; }
 
         // -------------------- Foreign keys

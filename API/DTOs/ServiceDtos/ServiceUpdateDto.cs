@@ -22,6 +22,6 @@ namespace API.DTOs.ServiceDtos
         public float? TotalNet { get; set; }
         [Required]
         public float? TotalGross { get; set; }
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }

@@ -31,6 +31,6 @@ namespace API.DTOs.ProductDtos
         public float Markup { get; set; }
         public float Margin { get; set; }
         public DateTime? LastDeliveryDate { get; set; }
-        public DateTime UpdatedAt { get; set; } = DateTime.Now;
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
     }
 }

@@ -67,7 +67,7 @@ namespace API.Controllers
         {   
             Order newOrder = new Order();
             // Provide orderNumber (server side)
-            var currentDate = DateTime.Now;
+            var currentDate = DateTime.UtcNow;
             var dateUniqueValue = currentDate.Hour*currentDate.Minute*currentDate.Second;
             newOrder.OrderNumber = $"ZL {currentDate.Year.ToString().Substring(2)}/{currentDate.Month}/{currentDate.Day}.{dateUniqueValue}";
             var newState = new Status();
