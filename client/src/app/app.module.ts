@@ -7,10 +7,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
-import {
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-  MatMomentDateModule
-} from '@angular/material-moment-adapter';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -28,7 +25,7 @@ import { SharedModule } from './shared/shared.module';
     SharedModule
   ],
   providers: [
-    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
+    // { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
     { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' }, // makes local names e.g. DECEMBER - GRUDZIEN (inside calendar)
     { provide: LOCALE_ID, useValue: 'pl-PL' }
   ],
