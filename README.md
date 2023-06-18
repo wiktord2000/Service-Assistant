@@ -33,7 +33,7 @@ https://serviceassistant.fly.dev
 - ngx-charts
 - RxJS
 - Entity Framework Core
-- SqLite
+- PostgreSQL
 - Swagger
 
 ## Preview
