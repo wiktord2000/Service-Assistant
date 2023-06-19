@@ -81,11 +81,12 @@
       <ng-container matColumnDef="admissionDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Dostarczenie</th>
         <td mat-cell *matCellDef="let row">
-          <app-date-and-time-picker
-            (dateChange)="onDateUpdate($event, row.id, 'admission')"
+          <app-date-and-time-input
+            [fontSize]="12"
+            [mode]="'standalone'"
             [initialDate]="row.admissionDate"
-          >
-          </app-date-and-time-picker>
+            (dateChange)="onDateUpdate($event, row.id, 'admission')"
+          ></app-date-and-time-input>
         </td>
       </ng-container>
 
@@ -93,12 +94,12 @@
       <ng-container matColumnDef="deadlineDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Odbiór</th>
         <td mat-cell *matCellDef="let row">
-          <!-- Date and Time picker -->
-          <app-date-and-time-picker
-            (dateChange)="onDateUpdate($event, row.id, 'deadline')"
+          <app-date-and-time-input
+            [fontSize]="12"
+            [mode]="'standalone'"
             [initialDate]="row.deadlineDate"
-          >
-          </app-date-and-time-picker>
+            (dateChange)="onDateUpdate($event, row.id, 'deadline')"
+          ></app-date-and-time-input>
         </td>
       </ng-container>
 

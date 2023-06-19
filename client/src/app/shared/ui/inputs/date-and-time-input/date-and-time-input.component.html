@@ -1,22 +1,24 @@
-<mat-form-field appearance="fill">
+<mat-form-field
+  [ngClass]="{ 'full-width': mode === 'form' }"
+  [style.fontSize.px]="fontSize"
+  [appearance]="mode === 'form' ? 'fill' : 'outline'"
+>
   <!-- Label -->
-  <mat-label>{{ label }}</mat-label>
+  <mat-label *ngIf="mode === 'form'">{{ label }}</mat-label>
 
   <!-- Displaying input -->
   <input
     matInput
     type="text"
     readonly="true"
-    value="{{
-      ngControl.control.value | date : (isTimeSetted ? dateAndTimeFormat : onlyDateFormat)
-    }}"
+    value="{{ formControl.value | date : (isTimeSetted ? dateAndTimeFormat : onlyDateFormat) }}"
   />
 
   <!-- Hidden input for datepicker -->
   <input
     (dateChange)="onDateChange()"
     [style.display]="'none'"
-    [formControl]="ngControl.control"
+    [formControl]="formControl"
     [matDatepicker]="datePicker"
   />
 
@@ -31,7 +33,7 @@
   </button>
 </mat-form-field>
 
-<!------------------------------------- Dialog ------------------------------------->
+<!------------------------------------- Dialogs ------------------------------------->
 
 <!-- Datepicker -->
 <mat-datepicker #datePicker></mat-datepicker>
