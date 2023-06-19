@@ -1,4 +1,3 @@
-import { DateAndTimePickerEvent } from '../../../../shared/ui/date-and-time-picker/date-and-time-picker.component';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
@@ -12,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../../../shared/ui/confirm-dialog/confirm-dialog.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Subscription, distinctUntilChanged, map } from 'rxjs';
+import { DateAndTimeInputEvent } from 'src/app/shared/ui/inputs/date-and-time-input/date-and-time-input.component';
 
 const COMPLETE_COLUMN_LIST = [
   'orderNumber',
@@ -74,7 +74,7 @@ export class OrdersTableComponent implements OnInit, AfterViewInit, OnDestroy {
     this.table.dataSource = this.dataSource;
   }
 
-  onDateUpdate(event: DateAndTimePickerEvent, orderId: number, dateType: 'admission' | 'deadline') {
+  onDateUpdate(event: DateAndTimeInputEvent, orderId: number, dateType: 'admission' | 'deadline') {
     const orderToUpdate = this.dataSource.getOrders().find((order) => order.id === orderId);
     if (!orderToUpdate) {
       this.snackbarService.showMessage('error', 'Niepoprawne ID zlecenia!');
