@@ -63,7 +63,7 @@ https://github.com/wiktord2000/Service-Assistant/assets/63188869/73903d36-d87c-4
 
 https://github.com/wiktord2000/Service-Assistant/assets/63188869/3461ad96-397a-4034-b1bc-f74644fde6e2
 
-## Versions (deprecated - update needed)
+## Versions (update needed)
 
 ### Angular project
 <kbd><img width=400 src="https://user-images.githubusercontent.com/63188869/221030446-4890cdb9-8e8e-4aa9-8210-bfaf6f325a35.png" /></kbd>
