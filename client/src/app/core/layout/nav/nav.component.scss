@@ -1,86 +1,78 @@
 @import "helpers/constants";
 
-.sidenav-container {
+.mat-sidenav-container {
   height: 100%;
+
+  .mat-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    justify-content: center;
+
+    .toolbar-content {
+      display: flex;
+      width: 100%;
+      max-width: $max-navbar-content-width;
+    }
+
+    // For login and register page
+    &.transparent {
+      background-color: transparent;
+      background-color: rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(20px);
+      color: white;
+    }
+  }
 }
 
-.sidenav {
-  width: 200px;
-}
-
-#main-logo {
+#logo {
   height: 2em;
   margin-right: 1em;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.04, 1.04);
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
 }
 
-#main-logo:hover {
-  cursor: pointer;
-  transform: scale(1.04, 1.04);
-  transition-duration: 0.2s;
-  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.mat-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.mat-toolbar.transparent {
-  background-color: transparent;
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(20px);
-  color: white;
-}
-
-a:hover {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-.active-link {
-  background: rgba(0, 0, 0, 0.2) !important;
-}
-
-.bookmark {
-  font-size: 1rem;
-  margin-left: 8px;
-}
-
-.bookmark-divider {
-  position: relative; /* Important to center after element */
-}
-/* Bookmarks divider */
-.bookmark-divider::after {
-  content: "";
-  height: 60%;
-  width: 100%;
-  position: absolute;
-  bottom: 20%;
-  left: 3px;
-  border-right: solid 2px white;
-}
-
+// Filling the free space in toolbar
 .spacer {
   flex: 1 1 auto;
 }
 
-.right-bookmark {
-  font-size: 1.25rem;
+.account-management-container {
+  a,
+  .mat-button {
+    font-size: $account-management-fontsize;
+  }
+
+  display: flex;
+  justify-content: center;
 }
 
-#account-button {
-  font-size: 1.25rem;
-  padding-left: 0em;
-  padding-right: 0em;
+.bookmark {
+  font-size: $bookmark-fontsize;
+  margin-left: 8px;
 }
 
-#account-button:hover {
-  background: rgba(0, 0, 0, 0.2);
+.bookmark-divider {
+  position: relative;
+
+  &::after {
+    content: "";
+    height: 60%;
+    width: 100%;
+    position: absolute;
+    bottom: 20%;
+    left: 3px;
+    border-right: solid 2px white;
+  }
 }
 
-.toolbar-header {
-  background-color: $primary;
-  color: white;
+.active-link {
+  background: rgba(0, 0, 0, 0.2) !important;
 }
 
 .footer {
@@ -91,4 +83,20 @@ a:hover {
   align-items: center;
   background-color: $primary;
   color: white;
+}
+
+// When small screen
+.sidenav {
+  width: 200px;
+  .sidenav-title {
+    background-color: $primary;
+    color: white;
+    justify-content: start;
+  }
+}
+
+@media (max-width: $medium-breakpoint) {
+  .account-button {
+    padding: 0px 8px;
+  }
 }
