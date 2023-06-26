@@ -1,5 +1,116 @@
-<mat-sidenav-container class="sidenav-container mat-elevation-z20">
-  <!-- Sidenav at the left (mostly for small screens) -->
+<mat-sidenav-container class="mat-elevation-z20">
+  <mat-sidenav-content>
+    <mat-toolbar
+      [class]="{ 'mat-elevation-z3': true, transparent: router.url.includes('/auth') }"
+      color="primary"
+    >
+      <div class="toolbar-content">
+        <img
+          id="logo"
+          routerLink="/orders"
+          [ngClass]="{ 'disable-pointer': !(accountService.currentUser$ | async) }"
+          src="../../assets/logo.svg"
+        />
+
+        <!-- Bookmarks -->
+        <div *ngIf="!(isSmallOrXSmall$ | async) && (accountService.currentUser$ | async)">
+          <a
+            class="bookmark bookmark-divider"
+            routerLinkActive="active-link"
+            mat-button
+            routerLink="/orders"
+            >Zlecenia</a
+          >
+          <a
+            class="bookmark bookmark-divider"
+            routerLinkActive="active-link"
+            mat-button
+            routerLink="/services"
+            >Usługi</a
+          >
+          <a
+            class="bookmark bookmark-divider"
+            routerLinkActive="active-link"
+            mat-button
+            routerLink="/products"
+            >Towary</a
+          >
+          <a
+            class="bookmark bookmark-divider"
+            routerLinkActive="active-link"
+            mat-button
+            routerLink="/clients"
+            >Klienci</a
+          >
+          <a
+            class="bookmark bookmark-divider"
+            routerLinkActive="active-link"
+            mat-button
+            routerLink="/vehicles"
+            >Pojazdy</a
+          >
+          <a class="bookmark" routerLinkActive="active-link" mat-button routerLink="/statistics"
+            >Statystyki</a
+          >
+        </div>
+
+        <!-- Occupate free space -->
+        <span class="spacer"></span>
+
+        <!-- Account logic (logged / not logged) -->
+        <div class="account-management-container">
+          <ng-container *ngIf="accountService.currentUser$ | async; else notLoggedInLogic">
+            <!-- Open sidenav button (when small screen) -->
+            <button
+              *ngIf="isSmallOrXSmall$ | async"
+              type="button"
+              aria-label="Toggle sidenav"
+              matTooltip="Menu"
+              mat-icon-button
+              (click)="drawer.toggle()"
+            >
+              <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+
+            <!-- Account button -->
+            <button class="account-button" mat-button [matMenuTriggerFor]="account">Konto</button>
+            <mat-menu #account="matMenu">
+              <button disabled mat-menu-item>Dane konta</button>
+              <button disabled mat-menu-item>Dane firmy</button>
+              <button mat-menu-item (click)="logout()">Wyloguj się</button>
+            </mat-menu>
+          </ng-container>
+
+          <ng-template #notLoggedInLogic>
+            <a
+              *ngIf="router.url === '/auth/register'"
+              (click)="togglePanel()"
+              mat-button
+              routerLink="/auth"
+              >Logowanie</a
+            >
+            <a
+              *ngIf="!(router.url === '/auth/register')"
+              (click)="togglePanel()"
+              mat-button
+              routerLink="/auth/register"
+              >Rejestracja</a
+            >
+          </ng-template>
+        </div>
+      </div>
+    </mat-toolbar>
+
+    <!-- Changing content (projection) -->
+    <ng-content></ng-content>
+
+    <!-- Footer (just append the main content)-->
+    <!-- <div class="footer mat-elevation-z4">
+      <span>ServcieAssistance.pl &copy;Wiktor Danielewski</span>
+    </div> -->
+  </mat-sidenav-content>
+
+  <!-- Small screen sidenav -->
   <mat-sidenav
     #drawer
     class="sidenav"
@@ -8,9 +119,9 @@
     [mode]="'over'"
     [opened]="false"
   >
-    <!-- Menu -->
-    <mat-toolbar class="toolbar-header">Menu</mat-toolbar>
-    <!-- Bookmarks (when small screen) -->
+    <!-- Title -->
+    <mat-toolbar class="sidenav-title">Menu</mat-toolbar>
+    <!-- Bookmarks -->
     <mat-nav-list>
       <ng-container *ngIf="accountService.currentUser$ | async">
         <a mat-list-item routerLink="/orders" routerLinkActive="active-link">Zlecenia</a>
@@ -28,120 +139,4 @@
       </ng-container>
     </mat-nav-list>
   </mat-sidenav>
-
-  <!-- Main Content (with toolbar at the top) -->
-  <mat-sidenav-content>
-    <mat-toolbar
-      [class]="{ 'mat-elevation-z3': true, transparent: router.url.includes('/auth') }"
-      color="primary"
-    >
-      <img
-        id="main-logo"
-        routerLink="/orders"
-        [ngClass]="{ 'disable-pointer': !(accountService.currentUser$ | async) }"
-        src="../../assets/logo.svg"
-      />
-
-      <!-- Bookmarks left-->
-      <div *ngIf="!(isSmallOrXSmall$ | async) && (accountService.currentUser$ | async)">
-        <a
-          class="bookmark bookmark-divider"
-          routerLinkActive="active-link"
-          mat-button
-          routerLink="/orders"
-          >Zlecenia</a
-        >
-        <a
-          class="bookmark bookmark-divider"
-          routerLinkActive="active-link"
-          mat-button
-          routerLink="/services"
-          >Usługi</a
-        >
-        <a
-          class="bookmark bookmark-divider"
-          routerLinkActive="active-link"
-          mat-button
-          routerLink="/products"
-          >Towary</a
-        >
-        <a
-          class="bookmark bookmark-divider"
-          routerLinkActive="active-link"
-          mat-button
-          routerLink="/clients"
-          >Klienci</a
-        >
-        <a
-          class="bookmark bookmark-divider"
-          routerLinkActive="active-link"
-          mat-button
-          routerLink="/vehicles"
-          >Pojazdy</a
-        >
-        <a class="bookmark" routerLinkActive="active-link" mat-button routerLink="/statistics"
-          >Statystyki</a
-        >
-      </div>
-
-      <!-- Occupate free space -->
-      <span class="spacer"></span>
-
-      <!-- Bookmarks right-->
-      <div *ngIf="!(accountService.currentUser$ | async)">
-        <a
-          *ngIf="router.url === '/auth/register'"
-          (click)="togglePanel()"
-          class="right-bookmark"
-          mat-button
-          routerLink="/auth"
-          >Logowanie</a
-        >
-        <a
-          *ngIf="!(router.url === '/auth/register')"
-          (click)="togglePanel()"
-          class="right-bookmark"
-          mat-button
-          routerLink="/auth/register"
-          >Rejestracja</a
-        >
-      </div>
-
-      <!-- Open sidenav button -->
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        matTooltip="Menu"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="(isSmallOrXSmall$ | async) && (accountService.currentUser$ | async)"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-
-      <!-- Account button -->
-      <button
-        *ngIf="accountService.currentUser$ | async"
-        id="account-button"
-        mat-button
-        [matMenuTriggerFor]="account"
-      >
-        Konto
-      </button>
-      <!-- Options -->
-      <mat-menu #account="matMenu">
-        <button disabled mat-menu-item>Dane konta</button>
-        <button disabled mat-menu-item>Dane firmy</button>
-        <button mat-menu-item (click)="logout()">Wyloguj się</button>
-      </mat-menu>
-    </mat-toolbar>
-
-    <!-- Changing content (projection) -->
-    <ng-content></ng-content>
-
-    <!-- Footer (just append the main content)-->
-    <!-- <div class="footer mat-elevation-z4">
-      <span>ServcieAssistance.pl &copy;Wiktor Danielewski</span>
-    </div> -->
-  </mat-sidenav-content>
 </mat-sidenav-container>
