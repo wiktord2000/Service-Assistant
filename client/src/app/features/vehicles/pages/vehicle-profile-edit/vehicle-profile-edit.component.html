@@ -1,4 +1,5 @@
 <form
+  id="vehicle-form"
   *ngIf="editForm"
   [formGroup]="editForm"
   (ngSubmit)="editForm.valid && onSaveChanges()"
@@ -80,16 +81,17 @@
     >
     </app-date-input>
   </div>
-
-  <div class="profile-submit-button-container">
-    <button
-      mat-raised-button
-      class="profile-submit-button"
-      type="submit"
-      color="primary"
-      [disabled]="!editForm.dirty || !editForm.valid || this.isSaving"
-    >
-      {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
-    </button>
-  </div>
 </form>
+
+<div class="profile-submit-button-container">
+  <button
+    mat-raised-button
+    form="vehicle-form"
+    class="profile-submit-button"
+    type="submit"
+    color="primary"
+    [disabled]="!editForm.dirty || !editForm.valid || this.isSaving"
+  >
+    {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
+  </button>
+</div>

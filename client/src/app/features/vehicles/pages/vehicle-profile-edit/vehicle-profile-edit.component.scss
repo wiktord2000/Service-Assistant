@@ -2,11 +2,18 @@
 $form-column-gap: 1.25em;
 $form-field-min-width: 180px;
 
+:host {
+  padding: 1em;
+}
+
+:host ::ng-deep textarea {
+  height: 86px;
+}
+
 .edit-form {
   display: flex;
   flex-wrap: wrap;
   column-gap: $form-column-gap;
-  padding: 1em;
   > * {
     flex: 1 1 calc(50% - $form-column-gap/2);
     min-width: $form-field-min-width;
@@ -19,8 +26,4 @@ $form-field-min-width: 180px;
   > * {
     flex: 1 1 calc(50% - $form-column-gap/2);
   }
-}
-
-:host ::ng-deep textarea {
-  height: 86px;
 }
