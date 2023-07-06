@@ -73,4 +73,23 @@ describe('ClientProfileLinkComponent', () => {
     expect(textElement).toBeTruthy();
     expect(textElement.textContent.trim()).toBe('Jack');
   });
+
+  it('should render label when value provided', () => {
+    component.client = CLIENTS[0];
+    component.label = 'Owner';
+    fixture.detectChanges();
+
+    const labelTextElement = fixture.nativeElement.querySelector('.link-label');
+
+    expect(labelTextElement).toBeTruthy();
+  });
+
+  it('should not render label when value not provided', () => {
+    component.client = CLIENTS[0];
+    fixture.detectChanges();
+
+    const labelTextElement = fixture.nativeElement.querySelector('.link-label');
+
+    expect(labelTextElement).toBeFalsy();
+  });
 });
