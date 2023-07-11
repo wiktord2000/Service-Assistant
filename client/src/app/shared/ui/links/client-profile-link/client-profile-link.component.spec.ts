@@ -1,7 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ClientProfileLinkComponent } from './client-profile-link.component';
-import { CLIENTS } from 'src/app/shared/utils/testing-data';
+import {
+  CLIENTS,
+  CLIENT_OF_COMPANY_TYPE,
+  CLIENT_OF_PERSON_TYPE
+} from 'src/app/shared/utils/testing-data';
 import { UtilsService } from 'src/app/shared/utils/utils.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -33,45 +37,32 @@ describe('ClientProfileLinkComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize clientName property', () => {
-    const client = CLIENTS[0];
-    const clientToString = client.companyName;
-
-    mockUtilsService.clientToString.and.returnValue(clientToString); // Mock the clientToString() method
-    component.client = client;
-    component.ngOnInit(); // Manually invoke ngOnInit() - otherwise doesn't work
-    fixture.detectChanges();
-
-    expect(mockUtilsService.clientToString).toHaveBeenCalledWith(client);
-    expect(component.clientName).toBe(clientToString);
-  });
-
   it('should render the client profile link', () => {
-    const client = CLIENTS[0]; // Provide sample client data
+    const client = CLIENT_OF_COMPANY_TYPE;
+    const label = 'Profile';
     component.client = client;
-    component.label = 'Profile';
-    component.clientName = 'Jack';
+    component.label = label;
+    component.clientName = client.companyName;
     fixture.detectChanges();
 
     const linkElement = fixture.nativeElement.querySelector('a');
-    console.log(linkElement);
-    const labelTextElement = fixture.nativeElement.querySelector('.link-label');
+    const labelElement = fixture.nativeElement.querySelector('.link-label');
     const iconElement = fixture.nativeElement.querySelector('.link-icon');
-    const textElement = fixture.nativeElement.querySelector('.link-text');
+    const linkTextElement = fixture.nativeElement.querySelector('.link-text');
 
     expect(linkElement).toBeTruthy();
     expect(linkElement.getAttribute('aria-label')).toBe('Client profile');
     expect(linkElement.getAttribute('ng-reflect-position')).toBe('right');
     expect(linkElement.getAttribute('class')).toContain('mat-tooltip-trigger');
 
-    expect(labelTextElement).toBeTruthy();
-    expect(labelTextElement.textContent.trim()).toBe('Profile');
+    expect(labelElement).toBeTruthy();
+    expect(labelElement.textContent.trim()).toBe(label);
 
     expect(iconElement).toBeTruthy();
     expect(iconElement.textContent.trim()).toBe('groups');
 
-    expect(textElement).toBeTruthy();
-    expect(textElement.textContent.trim()).toBe('Jack');
+    expect(linkTextElement).toBeTruthy();
+    expect(linkTextElement.textContent.trim()).toBe(client.companyName);
   });
 
   it('should render label when value provided', () => {
@@ -79,17 +70,94 @@ describe('ClientProfileLinkComponent', () => {
     component.label = 'Owner';
     fixture.detectChanges();
 
-    const labelTextElement = fixture.nativeElement.querySelector('.link-label');
+    const labelElement = fixture.nativeElement.querySelector('.link-label');
 
-    expect(labelTextElement).toBeTruthy();
+    expect(labelElement).toBeTruthy();
   });
 
   it('should not render label when value not provided', () => {
     component.client = CLIENTS[0];
     fixture.detectChanges();
 
-    const labelTextElement = fixture.nativeElement.querySelector('.link-label');
+    const labelElement = fixture.nativeElement.querySelector('.link-label');
 
-    expect(labelTextElement).toBeFalsy();
+    expect(labelElement).toBeFalsy();
+  });
+
+  it('should render link when client provided', () => {
+    component.client = CLIENTS[0];
+    fixture.detectChanges();
+
+    const linkElement = fixture.nativeElement.querySelector('a');
+
+    expect(linkElement).toBeTruthy();
+  });
+
+  it('should not render link when client not provided', () => {
+    fixture.detectChanges();
+
+    const linkElement = fixture.nativeElement.querySelector('a');
+
+    expect(linkElement).toBeFalsy();
+  });
+
+  it('should initialize clientName properly', () => {
+    const client = CLIENT_OF_COMPANY_TYPE;
+    const clientToString = client.companyName;
+
+    mockUtilsService.clientToString.and.returnValue(clientToString);
+    component.client = client;
+    component.ngOnInit(); // Manually invoke ngOnInit() - otherwise doesn't work
+
+    fixture.detectChanges();
+
+    expect(mockUtilsService.clientToString).toHaveBeenCalledWith(client);
+    expect(component.clientName).toBe(clientToString);
+  });
+
+  it('should set the tooltip position', () => {
+    const tooltipPosition = 'below';
+    component.tooltipPosition = tooltipPosition;
+    component.client = CLIENTS[0];
+    fixture.detectChanges();
+
+    const linkElement = fixture.nativeElement.querySelector('a');
+    expect(linkElement.getAttribute('ng-reflect-position')).toBe(tooltipPosition);
+  });
+
+  it('should set the button color', () => {
+    const color = 'accent';
+    component.color = color;
+    component.client = CLIENTS[0];
+    fixture.detectChanges();
+
+    const linkElement = fixture.nativeElement.querySelector('a');
+    expect(linkElement.getAttribute('class')).toContain(`mat-${color}`);
+  });
+
+  it('should set the custom button color', () => {
+    const customColor = 'rgb(255, 0, 0)';
+    component.customColor = customColor;
+    component.client = CLIENTS[0];
+    fixture.detectChanges();
+
+    const linkElement = fixture.nativeElement.querySelector('a');
+    expect(linkElement.style.color).toBe(customColor);
+  });
+
+  it('should render the "groups" icon for company type client', () => {
+    component.client = CLIENT_OF_COMPANY_TYPE;
+    fixture.detectChanges();
+
+    const iconElement = fixture.nativeElement.querySelector('.link-icon');
+    expect(iconElement.textContent.trim()).toBe('groups');
+  });
+
+  it('should render the "person" icon for person type client', () => {
+    component.client = CLIENT_OF_PERSON_TYPE;
+    fixture.detectChanges();
+
+    const iconElement = fixture.nativeElement.querySelector('.link-icon');
+    expect(iconElement.textContent.trim()).toBe('person');
   });
 });
