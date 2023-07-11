@@ -1,5 +1,47 @@
 import { Client } from 'src/app/core/models/Client';
 
+export const CLIENT_OF_COMPANY_TYPE = {
+  id: 155966,
+  type: 'company',
+  companyName: 'Cieślak i syn',
+  nip: 4873941232,
+  firstname: 'Zofia',
+  lastname: 'Zając',
+  street: 'Osiedlowa 89/19',
+  city: 'Kwidzyn',
+  postalCode: 90748,
+  countryCode: 'PL',
+  phone: 640998513,
+  email: 'kacper.gajewski@konieczny.com.pl',
+  discountJobs: 0,
+  discountParts: 0,
+  createdAt: new Date('2022-09-12 19:00:15'),
+  updatedAt: new Date('2022-09-12 19:00:15'),
+  orders: [],
+  vehicles: []
+};
+
+export const CLIENT_OF_PERSON_TYPE = {
+  id: 155970,
+  type: 'person',
+  companyName: null,
+  nip: null,
+  firstname: 'Anastazja',
+  lastname: 'Ziółkowska',
+  street: null,
+  city: null,
+  postalCode: null,
+  countryCode: 'PL',
+  phone: 657713399,
+  email: 'oliwia04@wilk.pl',
+  discountJobs: 0,
+  discountParts: 0,
+  createdAt: new Date('2022-09-12 19:00:18'),
+  updatedAt: new Date('2022-09-12 19:00:18'),
+  orders: [],
+  vehicles: []
+};
+
 export const CLIENTS: Client[] = [
   {
     id: 155966,
