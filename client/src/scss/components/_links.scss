@@ -10,7 +10,7 @@
 .link-text {
   display: inline-block;
   max-width: $link-max-width-xlarge;
-  width: 100%;
+  width: auto;
   text-align: left;
   @extend %text-overflow-ellipses;
 }

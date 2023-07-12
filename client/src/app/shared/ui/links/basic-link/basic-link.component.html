@@ -1,1 +1,14 @@
-<p>basic-link works!</p>
+<a
+  mat-button
+  [matTooltipDisabled]="!tooltipText"
+  [matTooltip]="tooltipText"
+  [matTooltipPosition]="tooltipPosition"
+  [attr.aria-label]="'Link: ' + displayText"
+  [routerLink]="routerLink"
+  [style.color]="customColor"
+  [color]="paletteColor"
+>
+  <div *ngIf="label" class="link-label">{{ label }}</div>
+  <mat-icon *ngIf="icon" class="link-icon">{{ icon }}</mat-icon>
+  <span class="link-text">{{ displayText }}</span>
+</a>
