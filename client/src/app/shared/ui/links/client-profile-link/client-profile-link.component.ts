@@ -1,6 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
-import { TooltipPosition } from '@angular/material/tooltip';
 import { Client } from 'src/app/core/models/Client';
 import { UtilsService } from 'src/app/shared/utils/utils.service';
 
@@ -11,14 +9,14 @@ import { UtilsService } from 'src/app/shared/utils/utils.service';
 })
 export class ClientProfileLinkComponent implements OnInit {
   @Input() client: Client;
-  @Input() tooltipPosition: TooltipPosition = 'right';
-  @Input() color: ThemePalette = 'primary';
-  @Input() customColor?: string;
-  @Input() label!: string;
-  clientName!: string;
+  clientDisplayName: string;
+  clientIcon: string;
+  routerLink: string;
   constructor(private utils: UtilsService) {}
 
   ngOnInit(): void {
-    this.clientName = this.utils.clientToString(this.client);
+    this.clientDisplayName = this.utils.clientToString(this.client);
+    this.clientIcon = this.utils.getClientIcon(this.client);
+    this.routerLink = this.utils.getClientRouterLink(this.client);
   }
 }
