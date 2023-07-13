@@ -24,6 +24,14 @@ export class UtilsService {
       : client.firstname + ' ' + client.lastname;
   }
 
+  getClientIcon(client: Client): string {
+    return client.type === 'company' ? 'groups' : 'person';
+  }
+
+  getClientRouterLink(client: Client): string {
+    return `/clients/${client.id}`;
+  }
+
   vehicleToString(vehicle: Vehicle): string {
     if (!vehicle) return '';
     return vehicle.brand + ' ' + vehicle.model;
