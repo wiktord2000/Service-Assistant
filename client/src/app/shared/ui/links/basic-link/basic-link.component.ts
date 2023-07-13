@@ -19,11 +19,5 @@ export class BasicLinkComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    if (this.routerLink === undefined || this.displayText === undefined) {
-      throw new Error(
-        'Properties "routerLink" and "displayText" are required for proper rendering of the component.'
-      );
-    }
-  }
+  ngOnInit(): void {}
 }
