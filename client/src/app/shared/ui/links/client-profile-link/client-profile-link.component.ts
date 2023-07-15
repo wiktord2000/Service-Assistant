@@ -9,9 +9,11 @@ import { UtilsService } from 'src/app/shared/utils/utils.service';
 })
 export class ClientProfileLinkComponent implements OnInit {
   @Input() client: Client;
+  @Input() customColor?: string;
   clientDisplayName: string;
   clientIcon: string;
   routerLink: string;
+
   constructor(private utils: UtilsService) {}
 
   ngOnInit(): void {
