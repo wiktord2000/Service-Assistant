@@ -112,6 +112,19 @@ describe('BasicLinkComponent', () => {
     expect(linkElement.style.color).toBe(customColor);
   });
 
+  it('should choose the custom color over the palette color', () => {
+    const customColor = 'white';
+    const paletteColor = 'accent';
+    component.customColor = customColor;
+    component.paletteColor = paletteColor;
+    fixture.detectChanges();
+
+    const linkElement = getLinkElement();
+
+    expect(linkElement.style.color).toBe(customColor);
+    expect(linkElement.getAttribute('class')).not.toContain(`mat-${paletteColor}`);
+  });
+
   it('should render the "groups" icon', () => {
     const iconName = 'groups';
     component.icon = iconName;

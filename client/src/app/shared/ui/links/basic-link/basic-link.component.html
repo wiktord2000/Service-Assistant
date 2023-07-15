@@ -6,7 +6,7 @@
   [attr.aria-label]="'Link to ' + displayText"
   [routerLink]="routerLink"
   [style.color]="customColor"
-  [color]="paletteColor"
+  [color]="customColor ? undefined : paletteColor"
 >
   <div *ngIf="label" class="link-label">{{ label }}</div>
   <mat-icon *ngIf="icon" class="link-icon">{{ icon }}</mat-icon>
