@@ -9,6 +9,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 describe('BasicLinkComponent', () => {
   let component: BasicLinkComponent;
   let fixture: ComponentFixture<BasicLinkComponent>;
+  const queryElement = (querySelector: string): HTMLElement =>
+    fixture.nativeElement.querySelector(querySelector);
+  const getLinkElement = () => queryElement('a');
+  const getLabelElement = () => queryElement('.link-label');
+  const getIconElement = () => queryElement('.link-icon');
+  const getLinkTextElement = () => queryElement('.link-text');
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -41,10 +47,10 @@ describe('BasicLinkComponent', () => {
 
     fixture.detectChanges();
 
-    const linkElement = fixture.nativeElement.querySelector('a');
-    const labelElement = fixture.nativeElement.querySelector('.link-label');
-    const iconElement = fixture.nativeElement.querySelector('.link-icon');
-    const linkTextElement = fixture.nativeElement.querySelector('.link-text');
+    const linkElement = getLinkElement();
+    const labelElement = getLabelElement();
+    const iconElement = getIconElement();
+    const linkTextElement = getLinkTextElement();
 
     expect(linkElement).toBeTruthy();
     expect(linkElement.getAttribute('aria-label')).toBe('Link to ' + displayText);
@@ -60,5 +66,67 @@ describe('BasicLinkComponent', () => {
 
     expect(linkTextElement).toBeTruthy();
     expect(linkTextElement.textContent.trim()).toBe(displayText);
+  });
+
+  it('should render label when value provided', () => {
+    component.label = 'Owner';
+    fixture.detectChanges();
+
+    const labelElement = fixture.nativeElement.querySelector('.link-label');
+
+    expect(labelElement).toBeTruthy();
+  });
+
+  it('should not render label when value not provided', () => {
+    fixture.detectChanges();
+
+    const labelElement = fixture.nativeElement.querySelector('.link-label');
+
+    expect(labelElement).toBeFalsy();
+  });
+
+  it('should set the tooltip position', () => {
+    const tooltipPosition = 'below';
+    component.tooltipPosition = tooltipPosition;
+    fixture.detectChanges();
+
+    const linkElement = getLinkElement();
+    expect(linkElement.getAttribute('ng-reflect-position')).toBe(tooltipPosition);
+  });
+
+  it('should change the palette color of the button', () => {
+    const paletteColor = 'accent';
+    component.paletteColor = paletteColor;
+    fixture.detectChanges();
+
+    const linkElement = getLinkElement();
+    expect(linkElement.getAttribute('class')).toContain(`mat-${paletteColor}`);
+  });
+
+  it('should change the custom color of the button', () => {
+    const customColor = 'rgb(255, 0, 0)';
+    component.customColor = customColor;
+    fixture.detectChanges();
+
+    const linkElement = getLinkElement();
+    expect(linkElement.style.color).toBe(customColor);
+  });
+
+  it('should render the "groups" icon', () => {
+    const iconName = 'groups';
+    component.icon = iconName;
+    fixture.detectChanges();
+
+    const iconElement = getIconElement();
+    expect(iconElement.textContent.trim()).toBe(iconName);
+  });
+
+  it('should render the "person" icon', () => {
+    const iconName = 'person';
+    component.icon = iconName;
+    fixture.detectChanges();
+
+    const iconElement = getIconElement();
+    expect(iconElement.textContent.trim()).toBe(iconName);
   });
 });
