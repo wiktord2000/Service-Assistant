@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { VehicleProfileLinkComponent } from './vehicle-profile-link.component';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatButtonModule } from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import { BasicLinkModule } from '../basic-link/basic-link.module';
 
 @NgModule({
   declarations: [VehicleProfileLinkComponent],
-  imports: [CommonModule, MatIconModule, MatTooltipModule, MatButtonModule, RouterModule],
+  imports: [CommonModule, BasicLinkModule],
   exports: [VehicleProfileLinkComponent]
 })
 export class VehicleProfileLinkModule {}
