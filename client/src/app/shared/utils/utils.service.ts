@@ -32,6 +32,10 @@ export class UtilsService {
     return `/clients/${client.id}`;
   }
 
+  getVehicleRouterLink(vehicle: Vehicle): string {
+    return `/vehicles/${vehicle.id}`;
+  }
+
   vehicleToString(vehicle: Vehicle): string {
     if (!vehicle) return '';
     return vehicle.brand + ' ' + vehicle.model;
