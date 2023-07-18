@@ -1,7 +1,6 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription, distinctUntilChanged, map } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 import { Order } from 'src/app/core/models/Order';
+import { UtilsService } from 'src/app/shared/utils/utils.service';
 
 @Component({
   selector: 'app-order-profile-link',
@@ -10,15 +9,12 @@ import { Order } from 'src/app/core/models/Order';
 })
 export class OrderProfileLinkComponent implements OnInit {
   @Input() order: Order;
-  subscription: Subscription;
-  isXSmall$: Observable<boolean>;
+  routerLink: string;
+  iconName: string = 'summarize';
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private utils: UtilsService) {}
 
   ngOnInit(): void {
-    this.isXSmall$ = this.breakpointObserver.observe([Breakpoints.XSmall, Breakpoints.Small]).pipe(
-      map((value) => value.matches),
-      distinctUntilChanged()
-    );
+    this.routerLink = this.utils.getOrderRouterLink(this.order);
   }
 }

@@ -1,15 +1,19 @@
 @import "helpers/constants";
 
-// Override default media
-@media (max-width: $medium-breakpoint) {
-  .link-text {
-    max-width: $link-max-width-xlarge;
+@media (max-width: $small-breakpoint) {
+  ::ng-deep {
+    .link-text {
+      display: none;
+    }
+
+    .link-icon {
+      margin-right: 0px;
+    }
   }
-  .mat-button {
-    padding: 0px;
-    min-width: 36px;
-  }
-  .link-icon {
-    margin-right: 0px;
+}
+
+@media (min-width: $small-breakpoint) {
+  ::ng-deep .link-icon {
+    display: none;
   }
 }
