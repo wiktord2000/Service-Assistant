@@ -4,6 +4,7 @@ import {
   DEFAULT_TABLE_ROW_HEIGHT
 } from 'src/app/core/constants/constants';
 import { Client } from 'src/app/core/models/Client';
+import { Order } from 'src/app/core/models/Order';
 import { Vehicle } from 'src/app/core/models/Vehicle';
 
 @Injectable({
@@ -34,6 +35,10 @@ export class UtilsService {
 
   getVehicleRouterLink(vehicle: Vehicle): string {
     return `/vehicles/${vehicle.id}`;
+  }
+
+  getOrderRouterLink(order: Order): string {
+    return `/orders/${order.id}`;
   }
 
   vehicleToString(vehicle: Vehicle): string {
