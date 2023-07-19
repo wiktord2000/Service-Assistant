@@ -2,7 +2,7 @@
 
 // Override default media
 @media (max-width: $medium-breakpoint) {
-  ::ng-deep .link-text {
+  :host ::ng-deep .link-text {
     max-width: $link-max-width-medium;
   }
 }

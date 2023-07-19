@@ -1,7 +1,7 @@
 @import "helpers/constants";
 
 @media (max-width: $small-breakpoint) {
-  ::ng-deep {
+  :host ::ng-deep {
     .link-text {
       display: none;
     }
@@ -13,7 +13,7 @@
 }
 
 @media (min-width: $small-breakpoint) {
-  ::ng-deep .link-icon {
+  :host ::ng-deep .link-icon {
     display: none;
   }
 }
