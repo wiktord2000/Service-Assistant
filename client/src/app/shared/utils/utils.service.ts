@@ -5,6 +5,7 @@ import {
 } from 'src/app/core/constants/constants';
 import { Client } from 'src/app/core/models/Client';
 import { Order } from 'src/app/core/models/Order';
+import { Product } from 'src/app/core/models/Product';
 import { Vehicle } from 'src/app/core/models/Vehicle';
 
 @Injectable({
@@ -39,6 +40,10 @@ export class UtilsService {
 
   getOrderRouterLink(order: Order): string {
     return `/orders/${order.id}`;
+  }
+
+  getProductRouterLink(product: Product): string {
+    return `/products/${product.id}`;
   }
 
   vehicleToString(vehicle: Vehicle): string {
