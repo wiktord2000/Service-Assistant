@@ -1,7 +1,6 @@
 import { Product } from 'src/app/core/models/Product';
 import { Component, Input, OnInit } from '@angular/core';
-import { TooltipPosition } from '@angular/material/tooltip';
-import { ThemePalette } from '@angular/material/core';
+import { UtilsService } from 'src/app/shared/utils/utils.service';
 
 @Component({
   selector: 'app-product-profile-link',
@@ -10,10 +9,12 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class ProductProfileLinkComponent implements OnInit {
   @Input() product: Product;
-  @Input() tooltipPosition: TooltipPosition = 'right';
-  @Input() color: ThemePalette = 'primary';
-  @Input() customColor?: string;
   @Input() containLabel: boolean = false;
+  routerLink: string;
 
-  ngOnInit(): void {}
+  constructor(private utils: UtilsService) {}
+
+  ngOnInit(): void {
+    this.routerLink = this.utils.getProductRouterLink(this.product);
+  }
 }
