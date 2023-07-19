@@ -9,7 +9,7 @@ import { UtilsService } from 'src/app/shared/utils/utils.service';
 })
 export class ProductProfileLinkComponent implements OnInit {
   @Input() product: Product;
-  @Input() containLabel: boolean = false;
+  @Input() includeLabel: boolean = false;
   routerLink: string;
 
   constructor(private utils: UtilsService) {}
