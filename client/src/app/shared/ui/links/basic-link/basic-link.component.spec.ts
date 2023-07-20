@@ -6,7 +6,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterTestingModule } from '@angular/router/testing';
 
-describe('BasicLinkComponent', () => {
+fdescribe('BasicLinkComponent', () => {
   let component: BasicLinkComponent;
   let fixture: ComponentFixture<BasicLinkComponent>;
   const queryElement = (querySelector: string): HTMLElement =>
@@ -83,6 +83,23 @@ describe('BasicLinkComponent', () => {
     const labelElement = fixture.nativeElement.querySelector('.link-label');
 
     expect(labelElement).toBeFalsy();
+  });
+
+  it('should disable the tooltip when the "tooltipText" is not provided', () => {
+    fixture.detectChanges();
+
+    const linkElement = getLinkElement();
+
+    expect(linkElement.getAttribute('ng-reflect-disabled')).toBe('true');
+  });
+
+  it('should enable the tooltip when the "tooltipText" is provided', () => {
+    component.tooltipText = 'Go to the client profile';
+
+    fixture.detectChanges();
+
+    const linkElement = getLinkElement();
+    expect(linkElement.getAttribute('ng-reflect-disabled')).toBe('false');
   });
 
   it('should set the tooltip position', () => {
