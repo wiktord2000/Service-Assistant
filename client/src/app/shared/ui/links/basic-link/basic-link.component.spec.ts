@@ -6,7 +6,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterTestingModule } from '@angular/router/testing';
 
-fdescribe('BasicLinkComponent', () => {
+describe('BasicLinkComponent', () => {
   let component: BasicLinkComponent;
   let fixture: ComponentFixture<BasicLinkComponent>;
   const queryElement = (querySelector: string): HTMLElement =>
