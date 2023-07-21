@@ -55,6 +55,7 @@ fdescribe('BasicLinkComponent', () => {
     expect(linkElement).toBeTruthy();
     expect(linkElement.getAttribute('aria-label')).toBe('Link to ' + displayText);
     expect(linkElement.getAttribute('ng-reflect-position')).toBe('right');
+    expect(linkElement.getAttribute('ng-reflect-disabled')).toBe('false');
     expect(linkElement.getAttribute('class')).toContain('mat-tooltip-trigger');
     expect(linkElement.getAttribute('class')).toContain('mat-primary');
 
@@ -73,7 +74,6 @@ fdescribe('BasicLinkComponent', () => {
     fixture.detectChanges();
 
     const labelElement = fixture.nativeElement.querySelector('.link-label');
-
     expect(labelElement).toBeTruthy();
   });
 
@@ -81,21 +81,27 @@ fdescribe('BasicLinkComponent', () => {
     fixture.detectChanges();
 
     const labelElement = fixture.nativeElement.querySelector('.link-label');
-
     expect(labelElement).toBeFalsy();
+  });
+
+  it('should show the tooltip text', () => {
+    const tooltipText = 'Go to the client profile';
+    component.tooltipText = tooltipText;
+    fixture.detectChanges();
+
+    const linkElement = getLinkElement();
+    expect(linkElement.getAttribute('ng-reflect-message')).toBe(tooltipText);
   });
 
   it('should disable the tooltip when the "tooltipText" is not provided', () => {
     fixture.detectChanges();
 
     const linkElement = getLinkElement();
-
     expect(linkElement.getAttribute('ng-reflect-disabled')).toBe('true');
   });
 
   it('should enable the tooltip when the "tooltipText" is provided', () => {
     component.tooltipText = 'Go to the client profile';
-
     fixture.detectChanges();
 
     const linkElement = getLinkElement();
@@ -158,5 +164,21 @@ fdescribe('BasicLinkComponent', () => {
 
     const iconElement = getIconElement();
     expect(iconElement.textContent.trim()).toBe(iconName);
+  });
+
+  it('should not render the icon when icon is not provided', () => {
+    fixture.detectChanges();
+
+    const iconElement = getIconElement();
+    expect(iconElement).toBeFalsy();
+  });
+
+  it('should set the "routerLink"', () => {
+    const routerLink = '/clients/12';
+    component.routerLink = routerLink;
+    fixture.detectChanges();
+
+    const linkElement = getLinkElement();
+    expect(linkElement.getAttribute('ng-reflect-router-link')).toBe(routerLink);
   });
 });
