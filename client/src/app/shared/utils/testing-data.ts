@@ -1,4 +1,7 @@
 import { Client } from 'src/app/core/models/Client';
+import { environment } from 'src/environments/environment';
+
+export const BASE_URL = environment.apiUrl;
 
 export const CLIENT_OF_COMPANY_TYPE = {
   id: 155966,
