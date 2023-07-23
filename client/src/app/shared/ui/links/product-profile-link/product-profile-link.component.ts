@@ -8,7 +8,7 @@ import { UtilsService } from 'src/app/shared/utils/utils.service';
   styleUrls: ['./product-profile-link.component.scss']
 })
 export class ProductProfileLinkComponent implements OnInit {
-  @Input() product: Product;
+  @Input() product!: Product;
   @Input() includeLabel: boolean = false;
   routerLink: string;
 
