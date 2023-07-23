@@ -8,7 +8,7 @@ import { UtilsService } from 'src/app/shared/utils/utils.service';
   styleUrls: ['./order-profile-link.component.scss']
 })
 export class OrderProfileLinkComponent implements OnInit {
-  @Input() order: Order;
+  @Input() order!: Order;
   routerLink: string;
   iconName: string = 'summarize';
 
