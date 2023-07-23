@@ -8,7 +8,7 @@ import { UtilsService } from 'src/app/shared/utils/utils.service';
   styleUrls: ['./client-profile-link.component.scss']
 })
 export class ClientProfileLinkComponent implements OnInit {
-  @Input() client: Client;
+  @Input() client!: Client;
   @Input() customColor?: string;
   clientDisplayName: string;
   clientIcon: string;

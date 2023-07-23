@@ -7,6 +7,7 @@ import { CLIENT_OF_COMPANY_TYPE } from 'src/app/shared/utils/testing-data';
 import { By } from '@angular/platform-browser';
 import { BasicLinkComponent } from '../basic-link/basic-link.component';
 import { BasicLinkModule } from '../basic-link/basic-link.module';
+import { ClientProfileLinkModule } from './client-profile-link.module';
 
 describe('ClientProfileLinkComponent', () => {
   let component: ClientProfileLinkComponent;
@@ -22,9 +23,8 @@ describe('ClientProfileLinkComponent', () => {
     ]);
 
     await TestBed.configureTestingModule({
-      declarations: [ClientProfileLinkComponent],
       providers: [{ provide: UtilsService, useValue: mockUtilsService }], // Register mocked service
-      imports: [RouterTestingModule, BasicLinkModule]
+      imports: [RouterTestingModule, BasicLinkModule, ClientProfileLinkModule]
     }).compileComponents();
   });
 
@@ -100,11 +100,11 @@ describe('ClientProfileLinkComponent', () => {
     fixture.detectChanges();
 
     // Get the app-basic-link component
-    const appBasicLinkComponent = fixture.debugElement.query(By.css('app-basic-link'));
-    const appBasicLinkInstance = appBasicLinkComponent.componentInstance as BasicLinkComponent;
+    const appBasicLinkDebugElement = fixture.debugElement.query(By.css('app-basic-link'));
+    const appBasicLinkInstance = appBasicLinkDebugElement.componentInstance as BasicLinkComponent;
 
     // Assert that the app-basic-link component is present
-    expect(appBasicLinkComponent).toBeTruthy();
+    expect(appBasicLinkInstance).toBeTruthy();
 
     // Assert that the inputs of app-basic-link are correctly bound
     expect(appBasicLinkInstance.icon).toBe(clientIcon);
