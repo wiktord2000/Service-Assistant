@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ClientProfileLinkComponent } from './client-profile-link.component';
 import { UtilsService } from 'src/app/shared/utils/utils.service';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CLIENT_OF_COMPANY_TYPE } from 'src/app/shared/utils/testing-data';
+import { By } from '@angular/platform-browser';
+import { BasicLinkComponent } from '../basic-link/basic-link.component';
+import { BasicLinkModule } from '../basic-link/basic-link.module';
 
 describe('ClientProfileLinkComponent', () => {
   let component: ClientProfileLinkComponent;
@@ -24,7 +24,7 @@ describe('ClientProfileLinkComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ClientProfileLinkComponent],
       providers: [{ provide: UtilsService, useValue: mockUtilsService }], // Register mocked service
-      imports: [MatButtonModule, MatIconModule, MatTooltipModule, RouterTestingModule]
+      imports: [RouterTestingModule, BasicLinkModule]
     }).compileComponents();
   });
 
@@ -44,7 +44,7 @@ describe('ClientProfileLinkComponent', () => {
 
     mockUtilsService.clientToString.and.returnValue(clientDisplayName);
     component.client = client;
-    component.ngOnInit(); // Manually invoke ngOnInit() - otherwise doesn't work
+    component.ngOnInit(); // Manually invoke ngOnInit() - it's crucial
 
     fixture.detectChanges();
 
@@ -55,11 +55,11 @@ describe('ClientProfileLinkComponent', () => {
   it('should initialize "clientIcon" property', () => {
     const client = CLIENT_OF_COMPANY_TYPE;
     const clientIcon = 'groups';
+    component.client = client;
 
     mockUtilsService.getClientIcon.and.returnValue(clientIcon);
-    component.client = client;
-    component.ngOnInit();
 
+    component.ngOnInit();
     fixture.detectChanges();
 
     expect(mockUtilsService.getClientIcon).toHaveBeenCalledWith(client);
@@ -78,5 +78,39 @@ describe('ClientProfileLinkComponent', () => {
 
     expect(mockUtilsService.getClientRouterLink).toHaveBeenCalledWith(client);
     expect(component.routerLink).toBe(routerLink);
+  });
+
+  it('should render the app-basic-link component with correct inputs', () => {
+    const client = CLIENT_OF_COMPANY_TYPE;
+    const clientDisplayName = client.companyName;
+    const clientIcon = 'groups';
+    const routerLink = '/clients/1';
+    const customColor = 'blue';
+
+    // Set the component inputs
+    component.client = client;
+    component.customColor = customColor;
+
+    // Mock the UtilsService methods
+    mockUtilsService.clientToString.and.returnValue(clientDisplayName);
+    mockUtilsService.getClientIcon.and.returnValue(clientIcon);
+    mockUtilsService.getClientRouterLink.and.returnValue(routerLink);
+
+    component.ngOnInit();
+    fixture.detectChanges();
+
+    // Get the app-basic-link component
+    const appBasicLinkComponent = fixture.debugElement.query(By.css('app-basic-link'));
+    const appBasicLinkInstance = appBasicLinkComponent.componentInstance as BasicLinkComponent;
+
+    // Assert that the app-basic-link component is present
+    expect(appBasicLinkComponent).toBeTruthy();
+
+    // Assert that the inputs of app-basic-link are correctly bound
+    expect(appBasicLinkInstance.icon).toBe(clientIcon);
+    expect(appBasicLinkInstance.routerLink).toBe(routerLink);
+    expect(appBasicLinkInstance.displayText).toBe(clientDisplayName);
+    expect(appBasicLinkInstance.tooltipText).toBe(clientDisplayName);
+    expect(appBasicLinkInstance.customColor).toBe(customColor);
   });
 });
