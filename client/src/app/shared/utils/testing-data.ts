@@ -1,6 +1,7 @@
 import { Client } from 'src/app/core/models/Client';
 import { Order } from 'src/app/core/models/Order';
 import { Product } from 'src/app/core/models/Product';
+import { Vehicle } from 'src/app/core/models/Vehicle';
 
 export const CLIENT_OF_COMPANY_TYPE = {
   id: 155966,
@@ -219,4 +220,26 @@ export const SINGLE_PRODUCT: Product = {
   unit: 'szt.',
   updatedAt: new Date('2022-12-06 22:07:37.6973503'),
   vat: 0
+};
+
+export const SINGLE_VEHICLE: Vehicle = {
+  id: 151948,
+  brand: 'Toyota',
+  model: 'Auris',
+  registrationNumber: 'WA 22B47',
+  vin: 'FEGG2E070B30DF79E',
+  engineCode: null,
+  capacity: 2200,
+  engineFuel: 'P',
+  enginePower: 200,
+  enginePowerUnit: 'kW',
+  color: 'Czarny',
+  productionDate: new Date(2008),
+  firstRegistration: null,
+  technicalInspectionEnd: null,
+  description: null,
+  createdAt: new Date('2022-09-12 19:00:26'),
+  updatedAt: new Date('2022-09-12 19:58:33'),
+  currentOwner: CLIENT_OF_COMPANY_TYPE,
+  orders: []
 };
