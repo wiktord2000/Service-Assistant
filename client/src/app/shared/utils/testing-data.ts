@@ -1,4 +1,5 @@
 import { Client } from 'src/app/core/models/Client';
+import { Order } from 'src/app/core/models/Order';
 
 export const CLIENT_OF_COMPANY_TYPE = {
   id: 155966,
@@ -164,3 +165,32 @@ export const CLIENTS: Client[] = [
     vehicles: []
   }
 ];
+
+export const SINGLE_ORDER: Order = {
+  id: 80610,
+  admissionDate: new Date('2023-06-10 11:30:00'),
+  clientDescription: '',
+  clientId: 155966,
+  createdAt: new Date('2023-06-09 12:26:45.1731242'),
+  deadlineDate: null,
+  finishDate: new Date('2023-06-09 10:26:53.179'),
+  fuelLevel: '2/4',
+  invoiceId: null,
+  mileage: 200000,
+  orderNumber: 'ZL 23/6/9.14040',
+  repairDescription: null,
+  statusId: 7104,
+  totalGross: 252,
+  totalJobsGross: 160,
+  totalJobsNet: 130.081298828125,
+  totalNet: 204.878051757812,
+  totalPartsGross: 92,
+  totalPartsNet: 74.796745300293,
+  updatedAt: new Date('2023-06-09 12:26:45.1731287'),
+  vehicleId: 151948,
+  status: undefined,
+  client: undefined,
+  vehicle: undefined,
+  orderServices: [],
+  orderProducts: []
+};
