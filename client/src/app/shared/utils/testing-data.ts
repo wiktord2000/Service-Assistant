@@ -1,5 +1,6 @@
 import { Client } from 'src/app/core/models/Client';
 import { Order } from 'src/app/core/models/Order';
+import { Product } from 'src/app/core/models/Product';
 
 export const CLIENT_OF_COMPANY_TYPE = {
   id: 155966,
@@ -193,4 +194,29 @@ export const SINGLE_ORDER: Order = {
   vehicle: undefined,
   orderServices: [],
   orderProducts: []
+};
+
+export const SINGLE_PRODUCT: Product = {
+  id: 6,
+  availability: 14,
+  buyPriceGross: 55,
+  buyPriceNet: 44.7200012207031,
+  code: 'GDB1330',
+  createdAt: new Date('2022-11-26 23:46:57.1529992'),
+  description: 'Dobry',
+  ean: null,
+  grade: 7,
+  lastDeliveryDate: null,
+  manufacturer: 'TRWW',
+  margin: 0.25,
+  markup: 0,
+  name: 'Klocki hamulcowe tył',
+  notice: 'Brak',
+  profit: 0,
+  reserved: 2,
+  salesPriceGross: 73.3399963378906,
+  salesPriceNet: 59.6300010681152,
+  unit: 'szt.',
+  updatedAt: new Date('2022-12-06 22:07:37.6973503'),
+  vat: 0
 };
