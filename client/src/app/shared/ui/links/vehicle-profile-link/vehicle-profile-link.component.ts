@@ -8,7 +8,7 @@ import { UtilsService } from 'src/app/shared/utils/utils.service';
   styleUrls: ['./vehicle-profile-link.component.scss']
 })
 export class VehicleProfileLinkComponent implements OnInit {
-  @Input() vehicle: Vehicle;
+  @Input() vehicle!: Vehicle;
   @Input() customColor?: string;
   @Input() label?: string;
   @Input() includeIcon: boolean = false;
