@@ -9,7 +9,7 @@ import { SINGLE_VEHICLE } from 'src/app/shared/utils/testing-data';
 import { BasicLinkComponent } from '../basic-link/basic-link.component';
 import { By } from '@angular/platform-browser';
 
-fdescribe('VehicleProfileLinkComponent', () => {
+describe('VehicleProfileLinkComponent', () => {
   let component: VehicleProfileLinkComponent;
   let fixture: ComponentFixture<VehicleProfileLinkComponent>;
   let mockUtilsService: jasmine.SpyObj<UtilsService>;
