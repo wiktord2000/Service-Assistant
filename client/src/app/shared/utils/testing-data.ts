@@ -1,5 +1,8 @@
 import { Client } from 'src/app/core/models/Client';
 import { environment } from 'src/environments/environment';
+import { Order } from 'src/app/core/models/Order';
+import { Product } from 'src/app/core/models/Product';
+import { Vehicle } from 'src/app/core/models/Vehicle';
 
 export const BASE_URL = environment.apiUrl;
 
@@ -167,3 +170,79 @@ export const CLIENTS: Client[] = [
     vehicles: []
   }
 ];
+
+export const SINGLE_ORDER: Order = {
+  id: 80610,
+  admissionDate: new Date('2023-06-10 11:30:00'),
+  clientDescription: '',
+  clientId: 155966,
+  createdAt: new Date('2023-06-09 12:26:45.1731242'),
+  deadlineDate: null,
+  finishDate: new Date('2023-06-09 10:26:53.179'),
+  fuelLevel: '2/4',
+  invoiceId: null,
+  mileage: 200000,
+  orderNumber: 'ZL 23/6/9.14040',
+  repairDescription: null,
+  statusId: 7104,
+  totalGross: 252,
+  totalJobsGross: 160,
+  totalJobsNet: 130.081298828125,
+  totalNet: 204.878051757812,
+  totalPartsGross: 92,
+  totalPartsNet: 74.796745300293,
+  updatedAt: new Date('2023-06-09 12:26:45.1731287'),
+  vehicleId: 151948,
+  status: undefined,
+  client: undefined,
+  vehicle: undefined,
+  orderServices: [],
+  orderProducts: []
+};
+
+export const SINGLE_PRODUCT: Product = {
+  id: 6,
+  availability: 14,
+  buyPriceGross: 55,
+  buyPriceNet: 44.7200012207031,
+  code: 'GDB1330',
+  createdAt: new Date('2022-11-26 23:46:57.1529992'),
+  description: 'Dobry',
+  ean: null,
+  grade: 7,
+  lastDeliveryDate: null,
+  manufacturer: 'TRWW',
+  margin: 0.25,
+  markup: 0,
+  name: 'Klocki hamulcowe tył',
+  notice: 'Brak',
+  profit: 0,
+  reserved: 2,
+  salesPriceGross: 73.3399963378906,
+  salesPriceNet: 59.6300010681152,
+  unit: 'szt.',
+  updatedAt: new Date('2022-12-06 22:07:37.6973503'),
+  vat: 0
+};
+
+export const SINGLE_VEHICLE: Vehicle = {
+  id: 151948,
+  brand: 'Toyota',
+  model: 'Auris',
+  registrationNumber: 'WA 22B47',
+  vin: 'FEGG2E070B30DF79E',
+  engineCode: null,
+  capacity: 2200,
+  engineFuel: 'P',
+  enginePower: 200,
+  enginePowerUnit: 'kW',
+  color: 'Czarny',
+  productionDate: new Date(2008),
+  firstRegistration: null,
+  technicalInspectionEnd: null,
+  description: null,
+  createdAt: new Date('2022-09-12 19:00:26'),
+  updatedAt: new Date('2022-09-12 19:58:33'),
+  currentOwner: CLIENT_OF_COMPANY_TYPE,
+  orders: []
+};

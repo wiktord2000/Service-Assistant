@@ -1,13 +1,6 @@
-<a
-  *ngIf="product"
-  [matTooltip]="product.name"
-  [matTooltipPosition]="tooltipPosition"
-  mat-button
-  aria-label="Product profile"
-  routerLink="/products/{{ product.id }}"
-  [style.color]="customColor"
-  [color]="color"
->
-  <div *ngIf="containLabel" class="link-label">Towar</div>
-  <span class="link-text">{{ product.name }}</span>
-</a>
+<app-basic-link
+  [label]="includeLabel && 'Towar'"
+  [displayText]="product.name"
+  [tooltipText]="product.name"
+  [routerLink]="routerLink"
+></app-basic-link>

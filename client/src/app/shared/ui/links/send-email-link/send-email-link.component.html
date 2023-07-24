@@ -1,11 +1,8 @@
-<button
-  mat-button
-  *ngIf="email"
+<app-basic-link
+  [tooltipText]="email"
+  [tooltipPosition]="'right'"
+  [icon]="iconName"
+  [displayText]="email"
   (click)="onEmailClick()"
-  matTooltip="Wyślij wiadomość"
-  [style.color]="customColor"
-  [color]="color"
->
-  <mat-icon class="link-icon">forward_to_inbox</mat-icon>
-  <span class="link-text">{{ email }}</span>
-</button>
+  [customColor]="customColor"
+></app-basic-link>

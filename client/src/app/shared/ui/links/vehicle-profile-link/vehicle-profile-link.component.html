@@ -1,14 +1,8 @@
-<a
-  *ngIf="vehicle"
-  [matTooltip]="vehicleName"
-  [matTooltipPosition]="tooltipPosition"
-  mat-button
-  aria-label="Vehicle profile"
-  routerLink="/vehicles/{{ vehicle.id }}"
-  [style.color]="customColor"
-  [color]="color"
->
-  <div *ngIf="label" class="link-label">{{ label }}</div>
-  <mat-icon *ngIf="includeIcon" class="link-icon">directions_car</mat-icon>
-  <span class="link-text">{{ vehicleName }}</span>
-</a>
+<app-basic-link
+  [tooltipText]="vehicleDisplayName"
+  [routerLink]="routerLink"
+  [icon]="includeIcon && 'directions_car'"
+  [displayText]="vehicleDisplayName"
+  [label]="label"
+  [customColor]="customColor"
+></app-basic-link>

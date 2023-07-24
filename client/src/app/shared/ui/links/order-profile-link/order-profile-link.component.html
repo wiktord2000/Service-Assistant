@@ -1,11 +1,6 @@
-<a
-  mat-button
-  [matTooltip]="(isXSmall$ | async) ? order.orderNumber : 'Szczegóły zlecenia'"
-  [matTooltipPosition]="'right'"
-  aria-label="Szczegóły zlecenia"
-  routerLink="/orders/{{ order.id }}"
-  color="primary"
->
-  <mat-icon *ngIf="isXSmall$ | async" class="link-icon">summarize</mat-icon>
-  <span *ngIf="!(isXSmall$ | async)" class="link-text">{{ order.orderNumber }}</span>
-</a>
+<app-basic-link
+  [tooltipText]="order.orderNumber"
+  [displayText]="order.orderNumber"
+  [routerLink]="routerLink"
+  [icon]="iconName"
+></app-basic-link>

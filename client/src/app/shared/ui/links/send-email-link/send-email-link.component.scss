@@ -2,14 +2,12 @@
 
 // Override default media
 @media (max-width: $medium-breakpoint) {
-  .link-text {
-    display: none;
-  }
-  .mat-button {
-    padding: 0px;
-    min-width: 36px;
-  }
-  .link-icon {
-    margin-right: 0px;
+  :host ::ng-deep {
+    .link-text {
+      display: none;
+    }
+    .link-icon {
+      margin-right: 0px;
+    }
   }
 }

@@ -1,16 +1,7 @@
-<a
-  *ngIf="client"
-  mat-button
-  [matTooltip]="clientName"
-  [matTooltipPosition]="tooltipPosition"
-  aria-label="Client profile"
-  routerLink="/clients/{{ client.id }}"
-  [style.color]="customColor"
-  [color]="color"
->
-  <div *ngIf="label" class="link-label">{{ label }}</div>
-  <mat-icon class="link-icon">{{ this.client.type === "company" ? "groups" : "person" }}</mat-icon>
-  <span class="link-text">
-    {{ clientName }}
-  </span>
-</a>
+<app-basic-link
+  [icon]="clientIcon"
+  [routerLink]="routerLink"
+  [displayText]="clientDisplayName"
+  [tooltipText]="clientDisplayName"
+  [customColor]="customColor"
+></app-basic-link>

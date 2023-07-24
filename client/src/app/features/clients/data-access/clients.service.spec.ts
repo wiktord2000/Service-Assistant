@@ -4,7 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { BASE_URL, CLIENTS, CLIENT_OF_COMPANY_TYPE } from 'src/app/shared/utils/testing-data';
 import { HttpErrorResponse } from '@angular/common/http';
 
-fdescribe('ClientsService', () => {
+describe('ClientsService', () => {
   let clientsService: ClientsService;
   let httpTestingController: HttpTestingController;
 

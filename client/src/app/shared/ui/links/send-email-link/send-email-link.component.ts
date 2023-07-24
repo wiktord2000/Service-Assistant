@@ -1,25 +1,24 @@
 import { MailSendingDialogComponent } from '../../../../features/clients/ui/mail-sending-dialog/mail-sending-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Component, Input, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
+import { Component, Input } from '@angular/core';
+
+const MAIL_SENDING_DIALOG_WIDTH = '1000px';
 
 @Component({
   selector: 'app-send-email-link',
   templateUrl: './send-email-link.component.html',
   styleUrls: ['./send-email-link.component.scss']
 })
-export class SendEmailLinkComponent implements OnInit {
-  @Input() email: string;
-  @Input() color: ThemePalette = 'primary';
+export class SendEmailLinkComponent {
+  @Input() email!: string;
   @Input() customColor?: string;
+  iconName: string = 'forward_to_inbox';
 
-  constructor(public dialog: MatDialog) {}
-
-  ngOnInit(): void {}
+  constructor(private dialog: MatDialog) {}
 
   onEmailClick() {
     this.dialog.open(MailSendingDialogComponent, {
-      width: '1000px',
+      width: MAIL_SENDING_DIALOG_WIDTH,
       data: {
         emails: [this.email]
       }

@@ -1,8 +1,8 @@
 @import "helpers/constants";
 
 // Override default media
-@media (max-width: $large-breakpoint) {
-  .link-text {
-    max-width: $link-max-width-xlarge;
+@media (max-width: $medium-breakpoint) {
+  :host ::ng-deep .link-text {
+    max-width: $link-max-width-medium;
   }
 }
