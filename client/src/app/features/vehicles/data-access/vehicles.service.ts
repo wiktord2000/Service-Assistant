@@ -42,7 +42,7 @@ export class VehiclesService {
     return this.http.post<Vehicle>(this.baseUrl + 'vehicles/', vehicle);
   }
 
-  updateVehicle(id: number, vehicle: Vehicle) {
+  updateVehicle(id: number, vehicle: Partial<Vehicle>) {
     return this.http.put<Vehicle>(this.baseUrl + 'vehicles/' + id, vehicle);
   }
 
