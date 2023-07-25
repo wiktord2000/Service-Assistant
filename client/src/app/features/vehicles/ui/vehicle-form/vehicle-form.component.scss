@@ -1,0 +1,25 @@
+@import "helpers/constants";
+$form-column-gap: 1.25em;
+$form-field-min-width: 180px;
+
+:host ::ng-deep textarea {
+  height: 86px;
+}
+
+.edit-form {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: $form-column-gap;
+  > * {
+    flex: 1 1 calc(50% - $form-column-gap/2);
+    min-width: $form-field-min-width;
+  }
+}
+
+.combine-two {
+  display: flex;
+  column-gap: $form-column-gap;
+  > * {
+    flex: 1 1 calc(50% - $form-column-gap/2);
+  }
+}

@@ -1,1 +1,85 @@
-<p>vehicle-form works!</p>
+<form
+  [id]="formId"
+  *ngIf="vehicleForm"
+  [formGroup]="vehicleForm"
+  (ngSubmit)="onSubmitForm($event)"
+  class="edit-form"
+>
+  <!-- Brand -->
+  <app-text-input [label]="'Marka'" [formControl]="vehicleForm.controls['brand']"> </app-text-input>
+
+  <!-- Model -->
+  <app-text-input [label]="'Model'" [formControl]="vehicleForm.controls['model']"> </app-text-input>
+
+  <!-- Current owner -->
+  <app-client-select-input
+    [selectedClient]="vehicleOwner"
+    (clientChange)="onClientChange($event)"
+    [label]="'Właściciel'"
+    [formControl]="vehicleForm.controls['currentOwner']"
+  >
+  </app-client-select-input>
+
+  <!-- Registration Number -->
+  <app-text-input
+    [label]="'Numer rejestracyjny'"
+    [formControl]="vehicleForm.controls['registrationNumber']"
+  >
+  </app-text-input>
+
+  <!-- Production Date -->
+  <app-text-input [label]="'Rok produkcji'" [formControl]="vehicleForm.controls['productionDate']">
+  </app-text-input>
+
+  <!-- Engine fuel -->
+  <app-text-input [label]="'Rodzaj silnika'" [formControl]="vehicleForm.controls['engineFuel']">
+  </app-text-input>
+
+  <!-- Color -->
+  <app-text-input [label]="'Kolor'" [formControl]="vehicleForm.controls['color']"> </app-text-input>
+
+  <!-- Vin -->
+  <app-text-input [label]="'VIN'" [formControl]="vehicleForm.controls['vin']"> </app-text-input>
+
+  <!-- Engine Code -->
+  <app-text-input [label]="'Kod silnika'" [formControl]="vehicleForm.controls['engineCode']">
+  </app-text-input>
+
+  <div class="combine-two">
+    <!-- Capacity -->
+    <app-text-input [label]="'Pojemność[cm3]'" [formControl]="vehicleForm.controls['capacity']">
+    </app-text-input>
+
+    <!-- Engine Power -->
+    <app-text-input [label]="'Moc silnika[kW]'" [formControl]="vehicleForm.controls['enginePower']">
+    </app-text-input>
+  </div>
+
+  <!-- Description -->
+  <app-text-input
+    [isTextArea]="true"
+    [label]="'Opis'"
+    [formControl]="vehicleForm.controls['description']"
+  >
+  </app-text-input>
+
+  <div>
+    <!-- Technical inspection end -->
+    <app-date-input
+      [label]="'Ważność przeglądu'"
+      [minDate]="currentDate"
+      [includeClearBtn]="true"
+      [formControl]="vehicleForm.controls['technicalInspectionEnd']"
+    >
+    </app-date-input>
+
+    <!-- First Registration -->
+    <app-date-input
+      [label]="'Data pierwszej rejestracji'"
+      [maxDate]="currentDate"
+      [includeClearBtn]="true"
+      [formControl]="vehicleForm.controls['firstRegistration']"
+    >
+    </app-date-input>
+  </div>
+</form>
