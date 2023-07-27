@@ -1,41 +1,48 @@
-import { Component, EventEmitter, Input, OnInit, Output, Self } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, Self } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable, startWith, debounceTime, of } from 'rxjs';
+import { Observable, startWith, debounceTime, of, Subscription } from 'rxjs';
 import { Client } from 'src/app/core/models/Client';
 import { ClientsService } from 'src/app/features/clients/data-access/clients.service';
 import {
   CREATE_CLIENT_DIALOG_DEFAULT_SETUP,
   CreateClientDialogComponent
 } from 'src/app/features/clients/ui/create-client-dialog/create-client-dialog.component';
+import { UtilsService } from 'src/app/shared/utils/utils.service';
 
 @Component({
   selector: 'app-client-select-input',
   templateUrl: './client-select-input.component.html',
   styleUrls: ['./client-select-input.component.scss']
 })
-export class ClientSelectInputComponent implements OnInit {
+export class ClientSelectInputComponent implements OnInit, OnDestroy {
   @Input() label: string = 'Klient';
   @Input() selectedClient?: Client;
   @Output() clientChange: EventEmitter<Client> = new EventEmitter();
   possibleClients: Client[] = [];
   displayingClients: Observable<Client[]> = of([]);
+  valueChangesSubsctiption: Subscription;
 
   constructor(
     @Self() public ngControl: NgControl,
-    public dialog: MatDialog,
-    private clientsService: ClientsService
+    private dialog: MatDialog,
+    private clientsService: ClientsService,
+    private utils: UtilsService
   ) {
     this.ngControl.valueAccessor = this;
   }
 
   ngOnInit(): void {
     // Set up the initial client name
-    if (this.selectedClient)
-      this.ngControl.control.setValue(this.clientToString(this.selectedClient));
-
+    this.ngControl.control.setValue(
+      this.selectedClient ? this.utils.clientToString(this.selectedClient) : null
+    );
     // Track input value change
-    this.ngControl.control.valueChanges
+    this.subscribeValueChanges();
+  }
+
+  subscribeValueChanges() {
+    this.valueChangesSubsctiption = this.ngControl.control.valueChanges
       .pipe(
         debounceTime(300),
         // distinctUntilChanged(),
@@ -46,7 +53,7 @@ export class ClientSelectInputComponent implements OnInit {
         if (value !== this.ngControl.value && this.selectedClient) return;
         // Check that currently have a candidate (cover also case when one from the list has been selected)
         let candidates = this.possibleClients.filter(
-          (client) => this.clientToString(client) === value
+          (client) => this.utils.clientToString(client) === value
         );
 
         if (candidates.length) {
@@ -56,6 +63,7 @@ export class ClientSelectInputComponent implements OnInit {
           return;
         }
 
+        console.log(value);
         this.loadClients(value.toLowerCase()).subscribe((clients) => {
           this.possibleClients = clients;
           this.displayingClients = of(clients);
@@ -63,7 +71,8 @@ export class ClientSelectInputComponent implements OnInit {
           // Automatically select when found match
           this.selectedClient =
             clients.length === 1 &&
-            this.clientToString(clients[0]).toLowerCase() === this.ngControl.value.toLowerCase()
+            this.utils.clientToString(clients[0]).toLowerCase() ===
+              this.ngControl.value.toLowerCase()
               ? (this.selectedClient = clients[0])
               : null;
 
@@ -73,9 +82,9 @@ export class ClientSelectInputComponent implements OnInit {
           // Update letter casing of input (if needed)
           if (
             this.selectedClient &&
-            this.ngControl.value !== this.clientToString(this.selectedClient)
+            this.ngControl.value !== this.utils.clientToString(this.selectedClient)
           ) {
-            this.ngControl.control.setValue(this.clientToString(this.selectedClient), {
+            this.ngControl.control.setValue(this.utils.clientToString(this.selectedClient), {
               emitEvent: false
             });
           }
@@ -96,7 +105,7 @@ export class ClientSelectInputComponent implements OnInit {
       });
   }
 
-  private loadClients(match: string) {
+  loadClients(match: string) {
     return this.clientsService.getClientsSearch(10, match);
   }
 
@@ -106,13 +115,6 @@ export class ClientSelectInputComponent implements OnInit {
     this.possibleClients = [];
     this.displayingClients = of([]);
     this.ngControl.control.setValue('', { emitEvent: false });
-  }
-
-  clientToString(client: Client) {
-    if (!client) return '';
-    return client.type === 'company'
-      ? client.companyName
-      : client.firstname + ' ' + client.lastname;
   }
 
   onAddClient() {
@@ -126,9 +128,13 @@ export class ClientSelectInputComponent implements OnInit {
         this.selectedClient = client;
         this.clientChange.emit(client);
         this.displayingClients = of([client]);
-        this.ngControl.control.setValue(this.clientToString(client), { emitEvent: false });
+        this.ngControl.control.setValue(this.utils.clientToString(client), { emitEvent: false });
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.valueChangesSubsctiption.unsubscribe();
   }
 
   // We don't have to use it
