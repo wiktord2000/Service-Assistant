@@ -24,6 +24,10 @@ export class UtilsService {
       : client.firstname + ' ' + client.lastname;
   }
 
+  getClientIcon(client: Client) {
+    return client.type === 'company' ? 'groups' : 'person';
+  }
+
   vehicleToString(vehicle: Vehicle): string {
     if (!vehicle) return '';
     return vehicle.brand + ' ' + vehicle.model;
