@@ -71,7 +71,7 @@ https://github.com/wiktord2000/Service-Assistant/assets/63188869/3461ad96-397a-4
 ### .NET Project
 <kbd><img width=400 src="https://user-images.githubusercontent.com/63188869/221031975-102e7b0a-afce-46ff-adc1-0200848f6d90.png" /></kbd>
 
-## More...:
+## More:
 The complete documentation for this project (PL): 
 <br/>
 https://drive.google.com/file/d/1yNgi6vnYRKNHuwGQwIwctEtKb8OX5P0Q/view?usp=sharing
