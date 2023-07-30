@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { VehicleFormGroup } from './vehicle-form-types';
+import { VehicleFormGroup } from '../../utils/vehicle-form-types';
 import { Client } from 'src/app/core/models/Client';
 
 const DEFAULT_VEHICLE_FORM_ID = 'vehicle-form'; // Purpose: attaching external buttons

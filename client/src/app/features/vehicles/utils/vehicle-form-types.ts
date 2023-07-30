@@ -8,7 +8,6 @@ export type VehicleFormValue = Pick<
   | 'color'
   | 'registrationNumber'
   | 'productionDate'
-  | 'currentOwner'
   | 'engineFuel'
   | 'vin'
   | 'engineCode'
@@ -17,7 +16,7 @@ export type VehicleFormValue = Pick<
   | 'technicalInspectionEnd'
   | 'firstRegistration'
   | 'description'
->;
+> & { currentOwner: string };
 
 export type VehicleControls = { [key in keyof VehicleFormValue]: AbstractControl };
 
