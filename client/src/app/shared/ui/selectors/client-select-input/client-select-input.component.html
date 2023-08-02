@@ -23,18 +23,16 @@
   </button>
 
   <!-- Errors -->
-  <mat-error *ngIf="ngControl.control.hasError('incorrect')"
+  <mat-error *ngIf="ngControl.control.hasError('not-exist')"
     >Wprowadzony {{ label.toLowerCase() }} nie istnieje. Dodaj go, aby zapisać zmiany.</mat-error
   >
   <mat-error *ngIf="ngControl.control.hasError('required')">Pole jest wymagane.</mat-error>
 
   <!-- Autocomplate -->
-  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-    <mat-option *ngFor="let client of displayingClients | async" [value]="clientToString(client)">
-      <mat-icon color="primary">{{
-        this.client.type === "company" ? "groups" : "person"
-      }}</mat-icon>
-      {{ clientToString(client) }}
+  <mat-autocomplete (optionSelected)="onOptionSelected($event)" #auto="matAutocomplete">
+    <mat-option *ngFor="let client of possibleClients | async" [value]="client">
+      <mat-icon color="primary">{{ utils.getClientIcon(client) }}</mat-icon>
+      {{ utils.clientToString(client) }}
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
