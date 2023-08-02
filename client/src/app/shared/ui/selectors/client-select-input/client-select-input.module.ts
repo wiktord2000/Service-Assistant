@@ -8,6 +8,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { CreateClientDialogModule } from 'src/app/features/clients/ui/create-client-dialog/create-client-dialog.module';
 
 @NgModule({
   declarations: [ClientSelectInputComponent],
@@ -19,7 +20,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatAutocompleteModule,
     MatTooltipModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    CreateClientDialogModule
   ],
   exports: [ClientSelectInputComponent]
 })
