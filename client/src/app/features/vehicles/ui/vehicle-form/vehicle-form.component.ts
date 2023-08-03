@@ -12,9 +12,10 @@ const DEFAULT_VEHICLE_FORM_ID = 'vehicle-form'; // Purpose: attaching external b
 export class VehicleFormComponent implements OnInit {
   @Input() formId: string = DEFAULT_VEHICLE_FORM_ID;
   @Input() vehicleForm!: VehicleFormGroup;
-  @Input() vehicleOwner!: Client;
+  @Input() vehicleOwner?: Client;
+  @Output() vehicleOwnerChange: EventEmitter<Client> = new EventEmitter();
   @Output() onSubmit: EventEmitter<SubmitEvent> = new EventEmitter();
-  @Output() onVehicleOwnerChange: EventEmitter<Client> = new EventEmitter();
+
   currentDate: Date;
 
   constructor() {}
@@ -28,6 +29,6 @@ export class VehicleFormComponent implements OnInit {
   }
 
   onClientChange(client: Client) {
-    this.onVehicleOwnerChange.emit(client);
+    this.vehicleOwnerChange.emit(client);
   }
 }
