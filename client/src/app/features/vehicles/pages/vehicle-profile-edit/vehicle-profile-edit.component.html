@@ -1,87 +1,9 @@
-<form
-  id="vehicle-form"
-  *ngIf="editForm"
-  [formGroup]="editForm"
-  (ngSubmit)="editForm.valid && onSaveChanges()"
-  class="edit-form"
->
-  <!-- Brand -->
-  <app-text-input [label]="'Marka'" [formControl]="editForm.controls['brand']"> </app-text-input>
-
-  <!-- Model -->
-  <app-text-input [label]="'Model'" [formControl]="editForm.controls['model']"> </app-text-input>
-
-  <!-- Current owner -->
-  <app-client-select-input
-    [selectedClient]="currentOwner"
-    [label]="'Właściciel'"
-    [formControl]="editForm.controls['currentOwner']"
-  >
-  </app-client-select-input>
-
-  <!-- Registration Number -->
-  <app-text-input
-    [label]="'Numer rejestracyjny'"
-    [formControl]="editForm.controls['registrationNumber']"
-  >
-  </app-text-input>
-
-  <!-- Production Date -->
-  <app-text-input [label]="'Rok produkcji'" [formControl]="editForm.controls['productionDate']">
-  </app-text-input>
-
-  <!-- Engine fuel -->
-  <app-text-input [label]="'Rodzaj silnika'" [formControl]="editForm.controls['engineFuel']">
-  </app-text-input>
-
-  <!-- Color -->
-  <app-text-input [label]="'Kolor'" [formControl]="editForm.controls['color']"> </app-text-input>
-
-  <!-- Vin -->
-  <app-text-input [label]="'VIN'" [formControl]="editForm.controls['vin']"> </app-text-input>
-
-  <!-- Engine Code -->
-  <app-text-input [label]="'Kod silnika'" [formControl]="editForm.controls['engineCode']">
-  </app-text-input>
-
-  <div class="combine-two">
-    <!-- Capacity -->
-    <app-text-input [label]="'Pojemność[cm3]'" [formControl]="editForm.controls['capacity']">
-    </app-text-input>
-
-    <!-- Engine Power -->
-    <app-text-input [label]="'Moc silnika[kW]'" [formControl]="editForm.controls['enginePower']">
-    </app-text-input>
-  </div>
-
-  <!-- Description -->
-  <app-text-input
-    [isTextArea]="true"
-    [label]="'Opis'"
-    [formControl]="editForm.controls['description']"
-  >
-  </app-text-input>
-
-  <div>
-    <!-- Technical inspection end -->
-    <app-date-input
-      [label]="'Ważność przeglądu'"
-      [minDate]="utilsService.getCurrentDate()"
-      [includeClearBtn]="true"
-      [formControl]="editForm.controls['technicalInspectionEnd']"
-    >
-    </app-date-input>
-
-    <!-- First Registration -->
-    <app-date-input
-      [label]="'Data pierwszej rejestracji'"
-      [maxDate]="utilsService.getCurrentDate()"
-      [includeClearBtn]="true"
-      [formControl]="editForm.controls['firstRegistration']"
-    >
-    </app-date-input>
-  </div>
-</form>
+<!-- Consider two-way databinding for [(vehicleOwner)] -->
+<app-vehicle-form
+  [vehicleForm]="editForm"
+  [(vehicleOwner)]="currentOwner"
+  (onSubmit)="editForm.valid && onSaveChanges()"
+></app-vehicle-form>
 
 <div class="profile-submit-button-container">
   <button

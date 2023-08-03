@@ -1,15 +1,15 @@
-import { Component, OnInit, SkipSelf, ViewChild } from '@angular/core';
+import { Component, OnInit, SkipSelf } from '@angular/core';
 import { CanDeactivateComponent } from 'src/app/core/guards/can-deactivate.guard';
-import { UtilsService } from 'src/app/shared/utils/utils.service';
 import { VehicleProfileComponent } from '../vehicle-profile/vehicle-profile.component';
 import { Vehicle } from 'src/app/core/models/Vehicle';
 import { Client } from 'src/app/core/models/Client';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { NUMBER_REGEX } from 'src/app/core/constants/constants';
 import { SnackbarService } from 'src/app/shared/ui/snackbar/snackbar.service';
 import { finalize } from 'rxjs';
 import { VehiclesService } from '../../data-access/vehicles.service';
-import { ClientSelectInputComponent } from 'src/app/shared/ui/selectors/client-select-input/client-select-input.component';
+import { VehicleFormGroup } from '../../utils/vehicle-form-types';
+import { VehicleUtilsService } from '../../utils/vehicle-utils.service';
 
 @Component({
   selector: 'app-vehicle-profile-edit',
@@ -17,11 +17,10 @@ import { ClientSelectInputComponent } from 'src/app/shared/ui/selectors/client-s
   styleUrls: ['./vehicle-profile-edit.component.scss']
 })
 export class VehicleProfileEditComponent implements OnInit, CanDeactivateComponent {
-  @ViewChild(ClientSelectInputComponent) clientSelect: ClientSelectInputComponent;
   vehicle: Vehicle;
   currentOwner: Client;
   isSaving: boolean = false;
-  editForm: FormGroup = this.formBuilder.group({
+  editForm: VehicleFormGroup = this.formBuilder.group({
     brand: ['', [Validators.required]],
     model: ['', [Validators.required]],
     color: [''],
@@ -36,11 +35,11 @@ export class VehicleProfileEditComponent implements OnInit, CanDeactivateCompone
     technicalInspectionEnd: [''],
     firstRegistration: [''],
     description: ['']
-  });
+  }) as VehicleFormGroup;
 
   constructor(
     @SkipSelf() private vehicleProfile: VehicleProfileComponent,
-    public utilsService: UtilsService,
+    private vehicleUtils: VehicleUtilsService,
     private formBuilder: FormBuilder,
     private snackbarService: SnackbarService,
     private vehiclesService: VehiclesService
@@ -49,14 +48,17 @@ export class VehicleProfileEditComponent implements OnInit, CanDeactivateCompone
   ngOnInit(): void {
     this.vehicle = this.vehicleProfile.vehicle;
     this.currentOwner = this.vehicleProfile.currentOwner;
-    this.fillForm(this.vehicle);
+    this.editForm.setValue(this.vehicleUtils.getVehicleFormValue(this.vehicle));
   }
 
   onSaveChanges() {
     this.isSaving = true;
-    const currentOwner = this.clientSelect.selectedClient;
 
-    const updateData = { ...this.editForm.value, currentOwnerId: currentOwner?.id ?? null };
+    const updateData = {
+      ...this.editForm.value,
+      currentOwner: this.currentOwner,
+      currentOwnerId: this.currentOwner?.id ?? null
+    };
 
     this.vehiclesService
       .updateVehicle(this.vehicle.id, updateData)
@@ -67,35 +69,18 @@ export class VehicleProfileEditComponent implements OnInit, CanDeactivateCompone
       )
       .subscribe({
         next: () => {
-          this.currentOwner = currentOwner;
           this.vehicle = { ...this.vehicle, ...updateData };
           this.vehicleProfile.vehicle = this.vehicle;
+          this.editForm.reset(this.vehicleUtils.getVehicleFormValue(this.vehicle), {
+            emitEvent: false
+          });
           this.snackbarService.showMessage('success', 'Pomyślnie zaktualizowano dane pojazdu');
-          this.editForm.reset(this.vehicle);
         },
         error: (error) => {
+          // Actions to consideration
           this.snackbarService.showMessage('error', error);
         }
       });
-  }
-
-  fillForm(vehicle: Vehicle) {
-    this.editForm.setValue({
-      brand: vehicle.brand,
-      model: vehicle.model,
-      color: vehicle.color,
-      registrationNumber: vehicle.registrationNumber,
-      productionDate: vehicle.productionDate,
-      currentOwner: this.utilsService.clientToString(vehicle.currentOwner),
-      engineFuel: vehicle.engineFuel,
-      vin: vehicle.vin,
-      engineCode: vehicle.engineCode,
-      capacity: vehicle.capacity,
-      enginePower: vehicle.enginePower,
-      technicalInspectionEnd: vehicle.technicalInspectionEnd,
-      firstRegistration: vehicle.firstRegistration,
-      description: vehicle.description
-    });
   }
 
   canDeactivate() {
