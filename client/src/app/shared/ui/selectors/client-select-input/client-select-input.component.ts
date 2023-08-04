@@ -36,20 +36,20 @@ export class ClientSelectInputComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscribeValueChanges();
-
-    // Set up the initial client name
+    // When client exist -> just setup name and don't emit the event
+    // When client not exist -> setup "" and emit the event (to send request)
     this.ngControl.control.setValue(
-      // Note: clientToString() returns "" if client is undefined
+      // Note: clientToString() returns "" if client is undefined/null
       this.utils.clientToString(this.selectedClient),
       { emitEvent: !this.selectedClient }
     );
   }
 
   onOptionSelected(event: MatAutocompleteSelectedEvent) {
+    // Note: When the option is selected the valueChanges event is triggered automatically with selected Client
+    // (it's mat-autocomplete specific) This is why we setup exit condition: if (value instanceof Object) return;
     this.updateSelectedClient(event.option.value);
     this.possibleClients = of([]);
-    // Note: At this momemt the this.ngControl.control.value has been set to Client object automatically
-    // by mat-autocomplate hence we update the control value to setup the string instead complex object
     this.ngControl.control.setValue(this.utils.clientToString(this.selectedClient), {
       emitEvent: false
     });
@@ -96,11 +96,12 @@ export class ClientSelectInputComponent implements OnInit, OnDestroy {
     this.clientChange.emit(client);
   }
 
-  clear(emitEvent: boolean = false) {
+  clear(requestInitialClients: boolean = false) {
     this.selectedClient = null;
-    if (emitEvent) this.clientChange.emit(null);
-    this.possibleClients = of([]);
-    this.ngControl.control.setValue('', { emitEvent: false });
+    // if (emitEvent) this.clientChange.emit(null);
+    this.clientChange.emit(null);
+    if (!requestInitialClients) this.possibleClients = of([]);
+    this.ngControl.control.setValue('', { emitEvent: requestInitialClients });
   }
 
   ngOnDestroy(): void {
