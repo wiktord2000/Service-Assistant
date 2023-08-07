@@ -97,15 +97,20 @@ export class OrderProfileEditComponent implements OnInit, CanDeactivateGuard {
     this.selectedClient = client;
 
     this.vehiclesService.getClientVehicles(client?.id).subscribe((vehicles: Vehicle[]) => {
+      this.vehicleSelectInput.clear();
       this.vehicleSelectInput.displayingVehicles = of(vehicles);
     });
   }
 
   onVehicleChange(vehicle: Vehicle) {
     this.selectedVehicle = vehicle;
-
+    if (!vehicle) {
+      this.clientSelectInput.clear(true);
+      return;
+    }
     this.clientsService.getVehicleClients(vehicle?.id).subscribe((clients: Client[]) => {
-      this.clientSelectInput.displayingClients = of(clients);
+      this.clientSelectInput.clear();
+      this.clientSelectInput.possibleClients = of(clients);
     });
   }
 
