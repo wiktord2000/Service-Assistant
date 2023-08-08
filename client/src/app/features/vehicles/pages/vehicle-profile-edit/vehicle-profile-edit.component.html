@@ -12,7 +12,7 @@
     class="profile-submit-button"
     type="submit"
     color="primary"
-    [disabled]="!editForm.dirty || !editForm.valid || this.isSaving"
+    [disabled]="!editForm.dirty || !editForm.valid || this.isSaving || !currentOwner"
   >
     {{ isSaving ? "Zapisywanie..." : "Zapisz" }}
   </button>
