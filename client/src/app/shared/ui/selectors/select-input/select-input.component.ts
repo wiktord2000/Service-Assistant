@@ -1,5 +1,14 @@
-import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, Self } from '@angular/core';
-import { NgControl } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Host,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  Self
+} from '@angular/core';
+import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
 
@@ -8,11 +17,12 @@ import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
   templateUrl: './select-input.component.html',
   styleUrls: ['./select-input.component.scss']
 })
-export class SelectInputComponent implements OnInit, OnDestroy {
+export class SelectInputComponent implements OnInit, OnDestroy, ControlValueAccessor {
   @Input() label?: string;
-  @Input() iconName?: string;
+  @Input() optionIcon?: string;
   @Input() selectedValue?: Object;
   @Input() possibleValues?: Object[];
+  @Input() displayValueAs!: (value: Object) => string;
   @Output() onAddClick: EventEmitter<MouseEvent> = new EventEmitter();
   @Output() onOptionSelected: EventEmitter<MatAutocompleteSelectedEvent> = new EventEmitter();
   @Output() onInput: EventEmitter<string> = new EventEmitter();
@@ -32,20 +42,26 @@ export class SelectInputComponent implements OnInit, OnDestroy {
       .subscribe((value: string | Object) => {
         // When we will get object - do nothing (mat-autocomplate defect)
         if (value instanceof Object) return;
+        this.updateSelectedValue(null);
         this.onInput.emit(value);
       });
   }
 
-  updateSelectedValue(stringRepresentation: string, value?: Object) {
+  updateSelectedValue(value?: Object) {
     this.selectedValue = value;
     this.possibleValues = [value];
-    this.ngControl.control.setValue(stringRepresentation, { emitEvent: false });
+    this.ngControl.control.setValue(this.displayValueAs(value), { emitEvent: false });
   }
 
   reset(inputValue: string, emitInputEvent: boolean = false) {
     this.selectedValue = null;
     this.possibleValues = [];
     this.ngControl.control.setValue(inputValue, { emitEvent: emitInputEvent });
+  }
+
+  setError(type: 'notExist' | 'required') {
+    const error = type === 'required' ? { required: true } : { 'not-exist': true };
+    this.ngControl.control.setErrors(error);
   }
 
   ngOnDestroy(): void {

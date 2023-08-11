@@ -1,0 +1,38 @@
+<mat-form-field appearance="fill">
+  <mat-label *ngIf="label">{{ label }}</mat-label>
+
+  <input
+    type="text"
+    aria-label="Select value"
+    matInput
+    [formControl]="ngControl.control"
+    [matAutocomplete]="auto"
+  />
+
+  <!-- Add button if not found -->
+  <button
+    *ngIf="ngControl.control.invalid"
+    (click)="onAddClick.emit($event)"
+    type="button"
+    matSuffix
+    matTooltip="Dodaj klienta"
+    [matTooltipPosition]="'right'"
+    mat-icon-button
+  >
+    <mat-icon color="primary">add</mat-icon>
+  </button>
+
+  <!-- Errors -->
+  <mat-error *ngIf="ngControl.control.hasError('not-exist')"
+    >Wprowadzony {{ label.toLowerCase() }} nie istnieje. Dodaj go, aby zapisać zmiany.</mat-error
+  >
+  <mat-error *ngIf="ngControl.control.hasError('required')">Pole jest wymagane.</mat-error>
+
+  <!-- Autocomplate -->
+  <mat-autocomplete (optionSelected)="onOptionSelected.emit($event)" #auto="matAutocomplete">
+    <mat-option *ngFor="let value of possibleValues" [value]="value">
+      <mat-icon *ngIf="icon" color="primary">{{ optionIcon }}</mat-icon>
+      {{ displayValueAs(value) }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>
