@@ -5,13 +5,13 @@
     type="text"
     aria-label="Select value"
     matInput
-    [formControl]="ngControl.control"
+    [formControl]="formControl"
     [matAutocomplete]="auto"
   />
 
   <!-- Add button if not found -->
   <button
-    *ngIf="ngControl.control.invalid"
+    *ngIf="formControl.invalid"
     (click)="onAddClick.emit($event)"
     type="button"
     matSuffix
@@ -23,10 +23,10 @@
   </button>
 
   <!-- Errors -->
-  <mat-error *ngIf="ngControl.control.hasError('not-exist')"
+  <mat-error *ngIf="formControl.hasError('not-exist')"
     >Wprowadzony {{ label.toLowerCase() }} nie istnieje. Dodaj go, aby zapisać zmiany.</mat-error
   >
-  <mat-error *ngIf="ngControl.control.hasError('required')">Pole jest wymagane.</mat-error>
+  <mat-error *ngIf="formControl.hasError('required')">Pole jest wymagane.</mat-error>
 
   <!-- Autocomplate -->
   <mat-autocomplete (optionSelected)="onOptionSelected.emit($event)" #auto="matAutocomplete">
