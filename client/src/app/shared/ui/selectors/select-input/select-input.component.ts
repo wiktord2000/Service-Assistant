@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output, Self } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { Subscription, debounceTime, distinctUntilChanged } from 'rxjs';
+import { Observable, Subscription, debounceTime, distinctUntilChanged, of } from 'rxjs';
 
 @Component({
   selector: 'app-select-input',
@@ -12,7 +12,7 @@ export class SelectInputComponent implements OnInit, OnDestroy, ControlValueAcce
   @Input() label?: string;
   @Input() optionIcon?: string;
   @Input() selectedValue?: Object;
-  @Input() possibleValues?: Object[];
+  @Input() possibleValues?: Observable<Object[]>;
   @Input() displayValueAs: (value: Object) => string;
   @Output() onAddClick: EventEmitter<MouseEvent> = new EventEmitter();
   @Output() onOptionSelected: EventEmitter<MatAutocompleteSelectedEvent> = new EventEmitter();
@@ -33,20 +33,20 @@ export class SelectInputComponent implements OnInit, OnDestroy, ControlValueAcce
       .subscribe((value: string | Object) => {
         // When we will get object - do nothing (mat-autocomplate defect)
         if (value instanceof Object) return;
-        this.updateSelectedValue(null);
+        this.selectedValue = null;
         this.onInput.emit(value);
       });
   }
 
   updateSelectedValue(value?: Object) {
     this.selectedValue = value;
-    this.possibleValues = [value];
+    this.possibleValues = of([value]);
     this.ngControl.control.setValue(this.displayValueAs(value), { emitEvent: false });
   }
 
   reset(inputValue: string, emitInputEvent: boolean = false) {
     this.selectedValue = null;
-    this.possibleValues = [];
+    this.possibleValues = of([]);
     this.ngControl.control.setValue(inputValue, { emitEvent: emitInputEvent });
   }
 
