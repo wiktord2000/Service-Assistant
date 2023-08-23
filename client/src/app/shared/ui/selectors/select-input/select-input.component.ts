@@ -14,6 +14,7 @@ export class SelectInputComponent implements OnInit, OnDestroy, ControlValueAcce
   @Input() selectedValue?: Object;
   @Input() possibleValues?: Observable<Object[]>;
   @Input() displayValueAs: (value: Object) => string;
+  @Input() optionIconMapping?: (value: Object) => string;
   @Output() onAddClick: EventEmitter<MouseEvent> = new EventEmitter();
   @Output() onOptionSelected: EventEmitter<MatAutocompleteSelectedEvent> = new EventEmitter();
   @Output() onInput: EventEmitter<string> = new EventEmitter();

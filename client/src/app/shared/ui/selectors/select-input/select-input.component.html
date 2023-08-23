@@ -31,7 +31,7 @@
   <!-- Autocomplate -->
   <mat-autocomplete (optionSelected)="onOptionSelected.emit($event)" #auto="matAutocomplete">
     <mat-option *ngFor="let value of possibleValues | async" [value]="value">
-      <mat-icon *ngIf="optionIcon" color="primary">{{ optionIcon }}</mat-icon>
+      <mat-icon *ngIf="optionIconMapping" color="primary">{{ optionIconMapping(value) }}</mat-icon>
       {{ displayValueAs(value) }}
     </mat-option>
   </mat-autocomplete>
